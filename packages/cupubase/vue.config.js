@@ -1,6 +1,5 @@
 const OptimizeCSSAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const path = require('path')
 const resolve = dir => path.join(process.cwd(), dir)
 module.exports = {

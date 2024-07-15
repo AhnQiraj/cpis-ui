@@ -17,4 +17,6 @@ pnpm add @cpis/cupubase # or npm install @cpis/cupubase
 - vue-router 项目中没有使用 用来路由
 - element-resize-detector 项目中没有使用 用来监听元素大小变化
 - js-cookie 项目中没有使用 用来操作cookie
+- @vue/cli-plugin-router 组件库不需要
+- @vue/cli-plugin-vuex 组件库不需要
 ```
