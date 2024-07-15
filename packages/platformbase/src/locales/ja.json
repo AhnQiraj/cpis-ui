@@ -1,0 +1,979 @@
+{
+	"_element": "ja",
+	"_name": "ほうぶん",
+	"common": {
+		"buttons": {
+			"add": "追加する",
+			"cancel": "キャンセル",
+			"clean": "空の",
+			"close": "閉じる",
+			"collapse": "シュリンク",
+			"collect": "收藏",
+			"compress": "シュリンク",
+			"confirm": "決定する",
+			"detail": "詳細",
+			"down": "见",
+			"edit": "編集する",
+			"expand": "展開する",
+			"expansion": "展開する",
+			"export": "輸出する",
+			"fullscreen": "全画面",
+			"fullscreenOn": "小さな画面",
+			"import": "インポート",
+			"more": "もっと",
+			"moreSearch": "もっと",
+			"print": "印刷する",
+			"refresh": "更新する",
+			"remove": "削除する",
+			"removeAllToken": "すべてのトークンを削除",
+			"removeToken": "トークンを削除",
+			"resetSearch": "リセットする",
+			"save": "保存する",
+			"search": "検索する",
+			"toBottom": "最後の壱条に移る",
+			"toUp": "第1条",
+			"up": "へ"
+		},
+		"company": "広州流辰情報技術有限公司",
+		"copyright": "無断複写・転載を禁じます",
+		"dialog": {
+			"multipleSelected": "複数のアイテムが選択されています。操作するアイテムを選択してください！",
+			"operateSuccess": "操作が成功しました",
+			"removeRecord": "この操作はデータを完全に削除します、よろしいですか？",
+			"removeSuccess": "削除しました！",
+			"saveCancelButtonText": "閉じる",
+			"saveConfirmButtonText": "続ける",
+			"saveError": "フォームデータが正しく入力されているかどうかを確認してください",
+			"saveSuccess": "{message}、続行しますか？",
+			"selectedRecords": "レコードを選択してください！",
+			"title": "プロンプト",
+			"warn": "ヒント"
+		},
+		"field": {
+			"createBy": "創始者",
+			"createTime": "作成時間",
+			"updateBy": "アップデーター",
+			"updateTime": "更新時間"
+		},
+		"loading": "読み込み中",
+		"noData": "まだデータがありません",
+		"platform": "IBPSプラットフォーム",
+		"saving": "保存中",
+		"title": {
+			"add": "{title}を追加",
+			"detail": "{title}詳細",
+			"edit": "{title}を編集"
+		},
+		"welcome": "IBPSプラットフォームへようこそ"
+	},
+	"components": {
+		"address": {
+			"china": "中国",
+			"defaultPlaceholder": [
+				"国を選択してください",
+				"州を選択してください",
+				"都市を選択してください",
+				"郡を選択してください",
+				"郷通りを選択してください"
+			],
+			"defaultnotFoundText": [
+				"一致する国はありません",
+				"一致する州はありません",
+				"一致する都市はありません",
+				"一致する郡はありません",
+				"一致するタウンシップストリートはありません"
+			]
+		},
+		"back-to-top": {
+			"tip": "トップに戻る"
+		},
+		"card-list": {
+			"pagination": {
+				"noData": "まだデータがありません",
+				"pageInfo": "{total}の記事{start}から{end}"
+			}
+		},
+		"crud": {
+			"collapse": "シュリンク",
+			"displayField": "カスタム列",
+			"expand": "展開する",
+			"index": "番号",
+			"manage": "管理",
+			"pagination": {
+				"noData": "まだデータがありません",
+				"pageInfo": "記事{start}から{end}合計{total}"
+			}
+		},
+		"display-field": {
+			"clean": "空の",
+			"delete": "削除する",
+			"noSelected": "フィールドが選択されていません",
+			"noSelectedPrompt": "表示フィールドを設定してください",
+			"reset": "リセット",
+			"selectAll": "すべて選択",
+			"selectedField": "現在選択されているフィールド",
+			"sort": "ドラッグソート",
+			"tip": "推奨される幅は50以上にする必要があります。そうしないと、リストの表示に影響します。",
+			"title": "カスタム列を設定する",
+			"width": "幅"
+		},
+		"query-builder": {
+			"buttons": {
+				"addGroup": "グループを追加",
+				"addRule": "ルールを追加",
+				"removeGroup": "グループを削除",
+				"removeRule": "削除する"
+			},
+			"conditions": {
+				"and": "そして",
+				"or": "または"
+			},
+			"errors": {
+				"boolean_not_valid": "ブール値ではありません",
+				"checkbox_empty": "アイテムが選択されていません",
+				"datetime_between_invalid": "無効な値、 {0} は{1}より大きい",
+				"datetime_empty": "値が空です",
+				"datetime_exceed_max": "{0}の前でなければなりません",
+				"datetime_exceed_min": "{0}の後でなければなりません",
+				"datetime_invalid": "有効な日付ではありません（{0}）",
+				"empty_group": "グループは空です",
+				"no_filter": "フィルタが選択されていません",
+				"number_between_invalid": "無効な値、 {0} は {1}より大きい",
+				"number_exceed_max": "{0}未満でなければなりません",
+				"number_exceed_min": "{0}より大きくなければなりません",
+				"number_nan": "値は数値ではありません",
+				"number_not_double": "浮動小数点数ではありません",
+				"number_not_integer": "整数ではありません",
+				"number_wrong_step": "{0}の倍数でなければなりません",
+				"operator_not_multiple": "オプション{1}は複数の値を受け入れることができません",
+				"radio_empty": "アイテムが選択されていません",
+				"select_empty": "アイテムが選択されていません",
+				"string_empty": "値が入力されていません",
+				"string_exceed_max_length": "{0}文字以下にする必要があります",
+				"string_exceed_min_length": "少なくとも{0}文字が含まれている必要があります",
+				"string_invalid_format": "無効な形式（{0}）"
+			},
+			"operators": {
+				"begins_with": "で始まる",
+				"between": "間",
+				"contains": "以下が含まれます",
+				"ends_with": "で終わる",
+				"equal": "等しい",
+				"greater": "より大きい",
+				"greater_or_equal": "より大きいか等しい",
+				"in": "内",
+				"is_empty": "空です",
+				"is_not_empty": "空ではない",
+				"is_not_null": "ヌルではない",
+				"is_null": "ヌルです",
+				"less": "より小さい",
+				"less_or_equal": "より小さいか等しい",
+				"not_begins_with": "始めないでください",
+				"not_between": "間にない",
+				"not_contains": "以下を含まない",
+				"not_ends_with": "で終わらないでください",
+				"not_equal": "等しくない",
+				"not_in": "ではない"
+			},
+			"sources": {
+				"dynamic": "動的な値",
+				"fixed": "固定値",
+				"script": "Groovyスクリプトの値"
+			}
+		}
+	},
+	"error": {
+		"back": "戻る",
+		"backHome": "家に戻る",
+		"cause": "エラーの原因：{cause}",
+		"logout": {
+			"cancelButtonText": "キャンセル",
+			"confirmButtonText": "再ログイン",
+			"message": "ログアウトしました。このページで滞在をキャンセルするか、再度ログインできます",
+			"title": "OKサインアウト"
+		},
+		"message": "{message}",
+		"messageCause": "{message}</br>エラーの原因：{cause}",
+		"network": "サーバーの動作に問題があります。しばらくしてからもう一度お試しください",
+		"page401": {
+			"maybe": "または、あなたは行くことができます",
+			"tip1": "このページにアクセスする権限がありません",
+			"tip2": "あなたが不満なら、あなたのリーダーに連絡してください"
+		},
+		"page403": {
+			"maybe": "または、あなたは行くことができます",
+			"tip1": "このページにアクセスする権限がありません",
+			"tip2": "あなたが不満なら、あなたのリーダーに連絡してください"
+		},
+		"page404": {
+			"info": "入力したURLが正しいかどうかを確認してください。下のボタンをクリックしてホームページに戻るか、エラーレポートを送信してください",
+			"message": "入力したURLが正しくありません..."
+		},
+		"page500": {
+			"maybe": "または、あなたは行くことができます",
+			"tip1": "内部サーバーページでエラーが発生しました",
+			"tip2": "管理者に連絡するか、エラーレポートを送信してください"
+		},
+		"reLogin": "再ログイン",
+		"status": {
+			"400": "[400]要求エラー",
+			"401": "[401]不正です。管理者に連絡してください",
+			"403": "[403]アクセスが拒否されました",
+			"404": "[404]リクエストアドレスエラー： {url}",
+			"408": "[408]リクエストがタイムアウトしました",
+			"500": "[500]内部サーバーエラー",
+			"501": "[501]サービスは実装されていません",
+			"502": "[502]ゲートウェイエラー",
+			"503": "[503]サービスは利用できません",
+			"504": "[504]ゲートウェイのタイムアウト",
+			"505": "[505]サポートされていないHTTPバージョン",
+			"50001": "ゲートウェイがタイムアウトしました",
+			"50002": "サービスを利用できません",
+			"50003": "クライアント呼び出しの例外",
+			"50004": "ネットワーク接続エラー",
+			"50005": "ネットワークタイムアウト",
+			"50006": "Hystrixサーキットブレーカータイムアウト",
+			"50007": "Hystrixスレッドプールがいっぱいです",
+			"50008": "Hystrixサーキットブレーカーが開いています",
+			"50009": "Hystrixセマフォは取得されません",
+			"6010101": "不正なリクエスト",
+			"6010102": "IPは禁止されています",
+			"6010103": "無許可",
+			"6010104": "インターフェイスの電流制限",
+			"6020101": "間違った認証IDまたはキー",
+			"6020102": "間違った認証コード",
+			"6020103": "ログインしていません",
+			"6020104": "ログイン例外",
+			"6020105": "検証コードエラー",
+			"6020106": "ユーザー名またはパスワードが間違っています",
+			"6020107": "ユーザーがアクティブ化されていません",
+			"6020108": "ユーザーの有効期限が切れました",
+			"6020109": "パスワードの有効期限が切れました",
+			"6020110": "ユーザーが無効になっています",
+			"6020111": "ユーザーがロックされています",
+			"6020112": "不明なアカウント",
+			"6020113": "不明な部門",
+			"6020114": "位置不明",
+			"6020201": "不正なトークン",
+			"6020202": "承認タイプはサポートされていません",
+			"6020301": "トークンの有効期限が切れました",
+			"6030201": "アナウンスの例外",
+			"6030501": "データ辞書の例外",
+			"6030502": "分類異常",
+			"6030503": "分類識別異常",
+			"6030504": "地理的異常",
+			"6030601": "セキュリティ設定が異常",
+			"6030602": "異常なシステムリソース",
+			"6030603": "サブシステム例外",
+			"6030604": "権限設定異常",
+			"6030605": "権限定義の例外",
+			"6030606": "デスクトップ管理の例外",
+			"6030607": "承認管理の例外",
+			"6030608": "アプリシステムリソースが異常です",
+			"6030701": "一般的なスクリプトの例外",
+			"6030702": "条件付きスクリプトの例外",
+			"6030703": "スクリプト管理の例外",
+			"6030801": "イベント後のサービス例外",
+			"6030802": "サービス管理の例外",
+			"6040001": "参加者異常",
+			"6040101": "異常な参加者レベル",
+			"6040201": "参加者の属性が異常",
+			"6040301": "キャラクター異常",
+			"6040401": "制度上の異常",
+			"6040501": "異常な投稿",
+			"6040601": "スタッフの例外",
+			"6040701": "異常な採点機関",
+			"6040801": "ユーザーグループの例外",
+			"6040901": "テナントの例外",
+			"6041001": "参加者関係異常",
+			"6050000": "異常なプロセス",
+			"6050100": "プロセス定義の例外",
+			"6050200": "プロセスインスタンスの例外",
+			"6050300": "プロセスタスクの例外",
+			"6050400": "プロセス監視の例外",
+			"6050500": "プロセス統計が異常",
+			"6060000": "フォームの例外",
+			"6060100": "データセット異常",
+			"6060200": "フォームデザイナーの例外",
+			"6060300": "フォームレンダリングが異常",
+			"6060400": "データテンプレートの例外",
+			"6060500": "ビジネスデータテンプレートの例外",
+			"6060600": "ビジネスオブジェクトの例外",
+			"6070201": "外部メールのユーザー設定が異常",
+			"6070202": "外部メールの例外",
+			"6070203": "内部メッセージ例外",
+			"6070204": "内部メッセージ読み取り例外",
+			"6070205": "内部メッセージ応答例外",
+			"6070206": "メッセージ読み取り例外",
+			"6070207": "レシーバー異常",
+			"6070208": "メッセージ応答例外",
+			"6070209": "メッセージ応答例外",
+			"6070210": "メッセージタイプ異常",
+			"6070301": "アタッチメント操作に失敗しました",
+			"6070401": "タイミングタスクが異常です",
+			"6070402": "時限タスクはすでに存在します",
+			"6070601": "シリアル番号異常",
+			"6070602": "シリアル番号エイリアスはすでに存在します",
+			"6070603": "シリアル番号テスト異常",
+			"6080000": "コードジェネレータの例外",
+			"6080001": "コードジェネレータはスキーム例外を生成します",
+			"6080002": "コードジェネレータテーブル構成の例外",
+			"6080003": "コードジェネレータテンプレートの例外",
+			"6080004": "コードジェネレータ変数の例外",
+			"6090001": "SOCKETファイルメッセージが異常です"
+		},
+		"unknown": "不明なエラー、エラーコード：{state}",
+		"unknownStatus": "インターフェイスが異常です。インターフェイスは[状態]パラメータを返しません</br>インターフェイスアドレス：{url}"
+	},
+	"formula": {
+		"abs": {
+			"example": "ABS（-8）は8を返すことができます。これは-8の絶対値です",
+			"intro": "ABS関数は数値の絶対値を取得できます",
+			"usage": "ABS（数値）"
+		},
+		"advanceFunc": "高度な機能",
+		"and": {
+			"example": "AND（{语文成绩}> 90、{数学成绩}> 90、{英语成绩}> 90）、3つすべてのコースのスコアが90を超える場合はtrueを返し、それ以外の場合はfalseを返します",
+			"intro": "すべてのパラメーターがtrueの場合、AND関数はブール値trueを返します。それ以外の場合、ブール値falseを返します",
+			"usage": "AND（論理式1、論理式2、...）"
+		},
+		"average": {
+			"example": "AVERAGE（{语文成绩}、{数学成绩}、 {英语成绩}）は、3つのコースの平均スコアを返します",
+			"intro": "AVERAGE関数は、値のセットの算術平均を取得できます",
+			"usage": "AVERAGE（番号1、番号2、...）"
+		},
+		"ceiling": {
+			"example": "12は7より大きく、6の倍数で7に最も近い数値であるため、CEILING（7,6）は12を返します。",
+			"intro": "CEILING関数は、元の値に最も近い指定された係数の倍数に数値を増やすことができます",
+			"usage": "CEILING（数値、係数）"
+		},
+		"char": {
+			"example": "CHAR（10）は改行文字を返します",
+			"intro": "CHAR関数は、コンピューターの文字セットの数値コードを対応する文字に変換できます。",
+			"usage": "CHAR（数値）"
+		},
+		"concatenate": {
+			"example": "CONCATENATE（「3年ごとに2つのクラス」、「Jay Chou」）は、「3年ごとに2つのクラスJay」を返します。",
+			"intro": "CONCATENATE関数は、複数のテキストを1つのテキストにマージできます",
+			"usage": "CONCATENATE（text1、text2、...）"
+		},
+		"count": {
+			"example": "COUNT（シャオミン、シャオワン、シャオチャン、シャオリー）は4を返します。これは人数です",
+			"intro": "COUNT関数はパラメーターの数を取得できます",
+			"usage": "COUNT（値、値、...）"
+		},
+		"countif": {
+			"example": "COUNTIF（subform.sex、 'female'）、 'female'が入力されたサブフォームのデータ数を取得できます; COUNTIF（[1,2,3,4]、 '> 2'）、1を取得できます2,3,4の2より大きい桁数は2です。",
+			"intro": "COUNTIF関数は、条件を満たす配列内のパラメーターの数を取得できます",
+			"usage": "COUNTIF（配列、「条件」）"
+		},
+		"currency": {
+			"intro": "CURRENCY中国の通貨資本",
+			"usage": "やや"
+		},
+		"date": {
+			"intro": "DATE関数はタイムスタンプを日付オブジェクトに変換できます",
+			"usage": "DATE（タイムスタンプ）"
+		},
+		"dateFunc": "日付関数",
+		"datedelta": {
+			"intro": "DATEDELTA関数は、指定された日数から指定された日付を加算/減算できます",
+			"usage": "DATEDELTA（指定された日付、加算または減算する日数）"
+		},
+		"datedif": {
+			"example": "DATEDIF（注文時間、支払い時間、 \"h\"）、注文時間が9:00の場合、支払い時間は同じ日の10:30であり、計算された時間差は1.5です。",
+			"intro": "DATEDIF関数は、2つの日付と時刻の間の年、月、日、時間、分、および秒の数を計算できます。",
+			"usage": "DATEDIF（開始時刻、終了時刻、[単位]）、単位は「y」、「M」、「d」、「h」、「m」、「s」にすることができます。"
+		},
+		"day": {
+			"intro": "DAY関数は月の日を取得できます",
+			"usage": "DAY（タイムスタンプ）"
+		},
+		"days": {
+			"intro": "DAYS関数は、2つの日付間の日数を返します。",
+			"usage": "DAYS（終了日、開始日）"
+		},
+		"days360": {
+			"intro": "DAYS360は、年間360日間のアルゴリズムに従って、2日間で異なる日数を返します",
+			"usage": "DAYS360（終了日、開始日）"
+		},
+		"exact": {
+			"example": "EXACT（{手机号}、{中奖手机号}）、同じ場合はtrueを返し、同じでない場合はfalseを返します",
+			"intro": "EXACT関数は、2つのテキストがまったく同じかどうかを比較し、同一の場合はtrueを返し、そうでない場合はfalseを返します。",
+			"usage": "EXACT（text1、text2）"
+		},
+		"false": {
+			"intro": "FALSE関数はブール値falseを返します",
+			"usage": "FALSE（）"
+		},
+		"fixed": {
+			"example": "FIXED（3.1415,2）は '3.14'を返します",
+			"intro": "FIXED関数は、指定された小数点以下の桁数に数値を丸め、テキストとして出力します",
+			"usage": "修正済み（数値、スケール）"
+		},
+		"floor": {
+			"example": "FLOOR（7,6）は、6が7より小さく、6の倍数で7に最も近い数値であるため、6を返します。",
+			"intro": "FLOOR関数は、元の値に最も近い指定された係数の倍数に数を減らします",
+			"usage": "FLOOR（数値、係数）"
+		},
+		"hour": {
+			"intro": "HOUR関数は、日付の時間数を返すことができます",
+			"usage": "HOUR（タイムスタンプ）"
+		},
+		"if": {
+			"example": "（{语文成绩}> 60、 'Pass'、 'Fail'）の場合、言語スコアが60を超えるとパスを返します。それ以外の場合は失敗します。",
+			"intro": "IF関数は、条件が満たされるかどうかを判断します;満たされる場合は値を返し、満たされない場合は別の値を返します",
+			"usage": "IF（論理式、trueの場合に返される値、falseの場合に返される値）"
+		},
+		"ifs": {
+			"example": "IFS（言語スコア> 90、「優れた」、言語スコア> 80、「良い」、言語スコア> = 60、「合格」、言語スコア<60、「不合格」）は、スコアに基づいて対応する評価を返します。",
+			"intro": "IFS関数は、1つ以上の条件が満たされているかどうかを確認し、最初のTRUE条件を満たす値を返します。IFSは、ネストされた複数のIFステートメントを置き換えることができます。",
+			"usage": "IFS（論理式1、論理式1は値を返す場合はtrue、論理式2、論理式2は値を返す場合はtrue、...）"
+		},
+		"int": {
+			"example": "INT（3.1415）は3を返します。これは、3.1415の整数部分です。",
+			"intro": "INT関数は、数値の整数部分を取得できます",
+			"usage": "INT（数値）"
+		},
+		"isempty": {
+			"intro": "ISEMPTY関数を使用して、値が空のテキスト、空のオブジェクト、または空の配列であるかどうかを判断できます",
+			"usage": "ISEMPTY（テキスト）"
+		},
+		"isoweeknum": {
+			"intro": "ISOWEEKNUM関数は、指定された日付の1年のISO週数を返します",
+			"usage": "ISOWEEKNUM（指定された日付）"
+		},
+		"large": {
+			"example": "LARGE（{学生成绩.数学成绩}、1）は、サブフォーム 'student grade'の＃1 'math grade'を返します",
+			"intro": "LARGE関数は、データセットでk番目に大きい値を取得できます",
+			"usage": "LARGE（配列、k）"
+		},
+		"left": {
+			"example": "LEFT（ 'Three Years、Second Class Jay'、2） 'Three Years、Second Class Jay'の左から右への最初の2文字である 'Three Years'を返します",
+			"intro": "LEFT関数は、テキストの最初の文字から指定された数の文字を返すことができます",
+			"usage": "LEFT（テキスト、テキストの長さ）"
+		},
+		"len": {
+			"example": "LEN（ '朝词白帝彩云间'）は7を返します。この詩には7文字があるためです。",
+			"intro": "LEN関数はテキスト内の文字数を取得できます",
+			"usage": "LEN（テキスト）"
+		},
+		"log": {
+			"example": "LOG（100,10）は2を返します。これは、10を底とする100の対数です。",
+			"intro": "LOG関数は、指定された基数に基づいて数値の対数を返すことができます",
+			"usage": "LOG（数値、基数）"
+		},
+		"logicFunc": "論理関数",
+		"lower": {
+			"example": "LOWER（ 'JAYZ'）は 'jayz'を返します",
+			"intro": "LOWER関数は、テキスト内のすべての大文字を小文字に変換できます",
+			"usage": "LOWER（テキスト）"
+		},
+		"mapx": {
+			"intro": "MAPX関数は、フォーム間でフェッチするために使用できる高度な関数です",
+			"usage": "MAPX（操作、map_value、map_field、result_field）"
+		},
+		"mathFunc": "数学関数",
+		"max": {
+			"example": "MAX（{语文成绩}、{数学成绩}、{英语成绩}）は3つのコースの最高スコアを返します",
+			"intro": "MAX関数は、値のセットの最大値を取得できます",
+			"usage": "MAX（数値1、数値2、...）"
+		},
+		"mid": {
+			"example": "MID（「Liuchen Rapid Development Platform」、4、6）は「Rapid Development Platform」に戻ります",
+			"intro": "MIDは、指定された位置から始まるテキスト内の指定された文字数を返します",
+			"usage": "MID（テキスト、start_number、指定された番号）"
+		},
+		"min": {
+			"example": "MIN（{语文成绩}、{数学成绩}、{英语成绩}）は、3つのコースの中で最も低いスコアを返します",
+			"intro": "MIN関数は値のセットの最小値を取得できます",
+			"usage": "MIN（番号1、番号2、...）"
+		},
+		"minute": {
+			"intro": "MINUTE関数は、日付の分数を返すことができます",
+			"usage": "MINUTE（タイムスタンプ）"
+		},
+		"mod": {
+			"example": "MOD（4,3）は1を返します。これは4/3の残りです。",
+			"intro": "MOD関数は、2つの数値を分割したときに剰余を取得できます",
+			"usage": "MOD（配当、除数）"
+		},
+		"month": {
+			"intro": "MONTHは日付の月を返します",
+			"usage": "MONTH（タイムスタンプ）"
+		},
+		"not": {
+			"example": "NOT（{语文成绩}> 60）、言語スコアが60より大きい場合はfalseを返し、そうでない場合はtrueを返します",
+			"intro": "NOT関数は、指定された式と反対のブール値を返します。",
+			"usage": "NOT（論理式）"
+		},
+		"now": {
+			"intro": "NOW関数は現在の時刻を取得できます",
+			"usage": "NOW()"
+		},
+		"omit": "やや",
+		"or": {
+			"example": "OR（{Language Grade}> 90、{Mathematics Grade}> 90、{English Grade}> 90）、いずれかのコース> 90の場合、trueを返し、そうでない場合はfalseを返します",
+			"intro": "いずれかのパラメーターがtrueの場合、OR関数はブール値trueを返し、すべてのパラメーターがfalseの場合、ブール値falseを返します。",
+			"usage": "OR(逻辑表达式1,逻辑表达式2,...)"
+		},
+		"pinyin": {
+			"intro": "PINYIN関数は中国語をピンインに変換できます",
+			"usage": "PINYIN(中文)"
+		},
+		"power": {
+			"example": "POWER(3，2)返回9，也就是3的2次方",
+			"intro": "POWER函数可以获取数字乘幂的结果",
+			"usage": "POWER(数字,指数)"
+		},
+		"product": {
+			"example": "PRODUCT({单价}, {数量})获取总价，也就是单价和数量的乘积",
+			"intro": "PRODUCT函数可以获取一组数值的乘积",
+			"usage": "PRODUCT(数字1,数字2,...)"
+		},
+		"rand": {
+			"example": "RAND()返回0.424656",
+			"intro": "RAND函数可返回大于等于0且小于1的均匀分布随机实数",
+			"usage": "RAND()"
+		},
+		"replace": {
+			"example": "REPLACE('流辰快速开发平台',4,6,'企业数据管理平台')返回'流辰企业数据管理平台'",
+			"intro": "REPLACE函数可以根据指定的字符数，将部分文本替换为不同的文本",
+			"usage": "REPLACE(文本,开始位置,替换长度,新文本)"
+		},
+		"rept": {
+			"example": "REPT('流辰',3)返回'流辰流辰流辰'",
+			"intro": "REPT函数可以将文本重复一定次数",
+			"usage": "REPT(文本,重复次数)"
+		},
+		"right": {
+			"example": "RIGHT('三年二班周杰伦',3)返回'周杰伦'，也就是'三年二班周杰伦'从右往左的前3个字符",
+			"intro": "RIGHT函数可以获取由给定文本右端指定数量的字符构成的文本值",
+			"usage": "RIGHT(文本,文本长度)"
+		},
+		"round": {
+			"example": "ROUND(3.1485,2)返回3.15",
+			"intro": "ROUND函数可以将数字四舍五入到指定的位数",
+			"usage": "ROUND(数字,数字位数)"
+		},
+		"search": {
+			"example": "SEARCH('2016','流辰2016')返回4",
+			"intro": "SEARCH函数可以获取文本1在文本2中的开始位置",
+			"usage": "SEARCH(文本1,文本2)"
+		},
+		"second": {
+			"intro": "SECOND函数可以返回某日期的秒数",
+			"usage": "SECOND(时间戳)"
+		},
+		"small": {
+			"example": "SMALL({学生成绩.数学成绩}, 1)返回子表单'学生成绩'中排名倒数第一的'数学成绩'",
+			"intro": "SMALL函数可以返回数据集中第k个最小值",
+			"usage": "SMALL(数组,k)"
+		},
+		"split": {
+			"example": "SPLIT('流辰-快速开发平台','-')返回'流辰，快速开发平台'",
+			"intro": "SPLIT函数可以将文本按指定分割符分割成数组",
+			"usage": "SPLIT(文本,分隔符_文本)"
+		},
+		"sqrt": {
+			"example": "SQRT(9)返回3，也就是9的正平方根",
+			"intro": "SQRT函数可以获取一个数字的正平方根",
+			"usage": "SQRT(数字)"
+		},
+		"sum": {
+			"example": "SUM({语文成绩},{数学成绩}, {英语成绩})返回三门课程的总分",
+			"intro": "SUM函数可以获取一组数值的总和",
+			"usage": "SUM(数字1,数字2,...)"
+		},
+		"sumproduct": {
+			"example": "SUMPRODUCT([1,2,3],[0.1,0.2,0.3])返回1.4，也就是 1×0.1 + 2×0.2 + 3×0.3的值",
+			"intro": "SUMPRODUCT函数可以将数组间对应的元素相乘，并返回乘积之和，适用于加权求和",
+			"usage": "SUMPRODUCT(数组,数组...)"
+		},
+		"systime": {
+			"intro": "SYSTIME函数可以获取当前服务器时间",
+			"usage": "SYSTIME()"
+		},
+		"text": {
+			"example": "TEXT(3.1415)返回'3.1415'",
+			"intro": "TEXT函数可以将数字转化成文本",
+			"usage": "TEXT(数字)"
+		},
+		"textFunc": "テキスト関数",
+		"thousands": {
+			"intro": "数千デジタル数千"
+		},
+		"time": {
+			"intro": "TIME函数可以返回特定时间的十进制数字",
+			"usage": "TIME(时_数字,分_数字,秒_数字)"
+		},
+		"timestamp": {
+			"intro": "TIMESTAMP函数可以将日期对象转换成时间戳。",
+			"usage": "TIMESTAMP(日期)"
+		},
+		"today": {
+			"intro": "TODAY函数可以返回今天",
+			"today.usage": "TODAY()"
+		},
+		"trim": {
+			"example": "TRIM('   流辰   ')返回'流辰'",
+			"intro": "TRIM函数可以删除文本首尾的空格",
+			"usage": "TRIM(文本)"
+		},
+		"true": {
+			"intro": "TRUE函数返回布尔值true",
+			"usage": "TRUE()"
+		},
+		"upper": {
+			"example": "UPPER('jayz')返回'JAYZ'",
+			"intro": "UPPER函数可以将一个文本中的所有小写字母转换为大写字母",
+			"usage": "UPPER(文本)"
+		},
+		"uuid": {
+			"intro": "UUID函数随机码生成器。可适用于随机流水号的使用场景等",
+			"usage": "UUID()"
+		},
+		"value": {
+			"example": "VALUE（ '3.1415'）は3.1415を返します",
+			"intro": "VALUE関数はテキストを数値に変換できます",
+			"usage": "VALUE（テキスト）"
+		},
+		"weeknum": {
+			"intro": "WEEKNUM函数可以返回指定日期在当年是第几周",
+			"usage": "WEEKNUM(指定日期)"
+		},
+		"xor": {
+			"example": "XOR({语文成绩}>90,{数学成绩}>90)，如果两门成绩都>90,返回false；如果两门成绩都<90，返回false；如果其中一门>90，另外一门<90，返回true",
+			"intro": "XOR函数可以返回所有参数的异或值",
+			"usage": "XOR(逻辑表达式1, 逻辑表达式2,...)"
+		},
+		"year": {
+			"intro": "YEAR函数可以返回某日期的年份",
+			"usage": "YEAR(时间戳)"
+		}
+	},
+	"layout": {
+		"header-aside": {
+			"header-error-log": {
+				"empty": "ログや例外はありません",
+				"logError": " {logLength} ログ| {logLengthError} 例外が含まれています",
+				"logInfo": "{logLength} 個のログ",
+				"table": {
+					"empty-text": "ログ情報はまだありません",
+					"label": {
+						"component": "トリガーコンポーネント",
+						"message": "情報",
+						"more": "詳細を見る",
+						"time": "時間",
+						"url": "トリガーページ"
+					}
+				},
+				"type": {
+					"exception": "異常",
+					"log": "ログ"
+				},
+				"upload": {
+					"button": "アップロードする"
+				}
+			},
+			"header-message": {
+				"details": "情報詳細",
+				"empty": "ニュースはありません",
+				"message-count": "内部メッセージ（{messageCount}）",
+				"viewmore": "もっと見る"
+			},
+			"header-search": {
+				"close": "閉じる",
+				"panel": "ウェイクアップ検索パネル",
+				"placeholder": "検索ページ",
+				"press": "を押す",
+				"tip": "ショートカットを使用できます"
+			},
+			"header-setting": {
+				"size": {
+					"default": "デフォルト",
+					"medium": "で",
+					"mini": "最小",
+					"small": "小さい"
+				},
+				"theme": {
+					"chester": "Chester",
+					"element": "Element",
+					"ibps": "クラシック",
+					"line": "ミニマリストの線",
+					"star": "流星",
+					"status": {
+						"activate": "有効化",
+						"select": "使用するには"
+					},
+					"tomorrow-night-blue": "レイトナイトブルー（vsCode）",
+					"violet": "バイオレット"
+				}
+			},
+			"menu-item": {
+				"label-default": "名前のないメニュー"
+			},
+			"menu-side": {
+				"empty": "サイドバーメニューなし"
+			},
+			"tags": {
+				"close": "閉じる",
+				"closeAll": "すべて閉じる",
+				"closeLeft": "左を閉じる",
+				"closeOther": "他を閉じる",
+				"closeRight": "右を閉じる"
+			}
+		}
+	},
+	"navbar": {
+		"changePassword": "パスワードを変更する",
+		"color": "テーマカラー",
+		"dashboard": "ホーム",
+		"exitFullscreen": "全画面表示を終了",
+		"exitSwitchUser": "ユーザーの切り替え",
+		"fullscreen": "フルスクリーン",
+		"language": "言語",
+		"lockScreen": "ロック画面",
+		"logo": {
+			"title": "IBPS開発プラットフォーム"
+		},
+		"logout": "ログアウトする",
+		"setting": "全体的なスタイル設定",
+		"size": "大きさ",
+		"switchEnvironment": "スイッチ環境",
+		"switchTenant": "",
+		"theme": "カスタムテーマ",
+		"userInfo": "ユーザー情報",
+		"welcome": "ようこそ"
+	},
+	"notify": {
+		"special": {
+			"showLog": {
+				"message": "ログの全内容がコンソールに出力されました",
+				"title": "ログの詳細"
+			},
+			"upload": {
+				"error": {
+					"message": "データのアップロードに失敗しました",
+					"title": "アップロードに失敗しました"
+				},
+				"start": {
+					"message": "データをアップロードしています。お待ちください",
+					"title": "アップロードを開始"
+				},
+				"success": {
+					"message": "データが正常にアップロードされました",
+					"title": "アップロードしました"
+				}
+			}
+		}
+	},
+	"platform": {
+		"org": {
+			"employee": {
+				"button": {
+					"actived": "有効にする",
+					"changePassword": "パスワードをリセット",
+					"disable": "無効にする",
+					"switchUser": "ユーザーを切り替える"
+				},
+				"change-password": {
+					"newPassword": "パスワードを変更する",
+					"primitivePassword": "元のパスワード",
+					"repeatPassword": "パスワードを繰り返す",
+					"reset": "デフォルトを復元",
+					"resetPassword": "パスワードをリセット",
+					"title": "パスワードを変更する"
+				},
+				"prop": {
+					"account": "口座番号",
+					"gender": "性別",
+					"name": "お名前",
+					"orgPath": "帰属組織パス",
+					"status": "州",
+					"wcAccount": "企業のWeChatアカウント"
+				},
+				"title": "従業員"
+			},
+			"level": {
+				"constants": {
+					"type": {
+						"org": "機構",
+						"position": "投稿する"
+					}
+				},
+				"prop": {
+					"level": "レベル値",
+					"name": "お名前",
+					"type": "参加者タイプ"
+				},
+				"title": "ランク"
+			}
+		},
+		"saas": {
+			"tenant": {
+				"constants": {
+					"button": {
+						"assert": "テナントを維持する",
+						"createSpace": "スペースを作る",
+						"delSpace": "スペースを削除",
+						"disabled": "無効にする",
+						"dropSpace": "",
+						"enabled": "有効にする",
+						"error": "",
+						"maintainSpace": ""
+					},
+					"status": {
+						"DISABLED": "無効にする",
+						"ENABLED": "有効にする",
+						"PASSED": "合格",
+						"REFUSED": "拒否する",
+						"WAIT": "保留中"
+					},
+					"title": {
+						"created": "",
+						"pending": "",
+						"spaceTitle": ""
+					}
+				},
+				"prop": {
+					"account": "口座番号",
+					"approveStatus": "承認状況",
+					"code": "テナントエイリアス",
+					"createTime": "",
+					"dsAlias": "",
+					"email": "メールボックス",
+					"name": "テナント名",
+					"parentName": "主なテナント",
+					"providerId": "",
+					"scale": "テナントサイズ",
+					"schema": "",
+					"schemaStatus": "空間状態",
+					"status": "テナントの状態",
+					"tenantId": ""
+				},
+				"title": "テナント"
+			}
+		}
+	},
+	"plugins": {
+		"api-base-url": {
+			"button": {
+				"confirm": "確認する",
+				"ok": "いいです"
+			},
+			"constants": {
+				"env": {
+					"dev": "開発環境",
+					"front": "フロントエンド開発環境",
+					"mock": "モック開発環境",
+					"production": "本番環境",
+					"staging": "統合環境",
+					"test": "テスト環境"
+				},
+				"type": {
+					"non-single": "非単一アプリケーション",
+					"single": "単一のアプリケーション"
+				}
+			},
+			"notSingleApp": "非単一アプリケーション",
+			"or": "または",
+			"singleApp": "単一のアプリケーション",
+			"title": "スイッチ環境"
+		}
+	},
+	"route": {
+		"dashboard": "ホーム",
+		"error401": "401-不正",
+		"error403": "403-不十分な権限",
+		"error404": "404ページが存在しません",
+		"forget": "パスワードを忘れた",
+		"locking": "ロック画面",
+		"login": "サインイン",
+		"register": "アカウントを登録する",
+		"systemSelect": "サブシステムを選択",
+		"untitled": "無名"
+	},
+	"system": {
+		"lock": {
+			"locked": "ロック済み",
+			"placeholder": "パスワードはログインパスワードと同じです",
+			"tip": "パスワードが間違っています。再入力してください。パスワードを忘れた場合は、管理者に連絡してください！",
+			"unlock": "ロック解除"
+		},
+		"login": {
+			"account": "",
+			"backLogin": "に戻る",
+			"capsTooltip": "Caps Lockはオンです",
+			"code": "確認コードを入力してください",
+			"codeCorrect": "正しい確認コードを入力してください。",
+			"codeLength": "検証コードの長さは6桁です",
+			"company": "会社名",
+			"companyCode": "エンタープライズコード",
+			"email": "Eメール",
+			"forget": "パスワードを忘れた",
+			"fullName": "名前/タイトル",
+			"gender": {
+				"female": "雌",
+				"male": "男"
+			},
+			"logIn": "サインイン",
+			"logOut": "ログアウトする",
+			"method": {
+				"smsCode": "SMS確認コード",
+				"thirdparty": "サードパーティの許可されたログイン",
+				"userPassword": "ユーザーパスワード"
+			},
+			"mobile": "電話番号を入力してください",
+			"mobileCorrect": "携帯電話番号を正しく入力してください",
+			"msgInit": "確認コードを送信",
+			"msgInitCorrect": "",
+			"msgScuccess": "{time}秒で再送信",
+			"password": "パスワードを入力してください",
+			"passwordCorrect": "5桁以上のパスワードを入力してください。",
+			"qq": "QQ",
+			"register": "アカウントを登録する",
+			"registration": "サインアップ",
+			"remember": "アカウントを記憶する",
+			"resetPassword": "パスワードをリセット",
+			"selectSystem": "サブシステムを選択",
+			"selectTenant": "",
+			"street": "住所詳細",
+			"tenantRegister": "登録済み",
+			"title": "IBPSプラットフォーム",
+			"userLogin": "ユーザーログイン",
+			"username": "ユーザー名を入力してください",
+			"usernameCorrect": "正しいユーザー名を入力してください。",
+			"validmsgInit": "",
+			"wechat": "WeChat"
+		},
+		"logout": {
+			"cancelButtonText": "あきらめる",
+			"confirmButtonText": "ログアウト",
+			"message": "現在のアカウントからログアウトしますか？開いているタブとユーザー設定が保存されます。",
+			"title": "動作確認"
+		}
+	},
+	"validate": {
+		"boolean": "ブール値のみ可能",
+		"date": "有効な日付を入力してください",
+		"email": "正しいメール形式を入力してください。",
+		"float": "浮動小数点数のみにすることができます",
+		"idcard": "正しいID番号を入力してください。",
+		"integer": "整数のみにすることができます",
+		"key": "文字でのみ開始でき、文字、数字、アンダースコアを使用できます",
+		"mobile": {
+			"empty": "電話番号は空にできません",
+			"format": "携帯電話番号の形式が正しくありません",
+			"length": "携帯電話番号は11桁ではありません"
+		},
+		"number": "数字のみを含めることができます",
+		"phone": "正しい携帯電話番号を入力してください。",
+		"regexp": "正しい形式を入力してください",
+		"required": "必須",
+		"telephone": "正しい電話番号を入力してください。",
+		"url": "正しいURLを入力してください",
+		"valiAccount": "",
+		"zip": "正しい郵便番号を入力してください。"
+	}
+}

@@ -1,0 +1,19 @@
+{
+  "_element": "en",
+  "_name": "English",
+  "common":{
+    "dialog": {
+      "multipleSelected": "Multiple items have been selected, please choose one to operate!",
+      "operateSuccess": "Successful operation",
+      "removeRecord": "This operation will permanently delete the data, are you sure?",
+      "removeSuccess": "Successfully deleted!",
+      "saveCancelButtonText": "Close",
+      "saveConfirmButtonText": "Continue",
+      "saveError": "Please check if the form data is filled in correctly",
+      "saveSuccess": "{message}, continue?",
+      "selectedRecords": "Please select a record!",
+      "title": "Prompt",
+      "warn": "Tips"
+    }
+  }
+}

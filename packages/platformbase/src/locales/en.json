@@ -1,0 +1,1323 @@
+{
+  "_element": "en",
+  "_name": "English",
+  "common": {
+    "buttons": {
+      "agree": "Agree",
+      "oppose": "Oppose",
+      "reject": "Reject",
+      "rejectToStart": "Reject to start",
+      "rejectToPrevious": "Reject to previous",
+      "approvalHistory": "Approval history",
+      "flowImage": "Flow image",
+      "endProcess": "End process",
+      "suspendProcess": "Suspend Process",
+      "custom13": "custom13",
+
+      "add": "Add",
+      "cancel": "Cancel",
+      "clean": "Empty",
+      "close": "Close",
+      "collapse": "Collapse",
+      "collect": "Collect",
+      "compress": "Compress",
+      "confirm": "Confirm",
+      "detail": "Detail",
+      "down": "Downturn",
+      "update": "Update",
+      "edit": "Edit",
+      "expand": "Expand",
+      "expansion": "Expand",
+      "fullscreen": "Full screen",
+      "fullscreenOn": "Small Screen",
+      "import": "Import",
+      "export": "Export",
+      "downloadTemplate":"Download template",
+      "more": "More",
+      "moreSearch": "More",
+      "print": "Print",
+      "refresh": "Refresh",
+      "remove": "Delete",
+      "removeAllToken": "Delete all tokens",
+      "removeToken": "Delete token",
+      "resetSearch": "Reset",
+      "save": "Save",
+      "search": "Search",
+      "toBottom": "Move last",
+      "toUp": "Move first",
+      "up": "Upper",
+      "columnSettings": "Column Settings",
+      "return":"Return",
+      "synchronization": "Synchronization",
+      "batchDelete": "Batch delete",
+      "drawUp": "Draw up",
+      "inReview": "In review",
+      "inExecution": "In execution",
+      "executed": "executed",
+      "voided": "Voided",  
+      "startCommit":"Start commit",
+      "viewFlowchart":"View flowchart",
+      "create":"Create"
+    },
+    "company": "huaneng",
+    "companyP": "cupu",
+    "systemName": "huanengshengchan",
+    "copyright": "All Rights Reserved",
+    "dialog": {
+      "multipleSelected": "Multiple items have been selected, please choose one to operate!",
+      "operateSuccess": "Successful operation",
+      "removeRecord": "This operation will permanently delete the data, are you sure?",
+      "removeSuccess": "Successfully deleted!",
+      "saveCancelButtonText": "Close",
+      "saveConfirmButtonText": "Continue",
+      "saveError": "Please check if the form data is filled in correctly",
+      "saveSuccess": "{message}, continue?",
+      "selectedRecords": "Please select a record!",
+      "title": "Prompt",
+      "warn": "Tips"
+    },
+    "field": {
+      "primaryKey":"Primary key",
+      "createBy": "founder",
+      "createTime": "Creation time",
+      "updateBy": "Updater",
+      "updateTime": "Update time",
+      "maintainerColon": "Maintainer：",
+      "maintenanceDateColon": "Maintenance Date：",
+      "serialNumberColon": "Serial No：",
+      "company": "Company",
+      "dept": "Department",
+      "deptAliasId": "Station ID",
+      "deptAlias": "Station",
+      "name": "Name",
+      "account": "Account",
+      "userAccount": "User account",
+      "jobNumber": "Job number",
+      "contactNumber":"Contact number",
+      "address": "Address",
+      "attachFile": "Attach file",
+      "memo": "Memo",
+      "organization": "Organization",
+      "isOn": "Is on",
+      "state": "State",
+      "pleaseSelect": "Please select",
+      "pleaseEnter": "Please Enter",
+      "length": "Length",
+      "yes": "Yes",
+      "no": "No",
+      "stop": "Stop",
+      "start": "Start",
+      "effective": "Effective",
+      "invalid": "Invalid",
+      "currentLocation": "Current location",
+      "userTree": "User tree",
+      "selectedAreaDoubleClickDelete": "Selected area (double click to delete)",
+      "operationSuccess": "Operation success！",
+      "operationError": "Operation error！",
+      "saveSuccess": "Save success",
+      "saveError": "Save error",
+      "serialNumber": "Serial No",
+      "sortNo": "serial number",
+      "sort": "Sort",
+      "date": "Date",
+      "to": "To",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "subtotal": "Subtotal",
+      "total": "Total",
+      "tips":"Tips",
+      "keyword":"Key word",
+      "enterKeywords":"Enter keywords"
+    },
+    "loading": "Loading",
+    "noData": "No data",
+    "platform": "IBPS platform",
+    "saving": "Saving",
+    "title": {
+      "add": "Add {title}",
+      "detail": "{title} details",
+      "edit": "Edit {title}"
+    },
+    "welcome": "Welcome to the IBPS platform"
+  },
+  "components": {
+    "address": {
+      "china": "China",
+      "defaultPlaceholder": [
+        "Please select a country",
+        "Please select a province",
+        "Please select a city",
+        "Please select a county",
+        "Please select a township street"
+      ],
+      "defaultnotFoundText": [
+        "No matching country",
+        "No matching province",
+        "No matching city",
+        "No matching counties",
+        "No matching township street"
+      ]
+    },
+    "back-to-top": {
+      "tip": "Back to Top"
+    },
+    "card-list": {
+      "pagination": {
+        "noData": "No data",
+        "pageInfo": "Article{start}to{end}of{total}"
+      }
+    },
+    "crud": {
+      "collapse": "Shrink",
+      "displayField": "Custom column",
+      "expand": "Expand",
+      "index": "NO.",
+      "manage": "Management",
+      "pagination": {
+        "noData": "No data",
+        "pageInfo": "Article{start}to{end}Total{total}"
+      }
+    },
+    "display-field": {
+      "clean": "Empty",
+      "delete": "Delete",
+      "noSelected": "No field selected",
+      "noSelectedPrompt": "Please set the display field",
+      "reset": "Reset",
+      "selectAll": "Select All",
+      "selectedField": "Currently selected field",
+      "sort": "Drag sort",
+      "tip": "The recommended width should not be less than 50, otherwise the list display will be affected.",
+      "title": "Set up custom columns",
+      "width": "Width"
+    },
+    "query-builder": {
+      "buttons": {
+        "addGroup": "Add group",
+        "addRule": "Add rule",
+        "removeGroup": "Delete Group",
+        "removeRule": "Delete"
+      },
+      "conditions": {
+        "and": "AND",
+        "or": "OR"
+      },
+      "errors": {
+        "boolean_not_valid": "Not a boolean",
+        "checkbox_empty": "No items selected",
+        "datetime_between_invalid": "Invalid value, {0} is greater than{1}",
+        "datetime_empty": "Value is empty",
+        "datetime_exceed_max": "Must be before{0}",
+        "datetime_exceed_min": "Must be after{0}",
+        "datetime_invalid": "Not a valid date ({0})",
+        "empty_group": "The group is empty",
+        "no_filter": "No filter selected",
+        "number_between_invalid": "Invalid value, {0} is greater than {1}",
+        "number_exceed_max": "Must be less than{0}",
+        "number_exceed_min": "Must be greater than{0}",
+        "number_nan": "Value is not a number",
+        "number_not_double": "Not a floating point number",
+        "number_not_integer": "Not an integer",
+        "number_wrong_step": "Must be a multiple of{0}",
+        "operator_not_multiple": "Option{1}cannot accept multiple values",
+        "radio_empty": "No items selected",
+        "select_empty": "No items selected",
+        "string_empty": "No value entered",
+        "string_exceed_max_length": "Must be no more than{0}characters",
+        "string_exceed_min_length": "Must contain at least{0}characters",
+        "string_invalid_format": "Invalid format ({0})"
+      },
+      "operators": {
+        "begins_with": "Start With",
+        "between": "Between",
+        "contains": "Contains the following",
+        "ends_with": "End with",
+        "equal": "Equal",
+        "greater": "Greater",
+        "greater_or_equal": "Greater than or equal to",
+        "in": "Within",
+        "is_empty": "Is empty",
+        "is_not_empty": "Not Null",
+        "is_not_null": "Not Null",
+        "is_null": "Is NULL",
+        "less": "Less Than",
+        "less_or_equal": "Less than or equal to",
+        "not_begins_with": "Don't start with",
+        "not_between": "Not in between",
+        "not_contains": "Does not contain the following",
+        "not_ends_with": "Do not end with",
+        "not_equal": "Not equal to",
+        "not_in": "Not In"
+      },
+      "sources": {
+        "dynamic": "Dynamic value",
+        "fixed": "Fixed value",
+        "script": "Groovy script value"
+      }
+    }
+  },
+  "error": {
+    "back": "Back",
+    "backHome": "Back to home",
+    "cause": "Cause of error:{cause}",
+    "logout": {
+      "cancelButtonText": "Cancel",
+      "confirmButtonText": "ReLogin",
+      "message": "You have been logged out, you can cancel your stay on this page or log in again",
+      "title": "Sign out"
+    },
+    "message": "{message}",
+    "messageCause": "{message}</br>Cause of error:{cause}",
+    "network": "The server is running bad, please try again later",
+    "page401": {
+      "maybe": "Or you can go",
+      "tip1": "You do not have permission to go to this page",
+      "tip2": "If you are dissatisfied please contact your leader"
+    },
+    "page403": {
+      "maybe": "Or you can go",
+      "tip1": "You do not have permission to go to this page",
+      "tip2": "If you are dissatisfied please contact your leader"
+    },
+    "page404": {
+      "info": "Please check if the URL you entered is correct, please click the button below to return to the homepage or send an error report",
+      "message": "The URL you entered is incorrect..."
+    },
+    "page500": {
+      "maybe": "Or you can go",
+      "tip1": "An error occurred on the internal server page",
+      "tip2": "Please contact the administrator or send an error report"
+    },
+    "reLogin": "ReLogin",
+    "status": {
+      "400": "[400] Request error",
+      "401": "[401] Unauthorized, please contact the administrator",
+      "403": "[403] Access Denied",
+      "404": "[404] Request address error: {url}",
+      "408": "[408] Request timed out",
+      "500": "[500] Internal server error",
+      "501": "[501] The service is not implemented",
+      "502": "[502] Gateway error",
+      "503": "[503] Service is unavailable",
+      "504": "[504] Gateway timeout",
+      "505": "[505] Unsupported HTTP version",
+      "50001": " Gateway timed out",
+      "50002": "Service unavailable",
+      "50003": "Client call exception",
+      "50004": "Network connection error",
+      "50005": "network timeout",
+      "50006": "Hystrix circuit breaker timeout",
+      "50007": "Hystrix thread pool is full",
+      "50008": "Hystrix circuit breaker is open",
+      "50009": "Hystrix semaphore is not acquired",
+      "6010101": "Illegal request",
+      "6010102": "IP is banned",
+      "6010103": "Unauthorized",
+      "6010104": "Interface current limit",
+      "6020101": "Wrong authorization ID or key",
+      "6020102": "Wrong authorization code",
+      "6020103": "Not logged in",
+      "6020104": "Login exception",
+      "6020105": "Verification code error",
+      "6020106": "wrong user name or password",
+      "6020107": "User is not activated",
+      "6020108": "User expired",
+      "6020109": "Password expired",
+      "6020110": "User is disabled",
+      "6020111": "User is locked",
+      "6020112": "unknown account",
+      "6020113": "Unknown department",
+      "6020114": "Unknown position",
+      "6020201": "Illegal token",
+      "6020202": "Authorization type is not supported",
+      "6020301": "Token expired",
+      "6030201": "Announcement exception",
+      "6030501": "Data dictionary exception",
+      "6030502": "Classification abnormalities",
+      "6030503": "Classification identification abnormal",
+      "6030504": "Geographical anomaly",
+      "6030601": "Security settings are abnormal",
+      "6030602": "Abnormal system resources",
+      "6030603": "Subsystem exception",
+      "6030604": "Permission configuration abnormal",
+      "6030605": "Permission definition exception",
+      "6030606": "Desktop management exception",
+      "6030607": "Authorization management exception",
+      "6030608": "App system resource is abnormal",
+      "6030701": "Common script exception",
+      "6030702": "Conditional script exception",
+      "6030703": "Script management exception",
+      "6030801": "Service post event exception",
+      "6030802": "Service management exception",
+      "6040001": "Participant abnormal",
+      "6040101": "Abnormal participant level",
+      "6040201": "Participant attributes are abnormal",
+      "6040301": "Character abnormal",
+      "6040401": "Institutional abnormalities",
+      "6040501": "Abnormal post",
+      "6040601": "Staff exception",
+      "6040701": "Abnormal grading agency",
+      "6040801": "User group exception",
+      "6040901": "Tenant exception",
+      "6041001": "Participant relationship abnormal",
+      "6050000": "Abnormal process",
+      "6050100": "Process definition exception",
+      "6050200": "Process instance exception",
+      "6050300": "Process task exception",
+      "6050400": "Process monitoring exception",
+      "6050500": "Process statistics abnormal",
+      "6060000": "Form exception",
+      "6060100": "Data set abnormal",
+      "6060200": "Form designer exception",
+      "6060300": "Form rendering abnormal",
+      "6060400": "Data template exception",
+      "6060500": "Business data template exception",
+      "6060600": "Business object exception",
+      "6070201": "External mail user settings are abnormal",
+      "6070202": "External mail exception",
+      "6070203": "Internal message exception",
+      "6070204": "Internal message read exception",
+      "6070205": "Internal message reply exception",
+      "6070206": "Message read exception",
+      "6070207": "Receiver abnormal",
+      "6070208": "Message reply exception",
+      "6070209": "Message reply exception",
+      "6070210": "Message type abnormal",
+      "6070301": "Attachment operation failed",
+      "6070401": "Timing task is abnormal",
+      "6070402": "Timed task already exists",
+      "6070601": "Serial number abnormal",
+      "6070602": "The serial number alias already exists",
+      "6070603": "The serial number test is abnormal",
+      "6080000": "Code generator exception",
+      "6080001": "Code generator generates scheme exception",
+      "6080002": "Code generator table configuration exception",
+      "6080003": "Code generator template exception",
+      "6080004": "Code generator variable exception",
+      "6090001": "SOCKET file message is abnormal"
+    },
+    "unknown": "Unknown error, error code:{state}",
+    "unknownStatus": "The interface is abnormal, the interface does not return [state] parameter</br>interface address:{url}"
+  },
+  "formula": {
+    "abs": {
+      "example": "ABS (-8) can return 8, which is the absolute value of -8",
+      "intro": "ABS function can get the absolute value of a number",
+      "usage": "ABS (number)"
+    },
+    "advanceFunc": "Advanced functions",
+    "and": {
+      "example": "AND ({语文成绩}> 90,{数学成绩}> 90,{英语成绩}> 90), if all three courses score> 90, return true, otherwise return false",
+      "intro": "If all parameters are true, the AND function returns a Boolean value of true, otherwise it returns a Boolean value of false",
+      "usage": "AND (logical expression 1, logical expression 2, ...)"
+    },
+    "average": {
+      "example": "AVERAGE ({语文成绩},{数学成绩}, {英语成绩}) returns the average score of the three courses",
+      "intro": "AVERAGE function can get the arithmetic mean of a set of values",
+      "usage": "AVERAGE (number 1, number 2, ...)"
+    },
+    "ceiling": {
+      "example": "CEILING (7,6) returns 12, because 12 is greater than 7 and is the number closest to 7 in multiples of 6",
+      "intro": "CEILING function can increase the number to a multiple of the specified factor closest to the original value",
+      "usage": "CEILING(number, factor)"
+    },
+    "char": {
+      "example": "CHAR (10) returns newline characters",
+      "intro": "CHAR function can convert the numeric code of the computer character set to the corresponding character",
+      "usage": "CHAR (number)"
+    },
+    "concatenate": {
+      "example": "CONCATENATE ('Two classes every three years', 'Jay Chou') will return",
+      "intro": "CONCATENATE function can merge multiple texts into one text",
+      "usage": "CONCATENATE (text1, text2, ...)"
+    },
+    "count": {
+      "example": "COUNT (Xiao Ming, Xiao Wang, Xiao Zhang, Xiao Li) returns 4, which is the number of people",
+      "intro": "COUNT function can get the number of parameters",
+      "usage": "COUNT (value, value, ...)"
+    },
+    "countif": {
+      "example": "COUNTIF (subform.sex, 'female'), you can get the number of data of 'female' in the subform; COUNTIF ([1,2,3,4], '> 2'), you can get 1 , 2, 3, 4 The number of digits greater than 2 results in 2.",
+      "intro": "COUNTIF function can get the number of parameters in the array that meet the conditions",
+      "usage": "COUNTIF (array, 'condition')"
+    },
+    "currency": {
+      "intro": "CURRENCY Chinese currency capital",
+      "usage": "slightly"
+    },
+    "date": {
+      "intro": "DATE function can convert timestamp to date object",
+      "usage": "DATE (time stamp)"
+    },
+    "dateFunc": "Date functions",
+    "datedelta": {
+      "intro": "DATEDELTA function can add / subtract a specified date",
+      "usage": "DATEDELTA (specified date, number of days to add or subtract)"
+    },
+    "datedif": {
+      "example": "DATEDIF (order time, payment time, \"h\"), if the order time is 9:00, the payment time is 10:30 on the same day, and the calculated hour difference is 1.5.",
+      "intro": "The DATEDIF function can calculate the number of years, months, days, hours, minutes, and seconds between two dates and times.",
+      "usage": "DATEDIF (start time, end time, [unit]), the unit can be \"y\", \"M\", \"d\", \"h\", \"m\", \"s\""
+    },
+    "day": {
+      "intro": "DAY function can get the day of the month",
+      "usage": "DAY (time stamp)"
+    },
+    "days": {
+      "intro": "The DAYS function returns the number of days between the two dates.",
+      "usage": "DAYS (end date, start date)"
+    },
+    "days360": {
+      "intro": "DAYS360 uses the 360-day algorithm to return the number of days between the two days.",
+      "usage": "DAYS360 (end date, start date)"
+    },
+    "exact": {
+      "example": "EXACT ({手机号},{中奖手机号}), if the two are the same, return true, if not the same, return false",
+      "intro": "The EXACT function can compare whether two texts are exactly the same, return true if they are identical, otherwise return false",
+      "usage": "EXACT (text1, text2)"
+    },
+    "false": {
+      "intro": "FALSE function returns boolean false",
+      "usage": "FALSE ()"
+    },
+    "fixed": {
+      "example": "FIXED (3.1415,2) returns '3.14'",
+      "intro": "The FIXED function rounds a number to a specified number of decimal places and outputs it as text",
+      "usage": "FIXED (number, scale)"
+    },
+    "floor": {
+      "example": "FLOOR (7,6) returns 6, because 6 is smaller than 7 and is also the number closest to 7 in multiples of 6",
+      "intro": "FLOOR function reduces the number to a multiple of the specified factor closest to the original value",
+      "usage": "FLOOR (number, factor)"
+    },
+    "hour": {
+      "intro": "HOUR function can return the number of hours on a date",
+      "usage": "HOUR (time stamp)"
+    },
+    "if": {
+      "example": "IF ({语文成绩}> 60, 'Pass', 'Fail'), it will return a pass when the language score is> 60, otherwise it will fail.",
+      "intro": "The IF function determines whether a condition can be satisfied; if it is satisfied, it returns a value, if it does not, it returns another value",
+      "usage": "IF (logical expression, value returned if true, value returned if false)"
+    },
+    "ifs": {
+      "example": "IFS (language score>90, \"excellent\", language score>80, \"good\", language score>=60, \"pass\", language score<60, \"fail\"), return the corresponding evaluation based on the score.",
+      "intro": "The IFS function checks whether one or more conditions are met, and returns a value that meets the first TRUE condition. IFS can replace multiple nested IF statements.",
+      "usage": "IFS (logical expression 1, logical expression 1 is true to return the value, logical expression 2, logical expression 2 is true to return the value,...)"
+    },
+    "int": {
+      "example": "INT (3.1415) returns 3, which is the integer part of 3.1415",
+      "intro": "INT function can get the integer part of a number",
+      "usage": "INT (number)"
+    },
+    "isempty": {
+      "intro": "ISEMPTY function can be used to determine whether the value is empty text, empty object or empty array",
+      "usage": "ISEMPTY (text)"
+    },
+    "isoweeknum": {
+      "intro": "The ISOWEEKNUM function returns the number of ISO weeks in a year for a specified date",
+      "usage": "ISOWEEKNUM (specified date)"
+    },
+    "large": {
+      "example": "LARGE ({学生成绩.数学成绩}, 1) returns the # 1 'math grade' in the subform 'student grade'",
+      "intro": "LARGE function can get the k-th largest value in a data set",
+      "usage": "LARGE (array, k)"
+    },
+    "left": {
+      "example": "LEFT ('Three Years Two Jay Chou', 2) returns 'Three Years', which is the first 2 characters of 'Three Years Two Jay Chou' from left to right",
+      "intro": "The LEFT function can return a specified number of characters from the first character of a text",
+      "usage": "LEFT (text, text length)"
+    },
+    "len": {
+      "example": "LEN ('朝 词 白帝 彩云 间') returns 7, because there are 7 characters in this poem",
+      "intro": "LEN function can get the number of characters in the text",
+      "usage": "LEN (text)"
+    },
+    "log": {
+      "example": "LOG (100,10) returns 2, which is the logarithm of 100 with the base 10",
+      "intro": "The LOG function can return the logarithm of a number based on a specified base",
+      "usage": "LOG (number, base)"
+    },
+    "logicFunc": "Logical function",
+    "lower": {
+      "example": "LOWER ('JAYZ') returns 'jayz'",
+      "intro": "The LOWER function can convert all uppercase letters in a text to lowercase letters",
+      "usage": "LOWER (text)"
+    },
+    "mapx": {
+      "intro": "MAPX function is an advanced function that can be used to fetch across forms",
+      "usage": "MAPX (operation, map_value, map_field, result_field)"
+    },
+    "mathFunc": "Mathematical function",
+    "max": {
+      "example": "MAX ({语文成绩},{数学成绩},{英语成绩}) returns the highest score of the three courses",
+      "intro": "MAX function can get the maximum value of a set of values",
+      "usage": "MAX (number1, number2, ...)"
+    },
+    "mid": {
+      "example": "MID ('Liuchen Rapid Development Platform', 4, 6) returns to 'Rapid Development Platform'",
+      "intro": "MID returns the specified number of characters from the specified position in the text",
+      "usage": "MID (text, start_number, specified number)"
+    },
+    "min": {
+      "example": "MIN ({语文成绩},{数学成绩},{英语成绩}) returns the lowest score among the three courses",
+      "intro": "MIN function can get the minimum value of a set of values",
+      "usage": "MIN (number 1, number 2, ...)"
+    },
+    "minute": {
+      "intro": "The MINUTE function can return the number of minutes on a date",
+      "usage": "MINUTE (time stamp)"
+    },
+    "mod": {
+      "example": "MOD (4,3) returns 1, which is the remainder of 4/3",
+      "intro": "MOD function can get the remainder when two numbers are divided",
+      "usage": "MOD (dividend, divisor)"
+    },
+    "month": {
+      "intro": "MONTH returns the month of a date",
+      "usage": "MONTH (time stamp)"
+    },
+    "not": {
+      "example": "NOT ({语文成绩}> 60), returns false if the language score is greater than 60, otherwise returns true",
+      "intro": "The NOT function returns a Boolean value opposite to the specified expression.",
+      "usage": "NOT (logical expression)"
+    },
+    "now": {
+      "intro": "NOW function can get the current time",
+      "usage": "NOW()"
+    },
+    "omit": "slightly",
+    "or": {
+      "example": "OR ({语文成绩}> 90,{数学成绩}> 90,{英语成绩}> 90), the score of any course> 90, return true, otherwise return false",
+      "intro": "If any parameter is true, the OR function returns a Boolean value of true; if all parameters are false, it returns a Boolean value of false.",
+      "usage": "OR(逻辑表达式1,逻辑表达式2,...)"
+    },
+    "pinyin": {
+      "intro": "PINYIN function can convert Chinese to Pinyin",
+      "usage": "PINYIN(中文)"
+    },
+    "power": {
+      "example": "POWER(3，2)返回9，也就是3的2次方",
+      "intro": "POWER函数可以获取数字乘幂的结果",
+      "usage": "POWER(数字,指数)"
+    },
+    "product": {
+      "example": "PRODUCT({单价}, {数量})获取总价，也就是单价和数量的乘积",
+      "intro": "PRODUCT函数可以获取一组数值的乘积",
+      "usage": "PRODUCT(数字1,数字2,...)"
+    },
+    "rand": {
+      "example": "RAND()返回0.424656",
+      "intro": "RAND函数可返回大于等于0且小于1的均匀分布随机实数",
+      "usage": "RAND()"
+    },
+    "replace": {
+      "example": "REPLACE('流辰快速开发平台',4,6,'企业数据管理平台')返回'流辰企业数据管理平台'",
+      "intro": "REPLACE函数可以根据指定的字符数，将部分文本替换为不同的文本",
+      "usage": "REPLACE(文本,开始位置,替换长度,新文本)"
+    },
+    "rept": {
+      "example": "REPT('流辰',3)返回'流辰流辰流辰'",
+      "intro": "REPT函数可以将文本重复一定次数",
+      "usage": "REPT(文本,重复次数)"
+    },
+    "right": {
+      "example": "RIGHT('三年二班周杰伦',3)返回'周杰伦'，也就是'三年二班周杰伦'从右往左的前3个字符",
+      "intro": "RIGHT函数可以获取由给定文本右端指定数量的字符构成的文本值",
+      "usage": "RIGHT(文本,文本长度)"
+    },
+    "round": {
+      "example": "ROUND(3.1485,2)返回3.15",
+      "intro": "ROUND函数可以将数字四舍五入到指定的位数",
+      "usage": "ROUND(数字,数字位数)"
+    },
+    "search": {
+      "example": "SEARCH('2016','流辰2016')返回4",
+      "intro": "SEARCH函数可以获取文本1在文本2中的开始位置",
+      "usage": "SEARCH(文本1,文本2)"
+    },
+    "second": {
+      "intro": "SECOND函数可以返回某日期的秒数",
+      "usage": "SECOND(时间戳)"
+    },
+    "small": {
+      "example": "SMALL({学生成绩.数学成绩}, 1)返回子表单'学生成绩'中排名倒数第一的'数学成绩'",
+      "intro": "SMALL函数可以返回数据集中第k个最小值",
+      "usage": "SMALL(数组,k)"
+    },
+    "split": {
+      "example": "SPLIT('流辰-快速开发平台','-')返回'流辰，快速开发平台'",
+      "intro": "SPLIT函数可以将文本按指定分割符分割成数组",
+      "usage": "SPLIT(文本,分隔符_文本)"
+    },
+    "sqrt": {
+      "example": "SQRT(9)返回3，也就是9的正平方根",
+      "intro": "SQRT函数可以获取一个数字的正平方根",
+      "usage": "SQRT(数字)"
+    },
+    "sum": {
+      "example": "SUM({语文成绩},{数学成绩}, {英语成绩})返回三门课程的总分",
+      "intro": "SUM函数可以获取一组数值的总和",
+      "usage": "SUM(数字1,数字2,...)"
+    },
+    "sumproduct": {
+      "example": "SUMPRODUCT([1,2,3],[0.1,0.2,0.3])返回1.4，也就是 1×0.1 + 2×0.2 + 3×0.3的值",
+      "intro": "SUMPRODUCT函数可以将数组间对应的元素相乘，并返回乘积之和，适用于加权求和",
+      "usage": "SUMPRODUCT(数组,数组...)"
+    },
+    "systime": {
+      "intro": "SYSTIME函数可以获取当前服务器时间",
+      "usage": "SYSTIME()"
+    },
+    "text": {
+      "example": "TEXT(3.1415)返回'3.1415'",
+      "intro": "TEXT函数可以将数字转化成文本",
+      "usage": "TEXT(数字)"
+    },
+    "textFunc": "Text function",
+    "thousands": {
+      "intro": "THOUSANDS Digital Thousands"
+    },
+    "time": {
+      "intro": "TIME函数可以返回特定时间的十进制数字",
+      "usage": "TIME(时_数字,分_数字,秒_数字)"
+    },
+    "timestamp": {
+      "intro": "TIMESTAMP函数可以将日期对象转换成时间戳。",
+      "usage": "TIMESTAMP(日期)"
+    },
+    "today": {
+      "intro": "TODAY函数可以返回今天",
+      "today.usage": "TODAY()"
+    },
+    "trim": {
+      "example": "TRIM('   流辰   ')返回'流辰'",
+      "intro": "TRIM函数可以删除文本首尾的空格",
+      "usage": "TRIM(文本)"
+    },
+    "true": {
+      "intro": "TRUE函数返回布尔值true",
+      "usage": "TRUE()"
+    },
+    "upper": {
+      "example": "UPPER('jayz')返回'JAYZ'",
+      "intro": "UPPER函数可以将一个文本中的所有小写字母转换为大写字母",
+      "usage": "UPPER(文本)"
+    },
+    "uuid": {
+      "intro": "UUID函数随机码生成器。可适用于随机流水号的使用场景等",
+      "usage": "UUID()"
+    },
+    "value": {
+      "example": "VALUE ('3.1415') returns 3.1415",
+      "intro": "VALUE function can convert text to numbers",
+      "usage": "VALUE (text)"
+    },
+    "weeknum": {
+      "intro": "WEEKNUM函数可以返回指定日期在当年是第几周",
+      "usage": "WEEKNUM(指定日期)"
+    },
+    "xor": {
+      "example": "XOR({语文成绩}>90,{数学成绩}>90)，如果两门成绩都>90,返回false；如果两门成绩都<90，返回false；如果其中一门>90，另外一门<90，返回true",
+      "intro": "XOR函数可以返回所有参数的异或值",
+      "usage": "XOR(逻辑表达式1, 逻辑表达式2,...)"
+    },
+    "year": {
+      "intro": "YEAR函数可以返回某日期的年份",
+      "usage": "YEAR(时间戳)"
+    }
+  },
+  "layout": {
+    "header-aside": {
+      "header-error-log": {
+        "empty": "No logs or exceptions",
+        "logError": " {logLength} logs | contains {logLengthError} exceptions",
+        "logInfo": "{logLength} logs",
+        "table": {
+          "empty-text": "No log information yet",
+          "label": {
+            "component": "Trigger component",
+            "message": "Information",
+            "more": "Check the detail information",
+            "time": "time",
+            "url": "Trigger page"
+          }
+        },
+        "type": {
+          "exception": "Abnormal",
+          "log": "Log"
+        },
+        "upload": {
+          "button": "Upload"
+        }
+      },
+      "header-message": {
+        "details": "Information details",
+        "empty": "No news",
+        "message-count": "messages ({messageCount})",
+        "viewmore": "See more"
+      },
+      "header-search": {
+        "close": "shut down",
+        "panel": "wake up search panel",
+        "placeholder": "Search page",
+        "press": "Press",
+        "tip": "You can use shortcuts"
+      },
+      "header-setting": {
+        "size": {
+          "default": "Default",
+          "medium": "Medium",
+          "mini": "Mini",
+          "small": "Small"
+        },
+        "theme": {
+          "chester": "Chester",
+          "element": "Element",
+          "ibps": "Classic",
+          "line": "Minimalist lines",
+          "star": "Meteor",
+          "status": {
+            "activate": "Activated",
+            "select": "Use"
+          },
+          "tomorrow-night-blue": "Tomorrow Night Blue (vsCode)",
+          "violet": "Violet"
+        }
+      },
+      "menu-item": {
+        "label-default": "Unnamed menu"
+      },
+      "menu-side": {
+        "empty": "No sidebar menu"
+      },
+      "tags": {
+        "close": "Close",
+        "closeAll": "Close all",
+        "closeLeft": "Close left",
+        "closeOther": "Close other",
+        "closeRight": "Close right"
+      }
+    }
+  },
+  "navbar": {
+    "changePassword": "Change Password",
+    "color": "Theme color",
+    "dashboard": "Home",
+    "exitFullscreen": "Exit Full Screen",
+    "exitSwitchUser": "Exit Switch User",
+    "fullscreen": "Full screen",
+    "language": "Language",
+    "lockScreen": "Lock screen",
+    "logo": {
+      "title": "IBPS Development Platform"
+    },
+    "logout": "Log out",
+    "setting": "Overall style settings",
+    "size": "Size",
+    "switchEnvironment": "Switch environment",
+    "switchTenant": "",
+    "theme": "Custom theme",
+    "userInfo": "User Info",
+    "welcome": "Welcome"
+  },
+  "notify": {
+    "special": {
+      "showLog": {
+        "message": "The full log content has been printed to the console",
+        "title": "Log details"
+      },
+      "upload": {
+        "error": {
+          "message": "Data upload failed",
+          "title": "upload failed"
+        },
+        "start": {
+          "message": "Uploading data, please wait",
+          "title": "Start upload"
+        },
+        "success": {
+          "message": "Data uploaded successfully",
+          "title": "Uploaded successfully"
+        }
+      }
+    }
+  },
+  "platform": {
+    "org": {
+      "employee": {
+        "button": {
+          "actived": "Activation",
+          "changePassword": "Reset Password",
+          "disable": "Disable",
+          "switchUser": "Switch Users"
+        },
+        "change-password": {
+          "newPassword": "Change password",
+          "primitivePassword": "Original Password",
+          "repeatPassword": "Repeat password",
+          "reset": "Restore",
+          "resetPassword": "Reset Password",
+          "title": "Change password"
+        },
+        "prop": {
+          "account": "Account",
+          "gender": "Gender",
+          "name": "Name",
+          "orgPath": "Org path",
+          "status": "Status",
+          "wcAccount": "WeChat account"
+        },
+        "title": "Staff"
+      },
+      "level": {
+        "constants": {
+          "type": {
+            "org": "mechanism",
+            "position": "Post"
+          }
+        },
+        "prop": {
+          "level": "Level value",
+          "name": "Name",
+          "type": "Type"
+        },
+        "title": "Level"
+      }
+    },
+    "saas": {
+      "tenant": {
+        "constants": {
+          "button": {
+            "assert": "Maintain tenants",
+            "createSpace": "Create space",
+            "delSpace": "Delete Space",
+            "disabled": "Disable",
+            "dropSpace": "",
+            "enabled": "Enable",
+            "error": "",
+            "maintainSpace": ""
+          },
+          "status": {
+            "DISABLED": "Disable",
+            "ENABLED": "Enable",
+            "PASSED": "By",
+            "REFUSED": "Refuse",
+            "WAIT": "Pending"
+          },
+          "title": {
+            "created": "",
+            "pending": "",
+            "spaceTitle": ""
+          }
+        },
+        "prop": {
+          "account": "account number",
+          "approveStatus": "Approval status",
+          "code": "Tenant alias",
+          "createTime": "",
+          "dsAlias": "",
+          "email": "mailbox",
+          "name": "Tenant Name",
+          "parentName": "Main tenant",
+          "providerId": "",
+          "scale": "Tenant size",
+          "schema": "",
+          "schemaStatus": "Spatial state",
+          "status": "Tenant status",
+          "tenantId": ""
+        },
+        "title": "Tenant"
+      }
+    }
+  },
+  "plugins": {
+    "api-base-url": {
+      "button": {
+        "confirm": "Confirm",
+        "ok": "ok"
+      },
+      "constants": {
+        "env": {
+          "dev": "Development Environment",
+          "front": "Front-end development environment",
+          "mock": "Mock development environment",
+          "production": "Production Environment",
+          "staging": "Integrated environment",
+          "test": "Test Environment"
+        },
+        "type": {
+          "non-single": "Non-single application",
+          "single": "Single application"
+        }
+      },
+      "notSingleApp": "Non-single application",
+      "or": "or",
+      "singleApp": "Single application",
+      "title": "Switch environment"
+    }
+  },
+  "route": {
+    "dashboard": "Home",
+    "error401": "401- unauthorized",
+    "error403": "403-Insufficient permissions",
+    "error404": "404-Page does not exist",
+    "forget": "forget password",
+    "locking": "Lock screen",
+    "login": "Login",
+    "register": "Register account",
+    "systemSelect": "Select subsystem",
+    "untitled": "unnamed"
+  },
+  "system": {
+    "lock": {
+      "locked": "Locked",
+      "placeholder": "Password is the same as the login password",
+      "tip": "Wrong password, please re-enter. If you forgot your password, contact your administrator!",
+      "unlock": "Unlock"
+    },
+    "login": {
+      "account": "",
+      "backLogin": "Back",
+      "capsTooltip": "Caps Lock is on",
+      "code": "Please enter verification code",
+      "codeCorrect": "Please enter correct verify code.",
+      "codeLength": "Verification code length is 6 digits",
+      "company": "Company name",
+      "companyCode": "Enterprise code",
+      "email": "e-mail",
+      "forget": "Forget password",
+      "fullName": "Name",
+      "gender": {
+        "female": "Female",
+        "male": "Male"
+      },
+      "logIn": "Login",
+      "logOut": "Logout",
+      "method": {
+        "smsCode": "SMS verification code",
+        "thirdparty": "Third-party authorized login",
+        "userPassword": "User password"
+      },
+      "mobile": "Please enter phone number",
+      "mobileCorrect": "Please enter your mobile number correctly",
+      "msgInit": "Send the verification code",
+      "msgInitCorrect": "",
+      "msgScuccess": "Resend in {time} seconds",
+      "password": "Please enter the password",
+      "passwordCorrect": "Please enter a password of at least 5 digits.",
+      "qq": "QQ",
+      "register": "Register account",
+      "registration": "Registered",
+      "remember": "Remember me",
+      "resetPassword": "Reset password",
+      "selectSystem": "Select subsystem",
+      "selectTenant": "",
+      "street": "Address",
+      "tenantRegister": "Registered",
+      "title": "IBPS platform",
+      "userLogin": "User login",
+      "username": "Please enter user name",
+      "usernameCorrect": "Please enter the correct username.",
+      "validmsgInit": "",
+      "wechat": "WeChat"
+    },
+    "logout": {
+      "cancelButtonText": "Cancel",
+      "confirmButtonText": "Logout",
+      "message": "Logout of current account? Open tabs and user settings will be saved.",
+      "title": "Confirm operation"
+    }
+  },
+  "validate": {
+    "boolean": "Can only be boolean",
+    "date": "Please enter a valid date",
+    "email": "Please enter the correct email format.",
+    "float": "Can only be a floating point number",
+    "idcard": "Please enter the correct ID number.",
+    "integer": "Can only be a whole number",
+    "key": "Can only start with a letter, allowing letters, numbers, and underscores",
+    "mobile": {
+      "empty": "Phone number cannot be empty",
+      "format": "Mobile number format is incorrect",
+      "length": "Mobile phone number is not 11 digits"
+    },
+    "number": "Can only contain numeric characters",
+    "phone": "Please enter the correct phone number.",
+    "regexp": "Please enter the correct format",
+    "required": "Required",
+    "telephone": "Please enter the correct phone number.",
+    "url": "Please enter the correct URL",
+    "valiAccount": "",
+    "zip": "Please enter the correct postal code."
+  },
+  "otOperateTicket":{
+    "operationTicketType":"Operation ticket type",
+    "operationTicketCode":"Operation ticket code",
+    "printOperationTicket":"Print operation ticket",
+    "operationItem":"Operation item",
+    "operationTicket":"Operation ticket",
+    "view":"view",
+    "create":"create",
+    "toExamine":"to examine",
+    "processStartedSuccess":"Process started successfully!",
+    "processStartedFailed":"Process started failed!",
+    "processStartupException":"Process startup exception!",
+    "startingPleaseWait":"Starting, please wait...",
+    "sureStartProcess":"Are you sure you want to start this process?",
+    "processHasNotStarted":"The process has not been started!",
+    "processStartedNotAgain":"The process is starting. Please do not submit again",
+    "toVoid":"To void",
+    "archivePrinting":"Archive printing",
+    "uploadAttachment":"Please upload attachment!",
+    
+    "stateList":{
+      "draft":"Draft",
+      "applyInvoicing":"Apply for invoicing",
+      "executed":"Executed",
+      "executedUnqualified":"Executed (unqualified)",
+      "executedQualified":"Executed (qualified)",
+      "abolished":"Abolished",
+      "guardianReview":"Guardian review",
+      "reviewedByDutySupervisor":"Reviewed by duty supervisor",
+      "operationExecutionPrintable":"Operation execution (printable)",
+      "makeReport":"Make a report"
+      
+    },
+
+    "list":{
+      "generateTypicalOperationTicket":"Generate typical operation ticket",
+      "operationTicketList":"Operation ticket list",
+
+      "updateSuccessfully":"Update successfully",
+      "updateFailed":"Update failed",
+      "noPermissionToAdd":"No permission to add!",
+      "pleaseCheckItemOperate":"Please check one item to operate!",
+      "onlyProposedOperateTicketModified":"Only the operation ticket in the proposed status can be modified!",
+      "onlyProposedOperateTicketDeleted":"Only the operation ticket in the proposed status can be deleted!",
+      "executedTicketsCannotVoided":"Executed tickets cannot be voided!",
+      "cannotDuplicateVoid":"Cannot duplicate void!",
+      "onlyExecutedOperateTicketEvaluated":"Only the executed operation tickets can be evaluated!",
+      "ticketNotExecutedUnableCreate":"Ticket not executed, unable to create",
+      "ticketUnqualifiedUnableCreate":"Ticket is unqualified and cannot be created",
+      "havNotPermissionDelete":"You do not have permission to delete",
+      "havNotPermissionModify":"You do not have permission to modify",
+      "sureGenerateTypicalOperateTicket":"Are you sure you want to generate a typical operation ticket?",
+      "brieflyExplainReasonsNonconformity":"Please briefly explain the reasons for nonconformity",
+      "enterReasonDisqualificationAndLengthExceed20characters":"Please enter the reason for disqualification and the length cannot exceed 20 characters",
+      "sureWantToVoidOperationTicket":"Are you sure you want to void this operation ticket?",
+      "sureWantDeleteOperationTicket":"Are you sure you want to delete the selected operation ticket?",
+      "onlyExecutedOperateTicketPrinted": "Only the executed operation tickets can be printed!"
+    },
+
+    "equip":{
+      "equipmentLocation":"Equipment location",
+      "locationCoding":"Location coding",
+      "equipmentLocationPopUpBox":"Equipment location pop-up box",
+      
+      "equipmentAssetCode":"Equipment asset code",
+      "equipmentAssetName":"Equipment asset name",
+      "equipmentLocationCode":"Equipment location code",
+      "equipmentLocationName":"Equipment location name",
+      "equipmentLocationId":"Equipment location id",
+      "crew":"crew"
+    },
+    
+    "flow":{
+      "logicSupplementaryDataException":"Logic supplementary data exception",
+      "dangerousPointsNeedConfirmed":"Dangerous points need to be confirmed",
+      "operationItemsNeedConfirmed":"Operation items need to be confirmed",
+      "notAuthorizedOperate":"You are not authorized to operate"
+    },
+
+    "operateAdd":{
+      "AutoGeneratedBrackets":"(Auto generated)",
+      "operationTicketType":"Operation ticket type",
+      "typicalOperationTicket":"Typical operation ticket",
+      "operationTicketNumber":"Operation ticket number",
+        
+      "basicInformation":"Basic information",
+      "preControlMeasures":"Pre control measures",
+      "implementSafetyMeasures":"Implement safety measures",
+
+      "selectOperationTicketFirst":"Please select the operation ticket type first!",
+      "selectStationFirst":"Please select a station first!",
+      
+      "cancelled":"Cancelled",
+      "stationSelection":"Station selection"
+
+    },
+    "operateBasic":{
+      "operationTask":"Operation task",
+      "applicationTime":"Application time",
+      "centerControlOperator":"Centralized control operator",
+      "centerControlGuardian":"Centralized control supervisor",
+      "centerControlTeam":"Centralized control team",
+      "siteOperator":"Site operator",
+      "siteGuardian":"Site guardian",
+      "siteTeam":"Site team",
+      "dispatchCommand":"Dispatch command",
+      "giveCommandPeople":"Give command people",
+      "acceptCommandPeople":"Accept command people",
+      "giveCommandTime":"Give command time",
+      "createTicketTime":"Create ticket time",
+      "relatedInformation":"Related information",
+      "report":"Report",
+
+      "operationTaskCannotEmpty":"Operation task cannot be empty!",
+      "equipmentCannotEmpty":"Equipment cannot be empty!",
+      "centralizedControlOperatorCannotEmpty":"Centralized control operator cannot be empty!",
+      "centralizedControlGuardianCannotEmpty":"Centralized control Guardian cannot be empty!",
+      "siteOperatorCannotEmpty":"Site operator cannot be empty!",
+      "siteGuardianCannotEmpty":"Site Guardian cannot be empty!",
+      "userAlreadyParticipated":"User already participated!",
+      "enterOperationTask":"Please enter operation task!",
+      "selectApplicationTime":"Please select the application time!",
+      "selectEquipment":"Please select a equipment!",
+      "createTimeCannotBlank":"Create time cannot be blank!",
+
+      "selectCreateTicketTime":"Select create ticket time!",
+
+      "operationDepartment":"Operation Department",
+      "relationVideo": "Relation Video",
+      "relationDoor": "Relation Door",
+      "relationElectronicFence": "Relation ElectronicFence"
+    },
+    "opItem":{
+      "appendUnderThisLine":"Append under this line",
+      "operator":"Operator",
+      "operation":"Operation",
+      "guardian":"Guardian",
+      "completionTime":"Completion time",
+      "selectDate":"Select date",
+      "operationItemCannotEmpty":"Operation item cannot be empty"
+    },
+    "opDangerPointExe":{ 
+      "selectHazardSourceLibrary":"Select from hazard source library",
+      "workingProcedure":"Working procedure",
+      "manualInputOperation":"Manual input operation",
+      "enterDangerPointsManually":"Enter danger points manually",
+      "manualInputPreControlMeasures":"Manual input pre control measures",
+      "isItConfirm":"Is it confirm",
+      "preControlMeasure":"Pre control measure",
+      "dangerousPoint":"Dangerous point",
+      "preControlMeasuresDangerousPoints":"Pre control measures for dangerous points",
+      "hazard": "Hazard source",
+
+      "dangerPointCannotEmpty":"Danger point cannot be empty!",
+      "pleaseCompleteDangersPointsMeasures":"Please complete the dangerous points and measures!"
+    },
+    "opReportExe":{
+      "situationReport":"Situation report",
+      "implementationDesc":"Implementation description (optional)"
+    },
+    
+    "statistic":{
+      "spotCheckNumber":"Spot check number",
+      "qualifiedNumber":"Qualified number",
+      "unqualifiedNumber":"Unqualified number",
+      "qualifiedRate":"Qualified rate",
+
+      "wholeCompany":"Whole company",
+      "statisticalAnalysisOperationTicket":"Statistical analysis of operation ticket"
+    },
+    
+    "listWorkload":{
+      "january":"January",
+      "february":"February",
+      "march":"March",
+      "april":"April",
+      "may":"May",
+      "june":"June",
+      "july":"July",
+      "august":"August",
+      "september":"September",
+      "october":"October",
+      "november":"November",
+      "december":"December",
+      
+      "operationTicketWorkloadStatistics":"Operation ticket workload statistics",
+      "departmentOrTeam":"Department/Team",
+      "year":"Year",
+      "statistics":"Statistics",
+      "selectYear":"Select year"
+    },
+
+    "menu":{
+      "addOperationTicketType":"Add operation ticket type",
+      "updateOperationTicketType":"Update operation ticket type",
+      "viewOperationTicketType":"View operation ticket type",
+
+      "addOperationTicket":"Add operation ticket",
+      "updateOperationTicket":"Update operation ticket",
+      "viewOperationTicket":"View operation ticket",
+
+      "addTypicalOperationTicket":"Add typical operation ticket type",
+      "updateTypicalOperationTicket":"Update typical operation ticket type",
+      "viewTypicalOperationTicket":"View typical operation ticket type"
+    }
+  },
+  
+  "otStdOperateTicket":{
+    "typicalTicketNumber":"Typical ticket number",
+    "operationTask":"Operation Task",
+    "available":"Available",
+    "unavailable":"Unavailable",
+    "typicalOperationTicketList":"List of typical operation tickets",
+
+    "list":{
+      "onlyProposedTypicalOperateTicketModified":"Only the typical operation ticket in the proposed status can be modified!",
+      "onlyProposedTypicalOperateTicketDeleted":"Only the typical operation ticket in the proposed status can be deleted!",
+      "sureWantDeleteTypicalOperationTicket":"Are you sure you want to delete the selected typical operation ticket?"
+    },
+
+    "operateBasic":{
+      "team":"Team",
+      "associatedVideo":"Associated video",
+      "associatedAccessControl":"Associated access control"
+    },
+    "operateItem":{
+      "centralizedControl":"Centralized control",
+      "site":"Site",
+      "editable":"Editable",
+      "sureWantToVoidRepairOrder":"Are you sure you want to void this repair order?"
+    },
+    "opDangerPointExe":{
+      "riskFactors":"Risk factors",
+      "manuallyEnterRiskFactors":"Manually enter risk factors"
+    }
+  },
+
+  "operateTicketType":{
+    "operationTicketTypeCode":"Operation ticket type code",
+    "operationTicketTypeName":"Operation ticket type name",
+    "operationItemRecording":"Operation item recording",
+    "codeScanningQRCodeEquipment":"Code scanning QR code equipment",
+
+    "listOperationTicketTypes":"List of operation ticket types",
+    "notHave":"Not have",
+    "have":"Have",
+    "onlyOneItemCanBeModified":"Only one item can be modified at a time",
+    "deleteFailed":"Delete failed",
+    "deleteSuccessfully":"Delete successfully",
+    "usePreControlDangerousPoints":"Use pre control of dangerous points",
+
+    "noRecordingRequired":"No recording required",
+    "needRecording":"Need recording",
+    "noScanningRequired":"No scanning required",
+    "needScanning":"Need scanning",
+
+    "operationTicketTypeCodeCannotBeEmpty":"Operation ticket type code cannot be empty!",
+    "operationTicketTypeNameCannotBeEmpty":"Operation ticket type name cannot be empty!",
+    "operationTicketTypeNoAlreadyExists":"Save failed，Operation ticket type already exists!"
+  },
+
+  "optPeople":{
+    "centralizedControlOrNot":"Centralized control or not",
+    "noData":"No data",
+    "selectUserAdded":"Select user added",
+
+    "synchronizationSucceeded":"Synchronization succeeded",
+    "synchronizationFailed":"Synchronization failed",
+    "userInformationPopUpBox":"User information pop-up box"
+  }
+}

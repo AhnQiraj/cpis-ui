@@ -1,0 +1,48 @@
+.widget-form-container,.dynamic-form-container{
+  box-sizing: border-box;
+  .dynamic-form,.widget-form{
+    background-color: #fff;
+    min-height: 100%;
+    width: 100%;
+  }
+  .widget-form{
+    display: flex;
+    flex-direction: column;
+    .widget-col_margin{
+      margin-left: 2px!important;
+      margin-right: 2px!important;
+    }
+  }
+  .ibps-page-header{
+    .page-header-text{
+      padding: 7px 28px;
+      min-height: 30px;
+      line-height: 1.5;
+    }
+  }
+  .form-header{
+    .desc {
+      word-break: break-all!important;
+      margin: 0 0 15px!important;
+      padding: 3px 30px 4px!important;
+      font-size: 14px!important;
+    }
+    .desc-details {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+    }
+    .desc-contract{
+      padding: 0 30px;
+      position: relative;
+      top: -18px;
+    }
+  }
+  
+}
+// .dynamic-form-container{
+//   height: 100%;
+//   // display: grid;
+//   overflow: auto;
+// }

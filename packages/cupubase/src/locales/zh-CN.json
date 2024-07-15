@@ -1,0 +1,59 @@
+{
+  "_element": "zh-CN",
+  "_name": "简体中文",
+  "common": {
+    "dialog": {
+      "multipleSelected": "已经选择了多项,请选择一项进行操作!",
+      "operateSuccess": "操作成功",
+      "removeRecord": "此操作将移除该数据, 是否确定?",
+      "stopRecord": "此操作将停用该数据, 是否确定?",
+      "dealing": "处理中...",
+      "removeSuccess": "删除成功!",
+      "removeFailed": "删除失败!",
+      "saveCancelButtonText": "关闭",
+      "saveConfirmButtonText": "继续操作",
+      "saveError": "请检查表单数据是否填写正确",
+      "saveSuccess": "{message}, 是否继续?",
+      "selectedRecords": "请选择记录!",
+      "title": "提示",
+      "warn": "温馨提示"
+    }
+  },
+  "equipment": {
+    "common": {
+      "area": "区域",
+      "on": "在线",
+      "off": "离线"
+    },
+    "area": {
+      "areaNo": "区域编码",
+      "areaName": "区域名称",
+      "pArea": "上级区域",
+      "areaScope": "区域范围",
+      "resDept": "责任部门"
+    },
+    "message": {
+      "inAreaNoOrNa": "请输入区域编码或名称"
+    }
+  },
+  "material": {
+    "material": "物资",
+    "materialBasicData": "物资主数据",
+    "itemNo": "物资编码",
+    "itemName": "物资名称",
+    "modelNo": "规格型号",
+    "techParam": "材质/技术参数",
+    "baseUnit": "计量单位",
+    "itemGroup": "物资分组",
+    "itemType": "物资分类",
+    "itemDes": "物资描述",
+    "stockQuantity": "库存数量",
+    "stockPrice": "库存单价",
+    "managerName": "更换人",
+    "updateTime": "更换时间",
+    "itemReplaceDetail": "物资更换明细",
+    "index": "序号",
+    "business": "业务",
+    "manufacturer": "生产厂商"
+  }
+}

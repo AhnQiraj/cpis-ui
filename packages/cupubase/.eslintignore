@@ -1,0 +1,6 @@
+/node_modules
+/dist
+/package-lock.json
+/lib/cupubase.umd.js
+lib/cupubase.umd.js
+.DS_Store 

@@ -1,0 +1,980 @@
+{
+    "_element": "zh-TW",
+    "_name": "繁体中文",
+    "common": {
+        "buttons": {
+            "add": "添加",
+            "cancel": "取消",
+            "clean": "清空",
+            "close": "關閉",
+            "collapse": "收縮",
+            "collect": "收藏",
+            "compress": "收縮",
+            "confirm": "確定",
+            "detail": "明細",
+            "down": "下移",
+            "edit": "編輯",
+            "expand": "展開",
+            "expansion": "展開",
+            "export": "導出",
+            "fullscreen": "全屏",
+            "fullscreenOn": "小屏",
+            "import": "導入",
+            "more": "更多",
+            "moreSearch": "更多",
+            "print": "打印",
+            "refresh": "刷新",
+            "remove": "刪除",
+            "removeAllToken": "刪除全部令牌",
+            "removeToken": "刪除令牌",
+            "resetSearch": "重置",
+            "save": "保存",
+            "search": "搜索",
+            "toBottom": "移至最後壹條",
+            "toUp": "移至第壹條",
+            "up": "上移"
+        },
+        "company": "廣州流辰信息技術有限公司",
+        "companyP": "南京促普软件技术有限公司",
+        "copyright": "版權所有",
+        "dialog": {
+            "multipleSelected": "已經選擇了多項,請選擇一項進行操作!",
+            "operateSuccess": "操作成功",
+            "removeRecord": "此操作將永久刪除該數據, 是否確定?",
+            "removeSuccess": "刪除成功！",
+            "saveCancelButtonText": "關閉",
+            "saveConfirmButtonText": "繼續操作",
+            "saveError": "請檢查表單數據是否填寫正確",
+            "saveSuccess": "{message}, 是否繼續?",
+            "selectedRecords": "請選擇記錄!",
+            "title": "提示",
+            "warn": "溫馨提示"
+        },
+        "field": {
+            "createBy": "創建人",
+            "createTime": "創建時間",
+            "updateBy": "更新人",
+            "updateTime": "更新時間"
+        },
+        "loading": "加載中",
+        "noData": "暫無數據",
+        "platform": "IBPS 平台",
+        "saving": "保存中",
+        "title": {
+            "add": "添加{title}",
+            "detail": "{title}明細",
+            "edit": "編輯{title}"
+        },
+        "welcome": "歡迎使用 IBPS 平台"
+    },
+    "components": {
+        "address": {
+            "china": "中國",
+            "defaultPlaceholder": [
+                "請選擇國家",
+                "請選擇省",
+                "請選擇市",
+                "請選擇縣區",
+                "請選擇鄉鎮街"
+            ],
+            "defaultnotFoundText": [
+                "無匹配國家",
+                "無匹配省",
+                "無匹配市",
+                "無匹配縣區",
+                "無匹配鄉鎮街"
+            ]
+        },
+        "back-to-top": {
+            "tip": "返回頂部"
+        },
+        "card-list": {
+            "pagination": {
+                "noData": "暫無數據",
+                "pageInfo": "第{start}到第{end}條 共{total}條"
+            }
+        },
+        "crud": {
+            "collapse": "收縮",
+            "displayField": "自定義列",
+            "expand": "展開",
+            "index": "序號",
+            "manage": "管理",
+            "pagination": {
+                "noData": "暫無數據",
+				"pageInfo": "第{start}到{end}條 共{total}條"
+            }
+        },
+        "display-field": {
+            "clean": "清空",
+            "delete": "刪除",
+            "noSelected": "未選擇字段",
+            "noSelectedPrompt": "請設置顯示字段",
+            "reset": "恢復默認",
+            "selectAll": "全選",
+            "selectedField": "當前選定的字段",
+            "sort": "拖動排序",
+            "tip": "設置寬度建議不能小於50，否則會影響列表展示。",
+            "title": "設置自定義列",
+            "width": "寬度"
+        },
+        "query-builder": {
+            "buttons": {
+                "addGroup": "添加組",
+                "addRule": "添加規則",
+                "removeGroup": "刪除組",
+                "removeRule": "刪除"
+            },
+            "conditions": {
+                "and": "並且",
+                "or": "或者"
+            },
+            "errors": {
+                "boolean_not_valid": "不是布爾值",
+                "checkbox_empty": "沒有選中項",
+                "datetime_between_invalid": "無效值, {0} 大於{1}",
+                "datetime_empty": "值為空",
+                "datetime_exceed_max": "必須在{0}之前",
+                "datetime_exceed_min": "必須在{0}之後",
+                "datetime_invalid": "不是有效日期({0})",
+                "empty_group": "該組為空",
+                "no_filter": "沒有選擇過濾器",
+                "number_between_invalid": "無效值, {0} 大於 {1}",
+                "number_exceed_max": "必須小於{0}",
+                "number_exceed_min": "必須大於{0}",
+                "number_nan": "值不是數字",
+                "number_not_double": "不是浮點數",
+                "number_not_integer": "不是整數",
+                "number_wrong_step": "必須是{0}的倍數",
+                "operator_not_multiple": "選項{1}無法接受多個值",
+                "radio_empty": "沒有選中項",
+                "select_empty": "沒有選中項",
+                "string_empty": "沒有輸入值",
+                "string_exceed_max_length": "必須不超過{0}個字符",
+                "string_exceed_min_length": "必須至少包含{0}個字符",
+                "string_invalid_format": "無效格式({0})"
+            },
+            "operators": {
+                "begins_with": "以...開始",
+                "between": "在...之間",
+                "contains": "包含以下內容",
+                "ends_with": "以...結束",
+                "equal": "等於",
+                "greater": "大於",
+                "greater_or_equal": "大於或等於",
+                "in": "在...之內",
+                "is_empty": "為空",
+                "is_not_empty": "不為空",
+                "is_not_null": "不為 null",
+                "is_null": "為 null",
+                "less": "小於",
+                "less_or_equal": "小於或等於",
+                "not_begins_with": "不以...開始",
+                "not_between": "不在...之間",
+                "not_contains": "不包含以下內容",
+                "not_ends_with": "不以...結束",
+                "not_equal": "不等於",
+                "not_in": "不在...之內"
+            },
+            "sources": {
+                "dynamic": "動態值",
+                "fixed": "固定值",
+                "script": "Groovy腳本值"
+            }
+        }
+    },
+    "error": {
+        "back": "返回",
+        "backHome": "返回首頁",
+        "cause": "錯誤原因：{cause}",
+        "logout": {
+            "cancelButtonText": "取消",
+            "confirmButtonText": "重新登錄",
+            "message": "您已被登出，可以取消繼續留在該頁面，或者重新登錄",
+            "title": "確定登出"
+        },
+        "message": "{message}",
+        "messageCause": "{message}</br>錯誤原因：{cause}",
+        "network": "服務器君開小差了，請稍後再試",
+        "page401": {
+            "maybe": "或者你可以去",
+            "tip1": "你沒有權限去該頁面",
+            "tip2": "如有不滿請聯繫你領導"
+        },
+        "page403": {
+            "maybe": "或者你可以去",
+            "tip1": "你沒有權限去該頁面",
+            "tip2": "如有不滿請聯繫你領導"
+        },
+        "page404": {
+            "info": "請檢查您輸入的網址是否正確，請點擊以下按鈕返回主頁或者發送錯誤報告",
+            "message": "您輸入的網址不正確......"
+        },
+        "page500": {
+            "maybe": "或者你可以去",
+            "tip1": "服務器內部頁面出錯了",
+            "tip2": "請聯繫管理員或者發送錯誤報告"
+        },
+        "reLogin": "重新登錄",
+        "status": {
+            "400": "[400]請求錯誤",
+            "401": "[401]未授權，請聯繫管理員",
+            "403": "[403]拒絕訪問",
+            "404": "[404]請求地址出錯: {url}",
+            "408": "[408]請求超時",
+            "500": "[500]服務器內部錯誤",
+            "501": "[501]服務未實現",
+            "502": "[502]網關錯誤",
+            "503": "[503]服務不可用",
+            "504": "[504]網關超時",
+            "505": "[505]HTTP版本不受支持",
+            "50001": "網關超時",
+            "50002": "服務不可用",
+            "50003": "客戶端調用異常",
+            "50004": "網絡連接錯誤",
+            "50005": "網絡超時",
+            "50006": "Hystrix斷路器超時",
+            "50007": "Hystrix線程池已滿",
+            "50008": "Hystrix斷路器已打開",
+            "50009": "Hystrix信號量未獲取",
+            "6010101": "非法請求",
+            "6010102": "IP被禁止",
+            "6010103": "未授權",
+            "6010104": "接口限流",
+            "6020101": "授權ID或密鑰錯誤",
+            "6020102": "授權碼錯誤",
+            "6020103": "未登錄",
+            "6020104": "登錄異常",
+            "6020105": "驗證碼錯誤",
+            "6020106": "用戶名或密碼錯誤",
+            "6020107": "用戶未激活",
+            "6020108": "用戶過期",
+            "6020109": "密碼過期",
+            "6020110": "用戶被禁用",
+            "6020111": "用戶被鎖定",
+            "6020112": "未知賬號",
+            "6020113": "未知部門",
+            "6020114": "未知崗位",
+            "6020201": "非法token",
+            "6020202": "授權類型不支持",
+            "6020301": "token過期",
+            "6030201": "公告異常",
+            "6030501": "數據字典異常",
+            "6030502": "分類異常",
+            "6030503": "分類標識異常",
+            "6030504": "地理區域異常",
+            "6030601": "安全設置異常",
+            "6030602": "系統資源異常",
+            "6030603": "子系統異常",
+            "6030604": "權限配置異常",
+            "6030605": "權限定義異常",
+            "6030606": "桌面管理異常",
+            "6030607": "授權管理異常",
+            "6030608": "app系統資源異常",
+            "6030701": "常用腳本異常",
+            "6030702": "條件腳本異常",
+            "6030703": "腳本管理異常",
+            "6030801": "服務後置事件異常",
+            "6030802": "服務管理異常",
+            "6040001": "參與者異常",
+            "6040101": "參與者等級異常",
+            "6040201": "參與者屬性異常",
+            "6040301": "角色異常",
+            "6040401": "機構異常",
+            "6040501": "崗位異常",
+            "6040601": "員工異常",
+            "6040701": "分級機構異常",
+            "6040801": "用戶組異常",
+            "6040901": "租戶異常",
+            "6041001": "參與者關係異常",
+            "6050000": "流程異常",
+            "6050100": "流程定義異常",
+            "6050200": "流程實例異常",
+            "6050300": "流程任務異常",
+            "6050400": "流程監控異常",
+            "6050500": "流程統計異常",
+            "6060000": "表單異常",
+            "6060100": "數據集異常",
+            "6060200": "表單設計器異常",
+            "6060300": "表單渲染異常",
+            "6060400": "數據模版異常",
+            "6060500": "業務數據模版異常",
+            "6060600": "業務對象異常",
+            "6070201": "外部郵件用戶設置異常",
+            "6070202": "外部郵件異常",
+            "6070203": "內部消息異常",
+            "6070204": "內部消息已讀異常",
+            "6070205": "內部消息回复異常",
+            "6070206": "消息已讀異常",
+            "6070207": "接收人異常",
+            "6070208": "消息回复異常",
+            "6070209": "消息回复異常",
+            "6070210": "消息類型異常",
+            "6070301": "附件操作失敗",
+            "6070401": "定時任務異常",
+            "6070402": "定時任務已存在",
+            "6070601": "流水號異常",
+            "6070602": "流水號別名已存在",
+            "6070603": "流水號測試異常",
+            "6080000": "代碼生成器異常",
+            "6080001": "代碼生成器生成方案異常",
+            "6080002": "代碼生成器表配置異常",
+            "6080003": "代碼生成器模板異常",
+            "6080004": "代碼生成器變量異常",
+            "6090001": "SOCKET文件消息異常"
+        },
+        "unknown": "未知錯誤，錯誤碼：{state}",
+        "unknownStatus": "接口異常，接口未返回[state]參數</br>接口地址:{url}"
+    },
+    "formula": {
+        "abs": {
+            "example": "ABS(-8)可以返回8，也就是-8的絕對值",
+            "intro": "ABS函數可以獲取一個數的絕對值",
+            "usage": "ABS(數字)"
+        },
+        "advanceFunc": "高級函數",
+        "and": {
+            "example": "AND({语文成绩}>90,{数学成绩}>90,{英语成绩}>90)，如果三門課成績都> 90，返回true，否則返回false",
+            "intro": "如果所有參數都為真，AND函數返回布爾值true，否則返回布爾值 false",
+            "usage": "AND(邏輯表達式1,邏輯表達式2,...)"
+        },
+        "average": {
+            "example": "AVERAGE({语文成绩},{数学成绩}, {英语成绩})返回三門課程的平均分",
+            "intro": "AVERAGE函數可以獲取一組數值的算術平均值",
+            "usage": "AVERAGE(數字1,數字2,...)"
+        },
+        "ceiling": {
+            "example": "CEILING(7,6)返回12，因為12比7大的同時，也是6的倍數中最接近7的數字",
+            "intro": "CEILING函數可以將數字增大到最接近原值的指定因數的倍數",
+            "usage": "CEILING(數字,因數)"
+        },
+        "char": {
+            "example": "CHAR(10)會返回換行字符",
+            "intro": "CHAR函數可以將計算機字符集的數字代碼轉換為對應字符",
+            "usage": "CHAR(數字)"
+        },
+        "concatenate": {
+            "example": "CONCATENATE('三年二班','周杰倫')會返回'三年二班周杰倫'",
+            "intro": "CONCATENATE函數可以將多個文本合併成一個文本",
+            "usage": "CONCATENATE(文本1,文本2,...)"
+        },
+        "count": {
+            "example": "COUNT(小明,小王,小張,小李)返回4，也就是人員的數量",
+            "intro": "COUNT函數可以獲取參數的數量",
+            "usage": "COUNT(值,值,...)"
+        },
+        "countif": {
+            "example": "COUNTIF(子表單.性別, '女')，可得到子表單中性別填的是'女'的數據條數；COUNTIF([1,2,3,4],'>2')，可得到1 ,2,3,4中大於2的數字數量，結果為2。",
+            "intro": "COUNTIF函數可以獲取數組中滿足條件的參數個數",
+            "usage": "COUNTIF(數組,'條件')"
+        },
+        "currency": {
+            "intro": "CURRENCY 中文貨幣大寫",
+            "usage": "略"
+        },
+        "date": {
+            "intro": "DATE函數可以將時間戳轉換為日期對象",
+            "usage": "DATE(時間戳)"
+        },
+        "dateFunc": "日期函數",
+        "datedelta": {
+            "intro": "DATEDELTA函數可以將指定日期加/減指定天數",
+            "usage": "DATEDELTA(指定日期,需要加減的天數)"
+        },
+        "datedif": {
+            "example": "DATEDIF(下單時間,付款時間,\"h\")，如果下單時間是9:00，付款時間為當天10:30，計算得到的小時差為1.5。",
+            "intro": "DATEDIF函數可以計算兩個日期時間相差的年數、月數、天數、小時數、分鐘數、秒數。",
+            "usage": "DATEDIF(開始時間,結束時間,[單位])，單位可以是 \"y\" 、\"M\"、\"d\"、\"h\"、\"m\"、\"s\""
+        },
+        "day": {
+            "intro": "DAY函數可以獲取某日期是當月的第幾日",
+            "usage": "DAY(時間戳)"
+        },
+        "days": {
+            "intro": "DAYS函數可以返回兩個日期之間相差的天數。",
+            "usage": "DAYS(結束日期,開始日期)"
+        },
+        "days360": {
+            "intro": "DAYS360按照一年 360 天的算法，返回兩個日期間相差的天數",
+            "usage": "DAYS360(結束日期,開始日期)"
+        },
+        "exact": {
+            "example": "EXACT({手机号},{中奖手机号})，如果兩者相同，返回true，如果不相同，返回false",
+            "intro": "EXACT函數可以比較兩個文本是否完全相同，完全相同則返回true，否則返回false",
+            "usage": "EXACT(文本1, 文本2)"
+        },
+        "false": {
+            "intro": "FALSE函數返回布爾值false",
+            "usage": "FALSE()"
+        },
+        "fixed": {
+            "example": "FIXED(3.1415,2)返回'3.14'",
+            "intro": "FIXED函數可將數字舍入到指定的小數位數並輸出為文本",
+            "usage": "FIXED(數字,小數位數)"
+        },
+        "floor": {
+            "example": "FLOOR(7,6)返回6，因為6比7小的同時，也是6的倍數中最接近7的數字",
+            "intro": "FLOOR函數可將數字減小到最接近原值的指定因數的倍數",
+            "usage": "FLOOR(數字,因數)"
+        },
+        "hour": {
+            "intro": "HOUR函數可以返回某日期的小時數",
+            "usage": "HOUR(時間戳)"
+        },
+        "if": {
+            "example": "IF({语文成绩}>60,'及格','不及格')，當語文成績>60時返回及格，否則返回不及格。",
+            "intro": "IF函數判斷一個條件能否滿足；如果滿足返回一個值，如果不滿足則返回另外一個值",
+            "usage": "IF(邏輯表達式,為true時返回的值,為false時返回的值)"
+        },
+        "ifs": {
+            "example": "IFS(語文成績>90,\"優秀\",語文成績>80,\"良好\",語文成績>=60,\"及格\",語文成績<60,\"不及格\")，根據成績返回對應的評價。",
+            "intro": "IFS 函數檢查是否滿足一個或多個條件，且返回符合第一個TRUE條件的值，IFS可以取代多個嵌套IF語句。",
+            "usage": "IFS(邏輯表達式1,邏輯表達式1為true返回該值,邏輯表達式2,邏輯表達式2為true返回該值,...)"
+        },
+        "int": {
+            "example": "INT(3.1415)返回3，也就是3.1415的整數部分",
+            "intro": "INT函數可以獲取一個數的整數部分",
+            "usage": "INT(數字)"
+        },
+        "isempty": {
+            "intro": "ISEMPTY函數可以用來判斷值是否為空文本、空對像或者空數組",
+            "usage": "ISEMPTY(文本)"
+        },
+        "isoweeknum": {
+            "intro": "ISOWEEKNUM函數可以返回指定日期在全年中的ISO週數",
+            "usage": "ISOWEEKNUM(指定日期)"
+        },
+        "large": {
+            "example": "LARGE({学生成绩.数学成绩},1)返回子表單'學生成績'中排名第1的'數學成績'",
+            "intro": "LARGE函數可以獲取數據集中第k個最大值",
+            "usage": "LARGE(數組,k)"
+        },
+        "left": {
+            "example": "LEFT('三年二班周杰倫',2)返回'三年'，也就是'三年二班周杰倫'的從左往右的前2個字符",
+            "intro": "LEFT函數可以從一個文本的第一個字符開始返回指定個數的字符",
+            "usage": "LEFT(文本,文本長度)"
+        },
+        "len": {
+            "example": "LEN('朝辭白帝彩雲間')返回7，因為這句詩中有7個字符",
+            "intro": "LEN函數可以獲取文本中的字符個數",
+            "usage": "LEN(文本)"
+        },
+        "log": {
+            "example": "LOG(100,10)返回2，也就是以10為底數100的對數",
+            "intro": "LOG函數可以根據指定底數返回數字的對數",
+            "usage": "LOG(數字,底數)"
+        },
+        "logicFunc": "邏輯函數",
+        "lower": {
+            "example": "LOWER('JAYZ')返回'jayz'",
+            "intro": "LOWER函數可以將一個文本中的所有大寫字母轉換為小寫字母",
+            "usage": "LOWER(文本)"
+        },
+        "mapx": {
+            "intro": "MAPX函數是一個可以用來進行跨表單取數的高級函數",
+            "usage": "MAPX(operation,map_value,map_field,result_field)"
+        },
+        "mathFunc": "數學函數",
+        "max": {
+            "example": "MAX({语文成绩},{数学成绩},{英语成绩})返回三門課程中的最高分",
+            "intro": "MAX函數可以獲取一組數值的最大值",
+            "usage": "MAX(數字1,數字2,...)"
+        },
+        "mid": {
+            "example": "MID('流辰快速開發平台',4,6)返回'快速開發平台'",
+            "intro": "MID返回文本中從指定位置開始的指定數目的字符",
+            "usage": "MID(文本,開始位置_數字,指定數目)"
+        },
+        "min": {
+            "example": "MIN({语文成绩},{数学成绩},{英语成绩})返回三門課程中的最低分",
+            "intro": "MIN函數可以獲取一組數值的最小值",
+            "usage": "MIN(數字1,數字2,...)"
+        },
+        "minute": {
+            "intro": "MINUTE函數可以返回某日期的分鐘數",
+            "usage": "MINUTE(時間戳)"
+        },
+        "mod": {
+            "example": "MOD(4,3)返回1，也就是4/3的餘數",
+            "intro": "MOD函數可以獲取兩數相除的餘數",
+            "usage": "MOD(被除數,除數)"
+        },
+        "month": {
+            "intro": "MONTH返回某日期的月份",
+            "usage": "MONTH(時間戳)"
+        },
+        "not": {
+            "example": "NOT({语文成绩}>60)，如果語文成績大於60返回false，否則返回true",
+            "intro": "NOT函數返回與指定表達式相反的布爾值。",
+            "usage": "NOT(邏輯表達式)"
+        },
+        "now": {
+            "intro": "NOW函數可以獲取當前時間",
+            "usage": "NOW()"
+        },
+        "omit": "略",
+        "or": {
+            "example": "OR({语文成绩}>90,{数学成绩}>90,{英语成绩}>90)，任何一門課成績> 90，返回true，否則返回false",
+            "intro": "如果任意參數為真，OR 函數返回布爾值true；如果所有參數為假，返回布爾值false。",
+            "usage": "OR(逻辑表达式1,逻辑表达式2,...)"
+        },
+        "pinyin": {
+            "intro": "PINYIN 函數可以把中文轉拼音",
+            "usage": "PINYIN(中文)"
+        },
+        "power": {
+            "example": "POWER(3，2)返回9，也就是3的2次方",
+            "intro": "POWER函数可以获取数字乘幂的结果",
+            "usage": "POWER(数字,指数)"
+        },
+        "product": {
+            "example": "PRODUCT({单价}, {数量})获取总价，也就是单价和数量的乘积",
+            "intro": "PRODUCT函数可以获取一组数值的乘积",
+            "usage": "PRODUCT(数字1,数字2,...)"
+        },
+        "rand": {
+            "example": "RAND()返回0.424656",
+            "intro": "RAND函数可返回大于等于0且小于1的均匀分布随机实数",
+            "usage": "RAND()"
+        },
+        "replace": {
+            "example": "REPLACE('流辰快速开发平台',4,6,'企业数据管理平台')返回'流辰企业数据管理平台'",
+            "intro": "REPLACE函数可以根据指定的字符数，将部分文本替换为不同的文本",
+            "usage": "REPLACE(文本,开始位置,替换长度,新文本)"
+        },
+        "rept": {
+            "example": "REPT('流辰',3)返回'流辰流辰流辰'",
+            "intro": "REPT函数可以将文本重复一定次数",
+            "usage": "REPT(文本,重复次数)"
+        },
+        "right": {
+            "example": "RIGHT('三年二班周杰伦',3)返回'周杰伦'，也就是'三年二班周杰伦'从右往左的前3个字符",
+            "intro": "RIGHT函数可以获取由给定文本右端指定数量的字符构成的文本值",
+            "usage": "RIGHT(文本,文本长度)"
+        },
+        "round": {
+            "example": "ROUND(3.1485,2)返回3.15",
+            "intro": "ROUND函数可以将数字四舍五入到指定的位数",
+            "usage": "ROUND(数字,数字位数)"
+        },
+        "search": {
+            "example": "SEARCH('2016','流辰2016')返回4",
+            "intro": "SEARCH函数可以获取文本1在文本2中的开始位置",
+            "usage": "SEARCH(文本1,文本2)"
+        },
+        "second": {
+            "intro": "SECOND函数可以返回某日期的秒数",
+            "usage": "SECOND(时间戳)"
+        },
+        "small": {
+            "example": "SMALL({学生成绩.数学成绩}, 1)返回子表单'学生成绩'中排名倒数第一的'数学成绩'",
+            "intro": "SMALL函数可以返回数据集中第k个最小值",
+            "usage": "SMALL(数组,k)"
+        },
+        "split": {
+            "example": "SPLIT('流辰-快速开发平台','-')返回'流辰，快速开发平台'",
+            "intro": "SPLIT函数可以将文本按指定分割符分割成数组",
+            "usage": "SPLIT(文本,分隔符_文本)"
+        },
+        "sqrt": {
+            "example": "SQRT(9)返回3，也就是9的正平方根",
+            "intro": "SQRT函数可以获取一个数字的正平方根",
+            "usage": "SQRT(数字)"
+        },
+        "sum": {
+            "example": "SUM({语文成绩},{数学成绩}, {英语成绩})返回三门课程的总分",
+            "intro": "SUM函数可以获取一组数值的总和",
+            "usage": "SUM(数字1,数字2,...)"
+        },
+        "sumproduct": {
+            "example": "SUMPRODUCT([1,2,3],[0.1,0.2,0.3])返回1.4，也就是 1×0.1 + 2×0.2 + 3×0.3的值",
+            "intro": "SUMPRODUCT函数可以将数组间对应的元素相乘，并返回乘积之和，适用于加权求和",
+            "usage": "SUMPRODUCT(数组,数组...)"
+        },
+        "systime": {
+            "intro": "SYSTIME函数可以获取当前服务器时间",
+            "usage": "SYSTIME()"
+        },
+        "text": {
+            "example": "TEXT(3.1415)返回'3.1415'",
+            "intro": "TEXT函数可以将数字转化成文本",
+            "usage": "TEXT(数字)"
+        },
+        "textFunc": "文本函數",
+        "thousands": {
+            "intro": "THOUSANDS 數字千分位"
+        },
+        "time": {
+            "intro": "TIME函数可以返回特定时间的十进制数字",
+            "usage": "TIME(时_数字,分_数字,秒_数字)"
+        },
+        "timestamp": {
+            "intro": "TIMESTAMP函数可以将日期对象转换成时间戳。",
+            "usage": "TIMESTAMP(日期)"
+        },
+        "today": {
+            "intro": "TODAY函数可以返回今天",
+            "today.usage": "TODAY()"
+        },
+        "trim": {
+            "example": "TRIM('   流辰   ')返回'流辰'",
+            "intro": "TRIM函数可以删除文本首尾的空格",
+            "usage": "TRIM(文本)"
+        },
+        "true": {
+            "intro": "TRUE函数返回布尔值true",
+            "usage": "TRUE()"
+        },
+        "upper": {
+            "example": "UPPER('jayz')返回'JAYZ'",
+            "intro": "UPPER函数可以将一个文本中的所有小写字母转换为大写字母",
+            "usage": "UPPER(文本)"
+        },
+        "uuid": {
+            "intro": "UUID函数随机码生成器。可适用于随机流水号的使用场景等",
+            "usage": "UUID()"
+        },
+        "value": {
+            "example": "VALUE('3.1415')返回3.1415",
+            "intro": "VALUE函數可以將文本轉化為數字",
+            "usage": "VALUE(文本)"
+        },
+        "weeknum": {
+            "intro": "WEEKNUM函数可以返回指定日期在当年是第几周",
+            "usage": "WEEKNUM(指定日期)"
+        },
+        "xor": {
+            "example": "XOR({语文成绩}>90,{数学成绩}>90)，如果两门成绩都>90,返回false；如果两门成绩都<90，返回false；如果其中一门>90，另外一门<90，返回true",
+            "intro": "XOR函数可以返回所有参数的异或值",
+            "usage": "XOR(逻辑表达式1, 逻辑表达式2,...)"
+        },
+        "year": {
+            "intro": "YEAR函数可以返回某日期的年份",
+            "usage": "YEAR(时间戳)"
+        }
+    },
+    "layout": {
+        "header-aside": {
+            "header-error-log": {
+                "empty": "沒有日誌或異常",
+                "logError": " {logLength} 條日誌 |包含 {logLengthError} 個異常",
+                "logInfo": "{logLength} 條日誌",
+                "table": {
+                    "empty-text": "暫無日誌信息",
+                    "label": {
+                        "component": "觸發組件",
+                        "message": "信息",
+                        "more": "查看詳細信息",
+                        "time": "時間",
+                        "url": "觸發頁面"
+                    }
+                },
+                "type": {
+                    "exception": "異常",
+                    "log": "日誌"
+                },
+                "upload": {
+                    "button": "上傳"
+                }
+            },
+            "header-message": {
+                "details": "信息明細",
+                "empty": "暫無消息",
+                "message-count": "內部消息({messageCount}條)",
+                "viewmore": "查看更多"
+            },
+            "header-search": {
+                "close": "關閉",
+                "panel": "喚醒搜索面板",
+                "placeholder": "搜索頁面",
+                "press": "按",
+                "tip": "您可以使用快捷鍵"
+            },
+            "header-setting": {
+                "size": {
+                    "default": "默認",
+                    "medium": "中",
+                    "mini": "最小",
+                    "small": "小"
+                },
+                "theme": {
+                    "chester": "Chester",
+                    "element": "Element",
+                    "ibps": "經典",
+                    "line": "簡約線條",
+                    "star": "流星",
+                    "status": {
+                        "activate": "已激活",
+                        "select": "使用"
+                    },
+                    "tomorrow-night-blue": "深夜藍(vsCode)",
+                    "violet": "紫羅蘭"
+                }
+            },
+            "menu-item": {
+                "label-default": "未命名菜單"
+            },
+            "menu-side": {
+                "empty": "沒有側欄菜單"
+            },
+            "tags": {
+                "close": "關閉",
+                "closeAll": "關閉所有",
+                "closeLeft": "關閉左側",
+                "closeOther": "關閉其它",
+                "closeRight": "關閉右側"
+            }
+        }
+    },
+    "navbar": {
+        "changePassword": "修改密碼",
+        "color": "主題色",
+        "dashboard": "首頁",
+        "exitFullscreen": "退出全屏",
+        "exitSwitchUser": "退出切換用戶",
+        "fullscreen": "全屏",
+        "language": "語言",
+        "lockScreen": "鎖屏",
+        "logo": {
+            "title": "IBPS 開發平台"
+        },
+        "logout": "註銷",
+        "setting": "整體風格設置",
+        "size": "尺寸大小",
+        "switchEnvironment": "切換環境",
+        "switchTenant": "",
+        "theme": "自定義主題",
+        "userInfo": "用戶信息",
+        "welcome": "歡迎您"
+    },
+    "notify": {
+        "special": {
+            "showLog": {
+                "message": "完整的日誌內容已經打印到控制台",
+                "title": "日誌詳情"
+            },
+            "upload": {
+                "error": {
+                    "message": "數據上傳失敗",
+                    "title": "上傳失敗"
+                },
+                "start": {
+                    "message": "正在上傳數據，請稍後",
+                    "title": "開始上傳"
+                },
+                "success": {
+                    "message": "數據上傳成功",
+                    "title": "上傳成功"
+                }
+            }
+        }
+    },
+    "platform": {
+        "org": {
+            "employee": {
+                "button": {
+                    "actived": "激活",
+                    "changePassword": "重置密碼",
+                    "disable": "禁用",
+                    "switchUser": "切換用戶"
+                },
+                "change-password": {
+                    "newPassword": "修改密碼",
+                    "primitivePassword": "原始密碼",
+                    "repeatPassword": "重複密碼",
+                    "reset": "還原默認",
+                    "resetPassword": "重置密碼",
+                    "title": "修改密碼"
+                },
+                "prop": {
+                    "account": "帳號",
+                    "gender": "性別",
+                    "name": "姓名",
+                    "orgPath": "歸屬組織路徑",
+                    "status": "狀態",
+                    "wcAccount": "企業微信賬戶"
+                },
+                "title": "員工"
+            },
+            "level": {
+                "constants": {
+                    "type": {
+                        "org": "機構",
+                        "position": "崗位"
+                    }
+                },
+                "prop": {
+                    "level": "級別數值",
+                    "name": "名稱",
+                    "type": "參與者類型"
+                },
+                "title": "等級"
+            }
+        },
+        "saas": {
+            "tenant": {
+                "constants": {
+                    "button": {
+                        "assert": "維護租戶",
+                        "createSpace": "創建空間",
+                        "delSpace": "刪除空間",
+                        "disabled": "禁用",
+                        "dropSpace": "",
+                        "enabled": "啟用",
+                        "error": "",
+                        "maintainSpace": ""
+                    },
+                    "status": {
+                        "DISABLED": "禁用",
+                        "ENABLED": "啟用",
+                        "PASSED": "通過",
+                        "REFUSED": "拒絕",
+                        "WAIT": "待審批"
+                    },
+                    "title": {
+                        "created": "",
+                        "pending": "",
+                        "spaceTitle": ""
+                    }
+                },
+                "prop": {
+                    "account": "賬號",
+                    "approveStatus": "審批狀態",
+                    "code": "租戶別名",
+                    "createTime": "",
+                    "dsAlias": "",
+                    "email": "郵箱",
+                    "name": "租戶名稱",
+                    "parentName": "主租戶",
+                    "providerId": "",
+                    "scale": "租戶規模",
+                    "schema": "",
+                    "schemaStatus": "空間狀態",
+                    "status": "租戶狀態",
+                    "tenantId": ""
+                },
+                "title": "租戶"
+            }
+        }
+    },
+    "plugins": {
+        "api-base-url": {
+            "button": {
+                "confirm": "確認",
+                "ok": "好"
+            },
+            "constants": {
+                "env": {
+                    "dev": "開發環境",
+                    "front": "前端開發環境",
+                    "mock": "Mock開發環境",
+                    "production": "生產環境",
+                    "staging": "集成環境",
+                    "test": "測試環境"
+                },
+                "type": {
+                    "non-single": "非單應用",
+                    "single": "單應用"
+                }
+            },
+            "notSingleApp": "非單應用",
+            "or": "或者",
+            "singleApp": "單應用",
+            "title": "切換環境"
+        }
+    },
+    "route": {
+        "dashboard": "首頁",
+        "error401": "401- 未授權",
+        "error403": "403-權限不足",
+        "error404": "404-頁面不存在",
+        "forget": "忘記密碼",
+        "locking": "鎖屏",
+        "login": "登錄",
+        "register": "註冊賬號",
+        "systemSelect": "選擇子系統",
+        "untitled": "未命名"
+    },
+    "system": {
+        "lock": {
+            "locked": "已鎖定",
+            "placeholder": "密碼同登錄密碼",
+            "tip": "密碼錯誤,請重新輸入。如果忘了密碼,請與管理員聯繫!",
+            "unlock": "解鎖"
+        },
+        "login": {
+            "account": "",
+            "backLogin": "返回",
+            "capsTooltip": "大寫鎖定已開啟",
+            "code": "請輸入驗證碼",
+            "codeCorrect": "請輸入正確的驗證碼.",
+            "codeLength": "驗證碼長度為6位",
+            "company": "公司名稱",
+            "companyCode": "企業編碼",
+            "email": "電子郵箱",
+            "forget": "忘記密碼",
+            "fullName": "姓名/稱呼",
+            "gender": {
+                "female": "女",
+                "male": "男"
+            },
+            "logIn": "登錄",
+            "logOut": "註銷",
+            "method": {
+                "smsCode": "短信驗證碼",
+                "thirdparty": "第三方授權登錄",
+                "userPassword": "用戶密碼"
+            },
+            "mobile": "請輸入手機號",
+            "mobileCorrect": "請正確輸入手機號碼",
+            "msgInit": "發送驗證碼",
+            "msgInitCorrect": "",
+            "msgScuccess": "{time}秒後重發",
+            "password": "請輸入密碼",
+            "passwordCorrect": "請輸入至少5位的密碼.",
+            "qq": "QQ",
+            "register": "註冊賬號",
+            "registration": "註冊",
+            "remember": "記住賬號",
+            "resetPassword": "重置密碼",
+            "selectSystem": "選擇子系統",
+            "selectTenant": "",
+            "street": "詳細地址",
+            "tenantRegister": "企業註冊",
+            "title": "IBPS 平台",
+            "userLogin": "用戶登錄",
+            "username": "請輸入用戶名",
+            "usernameCorrect": "請輸入正確的用戶名.",
+            "validmsgInit": "",
+            "wechat": "微信"
+        },
+        "logout": {
+            "cancelButtonText": "放棄",
+            "confirmButtonText": "確定註銷",
+            "message": "註銷當前賬戶嗎? 打開的標籤頁和用戶設置將會被保存。",
+            "title": "確認操作"
+        }
+    },
+    "validate": {
+        "boolean": "只能是布爾值",
+        "date": "請輸入一合法的日期",
+        "email": "請輸入正確郵箱格式.",
+        "float": "只能是浮點數",
+        "idcard": "請輸入正確的身份證號.",
+        "integer": "只能是整數的數字",
+        "key": "只能為字母開頭,允許字母、數字和下劃線",
+        "mobile": {
+            "empty": "手機號不能為空",
+            "format": "手機號碼格式不正確",
+            "length": "手機號碼長度不為11位"
+        },
+        "number": "只能包含數字字符",
+        "phone": "請輸入正確的手機號碼.",
+        "regexp": "請輸入正確格式",
+        "required": "必填",
+        "telephone": "請輸入正確的電話號碼.",
+        "url": "請輸入正確的url地址",
+        "valiAccount": "",
+        "zip": "請輸入正確郵政編碼."
+    }
+}
