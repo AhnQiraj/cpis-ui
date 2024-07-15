@@ -1,24 +1,10 @@
-# platformbase
+# PlatformBase
+0.0.1为初版，0.0.1可以使用npm，从0.1.0 开始使用pnpm
+## Getting Started
 
-## Project setup
+### Install
+```bash
+touch .npmrc
+echo "@cpis:registry=http://172.169.50.40:5000/" > .npmrc
+pnpm add @cpis/platformbase # or npm install @cpis/cupubase
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
