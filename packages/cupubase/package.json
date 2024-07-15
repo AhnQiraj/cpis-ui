@@ -12,30 +12,23 @@
     "start": "vue-cli-service build --target lib --name cupubase --dest lib src/index.js --watch"
   },
   "dependencies": {
-    "@riophae/vue-treeselect": "^0.4.0",
-    "babel-plugin-component": "^1.1.1",
     "core-js": "^3.8.3",
     "d2-crud-plus": "^1.16.7",
     "d2-crud-x": "^2.10.5",
     "d2p-extends": "^1.2.3",
     "dom-to-image": "^2.6.0",
-    "echarts": "^5.4.0",
-    "element-resize-detector": "^1.2.4",
     "element-ui": "^2.15.10",
     "jquery": "^3.5.1",
-    "js-cookie": "^2.2.1",
     "lodash": "^4.17.19",
     "moment": "^2.29.4",
     "pinyin4js": "^1.3.18",
     "qrcodejs2": "^0.0.2",
     "vue": "^2.6.11",
     "vue-i18n": "8.27.2",
-    "vue-router": "^3.5.1",
-    "vuedraggable": "^2.24.0",
-    "vuex": "^3.6.2",
-    "xss": "^1.0.8"
+    "vuedraggable": "^2.24.0"
   },
   "devDependencies": {
+    "babel-plugin-component": "^1.1.1",
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
     "@vue/cli-plugin-babel": "~5.0.0",
