@@ -1,5 +1,4 @@
 import Utils from '@cupu/utils/util'
-import common from '@cupu/constants/common.js'
 const action = {
   formatParams: function (params, pagination, sorts) {
     const results = {}
@@ -18,8 +17,8 @@ const action = {
     }
     if (pagination) {
       results.requestPage = {
-        pageNo: pagination.page || common.PAGE,
-        limit: pagination.limit || common.LIMIT
+        pageNo: pagination.page || 20,
+        limit: pagination.limit || 1
       }
       if (Utils.isNotEmpty(pagination.totalCount)) {
         // mock 数据时候要传
