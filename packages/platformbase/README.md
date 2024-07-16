@@ -6,5 +6,5 @@
 ```bash
 touch .npmrc
 echo "@cpis:registry=http://172.169.50.40:5000/" > .npmrc
-pnpm add @cpis/platformbase # or npm install @cpis/cupubase
+pnpm add @cpis/platformbase # or npm install @cpis/platformbase
 ```

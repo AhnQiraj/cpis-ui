@@ -18,7 +18,6 @@
     "d2p-extends": "^1.2.3",
     "dom-to-image": "^2.6.0",
     "element-ui": "^2.15.10",
-    "jquery": "^3.5.1",
     "lodash": "^4.17.19",
     "moment": "^2.29.4",
     "pinyin4js": "^1.3.18",
@@ -28,13 +27,13 @@
     "vuedraggable": "^2.24.0"
   },
   "devDependencies": {
+    "@cpis/prettier-config": "^1.0.0",
     "babel-plugin-component": "^1.1.1",
     "@babel/core": "^7.12.16",
-    "@babel/eslint-parser": "^7.12.16",
+    "@babel/eslint-parser": "^7.24.7",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
-    "babel-eslint": "^10.0.3",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
@@ -49,6 +48,7 @@
     "webpack": "^4.46.0",
     "webpack-cli": "^4.10.0"
   },
+  "prettier": "@cpis/prettier-config",
   "author": {
     "name": "cpis",
     "email": "cpis@cpeam.com"
@@ -58,5 +58,6 @@
   },
   "eslintIgnore": [
     "cupubase.umd.js"
-  ]
+  ],
+  "packageManager": "pnpm@9.4.0+sha512.f549b8a52c9d2b8536762f99c0722205efc5af913e77835dbccc3b0b0b2ca9e7dc8022b78062c17291c48e88749c70ce88eb5a74f1fa8c4bf5e18bb46c8bd83a"
 }

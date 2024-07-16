@@ -37,7 +37,6 @@
     "js-cookie": "^3.0.1",
     "lodash": "^4.17.21",
     "pinyin4js": "^1.3.18",
-    "redent": "^3.0.0",
     "tinymce": "5.2.0",
     "vue": "^2.6.14",
     "vue-aplayer": "^1.6.1",
@@ -49,6 +48,7 @@
     "xss": "^1.0.14"
   },
   "devDependencies": {
+    "@cpis/prettier-config": "^1.0.0",
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -75,6 +75,7 @@
     "name": "cpis",
     "email": "cpis@cpeam.com"
   },
+  "prettier": "@cpis/prettier-config",
   "publishConfig": {
     "registry": "http://172.169.50.40:5000/"
   },
