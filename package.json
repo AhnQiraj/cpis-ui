@@ -8,7 +8,7 @@
     "@cpis/prettier-config": "^1.0.0",
     "prettier": "^2.4.1"
   },
-  "script": {
+  "scripts": {
     "changeset": "changeset",
     "vp": "changeset version",
     "release": "pnpm build && pnpm release:only",
