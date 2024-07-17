@@ -27,7 +27,6 @@
     "vuedraggable": "^2.24.0"
   },
   "devDependencies": {
-    "@cpis/prettier-config": "^1.0.0",
     "babel-plugin-component": "^1.1.1",
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.24.7",
@@ -41,14 +40,12 @@
     "mini-css-extract-plugin": "^2.6.1",
     "node-polyfill-webpack-plugin": "^2.0.1",
     "optimize-css-assets-webpack-plugin": "^6.0.1",
-    "prettier": "^2.4.1",
     "sass": "^1.32.8",
     "sass-loader": "7.3.1",
     "vue-template-compiler": "^2.6.14",
     "webpack": "^4.46.0",
     "webpack-cli": "^4.10.0"
   },
-  "prettier": "@cpis/prettier-config",
   "author": {
     "name": "cpis",
     "email": "cpis@cpeam.com"

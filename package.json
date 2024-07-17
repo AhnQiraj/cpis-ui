@@ -6,6 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "devDependencies": {
+    "@cpis/prettier-config": "^1.0.0",
+    "prettier": "^2.4.1"
+  },
+  "publishConfig": {
+    "registry": "http://172.169.50.40:5000/"
+  },
+  "prettier": "@cpis/prettier-config",
   "keywords": [],
   "author": "",
   "license": "ISC"

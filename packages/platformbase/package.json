@@ -48,7 +48,6 @@
     "xss": "^1.0.14"
   },
   "devDependencies": {
-    "@cpis/prettier-config": "^1.0.0",
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.24.7",
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -61,8 +60,6 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.0.3",
     "optimize-css-assets-webpack-plugin": "^6.0.1",
-    "prettier": "^2.4.1",
-    "rollup": "^3.28.1",
     "sass": "^1.32.8",
     "sass-loader": "7.3.1",
     "uglifyjs-webpack-plugin": "^2.2.0",
@@ -74,7 +71,6 @@
     "name": "cpis",
     "email": "cpis@cpeam.com"
   },
-  "prettier": "@cpis/prettier-config",
   "publishConfig": {
     "registry": "http://172.169.50.40:5000/"
   },
