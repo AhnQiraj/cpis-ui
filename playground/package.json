@@ -4,10 +4,25 @@
   "private": true,
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-env": "^7.25.3",
+    "@storybook/addon-essentials": "^8.2.7",
+    "@storybook/addon-interactions": "^8.2.7",
+    "@storybook/addon-links": "^8.2.7",
+    "@storybook/blocks": "^8.2.7",
+    "@storybook/testing-library": "^0.2.2",
+    "@storybook/vue": "^7.6.17",
+    "@storybook/vue-webpack5": "^7.6.17",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "storybook": "^8.2.7",
+    "vue-loader": "^15.11.1"
+  },
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  }
 }
