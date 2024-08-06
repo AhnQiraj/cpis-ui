@@ -19,4 +19,12 @@ pnpm add @cpis/cupubase # or npm install @cpis/cupubase
 - js-cookie 项目中没有使用 用来操作cookie
 - @vue/cli-plugin-router 组件库不需要
 - @vue/cli-plugin-vuex 组件库不需要
+- @vue/cli-plugin-eslint 组件库不需要
+- eslint 组件库不需要
+- eslint-config-prettier 组件库不需要
+- eslint-plugin-prettier 组件库不需要
+- eslint-plugin-vue 组件库不需要
+- @vue/cli-service 组件库不需要
+- webpack 组件库改用vite
+- webpack-cli  组件库改用vit
 ```
