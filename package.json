@@ -15,7 +15,7 @@
     "release:only": "changeset publish"
   },
   "publishConfig": {
-    "registry": "http://172.169.50.40:5000/"
+    "registry": "http://172.169.50.28:5000/"
   },
   "prettier": "@cpis/prettier-config",
   "keywords": [],
