@@ -5,7 +5,7 @@
 ### Install
 ```bash
 touch .npmrc
-echo "@cpis:registry=http://172.169.50.40:5000/" > .npmrc
+echo "@cpis:registry=http://172.169.50.28:5000/" > .npmrc
 pnpm add @cpis/cupubase # or npm install @cpis/cupubase
 ```
 ### 依赖删除
