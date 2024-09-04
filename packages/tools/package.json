@@ -2,16 +2,41 @@
   "name": "@cpis/tools",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "build": "vite build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "vue-i18n": "^8.24.2",
-    "axios": "^1.4.0"
+    "axios": "^1.4.0",
+    "vue-i18n": "^8.24.2"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.umd.js",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
+  "devDependencies": {
+    "@tsconfig/node18": "^18.2.4",
+    "@vue/tsconfig": "^0.5.1",
+    "typescript": "^5.5.4",
+    "vue": "^3.4.38",
+    "vue-tsc": "^2.0.29",
+    "vite-plugin-dts": "^4.0.3"
+  },
+  "publishConfig": {
+    "registry": "http://172.169.50.28:5000/"
   }
 }

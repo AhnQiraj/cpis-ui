@@ -24,43 +24,46 @@ type RequestOption = {
   baseURL: string;
   url: string;
 }
+
 type Props = {
-  locale: Locale;
-  module: Module;
-  requestOption?: RequestOption;
+  requestOption: RequestOption;
 }
 
 class I18n extends VueI18n {
   requestOption?: RequestOption  // 声明类中的 requestOption 属性
-  _locale: Locale
-
-  constructor(props: Props) {
+  constructor(props: Props & VueI18n.I18nOptions) {
     super({
       locale: props.locale,
       fallbackLocale: props.locale
     })
-    const { url, baseURL } = props.requestOption || {}
-    this._locale = props.locale
+    const { url = '/platform/v3/i8n/api/getI18nValue', baseURL } = props.requestOption
     this.requestOption = {
       baseURL: baseURL,
-      url: url || '/platform/v3/i8n/api/getI18nValue'
+      url: url
     }
   }
 
-  loadLocalAsync(locale: Locale, module: Module) {
+  loadLocalAsync(locale: Locale, module: Module, skipMerge = true) {
     const that = this
     return axios({
       ...this.requestOption,
-      data: {
+      params: {
         locale,
         module
       }
     })
-      .then(res => res.data)
-      .then(message => that.mergeLocaleMessage(locale, message))
+      .then(res => res?.data?.data ?? '')
+      .then(message => {
+        if (skipMerge) {
+          return message
+        }
+        return that.mergeLocaleMessage(locale, message)
+
+      }).catch(() => {
+      })
   }
 
-  mergeLocaleMessage(locale, message) {
+  mergeLocaleMessage(locale: Locale, message: any) {
     super.mergeLocaleMessage(locale, message)
   }
 }
