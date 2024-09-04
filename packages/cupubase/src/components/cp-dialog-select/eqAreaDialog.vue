@@ -13,7 +13,6 @@
   </z-dialog-table>
 </template>
 <script>
-import I18n from "@cupu/i18n"
 export default {
   name: 'EqAreaDialogSelect',
   components: {},
@@ -72,12 +71,12 @@ export default {
           columns: [
             // 显示列
             {
-              title: I18n.t('common.field.primaryKey'),
+              title: this.t('common.field.primaryKey'),
               key: 'areaId',
               show: false
             },
             {
-              title: I18n.t('equipment.area.areaNo'),
+              title: this.t('equipment.area.areaNo'),
               key: 'areaNo',
               showOverflowTooltip: true
             },
