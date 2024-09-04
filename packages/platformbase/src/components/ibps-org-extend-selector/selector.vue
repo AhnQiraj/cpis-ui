@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ibps-selector v-bind="$props" :items="items" @click="handleSelectorClick" @remove="handleSelectorRemove" />
+    <ibps-selector v-bind="$props" :items="items" @click="handleSelectorClick" @remove="handleSelectorRemove" :textShowlength="textShowlength" />
     <!-- 选择器 -->
     <ibps-org-extend-selector-dialog :visible="selectorVisible" :value="selectorValue" :levelFilter="levelFilter" :hideJgbm="hideJgbm" :hideOrgId="hideOrgId"
                                      :defaultExpandAll="defaultExpandAll" :multiple="multiple"
@@ -93,6 +93,7 @@ export default {
   },
   data() {
     return {
+      textShowlength: 36,
       selectorVisible: false,
       selectorValue: this.multiple ? [] : {},
       cacheData: {},
