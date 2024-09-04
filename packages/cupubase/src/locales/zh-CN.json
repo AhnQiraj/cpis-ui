@@ -55,5 +55,20 @@
     "index": "序号",
     "business": "业务",
     "manufacturer": "生产厂商"
-  }
+  },
+  "defect": {
+    "common": {
+      "defectNo": "缺陷编号",
+      "defectCom": "缺陷描述",
+      "defectLev": "缺陷等级",
+      "locaName": "设备位置"
+    },
+    "defInfo": {
+      "skillNo": "专业",
+      "mtnTeamName": "检修班组",
+      "findperson": "发现人",
+      "mtnPerson": "负责人"
+    },
+    "chooseDf": "选择缺陷"
+   }
 }

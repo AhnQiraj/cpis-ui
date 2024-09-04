@@ -222,7 +222,7 @@ export default {
   .tools {
     padding: 5px;
     border-top: 2px solid rgb(245, 245, 245);
-    border-bottom: 2px solid rgb(245, 245, 245);
+    border-bottom: 2px solid rgb(245, 245, 245);display:none;
   }
   .search {
     padding: 5px;
@@ -235,6 +235,7 @@ export default {
   ::v-deep .el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content {
     background-color: #a9d0f5;
     width: 100%;
+    box-sizing:border-box;
   }
 }
 </style>

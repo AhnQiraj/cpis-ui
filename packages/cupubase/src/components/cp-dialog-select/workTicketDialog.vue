@@ -15,6 +15,7 @@
   </z-dialog-table>
 </template>
 <script>
+import { getLoginInfo } from '@cupu/utils/index'
 export default {
   name: 'WorkTicketDialogSelect',
   props: {
@@ -48,6 +49,7 @@ export default {
       wtTypes: [],
       depts: [],
       wtTypeObj: {},
+      userInfo: {},
       stdWOProp: {
         title: '工作票主票',
         selectionHandle: this.stdWOSelection,
@@ -81,9 +83,13 @@ export default {
       }
     }
   },
+  created() {
+    // 获得当前人的信息
+    this.userInfo = getLoginInfo()
+  },
   async mounted() {
     await this.queryWtType()
-    this.queryDeptName()
+    this.depts = this.userInfo.stationList
   },
   methods: {
     /**
@@ -163,18 +169,6 @@ export default {
      */
     onStdWOOk(seleted) {
       this.$emit('onDTableOk', seleted)
-    },
-    // 查询场站
-    async queryDeptName() {
-      let _this = this
-      let res = await window.apiList['common/index'].queryDataByKey({
-        parameters: [{ key: 'key', value: 'cz' }]
-      })
-      let list = res.data.dataResult.map(item => ({
-        value: item.ID_,
-        label: item.NAME_
-      }))
-      _this.depts = list
     },
     /**
      * 查询工作票类型
