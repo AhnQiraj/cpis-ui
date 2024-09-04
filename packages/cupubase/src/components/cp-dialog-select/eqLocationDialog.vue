@@ -81,7 +81,7 @@ export default {
       selectData: {},
       // 弹出属性
       locationDialogProp: {
-        title: this.title,
+        title: this.$t('baseCommon.component.locaSelect'),
         selectionHandle: this.selectionHandle,
         key: 'locaId',
         toolbarProp: {
