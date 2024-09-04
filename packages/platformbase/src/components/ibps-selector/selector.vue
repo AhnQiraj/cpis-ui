@@ -52,7 +52,7 @@ export default {
     },
     icon: {
       type: String,
-      default: 'el-icon-plus'
+      default: 'el-icon-search'
     },
     disabledIcon: {
       type: Boolean,
@@ -103,7 +103,9 @@ export default {
       return this.hasValue ? ' ' : ''
     },
     prefixIconClass() {
-      let classes = ['el-selector__caret', 'el-input__icon']
+      // let classes = ['el-selector__caret', 'el-input__icon']
+      // 为保持组件样式一致，上述样式注释
+      let classes = []
       if ((this.disabled || this.readonly) && !this.disabledIcon) {
         return
       }
