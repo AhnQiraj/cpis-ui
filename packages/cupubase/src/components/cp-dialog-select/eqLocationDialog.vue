@@ -15,12 +15,12 @@
           <ibps-org-selector v-model="locationDialogProp.toolbarProp.searchData.maintainDeptNo" :placeholder="$t('baseCommon.message.pleaseSelect', { title: $t('equipment.common.mainDept') })" :multiple="false" />
         </template>
       </el-form-item>
-      <el-form-item :label="$t('equipment.common.manObj')" prop="manageObjName">
+      <!-- <el-form-item :label="$t('equipment.common.manObj')" prop="manageObjName">
         <el-input v-model="locationDialogProp.toolbarProp.searchData.manageObjName" :placeholder="$t('baseCommon.message.pleaseSelect', { title: $t('equipment.common.manObj') })" @focus="manageObjectHandleDialog">
           <i slot="suffix" class="el-icon-search" @click="manageObjectHandleDialog" />
         </el-input>
         <manage-object-dialog-select ref="manageObjectDialogRef" :title="$t('baseCommon.buttons.choice', { title: $t('equipment.common.manObj') })" :multiple-select="false" :init-param="initParam" :father-method="onManageObjectTableOk" :selected-ids="locationDialogProp.toolbarProp.searchData.manageObjId" :selected-names="locationDialogProp.toolbarProp.searchData.manageObjName" />
-      </el-form-item>
+      </el-form-item> -->
       <el-form-item :label="$t('equipment.common.eqType')" prop="eqTypeName">
         <el-input v-model="locationDialogProp.toolbarProp.searchData.eqTypeName" :placeholder="$t('baseCommon.message.pleaseSelect', { title: $t('equipment.common.eqType') })" @focus="eqTypeHandleDialog">
           <i slot="suffix" class="el-icon-search" @click="eqTypeHandleDialog" />
@@ -37,12 +37,12 @@
 </template>
 <script>
 import { getLoginInfo } from '@cupu/utils/index'
-import ManageObjectDialogSelect from './eqManageObjectDialog.vue'
+// import ManageObjectDialogSelect from './eqManageObjectDialog.vue'
 import EqTypeDialogSelect from './eqTypeDialog.vue'
 export default {
   name: 'EqLocationDialogSelect',
   components: {
-    ManageObjectDialogSelect,
+    // ManageObjectDialogSelect,
     EqTypeDialogSelect
   },
   props: {
