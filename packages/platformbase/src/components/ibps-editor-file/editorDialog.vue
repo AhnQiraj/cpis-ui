@@ -8,7 +8,7 @@
     :title="title"
     @close="closeDialog"
   >
-    <ibps-editor-file v-if="dialogVisible" :disabled="false" :min-height="610" :max-height="610" :data="data" @change="changeData"></ibps-editor-file>
+    <ibps-editor-file v-if="dialogVisible" :disabled="false" :min-height="610" :max-height="610" :data="data" :watermark="watermark" @change="changeData"></ibps-editor-file>
     <span slot="footer" class="dialog-footer">
       <el-button type="primary" @click="closeDialog('confirm')">{{ $t('baseCommon.buttons.confirm') }}</el-button>
       <el-button @click="closeDialog">{{ $t('baseCommon.buttons.cancel') }}</el-button>
@@ -34,6 +34,10 @@ export default {
     visible: {
       type: Boolean,
       default: false
+    },
+    watermark: {
+      type: Boolean,
+      default: true
     }
   },
   data() {

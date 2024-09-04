@@ -7,7 +7,7 @@
       </div>
     </div>
     <!-- 编辑弹窗 -->
-    <editor-dialog :visible="dialogVisible" :title="title" :data="content" @confirm="confirmDialog" @close="closeDialog"></editor-dialog>
+    <editor-dialog :visible="dialogVisible" :title="title" :data="content" :watermark="watermark" @confirm="confirmDialog" @close="closeDialog"></editor-dialog>
   </div>
 </template>
 <script>
@@ -45,7 +45,7 @@ import 'tinymce/plugins/autoresize'
 // 扩展插件
 // import "../assets/tinymce/plugins/lineheight/plugin";
 import EditorDialog from './editorDialog.vue'
-import { EXTEND_URL, PLATFORM_URL } from '@platform/api/baseUrl'
+import { EXTEND_URL, PLATFORM_URL, SYSTEM_URL } from '@platform/api/baseUrl'
 import * as utils from '@platform/utils/index'
 import * as imageConversion from 'image-conversion'
 export default {
@@ -104,6 +104,10 @@ export default {
     data: {
       type: String,
       default: ''
+    },
+    watermark: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -161,7 +165,11 @@ export default {
               let xhr, formData
               xhr = new XMLHttpRequest()
               xhr.withCredentials = false
-              xhr.open('POST', window.config.VUE_APP_BASE_API + '/' + EXTEND_URL() + '/file/uploadExtend')
+              if (this.watermark) {
+                xhr.open('POST', window.config.VUE_APP_BASE_API + '/' + EXTEND_URL() + '/file/uploadExtend')
+              } else {
+                xhr.open('POST', window.config.VUE_APP_BASE_API + '/' + SYSTEM_URL() + '/file/upload')
+              }
               xhr.onload = function () {
                 let json
                 if (xhr.status !== 200) {
