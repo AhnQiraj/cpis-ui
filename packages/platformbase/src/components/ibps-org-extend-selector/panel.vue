@@ -214,6 +214,11 @@ export default {
           console.log("loadTreeNode 返回：", res);
           this.loading = false
           const arr = JSON.parse(JSON.stringify(res.data))
+          for (let index=0;index<arr.length;index++) {
+            if(arr[index].id == '0' || !arr[index].selectable) {
+              arr[index].disabled = true;
+            }
+          }
           if (this.isUseScope && type !== '1') {
             let treeData
             if (this.$utils.isEmpty(node.data)) {
