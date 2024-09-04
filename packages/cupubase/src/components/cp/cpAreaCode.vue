@@ -18,7 +18,7 @@
               </div>
             </div>
             <div style="position: relative;padding: 20px;background: #fff;box-sizing: border-box;">
-              <img :src="item.code" style="position: absolute;left: 50%;top: 50%;width: 64px;height: 64px;margin-top: -32px;margin-left: -32px;background: #fff;padding: 8px;" />
+              <img :src="item.code" style="position: absolute;left: 47%;top: 47%;width: 80px;height: 80px;margin-top: -32px;margin-left: -32px;background: #fff;padding: 8px;" />
               <div ref="codeItem" />
             </div>
           </div>
