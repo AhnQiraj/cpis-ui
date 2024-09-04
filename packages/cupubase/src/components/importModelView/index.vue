@@ -143,14 +143,23 @@ export default {
             // 工程导入
             importPromise = window.apiList['engineering/index'].importSync(cpisDiTaskPo);
           }else if (this.bizCode.startsWith('mp_')) {            
-			      // 测点导入
-			      importPromise = window.apiList['calculation/index'].importSync(cpisDiTaskPo);
+			// 测点导入
+			importPromise = window.apiList['calculation/index'].importSync(cpisDiTaskPo);
           } else if (this.bizCode.startsWith("ins_")) {
             // 巡点检导入
             importPromise = window.apiList['inspection/index'].importSync(cpisDiTaskPo);
           } else if (this.bizCode.startsWith("exam_")) {
             // 考试导入
             importPromise = window.apiList['examination/index'].importSync(cpisDiTaskPo);
+          }else if (this.bizCode.startsWith('im_express')) {            
+			// 指标表达式导入
+			importPromise = window.apiList['calculation/index'].imExpressImportSync(cpisDiTaskPo);
+          }else if (this.bizCode.startsWith('xn_express')) {            
+			// 性能计算表达式导入
+			importPromise = window.apiList['calculation/index'].xnExpressImportSync(cpisDiTaskPo);
+          }else if (this.bizCode.startsWith('am_rule')) {            
+			// 实时告警规则导入
+			importPromise = window.apiList['calculation/index'].amRuleImportSync(cpisDiTaskPo);
           }
 
           if (importPromise) {
