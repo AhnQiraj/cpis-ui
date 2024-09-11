@@ -1,6 +1,6 @@
 # @cpis/cupubase
 
-## 0.1.1
+## 0.1.0 (2024-08-30)
 
 ### Patch Changes
 
