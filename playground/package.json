@@ -1,28 +1,24 @@
 {
-  "name": "@cpis/playground",
+  "name": "playground",
   "version": "1.0.0",
-  "private": true,
   "description": "",
   "main": "index.js",
+  "scripts": {
+    "story:dev": "histoire dev",
+    "story:build": "histoire build",
+    "story:preview": "histoire preview"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@babel/preset-env": "^7.25.3",
-    "@storybook/addon-essentials": "^8.2.7",
-    "@storybook/addon-interactions": "^8.2.7",
-    "@storybook/addon-links": "^8.2.7",
-    "@storybook/blocks": "^8.2.7",
-    "@storybook/testing-library": "^0.2.2",
-    "@storybook/vue": "^7.6.17",
-    "@storybook/vue-webpack5": "^7.6.17",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "storybook": "^8.2.7",
-    "vue-loader": "^15.11.1"
+  "dependencies": {
+    "element-ui": "^2.15.10",
+    "vue": "^2.7.16"
   },
-  "scripts": {
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+  "devDependencies": {
+    "@histoire/plugin-vue2": "^0.17.17",
+    "@vitejs/plugin-vue2": "^2.3.1",
+    "histoire": "^0.17.17",
+    "vite": "^5.4.3"
   }
 }
