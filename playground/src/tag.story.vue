@@ -1,29 +1,31 @@
 <template>
   <Story title="标签（Tag）" :layout="{ type: 'grid', width: 200 }">
     <Variant title="拟稿">
-      <Tag type="warning">拟稿</Tag>
+      <cpis-tag type="warning">拟稿</cpis-tag>
     </Variant>
     <Variant title="提交">
-      <Tag>提交</Tag>
+      <cpis-tag>提交</cpis-tag>
     </Variant>
     <Variant title="超期">
-      <Tag type="danger">超期</Tag>
+      <cpis-tag type='s'>超期</cpis-tag>
     </Variant>
     <Variant title="完成">
-      <Tag type="success">完成</Tag>
+      <cpis-tag type="success">完成</cpis-tag>
     </Variant>
     <Variant title="取消">
-      <Tag type="info">取消</Tag>
+      <cpis-tag type="info">取消</cpis-tag>
+    </Variant>
+    <Variant title="取消">
+      <cpis-tag type="info">取消</cpis-tag>
     </Variant>
   </Story>
 </template>
 <script>
-import { Tag } from 'element-ui'
+import CpisTag from '../../packages/cpis-ui/packages/tag/index.js'
 import 'element-ui/lib/theme-chalk/index.css'
-
 export default {
   components: {
-    Tag
+    CpisTag
   }
 }
 </script>
