@@ -1,17 +1,17 @@
 import Tag from '../packages/tag/index.js'
 import Button from '../packages/button/index.js'
+import 'element-ui/lib/theme-chalk/index.css'
 
 const components = [Tag, Button]
 
 const install = function (Vue, opts = {}) {
-  components.forEach((component) => {
+  components.forEach(component => {
     Vue.component(component.name, component)
   })
   /* istanbul ignore if */
   if (typeof window !== 'undefined' && window.Vue) {
-    install(window.Vue);
+    install(window.Vue)
   }
-
 }
 
 export default {
