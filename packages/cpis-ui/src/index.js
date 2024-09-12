@@ -1,6 +1,5 @@
 import Tag from '../packages/tag/index.js'
 import Button from '../packages/button/index.js'
-import 'element-ui/lib/theme-chalk/index.css'
 
 const components = [Tag, Button]
 

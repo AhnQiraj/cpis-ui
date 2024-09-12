@@ -3,16 +3,21 @@
   "private": false,
   "version": "1.0.0",
   "type": "module",
+  "main": "lib/src/index.esm.js",
   "files": [
-    "dist"
+    "lib",
+    "src",
+    "packages",
+    "types",
+    "web-types.json"
   ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
-  "dependencies": {
-    "vue": "^2.7.16"
+  "peerDependencies": {
+    "vue": "^2.5.17"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.2",

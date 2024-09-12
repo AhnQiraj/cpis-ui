@@ -1,4 +1,4 @@
-import CpisTag from './src/tag.vue';
+import CpisTag from './src/tag.jsx';
 
 /* istanbul ignore next */
 CpisTag.install = function(Vue) {
