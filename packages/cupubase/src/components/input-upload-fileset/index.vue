@@ -94,6 +94,7 @@ export default {
   },
   data() {
     return {
+      createId: '',
       dialogVisible: false,
       dialogVisiblePPT: false,
       fileHomeVisible: false,
@@ -117,8 +118,20 @@ export default {
   },
   created() {
     this.userInfo = getLoginInfo()
+    this.createId = this.guid()
   },
   methods: {
+    guid(limit) {
+      let num = '' // 定义用户编号
+      limit = limit || 4
+      limit = limit > 6 ? 6 : limit
+      for (let i = 0; i < limit; i++) {
+        // 4位随机数，用以加在时间戳后面。
+        num += Math.floor(Math.random() * 10)
+      }
+      num = new Date().getTime() + num // 时间戳，用来生成用户编号。
+      return num
+    },
     resetFileCollId() {
       window.apiList['file/attachment'].getCollectionId().then(res => {
         if (res.state == 200) {
@@ -143,12 +156,8 @@ export default {
         return false
       }
       if (this.$utils.isEmpty(this.fileCollId)) {
-        window.apiList['file/attachment'].getCollectionId().then(res => {
-          if (res.state == 200) {
-            this.fileCollId = res.data
-            this.upFile(file)
-          }
-        })
+        this.fileCollId = this.createId
+        this.upFile(file)
       } else {
         this.upFile(file)
       }
