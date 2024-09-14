@@ -43,8 +43,8 @@ export default {
     return {
       riskLevelList: [],
       stateList: [
-        { value: 0, label: this.$t('common.field.start') },
-        { value: 1, label: this.$t('common.field.stop') }
+        { value: 1, label: this.$t('common.field.start') },
+        { value: 0, label: this.$t('common.field.stop') }
       ],
       // 弹出属性
       dangerDialogProp: {
@@ -145,7 +145,7 @@ export default {
     /**
      * 默认搜索事件
      */
-     initTableData(params) {
+    initTableData(params) {
       let par = Object.assign(params, this.initParam)
       return window.apiList['safety/index'].raRiskControlPage(par)
     },
@@ -164,7 +164,9 @@ export default {
      * 返回分页条件
      */
     onDangerDialogPaginationHandle(pagination) {
-      return { current: pagination.pageNo, size: pagination.limit }
+      return {
+        requestPage: pagination
+      }
     },
     /**
      * 处理勾选数据展示
@@ -195,7 +197,7 @@ export default {
       if (this.selectedIds != undefined && this.selectedNames != undefined) {
         let size = this.selectedIds.split(',').length
         for (let i = 0; i < size; i++) {
-          selected.data.push({ riskControlId: this.selectedIds.split(',')[i], text: this.selectedNames.split(',')[i] })
+          selected.data.push({riskControlId: this.selectedIds.split(',')[i], text: this.selectedNames.split(',')[i]})
         }
       }
       this.$refs.dangerDialogTable.open(selected)
@@ -217,7 +219,7 @@ export default {
      * 返回 对象，用于表单查询条件
      * 返回 null 不进行查询，可自定义一些处理
      */
-     treeClickNodeHandle(node) {
+    treeClickNodeHandle(node) {
       this.dangerDialogProp.toolbarProp.searchData.isRa = node.isRa
       this.dangerDialogProp.toolbarProp.searchData.treeId = node.id
       this.onDangerDialogSearch(this.dangerDialogProp.toolbarProp.searchData)
@@ -237,38 +239,49 @@ export default {
 .modelTreeTable .modelSearchTopLeft {
   width: calc(100% - 0px) !important;
 }
+
 .modelBody {
   height: 436px;
 }
+
 .modelBody .modelHead {
   margin-top: 0px;
   margin-bottom: 11px;
 }
+
 .modelTreeTable ::v-deep .el-table th.el-table__cell > .cell {
   white-space: pre !important;
 }
+
 .modelTreeTable ::v-deep .el-table .el-table__header .cell {
   line-height: 20px !important;
 }
+
 .modelTreeTable ::v-deep .el-table--small td,
 .modelBody .modelTableRow .el-table--small th {
   padding: 4px 0 !important;
 }
+
 .modelTreeTable ::v-deep .last {
   border-right: 1px solid #e6e6e6 !important;
 }
+
 .modelTreeTable ::v-deep .el-table--small th.el-table__cell {
   padding: 0 !important;
 }
+
 .modelTreeTable ::v-deep .el-table .el-table__header .cell {
   line-height: 25px !important;
 }
+
 .modelBody .modelTableRow ::v-deep .el-table col[name='gutter'] {
   display: table-column !important;
 }
+
 .modelBody .modelTableRow ::v-deep .el-table th.gutter {
   display: table-cell !important;
 }
+
 .modelBody ::v-deep .el-form-item--mini.el-form-item,
 .el-form-item--small.el-form-item {
   margin-bottom: 0px;
