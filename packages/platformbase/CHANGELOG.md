@@ -1,5 +1,11 @@
 # @cpis/platformbase
 
+## 0.1.2
+
+### Patch Changes
+
+- 富文本组件新增 `paste_postprocess` 配置项，用于处理粘贴内容。找到所有 `img` 标签，如果 `src` 含有 `ibps` 替换成空，防止外链接
+
 ## 0.1.1
 
 ### Patch Changes

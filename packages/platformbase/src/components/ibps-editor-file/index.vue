@@ -16,6 +16,7 @@ import Editor from '@tinymce/tinymce-vue'
 import 'tinymce/themes/silver/theme'
 import 'tinymce/plugins/image'
 import 'tinymce/plugins/media'
+import 'tinymce/plugins/paste'
 import 'tinymce/plugins/table'
 import 'tinymce/plugins/lists'
 import 'tinymce/plugins/contextmenu'
@@ -129,7 +130,7 @@ export default {
         min_height: this.minHeight,
         max_height: this.maxHeight,
         toolbar_mode: 'sliding',
-        plugins: 'preview searchreplace autolink directionality visualblocks visualchars fullscreen image link media template code codesample table charmap hr nonbreaking insertdatetime advlist lists wordcount imagetools textpattern autosave autoresize',
+        plugins: 'paste preview searchreplace autolink directionality visualblocks visualchars fullscreen image link media template code codesample table charmap hr nonbreaking insertdatetime advlist lists wordcount imagetools textpattern autosave autoresize',
         toolbar: 'cut copy paste pastetext | forecolor backcolor bold italic underline strikethrough link codesample | alignleft aligncenter alignright alignjustify outdent indent formatpainter | \ styleselect formatselect fontselect fontsizeselect | bullist numlist | \ table image media charmap hr pagebreak insertdatetime | fullscreen preview | code undo redo restoredraft | blockquote subscript superscript removeformat',
         content_style: 'p {margin: 5px 0;} body {overflow-y: auto !important;}',
         fontsize_formats: '12px 14px 16px 18px 24px 36px 48px 56px 72px',
@@ -188,7 +189,19 @@ export default {
               xhr.send(formData)
             })
           }
-        }
+        },
+        paste_data_images: true,  // 允许从剪贴板粘贴图片
+        paste_postprocess: (plugin, args) => {
+          const images = args.node.getElementsByTagName('img');
+          for (let i = 0; i < images.length; i++) {
+            const img = images[i];
+            const src = img.src;
+            // 替换外链
+            if (!src.includes('ibps')) {
+              img.src = '';
+            }
+          }
+        },
       }
     }
   },
