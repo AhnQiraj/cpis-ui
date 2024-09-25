@@ -11,6 +11,7 @@
           checkStrictly: true,
           expandTrigger: 'hover'
         }"
+        :placeholder="placeholder"
         @visible-change="handleVisibleChange"
         :popper-class="this.mode === 'modal' ? 'hidden' : ''"
         :filterable="true"
@@ -107,6 +108,10 @@ export default {
       type: Array,
       default: () => [],
       comment: '数据源'
+    },
+    placeholder: {
+      type: String,
+      default: '请选择'
     },
     props: {
       type: Object,
