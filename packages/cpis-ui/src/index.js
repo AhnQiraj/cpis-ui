@@ -1,7 +1,7 @@
-import Tag from '../packages/tag/index.js'
-import Button from '../packages/button/index.js'
+import CpisTag from '../packages/tag/index.js'
+import { CpisProCascader } from '../packages/cascader/index.js'
 
-const components = [Tag, Button]
+const components = [CpisTag, CpisProCascader]
 
 const install = function (Vue, opts = {}) {
   components.forEach(component => {
@@ -13,9 +13,10 @@ const install = function (Vue, opts = {}) {
   }
 }
 
+export { CpisTag, CpisProCascader, install }
 export default {
   version: '1.0.0',
   install,
-  Tag,
-  Button
+  CpisTag,
+  CpisProCascader
 }
