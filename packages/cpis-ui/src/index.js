@@ -1,5 +1,5 @@
-import CpisTag from '../packages/tag/index.js'
-import { CpisProCascader } from '../packages/cascader/index.js'
+import CpisTag from './packages/tag/index.js'
+import { CpisProCascader } from './packages/cascader/index.js'
 
 const components = [CpisTag, CpisProCascader]
 

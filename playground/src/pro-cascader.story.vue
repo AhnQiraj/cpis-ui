@@ -8,10 +8,10 @@
           label: 'name',
           value: 'id',
           children: 'childPartyEntityTrees',
-          multiple: false
+          multiple: false,
+          mode: 'inline'
         }"
         :placeholder="state.placeholder"
-        mode="inline"
       />
       <br />
       <div>当前选中的值：{{ singleInlineKeys }}</div>
@@ -29,9 +29,9 @@
           label: 'name',
           value: 'id',
           children: 'childPartyEntityTrees',
-          multiple: true
+          multiple: true,
+          mode: 'dialog'
         }"
-        mode="dialog"
       />
       <br />
       <div>当前选中的值：{{ multipleDialogKeys }}</div>
@@ -44,9 +44,9 @@
           label: 'name',
           value: 'id',
           children: 'childPartyEntityTrees',
-          multiple: true
+          multiple: true,
+          mode: 'inline'
         }"
-        mode="inline"
       />
 
       <br />
@@ -60,9 +60,9 @@
           label: 'name',
           value: 'id',
           children: 'childPartyEntityTrees',
-          multiple: false
+          multiple: false,
+          mode: 'dialog'
         }"
-        mode="dialog"
       />
 
       <br />
@@ -71,9 +71,9 @@
   </Story>
 </template>
 <script>
-import 'element-ui/lib/theme-chalk/index.css'
+import '@cpis/cpis-ui/dist/style.css'
 
-import CpisProCascader from '@cpis/cpis-ui/packages/cascader/src/pro-cascader.vue'
+import { CpisProCascader } from '@cpis/cpis-ui'
 
 export default {
   components: {

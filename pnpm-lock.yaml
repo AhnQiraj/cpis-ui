@@ -1111,7 +1111,7 @@ packages:
     resolution: {integrity: sha512-2vKJ79tOcVfgPYVJM2XjcL1BH5Bsl7/tgn9ilBj3XWeCS5kTRy/NE4FHEj4aMylOl/D3IPNsmZH0WPlB+DyIdA==}
 
   '@cpis/cpis-ui@1.0.0':
-    resolution: {integrity: sha512-XxDrbzxEwVezerA/IxA0on2VAMk7E6WiIHZznARhJJiXHU6zrpk02JJ3igsHaUVq8rMyfrV1Ov24jBtf1bYNrg==}
+    resolution: {integrity: sha512-oqLWKrr6U5D6kwZhvwrW1rZpNNieYeb6mXEWx0zx3I5MMEYGCMjmz6J5o2GQ/wJ1H07pNLbrGpRih8XiskRjOQ==}
     peerDependencies:
       vue: ^2.5.17
 

@@ -18,7 +18,9 @@
   </Story>
 </template>
 <script setup>
-import CpisTag from '@cpis/cpis-ui/packages/tag/src/tag.vue'
+import '@cpis/cpis-ui/dist/style.css'
+
+import { CpisTag } from '@cpis/cpis-ui'
 </script>
 
 <docs lang="md">
