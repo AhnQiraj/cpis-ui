@@ -1,9 +1,0 @@
-{
-  "version": "v1",
-  "packages": {
-    "cpis-ui": {
-      "signature": "6453cd95b784060a01b25aaea96b314e",
-      "file": true
-    }
-  }
-}

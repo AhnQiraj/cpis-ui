@@ -18,7 +18,7 @@
   </Story>
 </template>
 <script setup>
-import CpisTag from '../../packages/cpis-ui/packages/tag/index'
+import CpisTag from '@cpis/cpis-ui/packages/tag/src/tag.vue'
 </script>
 
 <docs lang="md">
@@ -43,5 +43,4 @@ import CpisTag from '../../packages/cpis-ui/packages/tag/index'
 背景颜色：`bg-[status]`
 
 边框颜色：`board-[status]`
-
 </docs>

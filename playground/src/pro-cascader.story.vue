@@ -1,9 +1,6 @@
 <template>
   <Story title="级联选择器（Cascader）">
-    <Variant
-      title="单选inline（推荐）"
-      :init-state="initState"
-    >
+    <Variant title="单选inline（推荐）" :init-state="initState">
       <cpis-pro-cascader
         v-model="singleInlineKeys"
         :options="state.options"
@@ -75,7 +72,8 @@
 </template>
 <script>
 import 'element-ui/lib/theme-chalk/index.css'
-import CpisProCascader from '@cpis/cpis-ui'
+
+import CpisProCascader from '@cpis/cpis-ui/packages/cascader/src/pro-cascader.vue'
 
 export default {
   components: {

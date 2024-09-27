@@ -3,13 +3,11 @@
   "private": false,
   "version": "1.0.0",
   "type": "module",
-  "main": "lib/src/index.esm.js",
+  "main": "dist/index.js",
   "files": [
-    "lib",
+    "dist",
     "src",
-    "packages",
-    "types",
-    "web-types.json"
+    "packages"
   ],
   "scripts": {
     "dev": "vite",

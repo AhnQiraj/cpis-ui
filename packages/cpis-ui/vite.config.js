@@ -9,20 +9,6 @@ import UnoCSS from 'unocss/vite'
 export default defineConfig({
   plugins: [vue(), vueJsx(), UnoCSS()],
   build: {
-    outDir: 'lib',
-    rollupOptions: {
-      external: ['vue', 'packages'],
-      input: ['src/index.js'],
-      output: [
-        {
-          format: 'es',
-          entryFileNames: '[name].esm.js',
-          preserveModules: true,
-          exports:'named',
-          dir: 'lib'
-        }
-      ]
-    },
     lib: {
       name: 'cpis-ui',
       fileName: 'index',
