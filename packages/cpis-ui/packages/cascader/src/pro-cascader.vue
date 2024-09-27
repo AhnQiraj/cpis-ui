@@ -2,6 +2,7 @@
   <div class="container">
     <div>
       <ElCascader
+        v-bind="cascaderProps"
         ref="cascader"
         v-model="localValue"
         :options="options"
@@ -11,9 +12,8 @@
           checkStrictly: true,
           expandTrigger: 'hover'
         }"
-        :placeholder="placeholder"
         @visible-change="handleVisibleChange"
-        :popper-class="this.mode === 'modal' ? 'hidden' : ''"
+        :popper-class="this.props.mode === 'dialog' ? 'hidden' : ''"
         :filterable="true"
         :collapse-tags="true"
         :show-all-levels="false"
@@ -21,14 +21,21 @@
     </div>
 
     <ElDialog
-      :title="modelProps.title"
       :visible.sync="dialogVisible"
       destroy-on-close
+      v-bind="dialogProps"
     >
       <div>
-        <ElInput size="small" placeholder="请搜索" v-model="filterText" />
+        <ElInput
+          size="small"
+          :placeholder="dialogProps.placeholder"
+          v-model="filterText"
+        />
         <ElTree
           :default-checked-keys="
+            Array.isArray(localValue) ? localValue : [localValue]
+          "
+          :default-expanded-keys="
             Array.isArray(localValue) ? localValue : [localValue]
           "
           ref="tree"
@@ -43,8 +50,12 @@
         />
       </div>
       <span slot="footer" class="dialog-footer">
-        <ElButton type="primary" size="small" @click="okClick">确定</ElButton>
-        <ElButton size="small" @click="dialogVisible = false">取消</ElButton>
+        <ElButton type="primary" size="small" @click="okClick">
+          {{ dialogProps.okText }}</ElButton
+        >
+        <ElButton size="small" @click="dialogVisible = false">
+          {{ dialogProps.cancelText }}
+        </ElButton>
       </span>
     </ElDialog>
   </div>
@@ -84,11 +95,11 @@ export default {
   methods: {
     okClick() {
       this.dialogVisible = false
-      const keys = this.$refs.tree.getCheckedKeys();
-      this.$emit('input', this.props.multiple ? keys : keys?.[0] ?? null)
+      const keys = this.$refs.tree.getCheckedKeys()
+      this.$emit('input', this.props.multiple ? keys : (keys?.[0] ?? null))
     },
     handleVisibleChange() {
-      if (this.mode === 'modal') {
+      if (this.props.mode === 'dialog') {
         this.dialogVisible = true
       }
     },
@@ -109,39 +120,38 @@ export default {
       default: () => [],
       comment: '数据源'
     },
-    placeholder: {
-      type: String,
-      default: '请选择'
-    },
     props: {
       type: Object,
       default: () => ({
         children: 'children',
         label: 'label',
         value: 'value',
-        multiple: false
+        multiple: false,
+        mode: 'inline'
       })
     },
-    modelProps: {
+    dialogProps: {
       type: Object,
       default: () => ({
         title: '请选择',
         okText: '确定',
-        cancelText: '取消'
+        cancelText: '取消',
+        placeholder: '请输入关键字进行过滤',
+        center: false,
+        width: '30%'
       })
     },
-    title: {
-      type: String,
-      default: '部门选择'
+    cascaderProps: {
+      type: Object,
+      default: () => ({
+        placeholder: '请选择',
+        clearable: true,
+        size: 'large'
+      })
     },
     value: {
       type: [String, Number, Array],
       default: ''
-    },
-    mode: {
-      type: String,
-      default: 'modal',
-      comment: 'modal | inline， modal为弹出框， inline 传统的方式'
     }
   }
 }
