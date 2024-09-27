@@ -13,8 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "element-ui": "^2.15.10",
-    "vue": "^2.7.16"
+    "@cpis/cpis-ui": "^1.0.0"
   },
   "devDependencies": {
     "@histoire/plugin-vue2": "^0.17.17",

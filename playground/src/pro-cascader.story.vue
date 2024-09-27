@@ -75,7 +75,7 @@
 </template>
 <script>
 import 'element-ui/lib/theme-chalk/index.css'
-import CpisProCascader from '../../packages/cpis-ui/packages/cascader/src/pro-cascader.vue'
+import CpisProCascader from '@cpis/cpis-ui'
 
 export default {
   components: {
