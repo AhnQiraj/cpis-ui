@@ -41,6 +41,10 @@ export default {
       type: Number,
       default: 5
     },
+    tenantId: {
+      type: String,
+      default: ''
+    },
     importVisible: {
       type: Boolean,
       default: false
@@ -117,6 +121,7 @@ export default {
             bizCode: this.bizCode,
             // 初始行号
             lineNo: 0,
+            tenantId: this.tenantId,
             // 初始执行数
             execNum: 0,
             // 初始异常数
