@@ -1,0 +1,12 @@
+{
+  "name": "@cpis/prettier-config",
+  "version": "1.0.0",
+  "description": "prettier config",
+  "main": "index.json",
+  "keywords": [],
+  "author": "cpis",
+  "license": "ISC",
+  "publishConfig": {
+    "registry": "http://172.169.50.28:5000/"
+  }
+}
