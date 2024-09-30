@@ -21,6 +21,7 @@
         v-model="multipleDialogKeys"
         :options="state.options"
         :model-props="{
+          width: '30px',
           title: '请选择部门',
           okText: '确定',
           cancelText: '取消'
