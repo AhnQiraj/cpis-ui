@@ -1,7 +1,10 @@
 # CuPuBase
 0.0.1为初版，0.0.1可以使用npm，从0.1.0 开始使用pnpm
-## Getting Started
+## Change Log
 
+- [更新记录](./CHANGELOG.md)
+
+## Getting Started
 ### Install
 ```bash
 touch .npmrc
