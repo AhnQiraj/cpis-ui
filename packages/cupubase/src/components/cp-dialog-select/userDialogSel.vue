@@ -121,7 +121,7 @@ export default {
             this.$refs.dialogTable.tableQuery({
               parameters: [
                 {
-                  key: 'Q^GROUP_ID_^SL',
+                  key: 'Q^GROUP_ID_^S',
                   value: this.conStr
                 }
               ]
@@ -169,7 +169,7 @@ export default {
       // 加载列表数据
       let searchObj = {
         parameters: [
-          { key: 'Q^GROUP_ID_^SL', value: params.ID_ },
+          { key: 'Q^GROUP_ID_^S', value: params.ID_ },
           { key: 'Q^ORG_NAME_^SL', value: params.org_name_ },
           { key: 'Q^NAME_^SL', value: params.name_ },
           { key: 'Q^ACCOUNT_^SL', value: params.account_ }
@@ -178,7 +178,7 @@ export default {
       if (this.conStr !== null && this.conStr !== '') {
         searchObj = {
           parameters: [
-            { key: 'Q^GROUP_ID_^SL', value: this.conStr },
+            { key: 'Q^GROUP_ID_^S', value: this.conStr },
             { key: 'Q^ORG_NAME_^SL', value: params.org_name_ },
             { key: 'Q^NAME_^SL', value: params.name_ },
             { key: 'Q^ACCOUNT_^SL', value: params.account_ }

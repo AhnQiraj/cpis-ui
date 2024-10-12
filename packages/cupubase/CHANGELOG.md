@@ -1,5 +1,11 @@
 # @cpis/cupubase
 
+## 0.1.2
+
+### Patch Changes
+
+- 人员选择组件，组织ID查询模糊匹配变更为精确匹配
+
 ## 0.1.1
 
 ### Patch Changes
