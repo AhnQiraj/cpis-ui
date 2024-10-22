@@ -1,6 +1,6 @@
 {
   "name": "@cpis/platformbase",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "基础UI",
   "main": "lib/platformbase.umd.js",
   "module": "src/index.js",

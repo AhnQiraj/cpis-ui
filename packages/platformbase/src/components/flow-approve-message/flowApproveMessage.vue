@@ -1,7 +1,7 @@
 <!--流程审核信息-->
 <template>
   <div class="flowHistoryMain">
-    <div class="title"><span>{{ $t('baseCommon.flow.checkTitle') }}</span><el-link type="primary" :underline="false" style="float: right; margin-right: 8px" @click="viewFlowchart">{{ $t('common.buttons.viewFlowchart') }}</el-link></div>
+    <div class="title"><span>{{ $t('baseCommon.flow.checkTitle') }}</span><el-link type="primary" :underline="false" style="float: right; margin-right: 8px; z-index: 9999" @click="viewFlowchart">{{ $t('common.buttons.viewFlowchart') }}</el-link></div>
     <el-row>
       <el-table ref="table" border :data="tableData" tooltip-effect="dark" class="tableStyleA" :row-class-name="tableRowClassName">
         <el-table-column prop="taskName" :label="$t('baseCommon.flow.taskName')" min-width="100" align="center" />
@@ -77,7 +77,12 @@ export default {
               }
             }
           })
-          this.tableData.sort((a,b) => a.createTime > b.createTime ? -1 : 1)
+          this.tableData.sort((a,b) =>  {
+            if (a.createTime === b.createTime) {
+              return a.completeTime > b.completeTime ? -1 : 1
+            }
+            return a.createTime > b.createTime ? -1 : 1
+          })
         }
       })
     },

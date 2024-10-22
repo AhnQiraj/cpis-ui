@@ -1,5 +1,22 @@
 # @cpis/platformbase
 
+## 0.1.3
+
+### Patch Changes
+
+- 1.修改流程审批历史排序规则
+
+  ```javascript
+  this.tableData.sort((a, b) => {
+    if (a.createTime === b.createTime) {
+      return a.completeTime > b.completeTime ? -1 : 1
+    }
+    return a.createTime > b.createTime ? -1 : 1
+  })
+  ```
+
+  2.提高查看流程的 z-index
+
 ## 0.1.2
 
 ### Patch Changes
