@@ -286,8 +286,16 @@ export default {
     onCancelSelection(item, index) {
       let { tablePageSeleted, key_, virtualSelected, selectTableData } = this
       if (item.isVirtual) {
-        virtualSelected.splice(index, 1)
-        selectTableData.data.splice(index, 1)
+        const _id = item?.column?.id
+        if (!_id) return
+        let _findIndex = virtualSelected.findIndex(r => r.column.id === _id)
+        if (_findIndex > -1) {
+          virtualSelected.splice(_findIndex, 1)
+        }
+        _findIndex = selectTableData?.data?.findIndex?.(r => r.id === _id)
+        if (_findIndex > -1) {
+          selectTableData.data.splice(_findIndex, 1)
+        }
       } else {
         const tabledata = this.$refs.combDialog.getTableData()
         const tabledataIndex = tabledata.findIndex(r => r[key_] === item.keyValue)
