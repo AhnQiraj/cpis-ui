@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "devDependencies": {
-    "vite": "^5.4.1",
+    "vite": "^5.4.8",
     "@changesets/cli": "^2.27.7",
     "@cpis/prettier-config": "^1.0.0",
     "prettier": "^2.4.1",
