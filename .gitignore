@@ -12,4 +12,6 @@ yarn-error.log
 .vscode/
 lib/
 .yalc
+storybook-static
+
 # End of https://www.toptal.com/developers/gitignore/api/vuejs
