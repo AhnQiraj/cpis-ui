@@ -44,7 +44,7 @@
           :props="props"
           check-strictly
           show-checkbox
-          style="margin-top: 20px"
+          class='m-1'
           :filter-node-method="filterNode"
           @check="handleTreeCheck"
         />
@@ -62,7 +62,6 @@
 </template>
 
 <script>
-import 'element-ui/lib/theme-chalk/index.css'
 import { Cascader, Dialog, Tree, Button, Input } from 'element-ui'
 
 export default {
