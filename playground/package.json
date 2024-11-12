@@ -5,20 +5,29 @@
   "private": "true",
   "main": "index.js",
   "scripts": {
-    "story:dev": "histoire dev",
-    "story:build": "histoire build",
-    "story:preview": "histoire preview"
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "keywords": [],
   "author": "",
   "type": "module",
   "license": "ISC",
   "dependencies": {
-    "@cpis/cpis-ui": "^1.0.0"
+    "@cpis/cpis-ui": "^1.0.0",
+    "vue": "^2.7.16"
   },
   "devDependencies": {
-    "@histoire/plugin-vue2": "^0.17.17",
+    "@storybook/addon-essentials": "7.6.10",
+    "@storybook/addon-interactions": "7.6.10",
+    "@storybook/addon-links": "7.6.10",
+    "@storybook/blocks": "7.6.10",
+    "@storybook/test": "7.6.10",
+    "@storybook/vue": "7.6.10",
+    "@storybook/vue-vite": "7.6.10",
     "@vitejs/plugin-vue2": "^2.3.1",
-    "histoire": "^0.17.17"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "storybook": "7.6.10",
+    "vite": "^5.4.8"
   }
 }
