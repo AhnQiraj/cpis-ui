@@ -108,7 +108,7 @@ export default {
                 "value": 1
               },*/
               {
-                "key": "Q^PARTY_TYPE_^SL",
+                "key": "levelType",
                 "value": "org"
               }
             ]
@@ -126,15 +126,16 @@ export default {
      * 查询操作
      */
     onSearch(params) {
+
       // 加载列表数据
       let searchObj = {
         parameters: [
           {
-            "key": "Q^PARENT_ID_^SL",
+            "key": "orgId",
             "value": params.deptId
           },
           {
-            "key": "Q^PARTY_TYPE_^SL",
+            "key": "levelType",
             "value": "org"
           }
         ]
@@ -223,29 +224,9 @@ export default {
     getEntityList(parmas) {
       this.parmas = Object.assign(parmas, this.dialogProp.toolbarProp.searchData)
       return new Promise((resolve, reject) => {
-        window.apiList['org/entity'].getEntity(this.parmas).then(response => {
+        window.apiList['common/index'].findEntityAllByCond(parmas).then(response => {
           this.response = response
-          if (this.response.data != null && this.response.data.dataResult.length > 0) {
-            let parametersParent = [
-              {
-                "key": "Q^ID_^SL",
-                "value": this.response.data.dataResult[0].parentId
-              },
-              {
-                "key": "Q^PARTY_TYPE_^SL",
-                "value": "org"
-              }
-            ]
-            this.parmas.parameters = parametersParent
-            window.apiList['org/entity'].getEntity(this.parmas).then(resp => {
-              if (resp.data != null && resp.data.dataResult.length > 0) {
-                let res = resp.data.dataResult
-                res.push.apply(res, this.response.data.dataResult);
-                this.response.data.dataResult = res
-              }
-              resolve(this.response)
-            })
-          } else {
+          if (this.response?.data?.dataResult?.length > 0) {
             resolve(this.response)
           }
         })

@@ -1,5 +1,43 @@
 # @cpis/cupubase
 
+## 0.1.5
+
+### Patch Changes
+
+- 部门选择组件，接口 从 /entity/query 换成/extend/v3/entity/findAllByCondition， 参数从
+
+  ```json
+  {
+    "parameters": [
+      {
+        "key": "Q^PARENT_ID_^SL",
+        "value": "xx"
+      },
+      {
+        "key": "Q^PARTY_TYPE_^SL",
+        "value": "org"
+      }
+    ]
+  }
+  ```
+
+  换成
+
+  ```json
+  {
+    "parameters": [
+      {
+        "key": "orgId",
+        "value": "xxx"
+      },
+      {
+        "key": "levelType",
+        "value": "org"
+      }
+    ]
+  }
+  ```
+
 ## 0.1.4
 
 ### Patch Changes
