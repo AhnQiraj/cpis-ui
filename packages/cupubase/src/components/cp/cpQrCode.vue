@@ -34,7 +34,7 @@
   </el-dialog>
 </template>
 <script>
-import QRCode from 'qrcodejs2'
+import QRCode from 'qrcodejs2-fixes'
 import Print from '@cupu/utils/printQrCode'
 import Vue from 'vue'
 Vue.use(Print)

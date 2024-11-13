@@ -1,5 +1,11 @@
 # @cpis/cupubase
 
+## 0.1.4
+
+### Patch Changes
+
+- 修复 qrcodejs 报错问题，使用 qscodejs-fixed 替代
+
 ## 0.1.3
 
 ### Patch Changes
