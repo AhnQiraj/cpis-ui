@@ -1,11 +1,5 @@
 # @cpis/cupubase
 
-## 0.1.5
-
-### Patch Changes
-
-- Q^ID\_^SL 原为模糊查找，但是此表使用 自增 id，会出现 001 1001 这样的 id，做模糊时候出现了问题，现在改为精确查找。
-
 ## 0.1.4
 
 ### Patch Changes

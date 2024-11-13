@@ -228,7 +228,7 @@ export default {
           if (this.response.data != null && this.response.data.dataResult.length > 0) {
             let parametersParent = [
               {
-                "key": "Q^ID_^L",
+                "key": "Q^ID_^SL",
                 "value": this.response.data.dataResult[0].parentId
               },
               {
