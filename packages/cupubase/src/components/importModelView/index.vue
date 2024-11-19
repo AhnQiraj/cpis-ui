@@ -1,16 +1,48 @@
 <template>
-  <vxe-modal v-if="importVisible" v-model="importVisible" width="480" height="320">
+  <vxe-modal
+    v-if="importVisible"
+    v-model="importVisible"
+    width="480"
+    height="320"
+  >
     <template #title>
       <span>{{ $t('equipment.import.dataImport') }}</span>
     </template>
     <template #default>
-      <el-alert :title="$t('equipment.import.downTempUp')" type="info" :closable="false" />
+      <el-alert
+        :title="$t('equipment.import.downTempUp')"
+        type="info"
+        :closable="false"
+      />
       <div style="width: 400px; margin: 0 auto; padding-top: 15px">
-        <el-upload ref="upload" style="display: inline" class="upload-demo" :limit="1" :auto-upload="false" :before-upload="beforeUpload" :on-change="valid" accept=".xls, .xlsx" :http-request="httpRequestNew">
-          <el-button slot="trigger" @click="downloadTpl">{{ $t('equipment.import.downloadTemp') }}</el-button>
-          <el-button slot="trigger" size="small" type="primary">{{ $t('equipment.import.selectFile') }}</el-button>
-          <el-button style="margin-left: 10px" size="small" type="success" @click="submitUpload">{{ $t('equipment.import.uploadServer') }}</el-button>
-          <div slot="tip" class="el-upload__tip">{{ $t('equipment.import.uploadExcMore', { title: size }) }}</div>
+        <el-upload
+          ref="upload"
+          style="display: inline"
+          class="upload-demo"
+          :limit="1"
+          :auto-upload="false"
+          :before-upload="beforeUpload"
+          :on-change="valid"
+          accept=".xls, .xlsx"
+          :http-request="httpRequestNew"
+        >
+          <el-button slot="trigger" @click="downloadTpl">{{
+            $t('equipment.import.downloadTemp')
+          }}</el-button>
+          <el-button slot="trigger" size="small" type="primary">{{
+            $t('equipment.import.selectFile')
+          }}</el-button>
+          <el-button
+            style="margin-left: 10px"
+            size="small"
+            type="success"
+            @click="submitUpload"
+          >
+            {{ $t('equipment.import.uploadServer') }}
+          </el-button>
+          <div slot="tip" class="el-upload__tip">
+            {{ $t('equipment.import.uploadExcMore', { title: size }) }}
+          </div>
         </el-upload>
       </div>
     </template>
@@ -18,6 +50,7 @@
 </template>
 <script>
 import moment from 'moment'
+
 export default {
   name: 'ImportModelView',
   props: {
@@ -52,11 +85,10 @@ export default {
   },
   data() {
     return {
-      checkData: {},
+      checkData: {}
     }
   },
-  created() {
-  },
+  created() {},
   methods: {
     /**
      * 下载模板
@@ -74,7 +106,10 @@ export default {
      * 附件验证
      */
     async valid(file) {
-      let isExcel = file.raw.type == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || file.raw.type == 'application/vnd.ms-excel'
+      let isExcel =
+        file.raw.type ==
+          'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' ||
+        file.raw.type == 'application/vnd.ms-excel'
       let isLt5M = file.size / 1024 / 1024 < this.size
       if (!isExcel) {
         this.$message.error(this.$t('baseCommon.message.fileFormatError'))
@@ -82,7 +117,9 @@ export default {
         return false
       }
       if (!isLt5M) {
-        this.$message.error(this.$t('baseCommon.message.fileSizeError', { title: this.size }))
+        this.$message.error(
+          this.$t('baseCommon.message.fileSizeError', { title: this.size })
+        )
         this.$refs.upload.handleRemove(file)
         return false
       }
@@ -114,7 +151,8 @@ export default {
         if (res.state === 200) {
           let cpisDiTaskPo = {
             // 任务名
-            taskName: this.checkData.bizName + moment().format('YYYYMMDDHHmmss'),
+            taskName:
+              this.checkData.bizName + moment().format('YYYYMMDDHHmmss'),
             // cpis_dio_conf注册的业务数据编码
             dataCode: this.dataCode,
             // cpis_dio_conf注册的业务编码
@@ -137,53 +175,72 @@ export default {
           let importPromise
           if (this.bizCode.startsWith('eq_')) {
             // 设备导入
-            importPromise = window.apiList['equipment/index'].equipImportSync(cpisDiTaskPo);
+            importPromise =
+              window.apiList['equipment/index'].equipImportSync(cpisDiTaskPo)
           } else if (this.bizCode.startsWith('mat_')) {
             // 物资导入
-            importPromise = window.apiList['material/index'].importSync(cpisDiTaskPo);
+            importPromise =
+              window.apiList['material/index'].importSync(cpisDiTaskPo)
           } else if (this.bizCode.startsWith('oms_')) {
             // 安全导入
-            importPromise = window.apiList['safety/index'].importSync(cpisDiTaskPo);
+            importPromise =
+              window.apiList['safety/index'].importSync(cpisDiTaskPo)
           } else if (this.bizCode.startsWith('engr_')) {
             // 工程导入
-            importPromise = window.apiList['engineering/index'].importSync(cpisDiTaskPo);
-          }else if (this.bizCode.startsWith('mp_')) {            
-			// 测点导入
-			importPromise = window.apiList['calculation/index'].importSync(cpisDiTaskPo);
-          } else if (this.bizCode.startsWith("ins_")) {
+            importPromise =
+              window.apiList['engineering/index'].importSync(cpisDiTaskPo)
+          } else if (this.bizCode.startsWith('mp_')) {
+            // 测点导入
+            importPromise =
+              window.apiList['calculation/index'].importSync(cpisDiTaskPo)
+          } else if (this.bizCode.startsWith('ins_')) {
             // 巡点检导入
-            importPromise = window.apiList['inspection/index'].importSync(cpisDiTaskPo);
-          } else if (this.bizCode.startsWith("exam_")) {
+            importPromise =
+              window.apiList['inspection/index'].importSync(cpisDiTaskPo)
+          } else if (this.bizCode.startsWith('exam_')) {
             // 考试导入
-            importPromise = window.apiList['examination/index'].importSync(cpisDiTaskPo);
-          }else if (this.bizCode.startsWith('im_express')) {            
-			// 指标表达式导入
-			importPromise = window.apiList['calculation/index'].imExpressImportSync(cpisDiTaskPo);
-          }else if (this.bizCode.startsWith('xn_express')) {            
-			// 性能计算表达式导入
-			importPromise = window.apiList['calculation/index'].xnExpressImportSync(cpisDiTaskPo);
-          }else if (this.bizCode.startsWith('am_rule')) {            
-			// 实时告警规则导入
-			importPromise = window.apiList['calculation/index'].amRuleImportSync(cpisDiTaskPo);
+            importPromise =
+              window.apiList['examination/index'].importSync(cpisDiTaskPo)
+          } else if (this.bizCode.startsWith('im_express')) {
+            // 指标表达式导入
+            importPromise =
+              window.apiList['calculation/index'].imExpressImportSync(
+                cpisDiTaskPo
+              )
+          } else if (this.bizCode.startsWith('xn_express')) {
+            // 性能计算表达式导入
+            importPromise =
+              window.apiList['calculation/index'].xnExpressImportSync(
+                cpisDiTaskPo
+              )
+          } else if (this.bizCode.startsWith('am_rule')) {
+            // 实时告警规则导入
+            importPromise =
+              window.apiList['calculation/index'].amRuleImportSync(cpisDiTaskPo)
+          } else if (this.bizCode.startsWith('emp_bat')) {
+            importPromise =
+              window.apiList['employeeFile/employeeFile'].importEmployee(
+                cpisDiTaskPo
+              )
           }
 
           if (importPromise) {
             importPromise.then(r => {
-              if (r.code === 0) {
-                this.$emit('importSuccess');
+              if (r.code === 0 || r.state === 200) {
+                this.$emit('importSuccess')
                 this.$message({
                   dangerouslyUseHTMLString: true,
                   type: 'success',
                   showClose: true,
-                  message: this.$t('baseCommon.message.importSubProMsg') + '<a class="import-link" href="#">' + this.$t('baseCommon.buttons.vwImportRes') + '</a>'
-                });
-                this.importVisible = false;
+                  message: this.$t('baseCommon.message.importing')
+                })
+                this.importVisible = false
               }
-            });
+            })
           }
         }
-      });
+      })
     }
   }
-};
+}
 </script>

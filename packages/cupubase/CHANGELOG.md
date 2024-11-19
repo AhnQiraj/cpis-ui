@@ -1,42 +1,48 @@
 # @cpis/cupubase
 
+## 0.1.6
+
+### Patch Changes
+
+- 修改人员导入组件 `importModelView` ，增加人员导入的功能。
+
 ## 0.1.5
 
 ### Patch Changes
 
-- 部门选择组件，接口 从 /entity/query 换成/extend/v3/entity/findAllByCondition， 参数从
+- 工单 ZNFDYWB-III-202443-00305 ，n 部门选择组件，接口 从 /entity/query 换成/extend/v3/entity/findAllByCondition， 参数从
 
-  ```json
-  {
-    "parameters": [
-      {
-        "key": "Q^PARENT_ID_^SL",
-        "value": "xx"
-      },
-      {
-        "key": "Q^PARTY_TYPE_^SL",
-        "value": "org"
-      }
-    ]
-  }
-  ```
+```json
+{
+  "parameters": [
+    {
+      "key": "Q^PARENT_ID_^SL",
+      "value": "xx"
+    },
+    {
+      "key": "Q^PARTY_TYPE_^SL",
+      "value": "org"
+    }
+  ]
+}
+```
 
-  换成
+换成
 
-  ```json
-  {
-    "parameters": [
-      {
-        "key": "orgId",
-        "value": "xxx"
-      },
-      {
-        "key": "levelType",
-        "value": "org"
-      }
-    ]
-  }
-  ```
+```json
+{
+  "parameters": [
+    {
+      "key": "orgId",
+      "value": "xxx"
+    },
+    {
+      "key": "levelType",
+      "value": "org"
+    }
+  ]
+}
+```
 
 ## 0.1.4
 
