@@ -1,5 +1,11 @@
 # @cpis/cupubase
 
+## 0.1.7
+
+### Patch Changes
+
+- `input-upload-fileset` 组件，新增支持 json 格式的 val 设置。 新增 `view-mode`参数，方便在表格中显示。
+
 ## 0.1.6
 
 ### Patch Changes

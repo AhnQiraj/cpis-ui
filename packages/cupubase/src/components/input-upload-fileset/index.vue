@@ -5,22 +5,28 @@
       <el-button v-if="!isView" size="small" type="primary">点击上传</el-button>
       <div v-if="!isView" slot="tip" class="el-upload__tip">{{ tip }}</div>
     </el-upload>
-    <div v-for="(item, index) in fileList" :key="index" class="filelist">
-      <i class="el-icon-document" />
-      <el-button type="text" class="vfile" :title="item.name" @click="handlePreview(item)">{{ item.name }}</el-button>
-      <i class="el-icon-success" />
-      <el-button v-if="!isRemove" class="el-icon-circle-close dfile" title="移除" @click="handleRemove(item)" />
-      <el-button v-if="!isFileHome" class="el-icon-receiving sfile" title="归档" @click="handleFileHome(item)" />
-      <!-- <el-dropdown trigger="click" placement="bottom-start">
-        <span class="el-icon-more" style="transform: rotate(90deg);" />
-        <el-dropdown-menu slot="dropdown" class="filebtn">
-          <el-dropdown-item @click.native="downlodFile(item)"><i class="el-icon-download" />下载</el-dropdown-item>
-          <el-dropdown-item><i class="el-icon-edit" />重命名</el-dropdown-item>
-          <el-dropdown-item><i class="el-icon-receiving" />归档</el-dropdown-item>
-          <el-dropdown-item><i class="el-icon-key" />权限管理</el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown> -->
-    </div>
+    <template v-if="viewMode === 'modal'">
+      <a v-if="fileList.length" @click="handlePreview(fileList?.[0])">查看附件</a>
+    </template>
+    <template v-else>
+      <div v-for="(item, index) in fileList" :key="index" class="filelist">
+        <i class="el-icon-document" />
+        <el-button type="text" class="vfile" :title="item.name" @click="handlePreview(item)">{{ item.name }}</el-button>
+        <i class="el-icon-success" />
+        <el-button v-if="!isRemove" class="el-icon-circle-close dfile" title="移除" @click="handleRemove(item)" />
+        <el-button v-if="!isFileHome" class="el-icon-receiving sfile" title="归档" @click="handleFileHome(item)" />
+        <!-- <el-dropdown trigger="click" placement="bottom-start">
+          <span class="el-icon-more" style="transform: rotate(90deg);" />
+          <el-dropdown-menu slot="dropdown" class="filebtn">
+            <el-dropdown-item @click.native="downlodFile(item)"><i class="el-icon-download" />下载</el-dropdown-item>
+            <el-dropdown-item><i class="el-icon-edit" />重命名</el-dropdown-item>
+            <el-dropdown-item><i class="el-icon-receiving" />归档</el-dropdown-item>
+            <el-dropdown-item><i class="el-icon-key" />权限管理</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown> -->
+      </div>
+    </template>
+
     <el-dialog :visible.sync="dialogVisible" :modal-append-to-body="false" :append-to-body="true" title="图片预览" class="yj-dialog">
       <img width="100%" :src="dialogImageUrl" alt />
     </el-dialog>
@@ -46,6 +52,10 @@ export default {
   name: 'InputUploadFileset',
   components: { FileHome },
   props: {
+    viewMode: {
+      type: String,
+      default: 'list' // list or modal
+    },
     isView: {
       type: Boolean,
       default: true
@@ -282,8 +292,9 @@ export default {
      * 设置文件
      * @author mbb
      */
-    setVal(fileCollId) {
-      if (fileCollId !== '' && fileCollId !== null && fileCollId !== undefined) {
+    setVal(fileCollId, options = {}) {
+      const { isJson = false } = options
+      if (fileCollId !== '' && fileCollId !== null && fileCollId !== undefined && !isJson) {
         this.fileCollId = fileCollId
         window.apiList['file/attachment'].getFileByCollId(fileCollId).then(response => {
           this.fileList = []
@@ -303,7 +314,11 @@ export default {
           }
         })
       } else {
-        this.fileList = []
+        let list = []
+        try {
+          list = JSON.parse(fileCollId)
+        } catch (e) {}
+        this.fileList = list
       }
     },
     /**
