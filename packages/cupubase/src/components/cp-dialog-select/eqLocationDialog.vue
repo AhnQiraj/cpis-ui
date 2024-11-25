@@ -1,5 +1,5 @@
 <template>
-  <z-dialog-table ref="locationDialogTable" :title="locationDialogProp.title" :key_="locationDialogProp.key" :toolbar-prop="locationDialogProp.toolbarProp" :table-prop="locationDialogProp.tableProp" :tree-prop="locationDialogProp.treeProp" :selection-handle="locationDialogProp.selectionHandle" @toolbar-search="onLocationDialogSearch" @on-reset="onReset" @ok="onLocationDialogTableOk" @tree-click="treeClickNodeHandle">
+  <z-dialog-table id='locationDialogTable' ref="locationDialogTable" :title="locationDialogProp.title" :key_="locationDialogProp.key" :toolbar-prop="locationDialogProp.toolbarProp" :table-prop="locationDialogProp.tableProp" :tree-prop="locationDialogProp.treeProp" :selection-handle="locationDialogProp.selectionHandle" @toolbar-search="onLocationDialogSearch" @on-reset="onReset" @ok="onLocationDialogTableOk" @tree-click="treeClickNodeHandle">
     <template slot="searchBar">
       <el-form-item :label="$t('equipment.common.locaNo')" prop="locaNo">
         <el-input v-model="locationDialogProp.toolbarProp.searchData.locaNo" :placeholder="$t('baseCommon.message.pleaseEnter', { title: $t('equipment.common.locaNo') })" />
@@ -70,6 +70,14 @@ export default {
     },
     selectedNames: {
       type: String
+    },
+    treeInitParam: {
+      type: Object,
+      default: null
+    },
+    defaultExpandAll: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -349,7 +357,7 @@ export default {
     loadNodeTreeData(node, resolve, loadDone) {
       if (node.level === 0) {
         // 初次加载一个根节点
-        window.apiList['equipment/index'].eqLocationTopTree('').then(res => {
+        window.apiList['equipment/index'].eqLocationTopTree(this.treeInitParam || '').then(res => {
           loadDone()
           let arr = res.data
           //let exapandKeys = []
@@ -357,8 +365,13 @@ export default {
             arr[i].isLeaf = res.data[i].data.isLeaf
             //exapandKeys[i] = res.data[i].key
           }
-          // 默认展开第一个大节点下的树
-          //this.locationDialogProp.treeProp.nativeProp = { 'default-expanded-keys': exapandKeys }
+          if (this.defaultExpandAll) {
+            this.$nextTick(() => {
+              document.querySelectorAll('#locationDialogTable .el-tree-node__expand-icon')?.forEach?.((item) => {
+                item.click()
+              })
+            })
+          }
           return resolve(arr)
         })
       }

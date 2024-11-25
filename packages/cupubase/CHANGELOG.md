@@ -1,5 +1,13 @@
 # @cpis/cupubase
 
+## 0.1.8
+
+### Patch Changes
+
+- `eqLocationDialog` 新增 `props`, `treeInitParam` 和 `defaultExpandAll`
+  `treeInitParam` 默认为 null， 传入参数后，会在请求左侧树结构数据时作为参数
+  `defaultExpandAll` 默认 false， 传入 true 后，会默认展开所有树节点
+
 ## 0.1.7
 
 ### Patch Changes
