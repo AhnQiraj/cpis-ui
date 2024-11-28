@@ -1,5 +1,67 @@
 # @cpis/cupubase
 
+## 0.1.9
+
+### Patch Changes
+
+- # Upload-List 组件文档
+
+  ## 组件介绍
+
+  Upload-List 是一个文件上传列表组件，用于展示上传文件并支持自定义上传参数和提示信息。
+
+  ## 参数说明
+
+  | 参数名 | 类型   | 必填 | 默认值 | 说明                 |
+  | ------ | ------ | ---- | ------ | -------------------- |
+  | tip    | string | 否   | -      | 上传提示信息         |
+  | params | object | 否   | {}     | 上传请求时的附加参数 |
+
+  # cpis-upload-list 组件文档
+
+  ## 组件介绍
+
+  Upload-List 是一个文件上传列表组件
+
+  ## 参数说明
+
+  | 参数名    | 类型    | 必填 | 默认值                                                                | 说明                                                                             |
+  | --------- | ------- | ---- | --------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+  | tip       | string  | 否   | 单个文件不能超过{sizeLimit}MB,在线打开支持 Word、Excel、PDF、MP4、JPG | 可以覆盖，默认值中的{sizeLimit}会被 sizeLimit 替换                               |
+  | params    | object  | 是   | {}                                                                    | 上传请求时的附加参数，businessCode，subBusinessCode，businessDataCode，projectId |
+  | disabled  | boolean | 否   | false                                                                 | 是否禁用                                                                         |
+  | limit     | number  | 否   | 100                                                                   | 限制上传数量                                                                     |
+  | sizeLimit | number  | 否   | 20 _ 1024 _ 1024                                                      | 上传大小限制                                                                     |
+
+  ## 代码示例
+
+  ```vue
+  <template>
+    <upload-list
+      v-model="formData.attachFile"
+      :params="{ 'business-data-code': 'xxxx' }"
+      tip="支持jpg、png格式，大小不超过2M"
+    />
+  </template>
+  ```
+
+  disabled 场景，禁止上传和删除
+
+  ```vue
+  <template>
+    <upload-list
+      disabled
+      v-model="formData.attachFile"
+      :params="{ 'business-data-code': 'xxxx' }"
+      tip="支持jpg、png格式，大小不超过2M"
+    />
+  </template>
+  ```
+
+  ## 使用场景
+
+  - 文件上传，需要展示图片缩略图的场景
+
 ## 0.1.8
 
 ### Patch Changes

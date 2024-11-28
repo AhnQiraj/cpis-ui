@@ -35,8 +35,9 @@ import CpAreaCode from '@cupu/components/cp/cpAreaCode.vue'
 import EngrContractDialogSelect from '@cupu/components/cp-dialog-select/engrContractDialogSelect.vue'
 import PositionDialogSelect from '@cupu/components/cp-dialog-select/positionDialogSel.vue'
 import DefectDialogSelect from '@cupu/components/cp-dialog-select/defectDialog.vue'
+import CpisUploadList from '@cupu/components/upload'
 // 存储组件列表
-const components = [Crultoolbar, EqLocationDialogSelect, EqManageObjectDialogSelect, EqMeasurePointDialogSelect, EqTypeDialogSelect, InputUploadFile, InputUploadFileset, IotAreaDeviceDialogSelect, UserDialogSelect,OrgDialogSelect, SparePartsDialogSelect, MaterialDialogSelect, EqAreaDialogSelect, EqAssetDialogSelect, EqAssetTypeDialogSelect, EqManufacturerDialogSelect, BizTagDialogSelect, DeptTreeSelect, CpSelect, IssueWorkTicket, ImportModelView, DangerSourceSelect, OrgSelect, WorkTicketDialogSelect, OperaTicketDialogSelect, TeamDialogSelect, CpQrCode, CpAreaCode, EngrContractDialogSelect, PositionDialogSelect, DefectDialogSelect]
+const components = [Crultoolbar, EqLocationDialogSelect, EqManageObjectDialogSelect, EqMeasurePointDialogSelect, EqTypeDialogSelect, InputUploadFile, InputUploadFileset, IotAreaDeviceDialogSelect, UserDialogSelect,OrgDialogSelect, SparePartsDialogSelect, MaterialDialogSelect, EqAreaDialogSelect, EqAssetDialogSelect, EqAssetTypeDialogSelect, EqManufacturerDialogSelect, BizTagDialogSelect, DeptTreeSelect, CpSelect, IssueWorkTicket, ImportModelView, DangerSourceSelect, OrgSelect, WorkTicketDialogSelect, OperaTicketDialogSelect, TeamDialogSelect, CpQrCode, CpAreaCode, EngrContractDialogSelect, PositionDialogSelect, DefectDialogSelect, CpisUploadList]
 //install是让业务代码在main.js 引入之后 use(cupubase)  注册到全局用的
 const install = app => {
   window.config = { I18N_FALLBACK_LOCALE: 'zh-CN', I18N_LOCALE: 'zh-CN', ...window.config }
