@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="cpis-upload-list">
     <el-upload
       ref="uploadFileset"
       :limit="limit"
@@ -12,7 +12,6 @@
       :before-upload="beforeUpload"
       :http-request="handleUpload"
     >
-      <!--      <div slot="tip" class="el-upload__tip">{{ tip }}</div>-->
       <div
         slot="file"
         slot-scope="{ file }"
@@ -58,12 +57,7 @@
         </el-tooltip>
       </template>
     </el-upload>
-    <el-dialog
-      :visible.sync="previewDialogVisible"
-      width="60%"
-      height="90%"
-      :title="title"
-    >
+    <el-dialog :visible.sync="previewDialogVisible" height="90%" :title="title">
       <el-link
         v-if="fileList != null && fileList.length > 1"
         class="arrow l-arrow"
@@ -133,7 +127,7 @@ export default {
   },
   watch: {
     value: {
-      handler: function (val) {
+      handler: function(val) {
         if (val) {
           this.collectionId = val
           this.init(val)
@@ -194,7 +188,7 @@ export default {
         this.collectionId = this.guid()
       }
       const { businessCode, subBusinessCode, businessDataCode } =
-        this.params || {}
+      this.params || {}
       window.apiList['file/attachment']
         .uploadFileset(
           file,
@@ -254,6 +248,7 @@ export default {
     },
     getImage() {
       const file = this.fileList?.[this.curIndex]
+      if (!file) return
       this.title =
         '文件预览（部分格式文件预览乱码或预览失败，请下载原文件查看）' +
         file.name
@@ -318,66 +313,58 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-::v-deep .el-dialog {
-  height: 72vh !important;
-}
+<style lang='scss' scoped>
+#cpis-upload-list {
+  ::v-deep .el-dialog {
+    height: 72vh !important;
+  }
 
-.arrow {
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  margin-top: -30px;
-  width: 60px;
-  height: 60px;
-  border-radius: 100%;
-  background: rgba(0, 0, 0, 0.24);
-  display: block;
-  text-align: center;
-  line-height: 60px;
-  font-size: 32px;
-  color: #fff;
-  transition: all 0.3s;
-  cursor: pointer;
-  z-index: 1000;
-}
+  .arrow {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    margin-top: -30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background: rgba(0, 0, 0, 0.24);
+    display: block;
+    text-align: center;
+    line-height: 60px;
+    font-size: 32px;
+    color: #fff;
+    transition: all 0.3s;
+    cursor: pointer;
+    z-index: 1000;
+  }
 
-.arrow.r-arrow {
-  left: auto;
-  right: 10px;
-}
+  .arrow.r-arrow {
+    left: auto;
+    right: 10px;
+  }
 
-.arrow:hover {
-  background: #4b9ff0;
-  color: #fff !important;
-}
+  .arrow:hover {
+    background: #4b9ff0;
+    color: #fff !important;
+  }
 
-.other {
-  text-align: center;
-  color: white;
-}
+  .other {
+    text-align: center;
+    color: white;
+  }
 
-.other-placeholder {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+  .other-placeholder {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
-.el-icon-document {
-  font-size: 32px;
-}
+  .el-icon-document {
+    font-size: 32px;
+  }
 
-::v-deep
-  .el-upload-list--picture-card
-  .el-upload-list__item-actions
-  span
-  + span {
-  margin-left: 10px;
-}
-
-::v-deep {
   .file-name {
     font-size: 12px;
     overflow: hidden;
@@ -387,34 +374,41 @@ export default {
     margin-top: 2px;
   }
 
-  .el-upload-list .el-upload-list__item {
-    margin: 2px;
-  }
+  & ::v-deep {
+    .is-disabled {
+      .el-upload,
+      .el-upload__tip {
+        display: none !important;
+      }
+    }
 
-  .el-upload-list {
-    float: unset;
-    display: inline;
-  }
+    .el-upload-list--picture-card .el-upload-list__item-actions span + span {
+      margin-left: 10px;
+    }
 
-  .is-disabled {
-    .el-upload,
-    .el-upload__tip {
-      display: none;
+    .el-upload-list .el-upload-list__item {
+      margin: 2px;
+    }
+
+    .el-upload-list {
+      float: unset;
+      display: inline;
+    }
+
+    .el-upload-list__item,
+    .el-upload--picture-card,
+    img {
+      width: 92px;
+      height: 92px;
+    }
+
+    .el-upload--picture-card {
+      margin-top: 2px;
+      margin-left: 2px;
+      line-height: 92px;
     }
   }
 
-  .el-upload-list__item,
-  .el-upload--picture-card,
-  img {
-    width: 92px;
-    height: 92px;
-  }
-
-  .el-upload--picture-card {
-    margin-top: 2px;
-    margin-left: 2px;
-    line-height: 92px;
-  }
 
   img {
     object-fit: cover;
