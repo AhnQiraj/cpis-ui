@@ -1,38 +1,9 @@
 <template>
-  <multipane
-    v-if="layout.includes('aside')"
-    class="bg-gray-2 gap-2 p-4 flex flex-row"
+  <div
+    class="bg-gray-2 gap-2 p-4 flex box-border"
+    :class="layout.includes('aside') ? 'flex-row' : 'flex-col'"
     :style="{ height }"
   >
-    <template v-for="item in layout">
-      <template v-if="Array.isArray(item)">
-        <div class="flex flex-col gap-2 flex-1">
-          <template v-for="subItem in item">
-            <component
-              :is="getComponent(subItem)"
-              v-bind="subItem === 'header' ? { title } : {}"
-            >
-              <slot :name="subItem" />
-            </component>
-          </template>
-        </div>
-      </template>
-      <template v-else>
-        <component
-          :is="getComponent(item)"
-          v-bind="item === 'header' ? { title } : {}"
-        >
-          <slot :name="item" />
-        </component>
-        <template v-if="item === 'aside'">
-          <multipane-resizer
-            class="before:(block content-[''] w-[3px] h-[40px] absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border-x border-[#ccc] border-x-solid)"
-          ></multipane-resizer>
-        </template>
-      </template>
-    </template>
-  </multipane>
-  <div v-else class="bg-gray-2 gap-2 p-4 flex flex-col" :style="{ height }">
     <template v-for="item in layout">
       <template v-if="Array.isArray(item)">
         <div class="flex flex-col gap-2 flex-1">
