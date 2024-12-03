@@ -1,7 +1,7 @@
 import 'virtual:uno.css'
 import CpisTag from './packages/tag/index.js'
 import { CpisProCascader } from './packages/cascader/index.js'
-import { CpisPageContainer } from './packages/page-container/index.js'
+import CpisPageContainer from './packages/page-container/index.js'
 
 const components = [
   CpisTag,
