@@ -66,8 +66,8 @@ import Main from '../../container-main/index.js'
 import Footer from '../../container-footer/index.js'
 import Aside from '../../container-aside/index.js'
 export default {
-  name: 'PageContainer',
-  componentName: 'PageContainer',
+  name: 'CpisPageContainer',
+  componentName: 'CpisPageContainer',
   components: {
     Header,
     Main,
