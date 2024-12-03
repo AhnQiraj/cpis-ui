@@ -17,7 +17,7 @@
     "registry": "http://172.169.50.28:5000/"
   },
   "peerDependencies": {
-    "vue": "^2.5.17"
+    "vue": "^2.7.16"
   },
   "devDependencies": {
     "@vitejs/plugin-vue2": "^2.3.1",
@@ -27,5 +27,8 @@
   "author": {
     "name": "cpis",
     "email": "cpis@cpeam.com"
+  },
+  "dependencies": {
+    "vue-multipane": "^0.9.5"
   }
 }
