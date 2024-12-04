@@ -9,7 +9,8 @@
     "@cpis/prettier-config": "^1.0.0",
     "prettier": "^2.4.1",
     "unocss": "^0.62.3",
-    "@unocss/preset-uno": "^0.63.3"
+    "@unocss/preset-uno": "^0.63.3",
+    "@cpis/uno-preset": "^1.0.0"
   },
   "dependencies": {
     "axios": "^1.4.0",
