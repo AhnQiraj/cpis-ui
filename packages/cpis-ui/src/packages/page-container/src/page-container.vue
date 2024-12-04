@@ -30,8 +30,6 @@
 </template>
 
 <script>
-import { Multipane, MultipaneResizer } from 'vue-multipane'
-
 import Header from '../../container-header/index.js'
 import Main from '../../container-main/index.js'
 import Footer from '../../container-footer/index.js'
@@ -43,9 +41,7 @@ export default {
     Header,
     Main,
     Footer,
-    Aside,
-    Multipane,
-    MultipaneResizer
+    Aside
   },
   methods: {
     getComponent(name) {

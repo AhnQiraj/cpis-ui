@@ -29,8 +29,5 @@
   "author": {
     "name": "cpis",
     "email": "cpis@cpeam.com"
-  },
-  "dependencies": {
-    "vue-multipane": "^0.9.5"
   }
 }
