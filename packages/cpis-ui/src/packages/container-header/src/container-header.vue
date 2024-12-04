@@ -1,7 +1,12 @@
 <template>
-  <header class="bg-white px-4 flex flex-row items-center">
-    <div class="bg-blue-6 w-1 h-[18px] line-height-none"></div>
-    <div class="text-lg font-bold ml-2">{{ title }}</div>
+  <header class="bg-white">
+    <template v-if="$slots.default">
+      <slot />
+    </template>
+    <div v-else class="px-4 flex flex-row items-center h-[52px]">
+      <div class="bg-blue-6 w-1 h-[18px] line-height-none" />
+      <div class="text-lg font-bold ml-2">{{ title }}</div>
+    </div>
   </header>
 </template>
 
