@@ -1,0 +1,17 @@
+{
+    "name": "@cpis/uno-preset",
+    "version": "1.0.4",
+    "description": "",
+    "type": "module",
+    "keywords": [],
+    "author": {
+      "name": "cpis",
+      "email": "cpis@cpeam.com"
+    },
+    "license": "ISC",
+    "main": "index.js",
+    "publishConfig": {
+      "registry": "http://172.169.50.28:5000/"
+    }
+  }
+  
