@@ -1,7 +1,7 @@
 {
   "name": "@cpis/tools",
   "version": "1.0.0",
-  "description": "",
+  "description": "工具库",
   "scripts": {
     "build": "vite build",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -35,7 +35,6 @@
     "@tsconfig/node18": "^18.2.4",
     "@vue/tsconfig": "^0.5.1",
     "typescript": "^5.5.4",
-    "vue": "^3.4.38",
     "vue-tsc": "^2.0.29",
     "vite-plugin-dts": "^4.0.3"
   },

@@ -1,7 +1,7 @@
 {
   "name": "@cpis/prettier-config",
   "version": "1.0.0",
-  "description": "prettier config",
+  "description": "格式化配置",
   "main": "index.json",
   "keywords": [],
   "license": "ISC",

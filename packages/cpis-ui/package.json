@@ -1,7 +1,8 @@
 {
   "name": "@cpis/cpis-ui",
   "private": false,
-  "version": "0.0.1",
+  "description": "组件库",
+  "version": "0.0.2",
   "type": "module",
   "main": "dist/index.js",
   "files": [
