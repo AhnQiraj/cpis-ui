@@ -7,8 +7,7 @@ export default {
   tags: ['autodocs'],
   parameters: {
     controls: {
-      include: ['type', 'loading', 'disabled'], // 只显示这些控件
-
+      include: ['type', 'loading', 'disabled']
     },
   },
   render: (args, { argTypes }) => {

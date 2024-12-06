@@ -1,16 +1,15 @@
 <template>
   <div class="container">
-    <div class="flex">
-      <!-- <div class="subContainer   headContainer">
-        <ELInput size='small' type='text' label='上煤单号' placeholder='请输入' style='width: 100px'>
-        </ELInput>
-        <ELDatePicker type='daterange' start-placeholder='开始日期' end-placeholder='结束日期' range-separator='至' size='small'/>
-        <ELButton size="small" type="primary" @click="drawer = true"
-          >查询
-        </ELButton>
-        <ELButton size="small">重置</ELButton>
-      </div> -->
-      <div class="subContainer bodyContainer">
+    <div class="flex flex-col gap-1">
+      <div class="bg-white p-1 flex flex-row gap-1">
+        <CpisSearchInput v-model="searchForm.code" label='上煤单号' placeholder='请输入' />
+        <CpisSearchInput v-model="searchForm.code2" label='上煤单号' placeholder='请输入'  />
+        <CpisSearchInput v-model="searchForm.code3" label='上煤单号' placeholder='请输入'  />
+        <CpisSearchInput v-model="searchForm.code4" label='上煤单号' placeholder='请输入'  />
+        <CpisButton type="primary">搜索</CpisButton>
+        <CpisButton>重置</CpisButton>
+      </div>
+      <div class="bg-white p-1 flex bodyContainer">
         <div>
           <CpisButton type="primary" @click="drawer = true"
             >新增
@@ -96,10 +95,9 @@
 </template>
 
 <script>
-import { Table, TableColumn, Drawer, DatePicker } from 'element-ui'
+import { Table, TableColumn, Drawer, DatePicker, Input } from 'element-ui'
 import CpisButton from '../../../../packages/cpis-ui/src/packages/button/index'
-
-import Input from './Input/index.vue'
+import CpisSearchInput from '../../../../packages/cpis-ui/src/packages/search-input/index'
 import 'element-ui/lib/theme-chalk/index.css'
 
 export default {
@@ -109,12 +107,19 @@ export default {
     ElTableColumn: TableColumn,
     CpisButton: CpisButton,
     ElDrawer: Drawer,
+    CpisSearchInput: CpisSearchInput,
     ELInput: Input,
     ELDatePicker: DatePicker
   },
   data() {
     return {
       drawer: false,
+      searchForm: {
+        code: '',
+        code2: '',
+        code3: '',
+        code4: ''
+      },
       tableData: [
         {
           date: '2016-05-02',
@@ -173,29 +178,10 @@ export default {
 }
 </script>
 <style scoped>
-.flex {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.subContainer {
-  padding: 6px;
-  background: white;
-}
-
-.container {
-  background: #f5f5f5;
-  padding: 4px;
-}
-
 .bodyContainer {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
-.headContainer {
-  padding: 16px;
-  display: flex;
-}
+
 </style>
