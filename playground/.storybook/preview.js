@@ -14,4 +14,12 @@ const preview = {
   }
 }
 
+export const decorators = [
+  (Story) => {
+    document.body.classList.add('theme-cpis-blue')
+    // 直接修改 body 样式
+    return Story()
+  },
+];
+
 export default preview

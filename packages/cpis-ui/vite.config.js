@@ -1,8 +1,7 @@
 import { resolve } from 'node:path'
-
+import vueJsx from '@vitejs/plugin-vue2-jsx'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue2'
-import vueJsx from '@vitejs/plugin-vue2-jsx'
 import UnoCSS from 'unocss/vite'
 
 // https://vitejs.dev/config/
