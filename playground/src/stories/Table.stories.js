@@ -16,7 +16,7 @@ export default {
       props: Object.keys(argTypes),
       components: { CpisTable, CpisButton },
       template:
-        '<CpisTable v-bind="args" :columns="columns" :data="data">' +
+        '<CpisTable v-bind="$props" :columns="columns" :data="data">' +
         '<template #toolbar>' +
         '<CpisButton type="primary">新增</CpisButton>' +
         '<CpisButton>修改</CpisButton>' +
@@ -36,7 +36,7 @@ export default {
       {
         label: '姓名',
         prop: 'name',
-        type: 'text',
+        valueType: 'text',
         width: '100px',
         search: {
           label: '姓名',
@@ -46,7 +46,7 @@ export default {
       {
         label: '年龄',
         prop: 'age',
-        type: 'number',
+        valueType: 'number',
         width: '100px',
         search: {
           label: '年龄',
@@ -56,7 +56,7 @@ export default {
       {
         label: '工龄',
         prop: 'workAge',
-        type: 'number',
+        valueType: 'number',
         width: '100px',
         search: {
           label: '工龄',
@@ -93,12 +93,10 @@ export default {
         id: 5,
         name: '孙七',
         age: 26,
-        workAge: 7
       },
       {
         id: 6,
         name: '周八',
-        age: 28,
         workAge: 9
       }
     ]
@@ -115,6 +113,11 @@ export default {
     paginationProps: {
       description:
         '分页配置，支持布尔值或对象。布尔值控制是否显示分页，对象可配置分页参数',
+      control: 'boolean'
+    },
+    search: {
+      description:
+        '搜索配置，支持布尔值或对象。布尔值控制是否显示搜索，对象可配置搜索参数',
       control: 'boolean'
     }
   },
@@ -139,17 +142,112 @@ export const ShowPagination = {
   name: '是否显示分页'
 }
 
-export const ShowLoading = {
+export const ShowSearch = {
   parameters: {
     docs: {
       autodocs: false
     },
     controls: {
-      include: ['loading']
+      include: ['search']
     }
   },
   args: {
-    loading: false
+    search: false
   },
-  name: '是否加载中'
+  name: '是否显示搜索'
+}
+
+export const ConfigSearchText = {
+  parameters: {
+    docs: {
+      autodocs: false
+    },
+    controls: {
+      include: ['search']
+    }
+  },
+  argTypes: {
+    search: {
+      description: '搜索配置，支持对象。对象可配置搜索按钮文字',
+      control: 'object'
+    }
+  },
+  args: {
+    search: {
+      searchText: '我可以自定义',
+      resetText: '我可以自定义'
+    }
+  },
+  name: '配置搜索按钮文字'
+}
+
+
+export const ConfigEmptyText = {
+    parameters: {
+      docs: {
+        autodocs: false
+      },
+      controls: {
+        include: ['columnEmptyText']
+      }
+    },
+    argTypes: {
+        columnEmptyText: {
+        description: '列无数据时显示的文本',
+        control: 'text'
+      }
+    },
+    args: {
+        columnEmptyText: '我可以自定义'
+    },
+    name: '配置数据为空时候的文本'
+  }
+
+// Story 级别文档
+export const Primary = {
+    decorators: [
+        (Story) => ({
+          components: { Story },
+          template: `
+            <div>
+              <div class="docs-section">
+                <h2>列设置</h2>
+                <p>columns可以对列进行配置</p>
+                <p>其中最关键的参数是valueType</p>
+                <table style="border-collapse: collapse; width: 100%; margin: 16px 0;">
+                    <tr>
+                        <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left;">类型</th>
+                        <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left;">说明</th>
+                        <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left;">特性</th>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 12px;">text</td>
+                        <td style="border: 1px solid #ddd; padding: 12px;">默认文本类型</td>
+                        <td style="border: 1px solid #ddd; padding: 12px;">居中显示</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 12px;">number</td>
+                        <td style="border: 1px solid #ddd; padding: 12px;">数字类型</td>
+                        <td style="border: 1px solid #ddd; padding: 12px;">居右显示</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 12px;">select</td>
+                        <td style="border: 1px solid #ddd; padding: 12px;">枚举类型</td>
+                        <td style="border: 1px solid #ddd; padding: 12px;">可以通过设置valueEnum预设一些状态</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 12px;">date</td>
+                        <td style="border: 1px solid #ddd; padding: 12px;">日期</td>
+                        <td style="border: 1px solid #ddd; padding: 12px;">可以预设一些状态</td>
+                    </tr>
+                    
+                </table>
+              </div>
+              <Story />
+            </div>
+          `
+        })
+      ],
+  name: '列设置'
+
 }

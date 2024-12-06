@@ -3,66 +3,73 @@
     <div v-if="search" class="bg-white">
       <template>
         <div class="flex gap-2 p-4">
-            <template v-for="column in columns">
-                <template v-if="column.search">
-                    <CpisSearchInput :key="column.prop" :label="column.search.label || column.label" :placeholder="column.search.placeholder" />
-                </template>
+          <template v-for="column in columns">
+            <template v-if="column.search">
+              <CpisSearchInput
+                :key="column.prop"
+                :label="column.search.label || column.label"
+                :placeholder="column.search.placeholder"
+              />
             </template>
-            <CpisButton type="primary">{{ search.searchText }}</CpisButton>
-            <CpisButton>{{ search.resetText }}</CpisButton>
+          </template>
+          <CpisButton type="primary">{{
+            search.searchText || '查询'
+          }}</CpisButton>
+          <CpisButton>{{ search.resetText || '重置' }}</CpisButton>
         </div>
       </template>
     </div>
     <div class="bg-white p-2 flex flex-col gap-2">
-    <div v-if="toolbar">
-      <slot name="toolbar" />
-    </div>
-    <div class="flex-1">
+      <div v-if="toolbar">
+        <slot name="toolbar" />
+      </div>
+      <div class="flex-1">
         <ELTable
-      :data="data"
-      :row-key="rowKey"
-      v-loading="loading"
-      :header-cell-style="{ backgroundColor: '#F5F5F5', color: '#434343' }"
-      :border="true"
-      size="small"
-    >
-      <template v-for="column in columns">
-        <template v-if="column.type === 'index'">
-          <ELTableColumn
-            type="index"
-            :label="column.label"
-            :width="column.width"
-          >
-            <template slot-scope="scope">
-              {{ scope.$index + 1 }}
+          :data="data"
+          :empty-text="columnEmptyText"
+          :row-key="rowKey"
+          v-loading="loading"
+          :header-cell-style="{ backgroundColor: '#F5F5F5', color: '#434343' }"
+          :border="true"
+          size="small"
+        >
+          <template v-for="column in columns">
+            <template v-if="column.type === 'index'">
+              <ELTableColumn
+                type="index"
+                :label="column.label"
+                :width="column.width"
+              >
+                <template slot-scope="scope">
+                  {{ scope.$index + 1 }}
+                </template>
+              </ELTableColumn>
             </template>
-          </ELTableColumn>
-        </template>
-        <template v-else-if="column.type === 'number'">
-            <ELTableColumn
-            :key="column.prop"
-            :label="column.label"
-            :prop="column.prop"
-            :align="column.align || 'right'"
-          />
-        </template>
-        <template v-else>
-          <ELTableColumn
-            :key="column.prop"
-            :label="column.label"
-            :prop="column.prop"
-          />
-        </template>
-      </template>
-    </ELTable>
-    </div>
-    <ELPagination
-      v-if="paginationProps !== false"
-      v-bind="{
-        pageSize: 20,
-        total: 0,
-        layout: 'total, sizes, prev, pager, next, jumper',
-        ...paginationProps
+            <template v-else-if="column.type === 'number'">
+              <ELTableColumn
+                :key="column.prop"
+                :label="column.label"
+                :prop="column.prop"
+                :align="column.align || 'right'"
+              />
+            </template>
+            <template v-else>
+              <ELTableColumn
+                :key="column.prop"
+                :label="column.label"
+                :prop="column.prop"
+              />
+            </template>
+          </template>
+        </ELTable>
+      </div>
+      <ELPagination
+        v-if="paginationProps !== false"
+        v-bind="{
+          pageSize: 20,
+          total: 0,
+          layout: 'total, sizes, prev, pager, next, jumper',
+          ...paginationProps
         }"
       />
     </div>
@@ -165,6 +172,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 ::v-deep .cellClassName {
-    background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 </style>
