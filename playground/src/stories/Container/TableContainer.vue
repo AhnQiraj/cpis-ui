@@ -12,11 +12,11 @@
       </div> -->
       <div class="subContainer bodyContainer">
         <div>
-          <ELButton size="small" type="primary" @click="drawer = true"
+          <CpisButton type="primary" @click="drawer = true"
             >新增
-          </ELButton>
-          <ELButton size="small">修改</ELButton>
-          <ELButton size="small">删除</ELButton>
+          </CpisButton>
+          <CpisButton >修改</CpisButton>
+          <CpisButton >删除</CpisButton>
         </div>
         <ElTable
           border
@@ -96,7 +96,9 @@
 </template>
 
 <script>
-import { Table, TableColumn, Button, Drawer, DatePicker } from 'element-ui'
+import { Table, TableColumn, Drawer, DatePicker } from 'element-ui'
+import CpisButton from '../../../../packages/cpis-ui/src/packages/button/index'
+
 import Input from './Input/index.vue'
 import 'element-ui/lib/theme-chalk/index.css'
 
@@ -105,7 +107,7 @@ export default {
   components: {
     ElTable: Table,
     ElTableColumn: TableColumn,
-    ELButton: Button,
+    CpisButton: CpisButton,
     ElDrawer: Drawer,
     ELInput: Input,
     ELDatePicker: DatePicker
