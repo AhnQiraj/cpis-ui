@@ -1,6 +1,6 @@
 <template>
   <button
-    class="el-button !px-4 !py-2 !bg-blue-6 border-blue-5 text-white)"
+    class="el-button"
     @click="handleClick"
     :disabled="buttonDisabled || loading"
     :autofocus="autofocus"
@@ -35,9 +35,8 @@ export default {
   props: {
     type: {
       type: String,
-      default: 'default',
       validator(value) {
-        return ['default', 'primary', 'text'].includes(value)
+        return ['primary', 'text'].includes(value)
       }
     },
     size: String,
@@ -77,9 +76,23 @@ export default {
 }
 </script>
 <style scoped>
-
-
 .el-button {
-  padding: 8px 16px;
+  @apply !px-4 !py-2 text-primary-6 border-primary-6 bg-white;
+  &:hover {
+    @apply !border-primary-5 !text-primary-5;
+  }
+  &:active {
+    @apply !border-primary-7 !text-primary-7;
+  }
+}
+.el-button--primary {
+  @apply !bg-primary-6 !border-primary-5 text-white;
+  &:hover {
+    @apply !border-primary-5 !bg-primary-5 !text-white;
+  }
+  &:active {
+    @apply !border-primary-7 !bg-primary-7 !text-white;
+  }
 }
 </style>
+
