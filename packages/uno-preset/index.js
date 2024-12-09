@@ -31,7 +31,8 @@ export function preseet() {
             7: 'var(--level-7)',
             8: 'var(--level-8)',
             9: 'var(--level-9)',
-            10: 'var(--level-10)'
+            10: 'var(--level-10)',
+            DEFAULT: 'var(--level-6)'
           },
           blue: {
             1: '#F0F9FF',
@@ -44,7 +45,7 @@ export function preseet() {
             8: '#1351AD',
             9: '#083787',
             10: '#031531',
-            text: '#3491FA'
+            DEFAULT: '#3491FA'
           },
           green: {
             1: '#f6ffed',
@@ -56,7 +57,11 @@ export function preseet() {
             7: '#389e0d',
             8: '#237804',
             9: '#135200',
-            10: '#092b00'
+            10: '#092b00',
+            DEFAULT: '#52C41A'
+          },
+          success: {
+            DEFAULT: '#52c41a'
           },
           red: {
             1: '#FFEBE8',
@@ -68,7 +73,11 @@ export function preseet() {
             7: '#D01F2E',
             8: '#A41022',
             9: '#780617',
-            10: '#2A0007'
+            10: '#2A0007',
+            DEFAULT: '#FC323D'
+          },
+          error: {
+            DEFAULT: '#FC323D'
           },
           gray: {
             1: '#FAFAFA',
@@ -80,7 +89,8 @@ export function preseet() {
             7: '#434343',
             8: '#262626',
             9: '#1F1F1F',
-            10: '#000000'
+            10: '#000000',
+            DEFAULT: '#595959'
           },
           grey: {
             1: '#FAFAFA',
@@ -92,7 +102,8 @@ export function preseet() {
             7: '#434343',
             8: '#262626',
             9: '#1F1F1F',
-            10: '#000000'
+            10: '#000000',
+            DEFAULT: '#595959'
           },
           orange: {
             1: '#FFF7E6',
@@ -104,7 +115,11 @@ export function preseet() {
             7: '#D46B08',
             8: '#AD4E00',
             9: '#873800',
-            10: '#301200'
+            10: '#301200',
+            DEFAULT: '#FA8C16'
+          },
+          active: {
+            DEFAULT: '#FAAD14'
           }
         }
       }
