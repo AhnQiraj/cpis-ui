@@ -9,6 +9,7 @@
         <p class="text-gray-700">
           间距的单位为 rem，在本项目中 1rem = 16px。为保持一致性，我们使用 4 的倍数作为间距值：
         </p>
+        <p>更多参考 <a href="https://tailwindcss.com/docs/margin" target="_blank">Tailwind CSS 文档</a></p>
         <ul class="list-disc list-inside mt-2 space-y-1">
           <li>m-1 = 0.25rem = 4px</li>
           <li>m-2 = 0.5rem = 8px</li>
