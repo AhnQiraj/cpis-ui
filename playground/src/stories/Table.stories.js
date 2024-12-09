@@ -11,7 +11,8 @@ export default {
     return {
       setup() {
         const { columns, dataSource } = parameters
-        return { columns, dataSource, ...args }
+        
+        return { columns, dataSource, key: 'id', ...args }
       },
       props: Object.keys(argTypes),
       components: { CpisTable, CpisButton },
