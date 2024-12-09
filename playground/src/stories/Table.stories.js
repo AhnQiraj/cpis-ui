@@ -7,16 +7,16 @@ export default {
   title: '原子组件/表格',
   component: CpisTable,
   tags: ['autodocs'],
-  render: (args, { argTypes, parameters }) => {
+  render: (args, { argTypes, parameters }) => {    
     return {
       setup() {
-        const { columns, data } = parameters
-        return { ...args, columns, data }
+        const { columns, dataSource } = parameters
+        return { columns, dataSource, ...args }
       },
       props: Object.keys(argTypes),
       components: { CpisTable, CpisButton },
       template:
-        '<CpisTable v-bind="$props" :columns="columns" :data="data">' +
+        '<CpisTable v-bind="$props" :columns="columns" :dataSource="dataSource">' +
         '<template #toolbar>' +
         '<CpisButton type="primary">新增</CpisButton>' +
         '<CpisButton>修改</CpisButton>' +
@@ -64,7 +64,7 @@ export default {
         }
       }
     ],
-    data: [
+    dataSource: [
       {
         id: 1,
         name: '张三',
@@ -92,7 +92,7 @@ export default {
       {
         id: 5,
         name: '孙七',
-        age: 26,
+        age: 26
       },
       {
         id: 6,
@@ -102,7 +102,7 @@ export default {
     ]
   },
   argTypes: {
-    tableData: {
+    dataSource: {
       description: '表格数据',
       control: 'array'
     },
@@ -120,9 +120,6 @@ export default {
         '搜索配置，支持布尔值或对象。布尔值控制是否显示搜索，对象可配置搜索参数',
       control: 'boolean'
     }
-  },
-  args: {
-    tableData: []
   }
 }
 
@@ -181,40 +178,110 @@ export const ConfigSearchText = {
   name: '配置搜索按钮文字'
 }
 
-
 export const ConfigEmptyText = {
-    parameters: {
-      docs: {
-        autodocs: false
+  parameters: {
+    docs: {
+      autodocs: false
+    },
+    controls: {
+      include: ['emptyText']
+    },
+    dataSource: []
+  },
+  argTypes: {
+    emptyText: {
+      description: '列无数据时显示的文本',
+      control: 'text'
+    }
+  },
+  args: {
+    emptyText: '我可以自定义'
+  },
+  name: '配置数据为空时候的文本'
+}
+
+export const HideColumn = {
+  parameters: {
+    docs: {
+      autodocs: false
+    },
+    controls: {
+      include: ['columns']
+    },
+    dataSource: []
+  },
+  argTypes: {
+    columns: {
+      description: '列配置',
+      control: 'array',
+      table: {
+        category: '列配置'
+      }
+    }
+  },
+  args: {
+    columns: [
+      {
+        label: '姓名',
+        prop: 'name',
+        hideInTable: false
       },
-      controls: {
-        include: ['columnEmptyText']
+      {
+        label: '年龄',
+        prop: 'age',
+        hideInTable: true
       }
-    },
-    argTypes: {
-        columnEmptyText: {
-        description: '列无数据时显示的文本',
-        control: 'text'
-      }
-    },
-    args: {
-        columnEmptyText: '我可以自定义'
-    },
-    name: '配置数据为空时候的文本'
-  }
+      
+    ]
+  },
+  name: '配置某一列可以隐藏'
+}
 
 // Story 级别文档
 export const Primary = {
-    decorators: [
-        (Story) => ({
-          components: { Story },
-          template: `
+  decorators: [
+    Story => ({
+      components: { Story },
+      template: `
             <div>
               <div class="docs-section">
-                <h2>列设置</h2>
-                <p>columns可以对列进行配置</p>
-                <p>其中最关键的参数是valueType</p>
+                <h2>Columns 列定义</h2
                 <table style="border-collapse: collapse; width: 100%; margin: 16px 0;">
+                    <tr>
+                        <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left;">参数</th>
+                        <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left;">说明</th>
+                        <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left;">默认值</th>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 12px;">valueType</td>
+                        <td style="border: 1px solid #ddd; padding: 12px;">列类型，详细配置查看下面 <a href="#valueType">valueType</a></td>
+                        <td style="border: 1px solid #ddd; padding: 12px;">text</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 12px;">copyable</td>
+                        <td style="border: 1px solid #ddd; padding: 12px;">是否支持复制</td>
+                        <td style="border: 1px solid #ddd; padding: 12px;">false</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 12px;">ellipsis</td>
+                        <td style="border: 1px solid #ddd; padding: 12px;">是否超长省略</td>
+                        <td style="border: 1px solid #ddd; padding: 12px;">可以通过设置valueEnum预设一些状态</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 12px;">search</td>
+                        <td style="border: 1px solid #ddd; padding: 12px;">配置列的搜索相关，false 为隐藏	</td>
+                        <td style="border: 1px solid #ddd; padding: 12px;">false</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 12px;">hideInTable</td>
+                        <td style="border: 1px solid #ddd; padding: 12px;">在表格中隐藏此列</td>
+                        <td style="border: 1px solid #ddd; padding: 12px;">false</td>
+                    </tr>
+                    
+                </table>
+                <h3>valueType</h3>
+                <p>valueType 是列定义中最重要的参数，决定了列的显示方式</p>
+                <table style="border-collapse: collapse; width: 100%; margin: 16px 0;" id="valueType">
                     <tr>
                         <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left;">类型</th>
                         <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left;">说明</th>
@@ -243,11 +310,9 @@ export const Primary = {
                     
                 </table>
               </div>
-              <Story />
             </div>
           `
-        })
-      ],
+    })
+  ],
   name: '列设置'
-
 }

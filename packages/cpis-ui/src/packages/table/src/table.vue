@@ -1,6 +1,6 @@
 <template>
   <div class="p-3 flex flex-col gap-2 bg-gray-2">
-    <div v-if="search" class="bg-white">
+    <div v-if="search && computedSearch.length > 0" class="bg-white">
       <template>
         <div class="flex gap-2 p-4">
           <template v-for="column in columns">
@@ -9,13 +9,14 @@
                 :key="column.prop"
                 :label="column.search.label || column.label"
                 :placeholder="column.search.placeholder"
+                v-model="searchParams[column.prop]"
               />
             </template>
           </template>
-          <CpisButton type="primary">{{
+          <CpisButton type="primary" @click="handleSearch">{{
             search.searchText || '查询'
           }}</CpisButton>
-          <CpisButton>{{ search.resetText || '重置' }}</CpisButton>
+          <CpisButton @click="handleSearchReset">{{ search.resetText || '重置' }}</CpisButton>
         </div>
       </template>
     </div>
@@ -25,15 +26,15 @@
       </div>
       <div class="flex-1">
         <ELTable
-          :data="data"
-          :empty-text="columnEmptyText"
+          :empty-text="emptyText"
+          :data="dataSource"
           :row-key="rowKey"
           v-loading="loading"
           :header-cell-style="{ backgroundColor: '#F5F5F5', color: '#434343' }"
           :border="true"
           size="small"
         >
-          <template v-for="column in columns">
+          <template v-for="column in computedColumns">
             <template v-if="column.type === 'index'">
               <ELTableColumn
                 type="index"
@@ -51,6 +52,17 @@
                 :label="column.label"
                 :prop="column.prop"
                 :align="column.align || 'right'"
+              >
+                <template slot-scope="scope">
+                  {{ scope.row[column.prop] || columnEmptyText }}
+                </template>
+              </ELTableColumn>
+            </template>
+            <template v-else-if="column.type === 'date'">
+              <ELTableColumn
+                :key="column.prop"
+                :label="column.label"
+                :prop="column.prop"
               />
             </template>
             <template v-else>
@@ -100,6 +112,11 @@ export default {
     CpisSearchInput
   },
   props: {
+    key: {
+      type: String,
+      required: true,
+      comments: '表格唯一标识'
+    },
     paginationProps: {
       type: [Boolean, Object],
       default: () => ({
@@ -112,7 +129,7 @@ export default {
       comments:
         '这个参数有两种类型，一种是布尔值，一种是对象，当为布尔值时，表示是否显示分页，当为对象时，表示分页的配置'
     },
-    data: {
+    dataSource: {
       type: Array,
       default: () => [],
       comments: '表格数据'
@@ -137,6 +154,11 @@ export default {
       default: '暂无数据',
       comments: '列无数据时显示的文本例如 - 或者暂无数据'
     },
+    emptyText: {
+      type: String,
+      default: '暂无数据',
+      comments: '表格无数据时显示的文本例如 - 或者暂无数据'
+    },
     toolbar: {
       type: Boolean,
       default: true,
@@ -149,13 +171,29 @@ export default {
         resetText: '重置'
       }),
       comments:
-        '这个参数有两种类型，一种是对象，一种是布尔值，当为对象时，表示搜索的配置，当为布尔值时，表示是否显示搜索'
+        '这个参数有两种类型，一种是对象，一种是布尔值，当为对象时，表示搜索的配置，当为布尔值时，表示是否显示搜索。'
+    },
+    loading: {
+      type: Boolean,
+      default: false,
+      comments: '是否显示加载中'
+    }
+  },
+  computed: {
+    computedColumns() {
+      return this.columns.filter(column => !column.hideInTable)
+    },
+    computedSearch() {
+      return this.columns.filter(column => !!column.search)
+    }
+  },
+  data() {
+    return {
+      searchParams: {}
     }
   },
   mounted() {
-    console.log('paginationProps', this.paginationProps)
-
-    this.handleSearch({
+    this.handleFetchData({
       requestPage: {
         [this.paginationProps.pageSizeKey || 'limit']:
           this.paginationProps.pageSize,
@@ -164,8 +202,14 @@ export default {
     })
   },
   methods: {
+    handleFetchData(params) {
+      this.request(params)
+    },
     handleSearch(params) {
       this.request(params)
+    },
+    handleSearchReset() {
+      this.searchParams = {}
     }
   }
 }
