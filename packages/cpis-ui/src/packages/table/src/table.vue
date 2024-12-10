@@ -40,9 +40,22 @@
                 type="index"
                 :label="column.label"
                 :width="column.width"
+                :align="column.align || 'center'"
               >
                 <template slot-scope="scope">
                   {{ scope.$index + 1 }}
+                </template>
+              </ELTableColumn>
+            </template>
+            <template v-else-if="column.type === 'globalIndex'">
+              <ELTableColumn
+                type="index"
+                :label="column.label"
+                :width="column.width"
+                :align="column.align || 'center'"
+              >
+                <template slot-scope="scope">
+                  {{ (currentPage === 0 ? 0 : currentPage - 1) * pageSize + scope.$index + 1 }}
                 </template>
               </ELTableColumn>
             </template>
@@ -77,12 +90,12 @@
       </div>
       <ELPagination
         v-if="paginationProps !== false"
-        v-bind="{
-          pageSize: 20,
-          total: 0,
-          layout: 'total, sizes, prev, pager, next, jumper',
-          ...paginationProps
-        }"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="total"
+        :current-page="currentPage"
+        :page-size="pageSize"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
       />
     </div>
   </div>
@@ -120,19 +133,11 @@ export default {
     paginationProps: {
       type: [Boolean, Object],
       default: () => ({
-        pageSize: 20,
-        total: 0,
-        layout: 'total, sizes, prev, pager, next, jumper',
         pageSizeKey: 'pageSize',
         currentPageKey: 'currentPage'
       }),
       comments:
         '这个参数有两种类型，一种是布尔值，一种是对象，当为布尔值时，表示是否显示分页，当为对象时，表示分页的配置'
-    },
-    dataSource: {
-      type: Array,
-      default: () => [],
-      comments: '表格数据'
     },
     request: {
       type: Function,
@@ -173,11 +178,7 @@ export default {
       comments:
         '这个参数有两种类型，一种是对象，一种是布尔值，当为对象时，表示搜索的配置，当为布尔值时，表示是否显示搜索。'
     },
-    loading: {
-      type: Boolean,
-      default: false,
-      comments: '是否显示加载中'
-    }
+
   },
   computed: {
     computedColumns() {
@@ -187,35 +188,83 @@ export default {
       return this.columns.filter(column => !!column.search)
     }
   },
+  watch: {
+    pageSize(newVal) {
+      if (newVal) {
+        this.handleFetchData({
+          requestPage: {
+            [this.paginationProps.pageSizeKey || 'limit']: newVal,
+            [this.paginationProps.currentPageKey || 'pageNo']: this.currentPage
+          }
+        })
+      }
+    },
+    currentPage(newVal) {
+      if (newVal) {
+        this.handleFetchData({
+          requestPage: {
+            [this.paginationProps.pageSizeKey || 'limit']: this.pageSize,
+            [this.paginationProps.currentPageKey || 'pageNo']: newVal
+          }
+        })
+      }
+    }
+  },
   data() {
     return {
-      searchParams: {}
+      searchParams: {},
+      currentPage: 1,
+      pageSize: 20,
+      total: 0,
+      dataSource: [],
+      loading: false
     }
   },
   mounted() {
     this.handleFetchData({
       requestPage: {
-        [this.paginationProps.pageSizeKey || 'limit']:
-          this.paginationProps.pageSize,
-        [this.paginationProps.currentPageKey || 'pageNo']: 1
+        [this.paginationProps.pageSizeKey || 'limit']: this.pageSize,
+        [this.paginationProps.currentPageKey || 'pageNo']: this.currentPage
       }
     })
   },
   methods: {
-    handleFetchData(params) {
-      this.request(params)
+    async handleFetchData(params) {
+      this.loading = true
+      if (this.request && typeof this.request === 'function') {
+        try {
+          const res = await this.request(params)
+          if (!res.success) return
+          this.dataSource = res.data
+          this.total = res.total
+        } catch (error) {
+          console.error(error)
+        } finally {
+          this.loading = false
+        }
+      }
     },
     handleSearch(params) {
-      this.request(params)
+      this.handleFetchData(params)
     },
     handleSearchReset() {
       this.searchParams = {}
+    },
+    handleSizeChange(size) {
+      this.pageSize = size
+    },
+    handleCurrentChange(currentPage) {
+      this.currentPage = currentPage
     }
   }
 }
 </script>
-<style lang="scss" scoped>
+<style scoped>
 ::v-deep .cellClassName {
   background-color: #f5f5f5;
+}
+::v-deep .el-pager .number.active,
+::v-deep .el-pager .number:hover {
+  @apply !text-primary-6;
 }
 </style>
