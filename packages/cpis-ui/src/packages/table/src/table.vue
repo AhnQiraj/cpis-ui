@@ -7,7 +7,7 @@
             <template v-if="column.search">
               <template v-if="column.valueType === 'select'">
                 <CpisSearchSelect
-                  :style="{ width: column.search.width || '120px'  }"
+                  :style="{ width: column.search.width || '120px' }"
                   :key="column.prop"
                   :label="column.search.label || column.label"
                   :placeholder="column.search.placeholder"
@@ -17,19 +17,21 @@
               </template>
               <template v-else>
                 <CpisSearchInput
-                :style="{ width: column.search.width || '150px'  }"
-                :key="column.prop"
-                :label="column.search.label || column.label"
-                :placeholder="column.search.placeholder"
-                v-model="searchParams[column.search.prop || column.prop]"
-              />
+                  :style="{ width: column.search.width || '150px' }"
+                  :key="column.prop"
+                  :label="column.search.label || column.label"
+                  :placeholder="column.search.placeholder"
+                  v-model="searchParams[column.search.prop || column.prop]"
+                />
               </template>
             </template>
           </template>
           <CpisButton type="primary" @click="handleSearch">{{
             search.searchText || '查询'
           }}</CpisButton>
-          <CpisButton @click="handleSearchReset">{{ search.resetText || '重置' }}</CpisButton>
+          <CpisButton @click="handleSearchReset">{{
+            search.resetText || '重置'
+          }}</CpisButton>
         </div>
       </template>
     </div>
@@ -49,66 +51,92 @@
         >
           <template v-for="column in computedColumns">
             <template v-if="column.valueType === 'index'">
-              <ELTableColumn
-                type="index"
-                :label="column.label"
-                :width="column.width"
-                :align="column.align || 'center'"
-              >
-                <template slot-scope="scope">
-                  {{ scope.$index + 1 }}
-                </template>
-                <template v-if="column.copyable"></template>
-              </ELTableColumn>
-            </template>
-            <template v-else-if="column.valueType === 'globalIndex'">
-              <ELTableColumn
-                type="index"
-                :label="column.label"
-                :width="column.width"
-                :align="column.align || 'center'"
-              >
-                <template slot-scope="scope">
-                  {{ (pageNo === 0 ? 0 : pageNo - 1) * limit + scope.$index + 1 }}
-                </template>
-              </ELTableColumn>
-            </template>
-            <template v-else-if="column.valueType === 'number'">
-              <ELTableColumn
-                :key="column.prop"
-                :label="column.label"
-                :prop="column.prop"
-                :align="column.align || 'right'"
-              >
-                <template slot-scope="scope">
-                  {{ scope.row[column.prop] || columnEmptyText }}
-                  <template v-if="column.copyable">
-                    <CpisCopyable :text="scope.row[column.prop]" />
+                <ELTableColumn
+                  type="index"
+                  :label="column.label"
+                  :width="column.width"
+                  :align="column.align || 'center'"
+                >
+                  <template slot-scope="scope">
+                    {{ scope.$index + 1 }}
                   </template>
-                </template>
-              </ELTableColumn>
-            </template>
-            <template v-else-if="column.valueType === 'date'">
-              <ELTableColumn
-                :key="column.prop"
-                :label="column.label"
-                :prop="column.prop"
-              />
-            </template>
-            <template v-else>
-              <ELTableColumn
-                :key="column.prop"
-                :label="column.label"
-                :prop="column.prop"
-              >
-                <template slot-scope="scope">
-                  {{ scope.row[column.prop] || columnEmptyText }}
-                  <template v-if="column.copyable">
-                    <CpisCopyable :text="scope.row[column.prop]" />
+                  <template v-if="column.copyable"></template>
+                </ELTableColumn>
+              </template>
+              <template v-else-if="column.valueType === 'globalIndex'">
+                <ELTableColumn
+                  type="index"
+                  :label="column.label"
+                  :width="column.width"
+                  :align="column.align || 'center'"
+                >
+                  <template slot-scope="scope">
+                    {{
+                      (pageNo === 0 ? 0 : pageNo - 1) * limit + scope.$index + 1
+                    }}
                   </template>
-                </template>
-              </ELTableColumn>
-            </template>
+                </ELTableColumn>
+              </template>
+              <template v-else-if="column.valueType === 'number'">
+                <ELTableColumn
+                  :key="column.prop"
+                  :label="column.label"
+                  :prop="column.prop"
+                  :align="column.align || 'right'"
+                >
+                  <template slot-scope="scope">
+                    {{ scope.row[column.prop] || columnEmptyText }}
+                    <template v-if="column.copyable">
+                      <CpisCopyable :text="scope.row[column.prop]" />
+                    </template>
+                  </template>
+                </ELTableColumn>
+              </template>
+              <template v-else-if="column.valueType === 'date'">
+                <ELTableColumn
+                  :key="column.prop"
+                  :label="column.label"
+                  :prop="column.prop"
+                />
+              </template>
+              <template v-else-if="column.valueType === 'action'">
+                <ELTableColumn
+                  :key="column.prop"
+                  :label="column.label"
+                  :prop="column.prop"
+                  :fixed="column.fixed"
+                  :width="column.width"
+                >
+                  <template slot-scope="scope">
+                    <slot name="columns" :column="column" :row="scope.row" />
+                  </template>
+                </ELTableColumn>
+              </template>
+              <template v-else-if="column.valueType === 'slot'">
+                <ELTableColumn
+                  :key="column.prop"
+                  :label="column.label"
+                  :prop="column.prop"
+                >
+                  <template slot-scope="scope">
+                    <slot :column="column" :scope="scope" />
+                  </template>
+                </ELTableColumn>
+              </template>
+              <template v-else>
+                <ELTableColumn
+                  :key="column.prop"
+                  :label="column.label"
+                  :prop="column.prop"
+                >
+                  <template slot-scope="scope">
+                    {{ scope.row[column.prop] || columnEmptyText }}
+                    <template v-if="column.copyable">
+                      <CpisCopyable :text="scope.row[column.prop]" />
+                    </template>
+                  </template>
+                </ELTableColumn>
+              </template>
           </template>
         </ELTable>
       </div>
@@ -205,8 +233,7 @@ export default {
       }),
       comments:
         '这个参数有两种类型，一种是对象，一种是布尔值，当为对象时，表示搜索的配置，当为布尔值时，表示是否显示搜索。'
-    },
-
+    }
   },
   computed: {
     computedColumns() {
@@ -231,8 +258,8 @@ export default {
       if (newVal) {
         this.handleFetchData({
           requestPage: {
-            'limit': this.limit,
-            'pageNo': newVal
+            limit: this.limit,
+            pageNo: newVal
           }
         })
       }
@@ -251,8 +278,8 @@ export default {
   mounted() {
     this.handleFetchData({
       requestPage: {
-        'limit': this.limit,
-        'pageNo': this.pageNo
+        limit: this.limit,
+        pageNo: this.pageNo
       }
     })
   },
@@ -265,7 +292,8 @@ export default {
           if (!res.success) return
           this.dataSource = res.data
           this.total = res.total
-        } catch (error) {} finally {
+        } catch (error) {
+        } finally {
           this.loading = false
         }
       }
@@ -273,8 +301,8 @@ export default {
     handleSearch() {
       this.handleFetchData({
         requestPage: {
-          'limit': this.limit,
-          'pageNo': this.pageNo
+          limit: this.limit,
+          pageNo: this.pageNo
         },
         parameters: this.searchParams
       })
@@ -283,9 +311,9 @@ export default {
       this.searchParams = {}
       this.handleFetchData({
         requestPage: {
-          'limit': this.limit,
-          'pageNo': this.pageNo
-        },
+          limit: this.limit,
+          pageNo: this.pageNo
+        }
       })
     },
     handleSizeChange(limit) {

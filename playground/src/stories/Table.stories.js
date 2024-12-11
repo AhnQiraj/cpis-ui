@@ -15,14 +15,18 @@ export default {
       },
       props: Object.keys(argTypes),
       components: { CpisTable, CpisButton },
-      template:
-        '<CpisTable v-bind="$props" key="table-1" :columns="columns" :request="request">' +
-        '<template #toolbar>' +
-        '<CpisButton type="primary">新增</CpisButton>' +
-        '<CpisButton>修改</CpisButton>' +
-        '<CpisButton>删除</CpisButton>' +
-        '</template>' +
-        '</CpisTable>'
+      template: `
+        <CpisTable v-bind="$props" key="table-1" :columns="columns" :request="request">
+          <template #toolbar>
+            <CpisButton type="primary">新增</CpisButton>
+            <CpisButton>修改</CpisButton>
+            <CpisButton>删除</CpisButton>
+          </template>
+          <template v-slot:columns="{column, row}">
+            <CpisButton type="text" v-if="column.prop === 'action'">编辑</CpisButton>
+          </template>
+        </CpisTable>
+      `
     }
   },
   parameters: {
@@ -85,6 +89,11 @@ export default {
           male: '男',
           female: '女'
         }
+      },
+      {
+        label: '操作',
+        prop: 'action',
+        valueType: 'action'
       }
     ],
     request: async params => {
