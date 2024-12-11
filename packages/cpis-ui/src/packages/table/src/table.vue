@@ -7,6 +7,7 @@
             <template v-if="column.search">
               <template v-if="column.valueType === 'select'">
                 <CpisSearchSelect
+                  :style="{ width: column.search.width || '120px'  }"
                   :key="column.prop"
                   :label="column.search.label || column.label"
                   :placeholder="column.search.placeholder"
@@ -16,6 +17,7 @@
               </template>
               <template v-else>
                 <CpisSearchInput
+                :style="{ width: column.search.width || '150px'  }"
                 :key="column.prop"
                 :label="column.search.label || column.label"
                 :placeholder="column.search.placeholder"
@@ -268,13 +270,13 @@ export default {
         }
       }
     },
-    handleSearch(searchParams) {
+    handleSearch() {
       this.handleFetchData({
         requestPage: {
           'limit': this.limit,
           'pageNo': this.pageNo
         },
-        parameters: searchParams
+        parameters: this.searchParams
       })
     },
     handleSearchReset() {

@@ -66,14 +66,15 @@ export default {
         width: '100px',
         search: {
           label: '工龄',
-          placeholder: '请输入工龄'
+          placeholder: '请输入工龄',
+          width: '150px '
         }
       },
       {
         label: '工号',
         prop: 'workId',
         valueType: 'number',
-        width: '100px'
+        width: '120px'
       },
       {
         label: '性别',
