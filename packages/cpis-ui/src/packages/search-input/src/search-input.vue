@@ -12,7 +12,12 @@
     @mouseleave="hovering = false"
   >
     <template>
-      <div class="flex flex-row items-center border-solid border-1 border-gray-3 rounded px-2.5">
+      <div
+        class="flex flex-row items-center border-solid border-1 border-gray-3 rounded px-2.5 "
+        :class="{
+          'border-primary-6': focused
+        }"
+      >
         <div class="whitespace-nowrap text-sm text-gray-6">{{ label }}：</div>
         <input
           :tabindex="tabindex"
