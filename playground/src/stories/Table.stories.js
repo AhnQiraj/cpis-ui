@@ -30,13 +30,13 @@ export default {
       {
         label: '序号',
         prop: 'id',
-        type: 'index',
+        valueType: 'index',
         width: '100px'
       },
       {
         label: '全局序号',
         prop: 'id',
-        type: 'globalIndex',
+        valueType: 'globalIndex',
         width: '100px'
       },
       {
@@ -445,6 +445,14 @@ export const Copyable = {
       {
         label: '年龄',
         prop: 'age'
+      },
+      {
+        label: '性别',
+        prop: 'sex',
+        valueType: 'select',
+        search: true,
+        width: '100px',
+        valueEnum: ['男', '女']
       }
     ]
   },

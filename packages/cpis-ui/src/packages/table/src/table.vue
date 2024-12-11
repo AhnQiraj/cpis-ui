@@ -5,12 +5,22 @@
         <div class="flex gap-2 p-4">
           <template v-for="column in columns">
             <template v-if="column.search">
-              <CpisSearchInput
+              <template v-if="column.valueType === 'select'">
+                <CpisSearchSelect
+                  :key="column.prop"
+                  :label="column.search.label || column.label"
+                  :placeholder="column.search.placeholder"
+                  v-model="searchParams[column.prop]"
+                />
+              </template>
+              <template v-else>
+                <CpisSearchInput
                 :key="column.prop"
                 :label="column.search.label || column.label"
                 :placeholder="column.search.placeholder"
                 v-model="searchParams[column.prop]"
               />
+              </template>
             </template>
           </template>
           <CpisButton type="primary" @click="handleSearch">{{
@@ -56,7 +66,7 @@
                 :align="column.align || 'center'"
               >
                 <template slot-scope="scope">
-                  {{ (currentPage === 0 ? 0 : currentPage - 1) * pageSize + scope.$index + 1 }}
+                  {{ (pageNo === 0 ? 0 : pageNo - 1) * limit + scope.$index + 1 }}
                 </template>
               </ELTableColumn>
             </template>
@@ -103,8 +113,8 @@
         v-if="paginationProps !== false"
         layout="total, sizes, prev, pager, next, jumper"
         :total="total"
-        :current-page="currentPage"
-        :page-size="pageSize"
+        :current-page="pageNo"
+        :page-size="limit"
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
       />
@@ -124,6 +134,7 @@ import {
 import CpisButton from '../../button/index'
 import CpisSearchInput from '../../search-input/index'
 import CpisCopyable from '../../copyable/index'
+import CpisSearchSelect from '../../search-select/index'
 export default {
   name: 'CpisTable',
   components: {
@@ -135,7 +146,8 @@ export default {
     ELDropdownMenu: DropdownMenu,
     CpisButton,
     CpisSearchInput,
-    CpisCopyable
+    CpisCopyable,
+    CpisSearchSelect
   },
   props: {
     key: {
