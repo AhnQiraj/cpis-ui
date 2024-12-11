@@ -2,26 +2,35 @@
   <div
     class="flex flex-row items-center border-solid border-1 border-gray-3 rounded px-2.5 [&:has(.is-focus)]:border-primary-6"
   >
-    <span class="whitespace-nowrap text-sm text-gray-6">{{ label }}</span>
-    <ELSelect class="border-none" placeholder="adasdas">
-      <el-option
+    <span class="whitespace-nowrap text-sm text-gray-6">{{ label }}：</span>
+    <ELSelect
+      :value="value"
+      @input="$emit('input', $event)"
+      class="border-none"
+      :placeholder="placeholder"
+    >
+      <ELOption
         v-for="item in options"
         :key="item.value"
         :label="item.label"
         :value="item.value"
       >
-      </el-option>
+      </ELOption>
     </ELSelect>
   </div>
 </template>
 <script>
-import { Select } from 'element-ui'
+import { Select, Option } from 'element-ui'
 export default {
   name: 'CpisSearchSelect',
   components: {
-    ELSelect: Select
+    ELSelect: Select,
+    ELOption: Option
   },
   props: {
+    value: {
+      required: true
+    },
     placeholder: {
       type: String,
       default: '请选择'
@@ -29,20 +38,18 @@ export default {
     label: {
       type: String,
       default: ''
+    },
+    valueEnum: {
+      type: Object,
+      default: () => ({})
     }
   },
-  data() {
-    return {
-      options: [
-        {
-          value: '1',
-          label: '选项1'
-        },
-        {
-          value: '2',
-          label: '选项2'
-        }
-      ]
+  computed: {
+    options() {
+      return Object.entries(this.valueEnum).map(([value, label]) => ({
+        value,
+        label
+      }))
     }
   }
 }
@@ -57,4 +64,3 @@ export default {
   line-height: 30px !important;
 }
 </style>
-

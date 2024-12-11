@@ -80,7 +80,10 @@ export default {
         prop: 'sex',
         valueType: 'select',
         width: '100px',
-        valueEnum: ['男', '女']
+        valueEnum: {
+          male: '男',
+          female: '女'
+        }
       }
     ],
     request: async () => {

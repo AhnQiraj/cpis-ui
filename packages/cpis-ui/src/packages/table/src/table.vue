@@ -11,6 +11,7 @@
                   :label="column.search.label || column.label"
                   :placeholder="column.search.placeholder"
                   v-model="searchParams[column.prop]"
+                  :valueEnum="column.valueEnum"
                 />
               </template>
               <template v-else>
