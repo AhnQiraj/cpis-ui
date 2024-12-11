@@ -89,7 +89,7 @@
                 :prop="column.prop"
               >
                 <template slot-scope="scope">
-                  {{ scope.row[column.prop] || columnEmptyText }}11
+                  {{ scope.row[column.prop] || columnEmptyText }}
                   <template v-if="column.copyable">
                     <CpisCopyable :text="scope.row[column.prop]" />
                   </template>
