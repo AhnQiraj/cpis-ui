@@ -43,3 +43,10 @@ export const Primary = {
   },
   name: 'Primary'
 }
+
+export const Text = {
+  args: {
+    type: 'text'
+  },
+  name: 'Text'
+}
