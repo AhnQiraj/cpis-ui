@@ -94,5 +94,15 @@ export default {
     @apply !border-primary-7 !bg-primary-7 !text-white;
   }
 }
+.el-button--text {
+  @apply !bg-transparent !border-transparent !px-0;
+  &:hover {
+    @apply !bg-transparent !border-transparent;
+  }
+  &:active {
+    @apply !bg-transparent !border-transparent;
+  }
+}
 </style>
+
 
