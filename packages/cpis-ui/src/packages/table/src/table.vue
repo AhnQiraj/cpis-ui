@@ -11,7 +11,7 @@
                   :key="column.prop"
                   :label="column.search.label || column.label"
                   :placeholder="column.search.placeholder"
-                  v-model="searchParams[column.prop]"
+                  v-model="searchParams[column.search.prop || column.prop]"
                   :valueEnum="column.valueEnum"
                 />
               </template>
@@ -21,7 +21,7 @@
                 :key="column.prop"
                 :label="column.search.label || column.label"
                 :placeholder="column.search.placeholder"
-                v-model="searchParams[column.prop]"
+                v-model="searchParams[column.search.prop || column.prop]"
               />
               </template>
             </template>

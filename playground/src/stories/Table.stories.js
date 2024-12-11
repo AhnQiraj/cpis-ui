@@ -87,7 +87,8 @@ export default {
         }
       }
     ],
-    request: async () => {
+    request: async params => {
+      console.log(params)
       return await new Promise(resolve => {
         setTimeout(() => {
           resolve({
@@ -456,7 +457,15 @@ export const Copyable = {
         valueType: 'select',
         search: true,
         width: '100px',
-        valueEnum: ['男', '女']
+        search: {
+          label: '性别',
+          placeholder: '请选择',
+          width: '150px'
+        },
+        valueEnum: {
+          male: '男',
+          female: '女'
+        }
       }
     ]
   },
