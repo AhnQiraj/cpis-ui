@@ -255,11 +255,23 @@ export default {
         }
       }
     },
-    handleSearch(params) {
-      this.handleFetchData(params)
+    handleSearch(searchParams) {
+      this.handleFetchData({
+        requestPage: {
+          [this.paginationProps.pageSizeKey || 'limit']: this.pageSize,
+          [this.paginationProps.currentPageKey || 'pageNo']: this.currentPage
+        },
+        searchParams
+      })
     },
     handleSearchReset() {
       this.searchParams = {}
+      this.handleFetchData({
+        requestPage: {
+          [this.paginationProps.pageSizeKey || 'limit']: this.pageSize,
+          [this.paginationProps.currentPageKey || 'pageNo']: this.currentPage
+        },
+      })
     },
     handleSizeChange(size) {
       this.pageSize = size
