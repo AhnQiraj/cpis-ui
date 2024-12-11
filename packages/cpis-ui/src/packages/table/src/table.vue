@@ -146,8 +146,8 @@ export default {
     paginationProps: {
       type: [Boolean, Object],
       default: () => ({
-        pageSizeKey: 'pageSize',
-        currentPageKey: 'currentPage'
+        defaultLimit: 20,
+        defaultPageNo: 1
       }),
       comments:
         '这个参数有两种类型，一种是布尔值，一种是对象，当为布尔值时，表示是否显示分页，当为对象时，表示分页的配置'
@@ -202,22 +202,22 @@ export default {
     }
   },
   watch: {
-    pageSize(newVal) {
+    limit(newVal) {
       if (newVal) {
         this.handleFetchData({
           requestPage: {
-            [this.paginationProps.pageSizeKey || 'limit']: newVal,
-            [this.paginationProps.currentPageKey || 'pageNo']: this.currentPage
+            limit: newVal,
+            pageNo: this.pageNo
           }
         })
       }
     },
-    currentPage(newVal) {
+    pageNo(newVal) {
       if (newVal) {
         this.handleFetchData({
           requestPage: {
-            [this.paginationProps.pageSizeKey || 'limit']: this.pageSize,
-            [this.paginationProps.currentPageKey || 'pageNo']: newVal
+            'limit': this.limit,
+            'pageNo': newVal
           }
         })
       }
@@ -226,8 +226,8 @@ export default {
   data() {
     return {
       searchParams: {},
-      currentPage: 1,
-      pageSize: 20,
+      pageNo: 1,
+      limit: 20,
       total: 0,
       dataSource: [],
       loading: false
@@ -236,8 +236,8 @@ export default {
   mounted() {
     this.handleFetchData({
       requestPage: {
-        [this.paginationProps.pageSizeKey || 'limit']: this.pageSize,
-        [this.paginationProps.currentPageKey || 'pageNo']: this.currentPage
+        'limit': this.limit,
+        'pageNo': this.pageNo
       }
     })
   },
@@ -258,26 +258,26 @@ export default {
     handleSearch(searchParams) {
       this.handleFetchData({
         requestPage: {
-          [this.paginationProps.pageSizeKey || 'limit']: this.pageSize,
-          [this.paginationProps.currentPageKey || 'pageNo']: this.currentPage
+          'limit': this.limit,
+          'pageNo': this.pageNo
         },
-        searchParams
+        parameters: searchParams
       })
     },
     handleSearchReset() {
       this.searchParams = {}
       this.handleFetchData({
         requestPage: {
-          [this.paginationProps.pageSizeKey || 'limit']: this.pageSize,
-          [this.paginationProps.currentPageKey || 'pageNo']: this.currentPage
+          'limit': this.limit,
+          'pageNo': this.pageNo
         },
       })
     },
-    handleSizeChange(size) {
-      this.pageSize = size
+    handleSizeChange(limit) {
+      this.limit = limit
     },
-    handleCurrentChange(currentPage) {
-      this.currentPage = currentPage
+    handleCurrentChange(pageNo) {
+      this.pageNo = pageNo
     }
   }
 }

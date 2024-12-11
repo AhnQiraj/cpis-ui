@@ -2,7 +2,8 @@
   <div class="p-4">
     <h1 class="text-2xl font-bold mb-6">内间距</h1>
     <section class="mb-8 flex flex-col gap-4">
-      <div class="bg-blue-1 p-4 border border-1">p-4 (16px)</div>
+      <div class="bg-blue-1 p-4 border border-1">
+        p-4 (16px)</div>
       <div class="bg-blue-1 p-6 border border-1">p-6 (24px)</div>
       <div class="bg-blue-1 p-8 border border-1">p-8 (32px)</div>
       <div class="bg-blue-1 pl-8 border border-1">
