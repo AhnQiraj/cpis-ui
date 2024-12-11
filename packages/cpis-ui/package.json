@@ -2,7 +2,7 @@
   "name": "@cpis/cpis-ui",
   "private": false,
   "description": "组件库",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "type": "module",
   "main": "dist/index.js",
   "files": [
@@ -13,7 +13,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "yalc": "yalc publish"
+    "yalc": "yalc publish",
+    "dev:build": "vite build --watch"
   },
   "publishConfig": {
     "registry": "http://172.169.50.28:5000/"
