@@ -3,11 +3,13 @@ import CpisTag from './packages/tag/index.js'
 import { CpisProCascader } from './packages/cascader/index.js'
 import CpisPageContainer from './packages/page-container/index.js'
 import CpisSearchInput from './packages/search-input/index.js'
+import CpisTable from './packages/table/index.js'
 const components = [
   CpisTag,
   CpisProCascader,
   CpisPageContainer,
-  CpisSearchInput
+  CpisSearchInput,
+  CpisTable
 ]
 
 const install = function (Vue, opts = {}) {
@@ -20,12 +22,20 @@ const install = function (Vue, opts = {}) {
   }
 }
 
-export { CpisTag, CpisProCascader, install, CpisPageContainer, CpisSearchInput }
+export {
+  CpisTag,
+  CpisProCascader,
+  install,
+  CpisPageContainer,
+  CpisSearchInput,
+  CpisTable
+}
 export default {
   version: '1.0.0',
   install,
   CpisTag,
   CpisProCascader,
   CpisPageContainer,
-  CpisSearchInput
+  CpisSearchInput,
+  CpisTable
 }

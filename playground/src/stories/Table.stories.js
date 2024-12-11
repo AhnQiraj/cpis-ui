@@ -1,23 +1,22 @@
 import { CpisTag } from '@cpis/cpis-ui'
 import CpisTable from '../../../packages/cpis-ui/src/packages/table/index'
 import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
-
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
   title: '原子组件/表格',
   component: CpisTable,
   tags: ['autodocs'],
-  render: (args, { argTypes, parameters }) => {    
+  render: (args, { argTypes, parameters }) => {
     return {
       setup() {
-        const { columns, dataSource } = parameters
-        
-        return { columns, dataSource, key: 'id', ...args }
+        const { columns, request } = parameters
+
+        return { columns, request, key: 'id', ...args }
       },
       props: Object.keys(argTypes),
       components: { CpisTable, CpisButton },
       template:
-        '<CpisTable v-bind="$props" :columns="columns" :dataSource="dataSource">' +
+        '<CpisTable v-bind="$props" key="table-1" :columns="columns" :request="request">' +
         '<template #toolbar>' +
         '<CpisButton type="primary">新增</CpisButton>' +
         '<CpisButton>修改</CpisButton>' +
@@ -32,6 +31,12 @@ export default {
         label: '序号',
         prop: 'id',
         type: 'index',
+        width: '100px'
+      },
+      {
+        label: '全局序号',
+        prop: 'id',
+        type: 'globalIndex',
         width: '100px'
       },
       {
@@ -63,44 +68,213 @@ export default {
           label: '工龄',
           placeholder: '请输入工龄'
         }
+      },
+      {
+        label: '工号',
+        prop: 'workId',
+        valueType: 'number',
+        width: '100px'
+      },
+      {
+        label: '性别',
+        prop: 'sex',
+        valueType: 'select',
+        width: '100px',
+        valueEnum: ['男', '女']
       }
     ],
-    dataSource: [
-      {
-        id: 1,
-        name: '张三',
-        age: 18,
-        workAge: 1
-      },
-      {
-        id: 2,
-        name: '李四',
-        age: 20,
-        workAge: 1
-      },
-      {
-        id: 3,
-        name: '王五',
-        age: 22,
-        workAge: 3
-      },
-      {
-        id: 4,
-        name: '赵六',
-        age: 24,
-        workAge: 5
-      },
-      {
-        id: 5,
-        name: '孙七',
-        age: 26
-      },
-      {
-        id: 6,
-        name: '周八',
-        workAge: 9
-      }
-    ]
+    request: async () => {
+      return await new Promise(resolve => {
+        setTimeout(() => {
+          resolve({
+            success: true,
+            data: [
+              {
+                id: 1,
+                name: '张三',
+                age: 18,
+                workAge: 1,
+                workId: 10001,
+                sex: '男',
+                idCard: '123456789012345678'
+              },
+              {
+                id: 2,
+                name: '李四',
+                age: 20,
+                workAge: 1,
+                workId: 10002,
+                sex: '女',
+                idCard: '123456789012345678'
+              },
+              {
+                id: 3,
+                name: '王五',
+                age: 22,
+                workAge: 3,
+                workId: 10003,
+                sex: '男',
+                idCard: '123456789012345678'
+              },
+              {
+                id: 4,
+                name: '赵六',
+                age: 24,
+                workAge: 5,
+                workId: 10004,
+                sex: '女',
+                idCard: '123456789012345678'
+              },
+              {
+                id: 5,
+                name: '孙七',
+                age: 26,
+                workAge: 6,
+                workId: 10005,
+                sex: '男',
+                idCard: '123456789012345678'
+              },
+              {
+                id: 6,
+                name: '周八',
+                age: 28,
+                workAge: 9,
+                workId: 10006,
+                sex: '女',
+                idCard: '123456789012345678'
+              },
+              {
+                id: 7,
+                name: '吴九',
+                age: 30,
+                workAge: 8,
+                workId: 10007,
+                sex: '男',
+                idCard: '123456789012345678'
+              },
+              {
+                id: 8,
+                name: '郑十',
+                age: 32,
+                workAge: 10,
+                workId: 10008,
+                sex: '女',
+                idCard: '123456789012345678'
+              },
+              {
+                id: 9,
+                name: '陈一',
+                age: 25,
+                workAge: 4,
+                workId: 10009,
+                sex: '男',
+                idCard: '123456789012345678'
+              },
+              {
+                id: 10,
+                name: '钱二',
+                age: 27,
+                workAge: 5,
+                workId: 10010,
+                sex: '女',
+                idCard: '123456789012345678'
+              },
+              {
+                id: 11,
+                name: '孟三',
+                age: 29,
+                workAge: 7,
+                workId: 10011,
+                sex: '男',
+                idCard: '123456789012345678'
+              },
+              {
+                id: 12,
+                name: '马四',
+                age: 31,
+                workAge: 9,
+                workId: 10012,
+                sex: '女',
+                idCard: '123456789012345678'
+              },
+              {
+                id: 13,
+                name: '黄五',
+                age: 33,
+                workAge: 11,
+                workId: 10013,
+                sex: '男',
+                idCard: '123456789012345678'
+              },
+              {
+                id: 14,
+                name: '杨六',
+                age: 35,
+                workAge: 12,
+                workId: 10014,
+                sex: '女',
+                idCard: '123456789012345678'
+              },
+              {
+                id: 15,
+                name: '朱七',
+                age: 28,
+                workAge: 6,
+                workId: 10015,
+                sex: '男',
+                idCard: '123456789012345678'
+              },
+              {
+                id: 16,
+                name: '秦八',
+                age: 30,
+                workAge: 8,
+                workId: 10016,
+                sex: '女',
+                idCard: '123456789012345678'
+              },
+              {
+                id: 17,
+                name: '许九',
+                age: 32,
+                workAge: 10,
+                workId: 10017,
+                sex: '男',
+                idCard: '123456789012345678'
+              },
+              {
+                id: 18,
+                name: '韩十',
+                age: 34,
+                workAge: 11,
+                workId: 10018,
+                sex: '女',
+                idCard: '123456789012345678'
+              },
+              {
+                id: 19,
+                name: '范一',
+                age: 36,
+                workAge: 13,
+                workId: 10019,
+                sex: '男',
+                idCard: '123456789012345678'
+              },
+              {
+                id: 20,
+                name: '方二',
+                age: 38,
+                workAge: 15,
+                workId: 10020,
+                sex: '女',
+                idCard: '123456789012345678'
+              }
+            ],
+            total: 22
+          })
+        }, 1000)
+      })
+    }
   },
   argTypes: {
     dataSource: {
@@ -232,12 +406,50 @@ export const HideColumn = {
         prop: 'age',
         hideInTable: true
       }
-      
     ]
   },
   name: '配置某一列可以隐藏'
 }
 
+export const Copyable = {
+  parameters: {
+    docs: {
+      autodocs: false
+    },
+    controls: {
+      include: ['columns']
+    },
+    dataSource: []
+  },
+  argTypes: {
+    columns: {
+      description: '列配置',
+      control: 'array',
+      table: {
+        category: '列配置'
+      }
+    }
+  },
+  args: {
+    columns: [
+      {
+        label: '姓名',
+        prop: 'name'
+      },
+      {
+        label: '身份证',
+        prop: 'idCard',
+        valueType: 'text',
+        copyable: true
+      },
+      {
+        label: '年龄',
+        prop: 'age'
+      }
+    ]
+  },
+  name: '配置某一列可以复制'
+}
 // Story 级别文档
 export const Primary = {
   decorators: [

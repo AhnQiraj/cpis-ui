@@ -35,7 +35,7 @@
           size="small"
         >
           <template v-for="column in computedColumns">
-            <template v-if="column.type === 'index'">
+            <template v-if="column.valueType === 'index'">
               <ELTableColumn
                 type="index"
                 :label="column.label"
@@ -45,9 +45,10 @@
                 <template slot-scope="scope">
                   {{ scope.$index + 1 }}
                 </template>
+                <template v-if="column.copyable"></template>
               </ELTableColumn>
             </template>
-            <template v-else-if="column.type === 'globalIndex'">
+            <template v-else-if="column.valueType === 'globalIndex'">
               <ELTableColumn
                 type="index"
                 :label="column.label"
@@ -59,7 +60,7 @@
                 </template>
               </ELTableColumn>
             </template>
-            <template v-else-if="column.type === 'number'">
+            <template v-else-if="column.valueType === 'number'">
               <ELTableColumn
                 :key="column.prop"
                 :label="column.label"
@@ -68,10 +69,13 @@
               >
                 <template slot-scope="scope">
                   {{ scope.row[column.prop] || columnEmptyText }}
+                  <template v-if="column.copyable">
+                    <CpisCopyable :text="scope.row[column.prop]" />
+                  </template>
                 </template>
               </ELTableColumn>
             </template>
-            <template v-else-if="column.type === 'date'">
+            <template v-else-if="column.valueType === 'date'">
               <ELTableColumn
                 :key="column.prop"
                 :label="column.label"
@@ -83,7 +87,14 @@
                 :key="column.prop"
                 :label="column.label"
                 :prop="column.prop"
-              />
+              >
+                <template slot-scope="scope">
+                  {{ scope.row[column.prop] || columnEmptyText }}11
+                  <template v-if="column.copyable">
+                    <CpisCopyable :text="scope.row[column.prop]" />
+                  </template>
+                </template>
+              </ELTableColumn>
             </template>
           </template>
         </ELTable>
@@ -112,6 +123,7 @@ import {
 } from 'element-ui'
 import CpisButton from '../../button/index'
 import CpisSearchInput from '../../search-input/index'
+import CpisCopyable from '../../copyable/index'
 export default {
   name: 'CpisTable',
   components: {
@@ -122,7 +134,8 @@ export default {
     ELDropdownItem: DropdownItem,
     ELDropdownMenu: DropdownMenu,
     CpisButton,
-    CpisSearchInput
+    CpisSearchInput,
+    CpisCopyable
   },
   props: {
     key: {
@@ -237,9 +250,7 @@ export default {
           if (!res.success) return
           this.dataSource = res.data
           this.total = res.total
-        } catch (error) {
-          console.error(error)
-        } finally {
+        } catch (error) {} finally {
           this.loading = false
         }
       }
