@@ -9,9 +9,11 @@
     <div slot="footer" class="el-dialog--center" style="width: 100%;">
       <div style="width: 100%; float: left">
         <el-form>
-          <el-form-item prop="fileName" label="归档文件名" style="display: block; width: 32%; padding-right: 40px; margin: 0; float: left; position: absolute">
+          <el-form-item prop="fileName" label="归档文件名" style="display: block; width: 35%; padding-right: 40px; margin: 0; float: left; position: absolute">
             <!-- <el-input v-model="dirFile.name" style="width: 75%" /> -->
-            <span style="float: left">{{ dirFile.name }}</span>
+            <span :title="dirFile.name" style="float: left;display:block;width:100%;overflow: hidden;text-overflow: ellipsis; white-space: nowrap;">
+              {{ dirFile.name }}
+            </span>
           </el-form-item>
         </el-form>
         <ibps-toolbar :actions="toolbars" @action-event="handleActionEvent" />
@@ -233,6 +235,8 @@ export default {
 }
 ::v-deep .el-form-item .el-form-item__content {
   color: #409eff !important;
+  width:calc(100% - 100px);
+  float:left;
 }
 ::v-deep .ibps-tree .layout-header .layout-header-tools {
   display: none;

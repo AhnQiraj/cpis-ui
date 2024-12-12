@@ -1,5 +1,11 @@
 # @cpis/cupubase
 
+## 0.1.10
+
+### Patch Changes
+
+- 修改上传组件弹窗，文字过长，位置错乱问题
+
 ## 0.1.9
 
 ### Patch Changes
