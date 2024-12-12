@@ -4,12 +4,14 @@ import { CpisProCascader } from './packages/cascader/index.js'
 import CpisPageContainer from './packages/page-container/index.js'
 import CpisSearchInput from './packages/search-input/index.js'
 import CpisTable from './packages/table/index.js'
+import CpisButton from './packages/button/index.js'
 const components = [
   CpisTag,
   CpisProCascader,
   CpisPageContainer,
   CpisSearchInput,
-  CpisTable
+  CpisTable,
+  CpisButton
 ]
 
 const install = function (Vue, opts = {}) {
@@ -28,7 +30,8 @@ export {
   install,
   CpisPageContainer,
   CpisSearchInput,
-  CpisTable
+  CpisTable,
+  CpisButton
 }
 export default {
   version: '1.0.0',
@@ -37,5 +40,6 @@ export default {
   CpisProCascader,
   CpisPageContainer,
   CpisSearchInput,
-  CpisTable
+  CpisTable,
+  CpisButton
 }
