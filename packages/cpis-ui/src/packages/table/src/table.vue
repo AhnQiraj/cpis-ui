@@ -321,6 +321,15 @@ export default {
     },
     handleCurrentChange(pageNo) {
       this.pageNo = pageNo
+    },
+    reload() {
+      this.handleFetchData({
+        requestPage: {
+          limit: this.limit,
+          pageNo: this.pageNo
+        },
+        parameters: this.searchParams
+      })
     }
   }
 }
