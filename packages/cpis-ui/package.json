@@ -16,6 +16,9 @@
     "yalc": "yalc publish",
     "prepublishOnly": "npm run build"
   },
+  "dependencies": {
+    "async-validator": "~1.8.1"
+  },
   "publishConfig": {
     "registry": "http://172.169.50.28:5000/"
   },
