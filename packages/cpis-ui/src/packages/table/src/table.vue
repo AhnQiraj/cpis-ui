@@ -323,13 +323,16 @@ export default {
       this.pageNo = pageNo
     },
     reload() {
-      this.handleFetchData({
+      const requestData = {
         requestPage: {
           limit: this.limit,
           pageNo: this.pageNo
-        },
-        parameters: this.searchParams
-      })
+        }
+      }
+      if (Object.keys(this.searchParams).length > 0) {
+        requestData.parameters = this.searchParams
+      }
+      this.handleFetchData(requestData)
     }
   }
 }
