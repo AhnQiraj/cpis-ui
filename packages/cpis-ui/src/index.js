@@ -2,6 +2,7 @@ import 'virtual:uno.css'
 import CpisTag from './packages/tag/index.js'
 import { CpisProCascader } from './packages/cascader/index.js'
 import CpisPageContainer from './packages/page-container/index.js'
+import CpisContainerHeader from './packages/container-header/index.js'
 import CpisSearchInput from './packages/search-input/index.js'
 import CpisTable from './packages/table/index.js'
 import CpisButton from './packages/button/index.js'
@@ -11,7 +12,8 @@ const components = [
   CpisPageContainer,
   CpisSearchInput,
   CpisTable,
-  CpisButton
+  CpisButton,
+  CpisContainerHeader
 ]
 
 const install = function (Vue, opts = {}) {
@@ -31,7 +33,8 @@ export {
   CpisPageContainer,
   CpisSearchInput,
   CpisTable,
-  CpisButton
+  CpisButton,
+  CpisContainerHeader
 }
 export default {
   version: '1.0.0',
@@ -41,5 +44,6 @@ export default {
   CpisPageContainer,
   CpisSearchInput,
   CpisTable,
-  CpisButton
+  CpisButton,
+  CpisContainerHeader
 }
