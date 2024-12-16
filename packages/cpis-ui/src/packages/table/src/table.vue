@@ -11,7 +11,7 @@
                 :label="item.label"
                 :placeholder="item.placeholder"
                 v-model="searchParams[item.key]"
-                :valueEnum="item.enum"
+                :enum="item.enum"
               />
             </template>
             <template v-else>
@@ -79,7 +79,17 @@
                 :align="column.align || 'right'"
               >
                 <template slot-scope="scope">
-                  {{ scope.row[column.prop] || columnEmptyText }}
+                  <slot
+                    name="columns"
+                    :column="column"
+                    :row="scope.row"
+                    :$index="scope.$index"
+                  >
+                    {{
+                      column?.formatter?.(scope.row, column, scope.$index) ||
+                      scope.row[column.prop]
+                    }}
+                  </slot>
                   <template v-if="column.copyable">
                     <CpisCopyable :text="scope.row[column.prop]" />
                   </template>
@@ -91,7 +101,19 @@
                 :key="column.prop"
                 :label="column.label"
                 :prop="column.prop"
-              />
+              >
+                <slot
+                  name="columns"
+                  :column="column"
+                  :row="scope.row"
+                  :$index="scope.$index"
+                >
+                  {{
+                    column?.formatter?.(scope.row, column, scope.$index) ||
+                    scope.row[column.prop]
+                  }}
+                </slot>
+              </ELTableColumn>
             </template>
             <template v-else-if="column.valueType === 'action'">
               <ELTableColumn
@@ -102,18 +124,17 @@
                 :width="column.width"
               >
                 <template slot-scope="scope">
-                  <slot name="columns" :column="column" :row="scope.row" />
-                </template>
-              </ELTableColumn>
-            </template>
-            <template v-else-if="column.valueType === 'slot'">
-              <ELTableColumn
-                :key="column.prop"
-                :label="column.label"
-                :prop="column.prop"
-              >
-                <template slot-scope="scope">
-                  <slot :column="column" :scope="scope" />
+                  <slot
+                    name="columns"
+                    :column="column"
+                    :row="scope.row"
+                    :$index="scope.$index"
+                  >
+                    {{
+                      column?.formatter?.(scope.row, column, scope.$index) ||
+                      scope.row[column.prop]
+                    }}
+                  </slot>
                 </template>
               </ELTableColumn>
             </template>
@@ -329,7 +350,7 @@ export default {
         }
       }
       if (Object.keys(this.searchParams).length > 0) {
-        requestData.parameters = this.searchParams
+        requestData.parameters = this.handleFetchData(params)
       }
       this.handleFetchData(requestData)
     }
