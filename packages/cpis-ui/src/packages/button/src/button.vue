@@ -103,6 +103,15 @@ export default {
     @apply !bg-transparent !border-transparent;
   }
 }
+.is-disabled {
+  @apply !bg-gray-2 !border-gray-3 !text-gray-4;
+  &:hover {
+    @apply !bg-gray-2 !border-gray-3 !text-gray-4;
+  }
+  &:active {
+    @apply !bg-gray-2 !border-gray-3 !text-gray-4;
+  }
+}
 </style>
 
 
