@@ -42,32 +42,19 @@ export default {
         label: '姓名',
         prop: 'name',
         valueType: 'text',
-        width: '100px',
-        search: {
-          label: '姓名',
-          placeholder: '请输入姓名'
-        }
+        width: '100px'
       },
       {
         label: '年龄',
         prop: 'age',
         valueType: 'number',
-        width: '100px',
-        search: {
-          label: '年龄',
-          placeholder: '请输入年龄'
-        }
+        width: '100px'
       },
       {
         label: '工龄',
         prop: 'workAge',
         valueType: 'number',
-        width: '100px',
-        search: {
-          label: '工龄',
-          placeholder: '请输入工龄',
-          width: '150px '
-        }
+        width: '100px'
       },
       {
         label: '工号',
@@ -301,7 +288,7 @@ export default {
     },
     search: {
       description:
-        '搜索配置，支持布尔值或对象。布尔值控制是否显示搜索，对象可配置搜索参数',
+        '搜索配置，支持布尔值或数组。布尔值控制是否显示搜索，数组可配置搜索参数',
       control: 'boolean'
     }
   }
@@ -358,7 +345,12 @@ export const ConfigSearchText = {
     search: [
       {
         key: 'Q^NAME_^SL',
-        label: '姓名'
+        label: '姓名',
+        placeholder: '请输入'
+      },
+      {
+        key: 'Q^NAME_^SL',
+        placeholder: '请输入'
       },
       {
         key: 'Q^SEX_^SL',
@@ -477,17 +469,7 @@ export const Copyable = {
         label: '性别',
         prop: 'sex',
         valueType: 'select',
-        search: true,
-        width: '100px',
-        search: {
-          label: '性别',
-          placeholder: '请选择',
-          width: '150px'
-        },
-        valueEnum: {
-          male: '男',
-          female: '女'
-        }
+        width: '100px'
       }
     ]
   },
