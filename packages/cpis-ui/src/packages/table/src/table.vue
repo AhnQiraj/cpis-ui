@@ -252,7 +252,6 @@ export default {
       return this.columns.filter(column => !column.hideInTable)
     },
     formatSearchParams() {
-      debugger
       return Object.entries(this.searchParams).map(([value, key]) => ({
         key,
         value
