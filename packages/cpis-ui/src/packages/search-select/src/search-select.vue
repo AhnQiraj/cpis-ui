@@ -41,16 +41,24 @@ export default {
       type: String,
       default: ''
     },
-    valueEnum: {
-      type: Object,
-      default: () => ({})
+    enum: {
+      type: Array,
+      default: () => []
+    },
+    valueKey: {
+      type: String,
+      default: 'key'
+    },
+    labelKey: {
+      type: String,
+      default: 'name'
     }
   },
   computed: {
     options() {
-      return Object.entries(this.valueEnum).map(([value, label]) => ({
-        value,
-        label
+      return this.enum.map(item => ({
+        value: item[this.valueKey],
+        label: item[this.labelKey]
       }))
     }
   }
