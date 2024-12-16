@@ -13,13 +13,14 @@ export default {
       components: {
         CpisPageContainer
       },
-      template: '<div style="height: 500px; padding: 16px; background-color: #f5f5f5;">' +
-      '<CpisPageContainer :title="title" :layout="layout">'+
-        '<div slot="aside">侧边栏</div>'+
-        '<div slot="main">主内容</div>'+
-        '<div slot="footer">页脚</div>'+
+      template:
+        '<div style="height: 500px; padding: 16px; background-color: #f5f5f5;">' +
+        '<CpisPageContainer :title="title" :layout="layout">' +
+        '<div slot="aside">侧边栏</div>' +
+        '<div slot="main">主内容</div>' +
+        '<div slot="footer">页脚</div>' +
         '</CpisPageContainer>' +
-      '</div>'
+        '</div>'
     }
   },
   argTypes: {
@@ -28,7 +29,8 @@ export default {
       control: 'text'
     },
     layout: {
-      description: '布局，支持["header", "main", "footer"] 或 ["aside", ["header", "main", "footer"]]',
+      description:
+        '布局，支持["header", "main", "footer"] 或 ["aside", ["header", "main", "footer"]]',
       control: 'array'
     }
   },
@@ -80,7 +82,3 @@ export const AsideHeaderMain = {
   },
   name: '侧边栏 + 上中下'
 }
-
-
-
-

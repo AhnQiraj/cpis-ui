@@ -17,11 +17,6 @@ export default {
       components: { CpisTable, CpisButton },
       template: `
         <CpisTable v-bind="$props" key="table-1" :columns="columns" :request="request">
-          <template #toolbar>
-            <CpisButton type="primary">新增</CpisButton>
-            <CpisButton>修改</CpisButton>
-            <CpisButton>删除</CpisButton>
-          </template>
           <template v-slot:columns="{column, row}">
             <CpisButton type="text" v-if="column.prop === 'action'">编辑</CpisButton>
           </template>
@@ -311,7 +306,23 @@ export default {
     }
   }
 }
-
+export const ShowActions = {
+  render: () => {
+    return {
+      components: { CpisTable, CpisButton },
+      template: `
+      <CpisTable :columns="columns">
+          <template #toolbar>
+            <CpisButton type="primary">新增</CpisButton>
+            <CpisButton>修改</CpisButton>
+            <CpisButton>删除</CpisButton>
+          </template>
+        </CpisTable>
+      `
+    }
+  },
+  name: '配置操作区'
+}
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const ShowPagination = {
   parameters: {
@@ -328,21 +339,6 @@ export const ShowPagination = {
   name: '是否显示分页'
 }
 
-export const ShowSearch = {
-  parameters: {
-    docs: {
-      autodocs: false
-    },
-    controls: {
-      include: ['search']
-    }
-  },
-  args: {
-    search: false
-  },
-  name: '是否显示搜索'
-}
-
 export const ConfigSearchText = {
   parameters: {
     docs: {
@@ -354,17 +350,34 @@ export const ConfigSearchText = {
   },
   argTypes: {
     search: {
-      description: '搜索配置，支持对象。对象可配置搜索按钮文字',
-      control: 'object'
+      description: '搜索栏配置，支持布尔和数组',
+      control: 'array'
     }
   },
   args: {
-    search: {
-      searchText: '我可以自定义',
-      resetText: '我可以自定义'
-    }
+    search: [
+      {
+        key: 'Q^NAME_^SL',
+        label: '姓名'
+      },
+      {
+        key: 'Q^SEX_^SL',
+        label: '性别',
+        type: 'select',
+        enum: [
+          {
+            name: '拟稿',
+            key: 'protocol'
+          },
+          {
+            name: '作废',
+            key: 'cancel'
+          }
+        ]
+      }
+    ]
   },
-  name: '配置搜索按钮文字'
+  name: '配置搜索项'
 }
 
 export const ConfigEmptyText = {
