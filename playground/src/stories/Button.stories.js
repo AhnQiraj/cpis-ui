@@ -50,3 +50,11 @@ export const Text = {
   },
   name: 'Text'
 }
+
+
+export const Disabled = {
+  args: {
+    disabled: true
+  },
+  name: 'Disabled'
+}
