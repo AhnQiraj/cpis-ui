@@ -2,7 +2,9 @@
   <div
     class="flex flex-row items-center border-solid border-1 border-gray-3 rounded px-2.5 [&:has(.is-focus)]:border-primary-6"
   >
-    <span class="whitespace-nowrap text-sm text-gray-6">{{ label }}：</span>
+    <span v-if="!!label" class="whitespace-nowrap text-sm text-gray-6"
+      >{{ label }}：</span
+    >
     <ELSelect
       :value="value"
       @input="$emit('input', $event)"

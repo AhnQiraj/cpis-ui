@@ -13,12 +13,14 @@
   >
     <template>
       <div
-        class="flex flex-row items-center border-solid border-1 border-gray-3 rounded px-2.5 "
+        class="flex flex-row items-center border-solid border-1 border-gray-3 rounded px-2.5"
         :class="{
           'border-primary-6': focused
         }"
       >
-        <div class="whitespace-nowrap text-sm text-gray-6">{{ label }}：</div>
+        <div v-if="!!label" class="whitespace-nowrap text-sm text-gray-6">
+          {{ label }}：
+        </div>
         <input
           :tabindex="tabindex"
           class="el-input__inner"
