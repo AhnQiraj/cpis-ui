@@ -61,15 +61,15 @@ export const CustomHeader = {
     layout: ['header', 'main']
   },
   name: '自定义标题',
-  render: (args) => ({
+  render: args => ({
     components: { CpisPageContainer },
-    template: 
-    '<div style="height: 500px; padding: 16px; background-color: #f5f5f5;">' +
-      '<CpisPageContainer :layout="layout">' +
+    template:
+      '<div style="height: 500px; padding: 16px; background-color: #f5f5f5;">' +
+      '<CpisPageContainer :layout="["header", "main"]">' +
       '<div slot="header">自定义标题</div>' +
       '<div slot="main">主内容</div>' +
       '</CpisPageContainer>' +
-    '</div>'
+      '</div>'
   })
 }
 
