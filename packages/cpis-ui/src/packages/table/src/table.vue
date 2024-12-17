@@ -9,6 +9,8 @@
                 :style="{ width: item.width || '150px' }"
                 :key="item.key"
                 :label="item.label"
+                :value-key="item.valueKey"
+                :label-key="item.labelKey"
                 :placeholder="item.placeholder"
                 v-model="searchParams[item.key]"
                 :enum="item.enum"
@@ -200,9 +202,8 @@ export default {
     CpisSearchSelect
   },
   props: {
-    key: {
+    identity: {
       type: String,
-      required: true,
       comments: '表格唯一标识'
     },
     search: {
