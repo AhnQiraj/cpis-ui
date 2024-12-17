@@ -298,7 +298,7 @@ export const ShowActions = {
     return {
       components: { CpisTable, CpisButton },
       template: `
-      <CpisTable :columns="columns">
+      <CpisTable :columns="[{label: '姓名', prop: 'name', valueType: 'text'}]">
           <template #toolbar>
             <CpisButton type="primary">新增</CpisButton>
             <CpisButton>修改</CpisButton>
