@@ -7,12 +7,12 @@
             <template v-if="item.type === 'select'">
               <CpisSearchSelect
                 :style="{ width: item.width || '150px' }"
-                :key="item.key"
+                :key="item.prop"
                 :label="item.label"
                 :value-key="item.valueKey"
                 :label-key="item.labelKey"
                 :placeholder="item.placeholder"
-                v-model="searchParams[item.key]"
+                v-model="searchParams[item.prop]"
                 :enum="item.enum"
               />
             </template>
@@ -22,7 +22,7 @@
                 :key="item.prop"
                 :label="item.label"
                 :placeholder="item.placeholder"
-                v-model="searchParams[item.key]"
+                v-model="searchParams[item.prop]"
               />
             </template>
           </template>
@@ -257,7 +257,7 @@ export default {
       return this.columns.filter(column => !column.hideInTable)
     },
     formatSearchParams() {
-      return Object.entries(this.searchParams).map(([value, key]) => ({
+      return Object.entries(this.searchParams).map(([key, value]) => ({
         key,
         value
       }))

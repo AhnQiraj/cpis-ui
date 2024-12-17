@@ -344,26 +344,23 @@ export const ConfigSearchText = {
   args: {
     search: [
       {
-        key: 'Q^NAME_^SL',
+        prop: 'Q^NAME_^SL',
         label: '姓名',
         placeholder: '请输入'
       },
+
       {
-        key: 'Q^NAME_^SL',
-        placeholder: '请输入'
-      },
-      {
-        key: 'Q^SEX_^SL',
+        prop: 'Q^SEX_^SL',
         label: '性别',
         type: 'select',
         enum: [
           {
-            name: '拟稿',
-            key: 'protocol'
+            key: 'protocol',
+            name: '拟稿'
           },
           {
-            name: '作废',
-            key: 'cancel'
+            key: 'cancel',
+            name: '作废'
           }
         ]
       }
