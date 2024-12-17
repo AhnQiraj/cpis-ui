@@ -145,7 +145,11 @@
                 :prop="column.prop"
               >
                 <template slot-scope="scope">
-                  {{ scope.row[column.prop] || columnEmptyText }}
+                  {{
+                    column?.formatter?.(scope.row, column, scope.$index) ||
+                    scope.row[column.prop] ||
+                    columnEmptyText
+                  }}
                   <template v-if="column.copyable">
                     <CpisCopyable :text="scope.row[column.prop]" />
                   </template>
