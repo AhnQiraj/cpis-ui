@@ -44,9 +44,17 @@
           :header-cell-style="{ backgroundColor: '#F5F5F5', color: '#434343' }"
           :border="true"
           size="small"
+          v-on="$listeners"
         >
           <template v-for="column in computedColumns">
-            <template v-if="column.valueType === 'index'">
+            <template v-if="column.valueType === 'selection'">
+              <ELTableColumn
+                type="selection"
+                :width="column.width || '50px'"
+                :align="column.align || 'center'"
+              />
+            </template>
+            <template v-else-if="column.valueType === 'index'">
               <ELTableColumn
                 type="index"
                 :label="column.label"
@@ -57,20 +65,6 @@
                   {{ scope.$index + 1 }}
                 </template>
                 <template v-if="column.copyable"></template>
-              </ELTableColumn>
-            </template>
-            <template v-else-if="column.valueType === 'globalIndex'">
-              <ELTableColumn
-                type="index"
-                :label="column.label"
-                :width="column.width"
-                :align="column.align || 'center'"
-              >
-                <template slot-scope="scope">
-                  {{
-                    (pageNo === 0 ? 0 : pageNo - 1) * limit + scope.$index + 1
-                  }}
-                </template>
               </ELTableColumn>
             </template>
             <template v-else-if="column.valueType === 'number'">
