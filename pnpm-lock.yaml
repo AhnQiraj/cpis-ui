@@ -50,6 +50,9 @@ importers:
 
   packages/cpis-ui:
     dependencies:
+      async-validator:
+        specifier: ~1.8.1
+        version: 1.8.5
       element-ui:
         specifier: ^2.15.10
         version: 2.15.14(vue@2.7.16)
