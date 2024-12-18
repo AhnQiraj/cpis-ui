@@ -17,6 +17,9 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
+    "@formily/core": "^2.3.2",
+    "@formily/element": "^2.3.2",
+    "@formily/vue": "^2.3.2",
     "async-validator": "~1.8.1"
   },
   "publishConfig": {
