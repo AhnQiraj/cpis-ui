@@ -33,12 +33,6 @@ export default {
         width: '100px'
       },
       {
-        label: '全局序号',
-        prop: 'id',
-        valueType: 'globalIndex',
-        width: '100px'
-      },
-      {
         label: '姓名',
         prop: 'name',
         valueType: 'text',
