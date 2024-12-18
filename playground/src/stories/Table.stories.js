@@ -472,6 +472,55 @@ export const Copyable = {
   },
   name: '配置某一列可以复制'
 }
+export const Selection = {
+  parameters: {
+    docs: {
+      autodocs: false
+    },
+    controls: {
+      include: ['columns']
+    },
+    dataSource: []
+  },
+  argTypes: {
+    columns: {
+      description: '列配置',
+      control: 'array',
+      table: {
+        category: '列配置'
+      }
+    }
+  },
+  args: {
+    columns: [
+      {
+        prop: 'selection',
+        valueType: 'selection'
+      },
+      {
+        label: '姓名',
+        prop: 'name'
+      },
+      {
+        label: '身份证',
+        prop: 'idCard',
+        valueType: 'text',
+        copyable: true
+      },
+      {
+        label: '年龄',
+        prop: 'age'
+      },
+      {
+        label: '性别',
+        prop: 'sex',
+        valueType: 'select',
+        width: '100px'
+      }
+    ]
+  },
+  name: '多选'
+}
 // Story 级别文档
 export const Primary = {
   decorators: [
