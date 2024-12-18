@@ -515,6 +515,73 @@ export const Selection = {
   },
   name: '多选'
 }
+
+export const CustomColumnSlot = {
+  parameters: {
+    docs: {
+      autodocs: false
+    },
+    controls: {
+      include: ['columns']
+    },
+    dataSource: []
+  },
+  render: (args, { argTypes }) => {
+    return {
+      props: Object.keys(argTypes),
+      components: { CpisTable, CpisButton },
+      template: `
+      <CpisTable v-bind="$props" :columns="columns" :request="() => {
+        return {
+          success: true,
+          data: [{
+            name: '张三',
+            age: 18,
+            sex: '男'
+          }],
+          total: 5
+        }
+      }">
+      <template #columns="{column, row}">
+        <CpisButton type="text" v-if="column.prop === 'name'">可以点击</CpisButton>
+      </template>
+      </CpisTable>
+      `
+    }
+  },
+  argTypes: {
+    columns: {
+      description: '列配置',
+      control: 'array',
+      table: {
+        category: '列配置'
+      }
+    }
+  },
+  args: {
+    columns: [
+      {
+        prop: 'selection',
+        valueType: 'selection'
+      },
+      {
+        label: '姓名',
+        prop: 'name'
+      },
+      {
+        label: '年龄',
+        prop: 'age'
+      },
+      {
+        label: '性别',
+        prop: 'sex',
+        valueType: 'select',
+        width: '100px'
+      }
+    ]
+  },
+  name: '自定义列插槽'
+}
 // Story 级别文档
 export const Primary = {
   decorators: [
