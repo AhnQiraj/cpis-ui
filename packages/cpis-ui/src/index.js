@@ -6,6 +6,7 @@ import CpisContainerHeader from './packages/container-header/index.js'
 import CpisSearchInput from './packages/search-input/index.js'
 import CpisTable from './packages/table/index.js'
 import CpisButton from './packages/button/index.js'
+import CpisForm from './packages/form/index.js'
 const components = [
   CpisTag,
   CpisProCascader,
@@ -13,7 +14,8 @@ const components = [
   CpisSearchInput,
   CpisTable,
   CpisButton,
-  CpisContainerHeader
+  CpisContainerHeader,
+  CpisForm
 ]
 
 const install = function (Vue, opts = {}) {
@@ -34,7 +36,8 @@ export {
   CpisSearchInput,
   CpisTable,
   CpisButton,
-  CpisContainerHeader
+  CpisContainerHeader,
+  CpisForm
 }
 export default {
   version: '1.0.0',
@@ -45,5 +48,6 @@ export default {
   CpisSearchInput,
   CpisTable,
   CpisButton,
-  CpisContainerHeader
+  CpisContainerHeader,
+  CpisForm
 }
