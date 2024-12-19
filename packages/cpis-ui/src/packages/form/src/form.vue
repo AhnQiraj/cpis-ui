@@ -6,6 +6,14 @@ export default {
     column: {
       type: Number,
       default: 2
+    },
+    labelWidth: {
+      type: String,
+      default: 'auto'
+    },
+    contentWidth: {
+      type: String,
+      default: 'auto'
     }
   },
   render(h) {
@@ -24,9 +32,13 @@ export default {
                 label,
                 labelStyle: {
                   fontSize: '14px',
+                  width: this.labelWidth,
                   background: '#f5f5f5',
                   textAlign: 'right',
                   color: '#595959'
+                },
+                contentStyle: {
+                  width: this.contentWidth
                 }
               }
             },
