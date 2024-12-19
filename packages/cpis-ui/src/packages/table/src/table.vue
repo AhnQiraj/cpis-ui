@@ -129,6 +129,7 @@
                 :key="column.prop"
                 :label="column.label"
                 :prop="column.prop"
+                :width="column.width || 'auto'"
               >
                 <template slot-scope="scope">
                   <slot

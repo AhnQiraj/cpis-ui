@@ -582,6 +582,91 @@ export const CustomColumnSlot = {
   },
   name: '自定义列插槽'
 }
+
+export const FixedColumn = {
+  parameters: {
+    docs: {
+      autodocs: false
+    },
+    controls: {
+      include: ['columns']
+    },
+    dataSource: []
+  },
+  render: (args, { argTypes }) => {
+    return {
+      props: Object.keys(argTypes),
+      components: { CpisTable, CpisButton },
+      template: `
+      <CpisTable v-bind="$props" :columns="columns" :request="() => {
+        return {
+          success: true,
+          data: [{
+            name: '张三',
+            age: 18,
+            sex: '男'
+          }],
+          total: 5
+        }
+      }">
+      <template #columns="{column, row}">
+        <CpisButton type="text" v-if="column.prop === 'name'">可以点击</CpisButton>
+        <CpisButton type="text" v-else-if="column.prop === 'action'">编辑</CpisButton>
+      </template>
+      </CpisTable>
+      `
+    }
+  },
+  argTypes: {
+    columns: {
+      description: '列配置',
+      control: 'array',
+      table: {
+        category: '列配置'
+      }
+    }
+  },
+  args: {
+    columns: [
+      {
+        prop: 'selection',
+        valueType: 'selection'
+      },
+      {
+        label: '姓名',
+        prop: 'name'
+      },
+      {
+        label: '年龄',
+        prop: 'age'
+      },
+      {
+        label: '性别',
+        prop: 'sex',
+        valueType: 'select',
+        width: '100px'
+      },
+      {
+        label: '测试1',
+        prop: 'test1',
+        width: 800
+      },
+      {
+        label: '测试2',
+        prop: 'test2',
+        width: 800
+      },
+
+      {
+        label: '操作',
+        prop: 'action',
+        valueType: 'action',
+        fixed: 'right'
+      }
+    ]
+  },
+  name: '列操作项默认固定右侧'
+}
 // Story 级别文档
 export const Primary = {
   decorators: [
