@@ -42,7 +42,7 @@ export default {
       default: ''
     },
     enum: {
-      type: Array,
+      type: [Array, Function],
       default: () => []
     },
     valueKey: {
@@ -56,10 +56,19 @@ export default {
   },
   computed: {
     options() {
-      return this.enum.map(item => ({
-        value: item[this.valueKey],
-        label: item[this.labelKey]
-      }))
+      if (typeof this.enum === 'function') {
+        const enumData = this.enum()
+        return enumData.map(item => ({
+          value: item[this.valueKey],
+          label: item[this.labelKey]
+        }))
+      } else if (Array.isArray(this.enum)) {
+        return this.enum.map(item => ({
+          value: item[this.valueKey],
+          label: item[this.labelKey]
+        }))
+      }
+      return []
     }
   }
 }

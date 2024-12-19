@@ -16,6 +16,15 @@
                 :enum="item.enum"
               />
             </template>
+            <template v-else-if="item.type === 'daterange'">
+              <CpisSearchDateRange
+                :style="{ width: item.width || '150px' }"
+                :key="item.prop"
+                :label="item.label"
+                :placeholder="item.placeholder"
+                v-model="searchParams[item.prop]"
+              />
+            </template>
             <template v-else>
               <CpisSearchInput
                 :style="{ width: item.width || '150px' }"
@@ -92,31 +101,12 @@
                 </template>
               </ELTableColumn>
             </template>
-            <template v-else-if="column.valueType === 'date'">
-              <ELTableColumn
-                :key="column.prop"
-                :label="column.label"
-                :prop="column.prop"
-              >
-                <slot
-                  name="columns"
-                  :column="column"
-                  :row="scope.row"
-                  :$index="scope.$index"
-                >
-                  {{
-                    column?.formatter?.(scope.row, column, scope.$index) ||
-                    scope.row[column.prop]
-                  }}
-                </slot>
-              </ELTableColumn>
-            </template>
             <template v-else-if="column.valueType === 'action'">
               <ELTableColumn
                 :key="column.prop"
                 :label="column.label"
                 :prop="column.prop"
-                :fixed="column.fixed"
+                :fixed="column.fixed || 'right'"
                 :width="column.width"
               >
                 <template slot-scope="scope">
@@ -152,10 +142,10 @@
                       scope.row[column.prop] ||
                       columnEmptyText
                     }}
+                    <template v-if="column.copyable">
+                      <CpisCopyable :text="scope.row[column.prop]" />
+                    </template>
                   </slot>
-                  <template v-if="column.copyable">
-                    <CpisCopyable :text="scope.row[column.prop]" />
-                  </template>
                 </template>
               </ELTableColumn>
             </template>
