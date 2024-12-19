@@ -25,7 +25,6 @@ export default {
                 labelStyle: {
                   fontSize: '14px',
                   background: '#f5f5f5',
-                  width: '220px',
                   textAlign: 'right',
                   color: '#595959'
                 }
