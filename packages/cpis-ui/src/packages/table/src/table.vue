@@ -17,7 +17,7 @@
               />
             </template>
             <template v-else-if="item.type === 'daterange'">
-              <CpisSearchDateRange
+              <CpisDatePicker
                 :style="{ width: item.width || '150px' }"
                 :key="item.prop"
                 :label="item.label"
@@ -59,8 +59,9 @@
             <template v-if="column.valueType === 'selection'">
               <ELTableColumn
                 type="selection"
-                :width="column.width || '50px'"
+                :width="column.width || '50'"
                 :align="column.align || 'center'"
+                :min-width="column.minWidth || '50'"
               />
             </template>
             <template v-else-if="column.valueType === 'index'">
@@ -69,6 +70,7 @@
                 :label="column.label"
                 :width="column.width"
                 :align="column.align || 'center'"
+                :min-width="column.minWidth || '50'"
               >
                 <template slot-scope="scope">
                   {{ scope.$index + 1 }}
@@ -82,6 +84,7 @@
                 :label="column.label"
                 :prop="column.prop"
                 :align="column.align || 'right'"
+                :min-width="column.minWidth || '50'"
               >
                 <template slot-scope="scope">
                   <slot
@@ -108,6 +111,7 @@
                 :prop="column.prop"
                 :fixed="column.fixed || 'right'"
                 :width="column.width"
+                :min-width="column.minWidth"
               >
                 <template slot-scope="scope">
                   <slot
@@ -129,7 +133,8 @@
                 :key="column.prop"
                 :label="column.label"
                 :prop="column.prop"
-                :width="column.width || 'auto'"
+                :width="column.width || '50'"
+                :min-width="column.minWidth || '50'"
               >
                 <template slot-scope="scope">
                   <slot
@@ -173,7 +178,8 @@ import {
   Pagination,
   Dropdown,
   DropdownItem,
-  DropdownMenu
+  DropdownMenu,
+  DatePicker
 } from 'element-ui'
 import CpisButton from '../../button/index'
 import CpisSearchInput from '../../search-input/index'
@@ -191,7 +197,8 @@ export default {
     CpisButton,
     CpisSearchInput,
     CpisCopyable,
-    CpisSearchSelect
+    CpisSearchSelect,
+    ElDatePicker: DatePicker
   },
   props: {
     identity: {
@@ -319,8 +326,6 @@ export default {
         parameters: this.formatSearchParams
       }
       this.handleFetchData(params)
-      console.log('params', params)
-
       this.$emit('onSearch', params)
     },
     handleSearchReset() {

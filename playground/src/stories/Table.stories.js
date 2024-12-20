@@ -302,7 +302,7 @@ export const ShowActions = {
       `
     }
   },
-  name: '配置操作区'
+  name: '配置toolbar'
 }
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const ShowPagination = {
