@@ -1,4 +1,5 @@
 import CpisForm from '../../../packages/cpis-ui/src/packages/form/index'
+import { FormItem, Input } from 'element-ui'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
@@ -8,34 +9,64 @@ export default {
   render: (args, { argTypes }) => {
     return {
       props: Object.keys(argTypes),
-      components: { CpisForm },
+      components: { CpisForm, ElFormItem: FormItem, ElInput: Input },
+      data: () => ({
+        formData: {}
+      }),
       template: `
-      <CpisForm>
-      </CpisForm>
+      <div>
+        <CpisForm :column="column" :label-width="labelWidth" :content-width="contentWidth">
+          <el-form-item label="姓名" prop="name">
+            <el-input size="small" v-model="formData.name" />
+          </el-form-item>
+          <el-form-item label="年龄" prop="age">
+            <el-input size="small" v-model="formData.age" />
+          </el-form-item>
+          <el-form-item label="性别" prop="sex">
+            <el-input size="small" v-model="formData.sex" />
+          </el-form-item>
+          <el-form-item label="联系电话" prop="phone">
+            <el-input size="small" v-model="formData.phone" />
+          </el-form-item>
+          <el-form-item label="Email" prop="email">
+            <el-input size="small" v-model="formData.email" />
+          </el-form-item>
+          <el-form-item label="家庭住址" prop="address">
+            <el-input size="small" v-model="formData.address" />
+          </el-form-item>
+        </CpisForm>
+      </div>
       `
     }
   },
   argTypes: {
-    title: {
-      description: '标题',
-      control: 'string'
-    },
     column: {
-      description: '每一行数量',
+      description: '列数',
       control: 'number'
     },
-    visible: {
-      description: '是否显示',
-      control: 'boolean'
+    labelWidth: {
+      description: '标签宽度',
+      control: 'number'
+    },
+    contentWidth: {
+      description: '内容宽度',
+      control: 'number'
     }
-  },
-  args: {
-    visible: false
   }
 }
 export const Default = {
   name: '一行显示一个',
   args: {
-    visible: false
+    column: 1,
+    labelWidth: 100,
+    contentWidth: 200
+  }
+}
+export const TwoColumns = {
+  name: '一行显示2个',
+  args: {
+    column: 2,
+    labelWidth: 100,
+    contentWidth: 200
   }
 }

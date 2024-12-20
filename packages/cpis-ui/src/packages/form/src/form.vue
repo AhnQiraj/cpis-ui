@@ -8,11 +8,11 @@ export default {
       default: 2
     },
     labelWidth: {
-      type: String,
+      type: [String, Number],
       default: 'auto'
     },
     contentWidth: {
-      type: String,
+      type: [String, Number],
       default: 'auto'
     }
   },
@@ -32,13 +32,19 @@ export default {
                 label,
                 labelStyle: {
                   fontSize: '14px',
-                  width: this.labelWidth,
+                  width:
+                    typeof this.labelWidth === 'number'
+                      ? this.labelWidth + 'px'
+                      : this.labelWidth,
                   background: '#f5f5f5',
                   textAlign: 'right',
                   color: '#595959'
                 },
                 contentStyle: {
-                  width: this.contentWidth
+                  width:
+                    typeof this.contentWidth === 'number'
+                      ? this.contentWidth + 'px'
+                      : this.contentWidth
                 }
               }
             },
