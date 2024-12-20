@@ -17,22 +17,22 @@ export default {
       <div>
         <CpisForm :column="column" :label-width="labelWidth" :content-width="contentWidth">
           <el-form-item label="姓名" prop="name">
-            <el-input size="small" v-model="formData.name" />
+            <el-input  v-model="formData.name" />
           </el-form-item>
           <el-form-item label="年龄" prop="age">
-            <el-input size="small" v-model="formData.age" />
+            <el-input v-model="formData.age" />
           </el-form-item>
           <el-form-item label="性别" prop="sex">
-            <el-input size="small" v-model="formData.sex" />
+            <el-input  v-model="formData.sex" />
           </el-form-item>
           <el-form-item label="联系电话" prop="phone">
-            <el-input size="small" v-model="formData.phone" />
+            <el-input  v-model="formData.phone" />
           </el-form-item>
           <el-form-item label="Email" prop="email">
-            <el-input size="small" v-model="formData.email" />
+            <el-input v-model="formData.email" />
           </el-form-item>
           <el-form-item label="家庭住址" prop="address">
-            <el-input size="small" v-model="formData.address" />
+            <el-input v-model="formData.address" />
           </el-form-item>
         </CpisForm>
       </div>
@@ -57,16 +57,12 @@ export default {
 export const Default = {
   name: '一行显示一个',
   args: {
-    column: 1,
-    labelWidth: 100,
-    contentWidth: 200
+    column: 1
   }
 }
 export const TwoColumns = {
   name: '一行显示2个',
   args: {
-    column: 2,
-    labelWidth: 100,
-    contentWidth: 200
+    column: 2
   }
 }
