@@ -54,21 +54,23 @@ export default {
       default: 'name'
     }
   },
-  computed: {
-    options() {
-      if (typeof this.enum === 'function') {
-        const enumData = this.enum()
-        return enumData.map(item => ({
-          value: item[this.valueKey],
-          label: item[this.labelKey]
-        }))
-      } else if (Array.isArray(this.enum)) {
-        return this.enum.map(item => ({
-          value: item[this.valueKey],
-          label: item[this.labelKey]
-        }))
-      }
-      return []
+  data() {
+    return {
+      options: []
+    }
+  },
+  async mounted() {
+    if (typeof this.enum === 'function') {
+      const enumData = await this.enum()
+      this.options = enumData.map(item => ({
+        value: item[this.valueKey],
+        label: item[this.labelKey]
+      }))
+    } else if (Array.isArray(this.enum)) {
+      this.options = this.enum.map(item => ({
+        value: item[this.valueKey],
+        label: item[this.labelKey]
+      }))
     }
   }
 }

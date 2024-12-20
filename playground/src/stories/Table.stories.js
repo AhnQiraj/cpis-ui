@@ -357,6 +357,22 @@ export const ConfigSearchText = {
             name: '作废'
           }
         ]
+      },
+      {
+        prop: 'Q^SEX1_^SL',
+        label: '异步select',
+        type: 'select',
+        enum: () => {
+          return new Promise(resolve => {
+            setTimeout(() => {
+              resolve([
+                { key: 'protocol', name: '拟稿' },
+                { key: 'cancel', name: '作废' }
+              ])
+            }, 1000)
+          })
+        },
+        width: 50
       }
     ]
   },
