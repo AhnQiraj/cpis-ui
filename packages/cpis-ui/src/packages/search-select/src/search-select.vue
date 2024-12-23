@@ -60,18 +60,20 @@ export default {
     }
   },
   async mounted() {
+    let enumData = []
     if (typeof this.enum === 'function') {
-      const enumData = await this.enum()
-      this.options = enumData.map(item => ({
+      enumData = await this.enum()
+      enumData = enumData.map(item => ({
         value: item[this.valueKey],
         label: item[this.labelKey]
       }))
     } else if (Array.isArray(this.enum)) {
-      this.options = this.enum.map(item => ({
+      enumData = this.enum.map(item => ({
         value: item[this.valueKey],
         label: item[this.labelKey]
       }))
     }
+    this.options = Array.isArray(enumData) ? enumData : []
   }
 }
 </script>

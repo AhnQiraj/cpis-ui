@@ -363,14 +363,10 @@ export const ConfigSearchText = {
         label: '异步select',
         type: 'select',
         enum: () => {
-          return new Promise(resolve => {
-            setTimeout(() => {
-              resolve([
-                { key: 'protocol', name: '拟稿' },
-                { key: 'cancel', name: '作废' }
-              ])
-            }, 1000)
-          })
+          return [
+            { key: 'protocol', name: '拟稿' },
+            { key: 'cancel', name: '作废' }
+          ]
         },
         width: 50
       }
