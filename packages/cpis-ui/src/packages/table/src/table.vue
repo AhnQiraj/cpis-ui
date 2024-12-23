@@ -2,42 +2,12 @@
   <div class="p-3 flex flex-col gap-2 bg-gray-2">
     <div v-if="search?.length > 0" class="bg-white">
       <template>
-        <div class="flex gap-2 p-4">
-          <template v-for="(item, index) in search">
-            <template v-if="item.type === 'select'">
-              <CpisSearchSelect
-                :style="{ width: item.width || '150px' }"
-                :key="item.prop"
-                :label="item.label"
-                :value-key="item.valueKey"
-                :label-key="item.labelKey"
-                :placeholder="item.placeholder"
-                v-model="searchParams[item.prop]"
-                :enum="item.enum"
-              />
-            </template>
-            <template v-else-if="item.type === 'daterange'">
-              <CpisDatePicker
-                :style="{ width: item.width || '150px' }"
-                :key="item.prop"
-                :label="item.label"
-                :placeholder="item.placeholder"
-                v-model="searchParams[item.prop]"
-              />
-            </template>
-            <template v-else>
-              <CpisSearchInput
-                :style="{ width: item.width || '150px' }"
-                :key="item.prop"
-                :label="item.label"
-                :placeholder="item.placeholder"
-                v-model="searchParams[item.prop]"
-              />
-            </template>
-          </template>
-          <CpisButton type="primary" @click="handleSearch">查询</CpisButton>
-          <CpisButton @click="handleSearchReset">重置</CpisButton>
-        </div>
+        <CpisSearchBar
+          class="flex gap-2 p-4"
+          :search="search"
+          @search="handleSearch"
+          @reset="handleSearchReset"
+        />
       </template>
     </div>
     <div class="bg-white p-2 flex flex-col gap-2">
@@ -133,7 +103,7 @@
                 :key="column.prop"
                 :label="column.label"
                 :prop="column.prop"
-                :width="column.width || '50'"
+                :width="column.width"
                 :min-width="column.minWidth || '50'"
               >
                 <template slot-scope="scope">
@@ -181,10 +151,8 @@ import {
   DropdownMenu,
   DatePicker
 } from 'element-ui'
-import CpisButton from '../../button/index'
-import CpisSearchInput from '../../search-input/index'
 import CpisCopyable from '../../copyable/index'
-import CpisSearchSelect from '../../search-select/index'
+import CpisSearchBar from '../../search-bar/index'
 export default {
   name: 'CpisTable',
   components: {
@@ -194,11 +162,9 @@ export default {
     ELDropdown: Dropdown,
     ELDropdownItem: DropdownItem,
     ELDropdownMenu: DropdownMenu,
-    CpisButton,
-    CpisSearchInput,
     CpisCopyable,
-    CpisSearchSelect,
-    ElDatePicker: DatePicker
+    ElDatePicker: DatePicker,
+    CpisSearchBar: CpisSearchBar
   },
   props: {
     identity: {
@@ -254,12 +220,6 @@ export default {
   computed: {
     computedColumns() {
       return this.columns.filter(column => !column.hideInTable)
-    },
-    formatSearchParams() {
-      return Object.entries(this.searchParams).map(([key, value]) => ({
-        key,
-        value
-      }))
     }
   },
   watch: {
@@ -305,6 +265,12 @@ export default {
   methods: {
     async handleFetchData(params) {
       this.loading = true
+      if (params?.searchParams) {
+        if (Object.keys(params.searchParams).length === 0) {
+          delete params.searchParams
+        }
+      }
+
       if (this.request && typeof this.request === 'function') {
         try {
           const res = await this.request(params)
@@ -317,14 +283,15 @@ export default {
         }
       }
     },
-    handleSearch() {
+    handleSearch(searchParams) {
       const params = {
         requestPage: {
           limit: this.limit,
           pageNo: this.pageNo
         },
-        parameters: this.formatSearchParams
+        parameters: searchParams
       }
+      this.searchParams = searchParams
       this.handleFetchData(params)
       this.$emit('onSearch', params)
     },
@@ -348,10 +315,8 @@ export default {
         requestPage: {
           limit: this.limit,
           pageNo: this.pageNo
-        }
-      }
-      if (Object.keys(this.searchParams).length > 0) {
-        requestData.parameters = this.handleFetchData(params)
+        },
+        parameters: this.searchParams
       }
       this.handleFetchData(requestData)
     }
