@@ -375,63 +375,63 @@ export const ConfigSearchText = {
   name: '配置搜索项'
 }
 
-export const ConfigEmptyText = {
-  parameters: {
-    docs: {
-      autodocs: false
-    },
-    controls: {
-      include: ['emptyText']
-    },
-    dataSource: []
-  },
-  argTypes: {
-    emptyText: {
-      description: '列无数据时显示的文本',
-      control: 'text'
-    }
-  },
-  args: {
-    emptyText: '我可以自定义'
-  },
-  name: '配置数据为空时候的文本'
-}
+// export const ConfigEmptyText = {
+//   parameters: {
+//     docs: {
+//       autodocs: false
+//     },
+//     controls: {
+//       include: ['emptyText']
+//     },
+//     dataSource: []
+//   },
+//   argTypes: {
+//     emptyText: {
+//       description: '列无数据时显示的文本',
+//       control: 'text'
+//     }
+//   },
+//   args: {
+//     emptyText: '我可以自定义'
+//   },
+//   name: '配置数据为空时候的文本'
+// }
 
-export const HideColumn = {
-  parameters: {
-    docs: {
-      autodocs: false
-    },
-    controls: {
-      include: ['columns']
-    },
-    dataSource: []
-  },
-  argTypes: {
-    columns: {
-      description: '列配置',
-      control: 'array',
-      table: {
-        category: '列配置'
-      }
-    }
-  },
-  args: {
-    columns: [
-      {
-        label: '姓名',
-        prop: 'name',
-        hideInTable: false
-      },
-      {
-        label: '年龄',
-        prop: 'age',
-        hideInTable: true
-      }
-    ]
-  },
-  name: '配置某一列可以隐藏'
-}
+// export const HideColumn = {
+//   parameters: {
+//     docs: {
+//       autodocs: false
+//     },
+//     controls: {
+//       include: ['columns']
+//     },
+//     dataSource: []
+//   },
+//   argTypes: {
+//     columns: {
+//       description: '列配置',
+//       control: 'array',
+//       table: {
+//         category: '列配置'
+//       }
+//     }
+//   },
+//   args: {
+//     columns: [
+//       {
+//         label: '姓名',
+//         prop: 'name',
+//         hideInTable: false
+//       },
+//       {
+//         label: '年龄',
+//         prop: 'age',
+//         hideInTable: true
+//       }
+//     ]
+//   },
+//   name: '配置某一列可以隐藏'
+// }
 
 export const Copyable = {
   parameters: {

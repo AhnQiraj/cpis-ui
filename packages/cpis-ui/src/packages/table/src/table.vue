@@ -1,9 +1,8 @@
 <template>
   <div class="p-3 flex flex-col gap-2 bg-gray-2">
-    <div v-if="search?.length > 0" class="bg-white">
+    <div v-if="search?.length > 0" class="bg-white p-4">
       <template>
         <CpisSearchBar
-          class="flex gap-2 p-4"
           :search="search"
           @search="handleSearch"
           @reset="handleSearchReset"

@@ -1,5 +1,5 @@
 <template>
-  <div class="search-bar">
+  <div class="search-bar flex gap-2">
     <template v-for="(item, index) in search">
       <template v-if="item.type === 'select'">
         <CpisSearchSelect
