@@ -43,9 +43,13 @@ export default {
   justify-content: flex-start;
   padding: 8px;
   border-top: 1px solid #d9d9d9;
+  position: sticky; /* 添加固定定位 */
+  bottom: 0; /* 固定在底部 */
+  background: #fff; /* 添加背景色防止内容透过 */
 }
 .drawer-content {
   flex: 1;
+  overflow-y: auto; /* 添加滚动 */
 }
 ::v-deep .el-drawer__body {
   display: flex;
