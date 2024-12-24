@@ -28,11 +28,11 @@ export default {
           <el-form-item label="联系电话" prop="phone">
             <el-input  v-model="formData.phone" />
           </el-form-item>
-          <el-form-item label="Email" prop="email">
-            <el-input v-model="formData.email" />
-          </el-form-item>
-          <el-form-item label="家庭住址" prop="address">
+          <el-form-item label="家庭住址" prop="address" :span="2">
             <el-input v-model="formData.address" />
+          </el-form-item>
+          <el-form-item label="其他" prop="other">
+            <el-input  v-model="formData.other" />
           </el-form-item>
         </CpisForm>
       </div>

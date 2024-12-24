@@ -24,6 +24,9 @@ export default {
         if (vnode.componentOptions && vnode.componentOptions.propsData) {
           const label = vnode.componentOptions.propsData.label
           const prop = vnode.componentOptions.propsData.prop
+          // 获取 span 属性，优先从 props 中获取，如果没有则从 attrs 中获取
+          const span =
+            vnode.componentOptions.propsData.span || vnode.data?.attrs?.span
           // 检查是否有必填规则
           const rules = this.$attrs.rules?.[prop]
           const isRequired = Array.isArray(rules)
@@ -39,6 +42,7 @@ export default {
                   label,
                   isRequired && h('span', { class: 'required-star' }, ' *')
                 ]),
+                span: span || 1,
                 labelStyle: {
                   fontSize: '14px',
                   width:
