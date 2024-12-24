@@ -147,4 +147,7 @@ export default {
 ::v-deep .el-icon-date {
   order: 1;
 }
+::v-deep .el-range-editor.el-input__inner {
+  padding: 3px 4px;
+}
 </style>
