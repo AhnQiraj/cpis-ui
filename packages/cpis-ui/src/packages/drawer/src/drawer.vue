@@ -9,7 +9,10 @@ export default {
       Drawer,
       {
         props: this.$attrs,
-        on: this.$listeners
+        on: this.$listeners,
+        scopedSlots: {
+          title: () => slots.title
+        }
       },
       [
         slots.default

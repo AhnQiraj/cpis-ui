@@ -7,18 +7,16 @@ import { FormItem, Input } from 'element-ui'
 export default {
   title: '原子组件/抽屉',
   component: CpisDrawer,
-  tags: ['autodocs'],
   layout: 'fullscreen',
-  render: (args, { argTypes }) => {
-    return {
-      props: Object.keys(argTypes),
-      components: { CpisDrawer, CpisButton },
+  decorators: [
+    () => ({
       template: `
-      <CpisDrawer :visible="false" :title="title">
-      </CpisDrawer>
+        <div style="height: 400px; position: relative; border: 1px solid #eee;">
+          <story />
+        </div>
       `
-    }
-  },
+    })
+  ],
   argTypes: {
     visible: {
       description: '是否显示'
@@ -28,40 +26,10 @@ export default {
     }
   },
   args: {
-    visible: false
-  }
-}
-export const Demo = {
-  name: '不要点上面那个，从这个下面开始点，进去以后点击visible开关，展示抽屉',
-  render: (args, { argTypes }) => {
-    return {
-      props: Object.keys(argTypes),
-      components: { CpisDrawer, CpisButton, CpisForm },
-      template: `
-      <CpisDrawer :visible="visible" :title="title">
-        <div class="flex-1">body</div>
-        <template #footer>
-          <CpisButton type="primary">确定</CpisButton>
-          <CpisButton>取消</CpisButton>
-        </template>
-      </CpisDrawer>
-      `
-    }
-  },
-  argTypes: {
-    visible: {
-      description: '是否显示',
-      control: 'boolean'
-    },
-    title: {
-      description: '标题',
-      control: 'string'
-    }
-  },
-  args: {
     visible: false,
-    title: '这里是标题'
-  }
+    'modal-append-to-body': false // 为所有故事添加默认参数
+  },
+  tags: ['autodocs']
 }
 export const Default = {
   name: '默认',
@@ -70,7 +38,7 @@ export const Default = {
       props: Object.keys(argTypes),
       components: { CpisDrawer },
       template: `
-      <CpisDrawer :visible="visible" :title="title">
+      <CpisDrawer :visible="visible" :title="title" :modal-append-to-body="false">
       </CpisDrawer>
       `
     }
@@ -82,7 +50,9 @@ export const Default = {
     },
     title: {
       description: '标题',
-      control: 'string'
+      control: {
+        type: 'text'
+      }
     }
   },
   args: {
@@ -94,6 +64,29 @@ export const Default = {
 
 export const Footer = {
   name: '设置底部',
+  parameters: {
+    docs: {
+      transform: (code, story) => {
+        // 自定义源码转换逻辑
+        return code
+      }
+    }
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+        <CpisDrawer :visible="visible" :title="title">
+          <div class="flex-1">body</div>
+          <template #footer>
+            <CpisButton type="primary">确定</CpisButton>
+            <CpisButton>取消</CpisButton>
+          </template>
+        </CpisDrawer>`
+      }
+    }
+  },
+
   render: (args, { argTypes }) => {
     return {
       props: Object.keys(argTypes),
@@ -101,10 +94,62 @@ export const Footer = {
       template: `
       <CpisDrawer :visible="visible" :title="title">
         <div class="flex-1">body</div>
-        <template #footer>
+        <template v-slot:footer>
           <CpisButton type="primary">确定</CpisButton>
           <CpisButton>取消</CpisButton>
         </template>
+      </CpisDrawer>
+      `
+    }
+  },
+  argTypes: {
+    visible: {
+      description: '是否显示',
+      control: 'boolean'
+    },
+    title: {
+      description: '标题',
+      control: 'string'
+    }
+  },
+  args: {
+    visible: false,
+    title: '这里是标题'
+  }
+}
+
+export const TitleSlot = {
+  name: '标题插槽',
+  parameters: {
+    docs: {
+      transform: (code, story) => {
+        // 自定义源码转换逻辑
+        return code
+      }
+    }
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+        <CpisDrawer :visible="visible">
+          <template #title>
+            标题插槽 <span>我可以是任何内容</span>
+          </template>
+        </CpisDrawer>`
+      }
+    }
+  },
+
+  render: (args, { argTypes }) => {
+    return {
+      props: Object.keys(argTypes),
+      components: { CpisDrawer, CpisButton, CpisForm },
+      template: `
+      <CpisDrawer :visible="visible" :title="title">
+          <template #title>
+            标题插槽 <span style="color: red;">我可以是任何内容</span>
+          </template>
       </CpisDrawer>
       `
     }
