@@ -76,6 +76,12 @@ export const ConfigSearchText = {
           ]
         },
         width: 50
+      },
+      {
+        width: 200,
+        prop: 'Q^date^SL',
+        label: '日期',
+        type: 'daterange'
       }
     ]
   },

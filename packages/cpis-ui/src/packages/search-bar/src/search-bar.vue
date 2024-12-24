@@ -15,8 +15,21 @@
       </template>
       <template v-else-if="item.type === 'daterange'">
         <CpisDatePicker
-          :style="{ width: item.width || '150px' }"
+          :style="{ width: item.width || '250px' }"
           :key="item.prop"
+          type="daterange"
+          :clearable="false"
+          :label="item.label"
+          :placeholder="item.placeholder"
+          v-model="params[item.prop]"
+        />
+      </template>
+      <template v-else-if="item.type === 'date'">
+        <CpisDatePicker
+          :style="{ width: item.width || '200px' }"
+          :key="item.prop"
+          type="date"
+          :clearable="false"
           :label="item.label"
           :placeholder="item.placeholder"
           v-model="params[item.prop]"
@@ -41,13 +54,15 @@
 import CpisSearchInput from '../../search-input/index'
 import CpisSearchSelect from '../../search-select/index'
 import CpisButton from '../../button/index'
+import CpisDatePicker from '../../search-date/index'
 
 export default {
   name: 'CpisSearchBar',
   components: {
     CpisSearchInput,
     CpisSearchSelect,
-    CpisButton
+    CpisButton,
+    CpisDatePicker
   },
   props: {
     search: {
