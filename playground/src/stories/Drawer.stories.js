@@ -142,13 +142,17 @@ export const DrawerForm = {
           formData: {
             name: '',
             age: ''
+          },
+          rules: {
+            name: [{ required: true, message: '请输入姓名', trigger: 'blur' }],
+            age: [{ required: true, message: '请输入年龄', trigger: 'blur' }]
           }
         }
       },
       template: `
       <CpisDrawer :visible="visible" :title="title">
         <div class="p-2">
-          <CpisForm :column="column">
+          <CpisForm :rules="rules" :column="column" ref="formRef">
             <el-form-item label="姓名" prop="name">
               <el-input size="small" v-model="formData.name" />
             </el-form-item>
@@ -158,11 +162,18 @@ export const DrawerForm = {
           </CpisForm>
         </div>
         <template #footer>
-          <CpisButton type="primary">确定</CpisButton>
+          <CpisButton type="primary" @click="handleConfirm">确定</CpisButton>
           <CpisButton>取消</CpisButton>
         </template>
       </CpisDrawer>
-      `
+      `,
+      methods: {
+        handleConfirm() {
+          this.$refs.formRef.validate(valid => {
+            console.log(valid)
+          })
+        }
+      }
     }
   },
   argTypes: {
