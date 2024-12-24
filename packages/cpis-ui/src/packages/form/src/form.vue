@@ -22,14 +22,23 @@ export default {
     const wrappedSlots =
       this.$slots.default?.map(vnode => {
         if (vnode.componentOptions && vnode.componentOptions.propsData) {
-          // 从 form-item 中获取 label 值并删除它
           const label = vnode.componentOptions.propsData.label
+          const prop = vnode.componentOptions.propsData.prop
+          // 检查是否有必填规则
+          const rules = this.$attrs.rules?.[prop]
+          const isRequired = Array.isArray(rules)
+            ? rules.some(rule => rule.required)
+            : rules?.required
+
           delete vnode.componentOptions.propsData.label
           return h(
             DescriptionsItem,
             {
               props: {
-                label,
+                label: h('span', [
+                  label,
+                  isRequired && h('span', { class: 'required-star' }, ' *')
+                ]),
                 labelStyle: {
                   fontSize: '14px',
                   width:
@@ -111,5 +120,11 @@ export default {
 }
 ::v-deep .el-descriptions-item__content {
   padding: 0px 10px !important;
+}
+::v-deep .required-star {
+  @apply text-error mr-1;
+}
+::v-deep .el-form-item__error {
+  @apply text-error top-unset bottom-0;
 }
 </style>

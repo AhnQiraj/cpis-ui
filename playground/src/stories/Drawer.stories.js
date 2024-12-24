@@ -144,8 +144,8 @@ export const DrawerForm = {
             age: ''
           },
           rules: {
-            name: [{ required: true, message: '请输入姓名', trigger: 'blur' }],
-            age: [{ required: true, message: '请输入年龄', trigger: 'blur' }]
+            name: [{ required: false, message: '请输入姓名' }],
+            age: [{ required: true, message: '请输入年龄' }]
           }
         }
       },
