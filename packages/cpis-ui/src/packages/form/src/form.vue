@@ -64,7 +64,8 @@ export default {
           labelPosition: 'right'
         },
         on: this.$listeners,
-        attrs: this.$attrs
+        attrs: this.$attrs,
+        ref: 'elForm'
       },
       [
         h(
@@ -80,6 +81,20 @@ export default {
         )
       ]
     )
+  },
+  methods: {
+    validate(...args) {
+      return this.$refs.elForm.validate(...args)
+    },
+    validateField(...args) {
+      return this.$refs.elForm.validateField(...args)
+    },
+    resetFields(...args) {
+      return this.$refs.elForm.resetFields(...args)
+    },
+    clearValidate(...args) {
+      return this.$refs.elForm.clearValidate(...args)
+    }
   }
 }
 </script>
