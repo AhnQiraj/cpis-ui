@@ -26,7 +26,7 @@
       </template>
       <template v-else-if="item.type === 'date'">
         <CpisDatePicker
-          :style="{ width: item.width || '200px' }"
+          :style="{ width: item.width || '260px' }"
           :key="item.prop"
           type="date"
           :clearable="false"
