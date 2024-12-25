@@ -1,0 +1,98 @@
+<template>
+  <div class="cpis-tree">
+    <ElTree ref="elTree" v-bind="$attrs" v-on="$listeners">
+      <!-- 透传所有具名插槽 -->
+      <template v-for="(_, name) in $slots" #[name]="slotData">
+        <slot :name="name" v-bind="slotData" />
+      </template>
+
+      <!-- 默认插槽 -->
+      <template #default="{ node, data }">
+        <slot :node="node" :data="data">
+          <span>{{ node.label }}</span>
+        </slot>
+      </template>
+    </ElTree>
+  </div>
+</template>
+
+<script>
+import { Tree } from 'element-ui'
+
+export default {
+  name: 'CpisTree',
+  components: {
+    ElTree: Tree
+  },
+  inheritAttrs: false,
+  provide() {
+    return {
+      // 提供tree实例给子组件使用
+      elTree: this
+    }
+  },
+  methods: {
+    // 代理 ElTree 的所有方法
+    filter(...args) {
+      return this.$refs.elTree.filter(...args)
+    },
+    updateKeyChildren(...args) {
+      return this.$refs.elTree.updateKeyChildren(...args)
+    },
+    getCheckedNodes(...args) {
+      return this.$refs.elTree.getCheckedNodes(...args)
+    },
+    setCheckedNodes(...args) {
+      return this.$refs.elTree.setCheckedNodes(...args)
+    },
+    getCheckedKeys(...args) {
+      return this.$refs.elTree.getCheckedKeys(...args)
+    },
+    setCheckedKeys(...args) {
+      return this.$refs.elTree.setCheckedKeys(...args)
+    },
+    setChecked(...args) {
+      return this.$refs.elTree.setChecked(...args)
+    },
+    getHalfCheckedNodes(...args) {
+      return this.$refs.elTree.getHalfCheckedNodes(...args)
+    },
+    getHalfCheckedKeys(...args) {
+      return this.$refs.elTree.getHalfCheckedKeys(...args)
+    },
+    getCurrentKey(...args) {
+      return this.$refs.elTree.getCurrentKey(...args)
+    },
+    getCurrentNode(...args) {
+      return this.$refs.elTree.getCurrentNode(...args)
+    },
+    setCurrentKey(...args) {
+      return this.$refs.elTree.setCurrentKey(...args)
+    },
+    setCurrentNode(...args) {
+      return this.$refs.elTree.setCurrentNode(...args)
+    },
+    getNode(...args) {
+      return this.$refs.elTree.getNode(...args)
+    },
+    remove(...args) {
+      return this.$refs.elTree.remove(...args)
+    },
+    append(...args) {
+      return this.$refs.elTree.append(...args)
+    },
+    insertBefore(...args) {
+      return this.$refs.elTree.insertBefore(...args)
+    },
+    insertAfter(...args) {
+      return this.$refs.elTree.insertAfter(...args)
+    }
+  }
+}
+</script>
+
+<style scoped lang="scss">
+.cpis-tree {
+  width: 100%;
+}
+</style>
