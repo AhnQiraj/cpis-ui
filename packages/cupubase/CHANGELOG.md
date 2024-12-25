@@ -1,5 +1,11 @@
 # @cpis/cupubase
 
+## 0.1.11
+
+### Patch Changes
+
+- 删除危险点预控 http://172.169.50.28:8090/pages/viewpage.action?pageId=26116322, 危险源预控选择弹窗修改
+
 ## 0.1.10
 
 ### Patch Changes

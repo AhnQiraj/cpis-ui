@@ -1,20 +1,61 @@
 <template>
   <div>
-    <z-dialog-table ref="dangerDialogTable" :title="dangerDialogProp.title" :key_="dangerDialogProp.key" :toolbar-prop="dangerDialogProp.toolbarProp" :table-prop="dangerDialogProp.tableProp" :tree-prop="dangerDialogProp.treeProp" :selection-handle="dangerDialogProp.selectionHandle" @toolbar-search="onDangerDialogSearch" @on-reset="onReset" @ok="onDangerDialogTableOk" @tree-click="treeClickNodeHandle">
+    <z-dialog-table
+      ref="dangerDialogTable"
+      :title="dangerDialogProp.title"
+      :key_="dangerDialogProp.key"
+      :toolbar-prop="dangerDialogProp.toolbarProp"
+      :table-prop="dangerDialogProp.tableProp"
+      :tree-prop="dangerDialogProp.treeProp"
+      :selection-handle="dangerDialogProp.selectionHandle"
+      @toolbar-search="onDangerDialogSearch"
+      @on-reset="onReset"
+      @ok="onDangerDialogTableOk"
+      @tree-click="treeClickNodeHandle"
+    >
       <template slot="searchBar">
-        <el-form-item :label="$t('ticket.dangerPointExe.riskPoint')" prop="risk">
-          <el-input v-model="dangerDialogProp.toolbarProp.searchData.risk" :placeholder="$t('baseCommon.message.pleaseEnter', { title: '' })" clearable />
+        <el-form-item
+          :label="$t('ticket.dangerPointExe.riskPoint')"
+          prop="risk"
+        >
+          <el-input
+            v-model="dangerDialogProp.toolbarProp.searchData.risk"
+            :placeholder="$t('baseCommon.message.pleaseEnter', { title: '' })"
+            clearable
+          />
         </el-form-item>
-        <el-form-item :label="$t('ticket.dangerPointExe.riskLevel')" prop="riskLevelNo">
-          <el-select v-model="dangerDialogProp.toolbarProp.searchData.riskLevelNo" :placeholder="$t('baseCommon.message.pleaseSelect', { title: '' })" filterable clearable>
-            <el-option v-for="item in riskLevelList" :key="item.value" :label="item.label" :value="item.value"></el-option>
+        <el-form-item
+          :label="$t('ticket.dangerPointExe.riskLevel')"
+          prop="riskLevelNo"
+        >
+          <el-select
+            v-model="dangerDialogProp.toolbarProp.searchData.riskLevelNo"
+            :placeholder="$t('baseCommon.message.pleaseSelect', { title: '' })"
+            filterable
+            clearable
+          >
+            <el-option
+              v-for="item in riskLevelList"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item :label="$t('common.field.state')" prop="status">
-          <el-select v-model="dangerDialogProp.toolbarProp.searchData.status" clearable :placeholder="$t('baseCommon.message.pleaseSelect', { title: '' })">
-            <el-option v-for="item in stateList" :key="item.value" :label="item.label" :value="item.value"></el-option>
+        <!-- <el-form-item :label="$t('common.field.state')" prop="status">
+          <el-select
+            v-model="dangerDialogProp.toolbarProp.searchData.status"
+            clearable
+            :placeholder="$t('baseCommon.message.pleaseSelect', { title: '' })"
+          >
+            <el-option
+              v-for="item in stateList"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
           </el-select>
-        </el-form-item>
+        </el-form-item> -->
       </template>
     </z-dialog-table>
   </div>
@@ -98,19 +139,19 @@ export default {
                 })
                 return obj != undefined ? obj.label : ''
               }
-            },
-            {
-              title: this.$t('common.field.state'),
-              width: 80,
-              key: 'status',
-              showOverflowTooltip: true,
-              formatter: (row, column, cellValue, index) => {
-                let obj = this.stateList.find(item => {
-                  return item.value === cellValue
-                })
-                return obj != undefined ? obj.label : ''
-              }
             }
+            // {
+            //   title: this.$t('common.field.state'),
+            //   width: 80,
+            //   key: 'status',
+            //   showOverflowTooltip: true,
+            //   formatter: (row, column, cellValue, index) => {
+            //     let obj = this.stateList.find(item => {
+            //       return item.value === cellValue
+            //     })
+            //     return obj != undefined ? obj.label : ''
+            //   }
+            // }
           ]
         },
         // 树控件属性
@@ -157,7 +198,9 @@ export default {
       if (this.initParam == null) {
         this.$refs.dangerDialogTable.tableQuery(params)
       } else {
-        this.$refs.dangerDialogTable.tableQuery(Object.assign(params, this.initParam))
+        this.$refs.dangerDialogTable.tableQuery(
+          Object.assign(params, this.initParam)
+        )
       }
     },
     /**
@@ -184,7 +227,7 @@ export default {
      * 弹出表格确定事件
      */
     onDangerDialogTableOk(selected) {
-      this.$emit('onDTableOk', selected);
+      this.$emit('onDTableOk', selected)
     },
     /**
      * 初始化打开
@@ -197,7 +240,10 @@ export default {
       if (this.selectedIds != undefined && this.selectedNames != undefined) {
         let size = this.selectedIds.split(',').length
         for (let i = 0; i < size; i++) {
-          selected.data.push({riskControlId: this.selectedIds.split(',')[i], text: this.selectedNames.split(',')[i]})
+          selected.data.push({
+            riskControlId: this.selectedIds.split(',')[i],
+            text: this.selectedNames.split(',')[i]
+          })
         }
       }
       this.$refs.dangerDialogTable.open(selected)
@@ -205,9 +251,16 @@ export default {
       this.$nextTick(() => {
         setTimeout(() => {
           if (this.initParam != null) {
-            this.$refs.dangerDialogTable.tableQuery(Object.assign(this.dangerDialogProp.toolbarProp.searchData, this.initParam))
+            this.$refs.dangerDialogTable.tableQuery(
+              Object.assign(
+                this.dangerDialogProp.toolbarProp.searchData,
+                this.initParam
+              )
+            )
           } else {
-            this.$refs.dangerDialogTable.tableQuery(this.dangerDialogProp.toolbarProp.searchData)
+            this.$refs.dangerDialogTable.tableQuery(
+              this.dangerDialogProp.toolbarProp.searchData
+            )
           }
         }, 600)
       })
@@ -230,7 +283,7 @@ export default {
         resolve(res.data.children)
         loadDone()
       })
-    },
+    }
     // --------------------树节点相关结束----------------------------
   }
 }
