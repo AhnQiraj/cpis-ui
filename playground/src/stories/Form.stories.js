@@ -29,7 +29,7 @@ export default {
           <el-form-item label="联系电话" prop="phone">
             <el-input  v-model="formData.phone" />
           </el-form-item>
-          <el-form-item label="家庭住址" prop="address" :span="2">
+          <el-form-item label="家庭住址" prop="address">
             <el-input v-model="formData.address" />
           </el-form-item>
           <el-form-item label="其他" prop="other">
@@ -62,9 +62,51 @@ export const Default = {
   }
 }
 export const TwoColumns = {
-  name: '一行显示2个',
+  name: '一行显示两个',
   args: {
     column: 2
+  }
+}
+export const RowSpan = {
+  name: '某一行设置列数',
+  render: (args, { argTypes }) => {
+    return {
+      props: Object.keys(argTypes),
+      components: {
+        CpisForm,
+        ElFormItem: FormItem,
+        ElInput: Input,
+        CpisButton
+      },
+      template: `
+      <div>
+        <CpisForm 
+          ref="form"
+          :model="formData"
+          :rules="rules"
+          :column="column" 
+          :label-width="labelWidth" 
+          :content-width="contentWidth"
+        >
+          <el-form-item label="姓名" prop="name">
+            <el-input />
+          </el-form-item>
+          <el-form-item label="年龄" prop="age">
+            <el-input  />
+          </el-form-item>
+          <el-form-item label="家庭住址" prop="address" :span="2">
+            <el-input />
+          </el-form-item>
+          <el-form-item label="手机号" prop="phone">
+            <el-input />
+          </el-form-item>
+          <el-form-item label="座机" prop="number">
+            <el-input />
+          </el-form-item>
+        </CpisForm>
+      </div>
+      `
+    }
   }
 }
 
