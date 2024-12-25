@@ -125,7 +125,7 @@ export default {
 ::v-deep .el-descriptions-item__content {
   padding: 0px 10px !important;
 }
-::v-deep .required-star {
+.required-star {
   @apply text-error mr-1;
 }
 ::v-deep .el-form-item__error {
