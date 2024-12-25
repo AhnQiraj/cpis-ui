@@ -39,8 +39,8 @@ export default {
             {
               props: {
                 label: h('span', [
-                  label,
-                  isRequired && h('span', { class: 'required-star' }, ' *')
+                  isRequired && h('span', { class: 'required-star' }, ' *'),
+                  label
                 ]),
                 span: span || 1,
                 labelStyle: {
