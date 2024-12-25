@@ -68,8 +68,6 @@ export const TwoColumns = {
   }
 }
 
-// ... existing imports ...
-
 export const Validation = {
   name: '表单校验',
   parameters: {
@@ -227,5 +225,4 @@ export default {
       `
     }
   }
-  // ... existing argTypes ...
 }
