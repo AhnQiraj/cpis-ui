@@ -17,29 +17,34 @@
         />
       </div>
       <div class="p-y-4 p-x-2 flex flex-col gap-2">
-        <div class="search-box flex" v-show="!collapse">
-          <el-input placeholder="请输入" v-model="searchValue" size="small">
-          </el-input>
-          <el-dropdown>
-            <CpisButton
-              type="primary"
-              @click="handleSetting"
-              icon="el-icon-setting"
-            />
-            <el-dropdown-menu slot="dropdown" @command="handleCommand">
-              <el-dropdown-item command="expandAll">展开所有</el-dropdown-item>
-              <el-dropdown-item command="collapseAll">
-                折叠所有
-              </el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
-        </div>
+        <slot name="search">
+          <div class="search-box flex" v-show="!collapse">
+            <el-input placeholder="请输入" v-model="searchValue" size="small">
+            </el-input>
+            <el-dropdown>
+              <CpisButton
+                type="primary"
+                @click="handleSetting"
+                icon="el-icon-setting"
+              />
+              <el-dropdown-menu slot="dropdown" @command="handleCommand">
+                <el-dropdown-item command="expandAll"
+                  >展开所有</el-dropdown-item
+                >
+                <el-dropdown-item command="collapseAll">
+                  折叠所有
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
+          </div>
+        </slot>
         <CpisTree
           v-show="!collapse"
           :filter-node-method="filterNodeMethod"
           class="flex-1"
           ref="tree"
           v-bind="treeProps"
+          v-on="$listeners"
         />
       </div>
     </div>

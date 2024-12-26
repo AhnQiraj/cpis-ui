@@ -313,6 +313,12 @@ export const Section = {
           :label-width="labelWidth" 
           :content-width="contentWidth"
         >
+          <el-form-item label="入职日期" prop="entryDate">
+            <el-input v-model="formData.entryDate" />
+          </el-form-item>
+          <el-form-item label="入职时间" prop="entryTime">
+            <el-input v-model="formData.entryTime" />
+          </el-form-item>
           <CpisFormSection title="基础信息">
             <el-form-item label="姓名" prop="name">
               <el-input v-model="formData.name" />
