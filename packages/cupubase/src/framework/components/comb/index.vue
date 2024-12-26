@@ -7,10 +7,19 @@
           <!-- <i class="fa fa-angle-double-left" aria-hidden="true" @click="onSwitchTree" /> -->
           <span>
             <i class="el-icon-d-arrow-left" @click="onSwitchTree(1)" />
-            <i v-if="moreTree" class="el-icon-d-arrow-right" @click="onSwitchTree(3)" />
+            <i
+              v-if="moreTree"
+              class="el-icon-d-arrow-right"
+              @click="onSwitchTree(3)"
+            />
           </span>
         </div>
-        <z-tree ref="tree" v-bind="treeProp" @nodeClick="onClickTreeNode" @rightClick="rightClick" />
+        <z-tree
+          ref="tree"
+          v-bind="treeProp"
+          @nodeClick="onClickTreeNode"
+          @rightClick="rightClick"
+        />
       </div>
     </template>
     <template v-if="!treeIsShow && treeProp.show !== false">
@@ -21,7 +30,19 @@
     </template>
     <div class="curd">
       <div class="curd-toolbar">
-        <z-toolbar v-if="toolbarProp.show !== false" ref="toolbar" :model="toolbarProp.searchData" v-bind="toolbarProp" @addNew="onAddNew" @delete="onDelete" @update="onUpdate" @search="onToolbarSearch" @view="onView" @reset="OnRest" @setColumn="onSetColumn">
+        <z-toolbar
+          v-if="toolbarProp.show !== false"
+          ref="toolbar"
+          :model="toolbarProp.searchData"
+          v-bind="toolbarProp"
+          @addNew="onAddNew"
+          @delete="onDelete"
+          @update="onUpdate"
+          @search="onToolbarSearch"
+          @view="onView"
+          @reset="OnRest"
+          @setColumn="onSetColumn"
+        >
           <template #default>
             <slot name="searchBar" />
           </template>
@@ -29,13 +50,32 @@
             <slot name="toolbar-always" :selection-columns="selectionColumns" />
           </template>
           <template #buttons>
-            <slot name="toolbar-buttons" :selection-columns="selectionColumns" />
+            <slot
+              name="toolbar-buttons"
+              :selection-columns="selectionColumns"
+            />
           </template>
         </z-toolbar>
       </div>
       <div v-if="tableProp.show !== false" class="curd-table">
-        <z-table ref="table" v-bind="tableProp" :key_="key_" @selectChange="onSelectChange" @selectOne="onSelectOne" @selectAll="onSelectAll" @pageChange="onPageChange" @pageSizeChange="onPageSizeChange" @tableLoadDone="onTableLoadDone" @selection-change="checkboxChangeEvent">
-          <template v-for="columnName in tableProp.slotColumns" :slot="columnName" slot-scope="scope">
+        <z-table
+          ref="table"
+          v-bind="tableProp"
+          :key_="key_"
+          @selectChange="onSelectChange"
+          @selectOne="onSelectOne"
+          @selectAll="onSelectAll"
+          @pageChange="onPageChange"
+          @pageSizeChange="onPageSizeChange"
+          @tableLoadDone="onTableLoadDone"
+          @selection-change="checkboxChangeEvent"
+          @sort-change="onSortChange"
+        >
+          <template
+            v-for="columnName in tableProp.slotColumns"
+            :slot="columnName"
+            slot-scope="scope"
+          >
             <slot :slot-scope="scope.slotScope" :name="columnName" />
           </template>
         </z-table>
@@ -72,7 +112,7 @@ export default {
     },
     key_: {
       type: String,
-      default: "id"
+      default: 'id'
     },
     // 更多树形区域按钮
     moreTree: {
@@ -85,7 +125,7 @@ export default {
       treeIsShow: true, // 是展示不展示(并不是启不启动)
       searchParams: {},
       selectionColumns: [],
-      defalutTableWidth: "",
+      defalutTableWidth: '',
       moreTreeArea: false // 更多树形区域
     }
   },
@@ -94,7 +134,7 @@ export default {
   },
   methods: {
     onClickTreeRefresh() {
-      this.$emit("tree-fresh")
+      this.$emit('tree-fresh')
     },
     /**
      * 清除树节点选中状态
@@ -121,23 +161,26 @@ export default {
     },
     // 新增事件
     onAddNew() {
-      this.$emit("toolbar-add")
+      this.$emit('toolbar-add')
     },
     // 删除事件
     onDelete() {
-      this.$emit("toolbar-delete", this.selectionColumns)
+      this.$emit('toolbar-delete', this.selectionColumns)
     },
     // 修改事件
     onUpdate() {
-      this.$emit("toolbar-update", this.selectionColumns)
+      this.$emit('toolbar-update', this.selectionColumns)
     },
     // 搜索事件
     onToolbarSearch(searchData) {
-      this.$emit("toolbar-search", searchData)
+      this.$emit('toolbar-search', searchData)
+    },
+    onSortChange(...args) {
+      this.$emit('sortChange', ...args)
     },
     // 浏览事件
     onView() {
-      this.$emit("toolbar-view", this.selectionColumns)
+      this.$emit('toolbar-view', this.selectionColumns)
     },
     // 切换是否显示树 1往左边缩，2展开一部分，3展开更多部分
     onSwitchTree(type) {
@@ -148,14 +191,16 @@ export default {
           this.$refs.table.setTableWidth(this.defalutTableWidth)
         } else {
           this.treeIsShow = false
-          this.$refs.table.setTableWidth("100%")
+          this.$refs.table.setTableWidth('100%')
         }
       } else if (type == 2) {
         this.treeIsShow = true
         this.$refs.table.setTableWidth(this.defalutTableWidth)
       } else if (type == 3) {
         this.moreTreeArea = true
-        this.$refs.table.setTableWidth("calc(" + this.defalutTableWidth + " - 250px)")
+        this.$refs.table.setTableWidth(
+          'calc(' + this.defalutTableWidth + ' - 250px)'
+        )
       }
     },
     // 打开列设置
@@ -172,7 +217,7 @@ export default {
       // 展示需要表个选择显示的操作按钮
       this.$refs.toolbar.showOptionBtns(rows.length > 0)
       this.selectionColumns = rows
-      this.$emit("table-selection-change", rows)
+      this.$emit('table-selection-change', rows)
     },
     /**
      * 多选:操作单项
@@ -182,35 +227,35 @@ export default {
       // 展示需要表个选择显示的操作按钮
       this.$refs.toolbar.showOptionBtns(columns.length > 0)
       this.selectionColumns = columns
-      this.$emit("table-selection-one", columns, row)
+      this.$emit('table-selection-one', columns, row)
     },
     /**
      * 多选:操作所有
      * @author mbb
      */
     onSelectAll(columns) {
-      this.$emit("table-selection-all", columns)
+      this.$emit('table-selection-all', columns)
     },
     // 点击树节点
     onClickTreeNode(node) {
-      this.$emit("tree-click", node)
+      this.$emit('tree-click', node)
     },
     /**
      * 右击树节点
      */
     rightClick(MouseEvent, object, Node, element) {
-      this.$emit("rightClick", MouseEvent, object, Node, element)
+      this.$emit('rightClick', MouseEvent, object, Node, element)
     },
     // 分页事件
     onPageChange(pagination) {
-      this.$emit("table-page", pagination)
+      this.$emit('table-page', pagination)
     },
     onPageSizeChange(pagination) {
-      this.$emit("table-pagesize", pagination)
+      this.$emit('table-pagesize', pagination)
     },
     // 数据加载完成
     onTableLoadDone(res, data) {
-      this.$emit("table-loadDone", res, data)
+      this.$emit('table-loadDone', res, data)
     },
     // 根据索引选择列；多选回显数据
     toggleSelectionWithIndex(indexArray) {
@@ -232,7 +277,7 @@ export default {
       return this.$refs.table.getTableWidth()
     },
     OnRest() {
-      this.$emit("on-reset")
+      this.$emit('on-reset')
     },
     getTableData() {
       return this.$refs.table.getCurrentTableData()

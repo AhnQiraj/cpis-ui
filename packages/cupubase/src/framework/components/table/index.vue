@@ -1,25 +1,46 @@
 <template>
   <div class="ztable-content">
     <!--表格-->
-    <d2-crud-x :id="tableId" ref="d2Crud" class="ztable" :data="tableData" :loading="loading" v-bind="_crudProps" @pagination-current-change="onPaginationCurrentChange" @pagination-size-change="onPaginationSizehange" @select-all="onSelectAll" @current-change="onCurrentChange" @selection-change="onSelectOne" @select="onSelectOne">
+    <d2-crud-x
+      :id="tableId"
+      ref="d2Crud"
+      class="ztable"
+      :data="tableData"
+      :loading="loading"
+      v-bind="_crudProps"
+      @sort-change="onSortChange"
+      @pagination-current-change="onPaginationCurrentChange"
+      @pagination-size-change="onPaginationSizehange"
+      @select-all="onSelectAll"
+      @current-change="onCurrentChange"
+      @selection-change="onSelectOne"
+      @select="onSelectOne"
+    >
       <div v-show="false" slot="header">
-        <crud-toolbar :columns="crud.columns" @columns-filter-changed="handleColumnsFilterChanged" />
+        <crud-toolbar
+          :columns="crud.columns"
+          @columns-filter-changed="handleColumnsFilterChanged"
+        />
       </div>
       <!--表格列插槽-->
-      <template v-for="columnName in slotColumns" :slot="columnName" slot-scope="scope">
+      <template
+        v-for="columnName in slotColumns"
+        :slot="columnName"
+        slot-scope="scope"
+      >
         <slot :slot-scope="scope" :name="columnName" />
       </template>
     </d2-crud-x>
   </div>
 </template>
 <script>
-import Vue from "vue"
-import $ from "jquery"
-import { d2CrudPlus } from "d2-crud-plus"
-import { crudOptions } from "./crud"
+import Vue from 'vue'
+import $ from 'jquery'
+import { d2CrudPlus } from 'd2-crud-plus'
+import { crudOptions } from './crud'
 Vue.use(d2CrudPlus)
 export default {
-  name: "Z-Table",
+  name: 'Z-Table',
   mixins: [d2CrudPlus.crud],
   props: {
     indexRow: {
@@ -63,7 +84,7 @@ export default {
     },
     key_: {
       type: String,
-      default: "id"
+      default: 'id'
     }
   },
   data() {
@@ -72,7 +93,7 @@ export default {
       tableData: [],
       // 表格搜索参数
       searchParams: {},
-      tableId: "z-table-" + Math.random(),
+      tableId: 'z-table-' + Math.random(),
       loading: false
     }
   },
@@ -101,8 +122,8 @@ export default {
         // 加载数据
         this.dataSource(requestParams)
           .then(res => {
-            if (res.hasOwnProperty("data")) {
-              if (res.data.hasOwnProperty("dataResult")) {
+            if (res.hasOwnProperty('data')) {
+              if (res.data.hasOwnProperty('dataResult')) {
                 const { dataResult, pageResult } = res.data
                 this.tableData = dataResult
                 // 返回分页数据
@@ -111,7 +132,7 @@ export default {
                   crudProps.pagination.total = pageResult.totalCount
                 }
               } else {
-                if (res.data.hasOwnProperty("records")) {
+                if (res.data.hasOwnProperty('records')) {
                   this.tableData = res.data.records
                   crudProps.pagination.pageCount = res.data.pages
                   crudProps.pagination.total = res.data.total
@@ -133,12 +154,12 @@ export default {
               }
             }
             // 数据加载完成
-            this.$emit("tableLoadDone", res, this.tableData)
+            this.$emit('tableLoadDone', res, this.tableData)
           })
-          ["catch"](e => {
-            console.error("数据加载失败", e)
+          ['catch'](e => {
+            console.error('数据加载失败', e)
           })
-          ["finally"](() => {
+          ['finally'](() => {
             this.loading = false
           })
       }
@@ -160,14 +181,14 @@ export default {
     // 页码改变改变
     onPaginationCurrentChange(currentPage) {
       this._crudProps.pagination.currentPage = currentPage
-      this.$emit("pageChange", { ...this._crudProps.pagination })
+      this.$emit('pageChange', { ...this._crudProps.pagination })
       this.loadData()
     },
     // 每页条数改变
     onPaginationSizehange(size) {
       this._crudProps.pagination.pageSize = size
       this._crudProps.pagination.currentPage = 1
-      this.$emit("pageSizeChange", { ...this._crudProps.pagination })
+      this.$emit('pageSizeChange', { ...this._crudProps.pagination })
       this.loadData()
     },
     getSelectionData(columns) {
@@ -187,7 +208,10 @@ export default {
       if (this.multipleSelect) {
         return
       }
-      this.$emit("selectChange", this.getSelectionData([row]))
+      this.$emit('selectChange', this.getSelectionData([row]))
+    },
+    onSortChange(...args) {
+      this.$emit('sortChange', ...args)
     },
     /**
      * 多选:操作单项
@@ -195,7 +219,7 @@ export default {
      */
     onSelectOne(columns, row) {
       if (this.multipleSelect) {
-        this.$emit("selectOne", this.getSelectionData(columns), row)
+        this.$emit('selectOne', this.getSelectionData(columns), row)
       }
     },
     /**
@@ -204,17 +228,23 @@ export default {
      */
     onSelectAll(columns) {
       if (this.multipleSelect) {
-        this.$emit("selectAll", this.getSelectionData(columns))
+        this.$emit('selectAll', this.getSelectionData(columns))
       }
     },
     // 打开列设置
     openSetColumn() {
-      $(`div[id='${this.tableId}']`).find(`button[title='${this.$t('baseCommon.component.columnsSetBtn')}']`).click()
+      $(`div[id='${this.tableId}']`)
+        .find(
+          `button[title='${this.$t('baseCommon.component.columnsSetBtn')}']`
+        )
+        .click()
     },
     // 根据索引选择列
     toggleSelectionWithIndex(indexArray) {
       for (const index of indexArray) {
-        this.getD2CrudTable().toggleRowSelection(this.getD2CrudTableData()[index])
+        this.getD2CrudTable().toggleRowSelection(
+          this.getD2CrudTableData()[index]
+        )
       }
     },
     // 根据索引选择列
@@ -237,10 +267,9 @@ export default {
         this.getD2CrudTable().toggleRowSelection(columns)
       }
     },
-    setTableWidth(width) {
-    },
+    setTableWidth(width) {},
     getTableWidth() {
-      return $(`div[id='${this.tableId}']`).width() + "px"
+      return $(`div[id='${this.tableId}']`).width() + 'px'
     },
     getCurrentTableData() {
       return this.tableData
