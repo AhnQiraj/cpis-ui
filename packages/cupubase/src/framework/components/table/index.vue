@@ -211,7 +211,7 @@ export default {
       this.$emit('selectChange', this.getSelectionData([row]))
     },
     onSortChange(...args) {
-      this.$emit('sortChange', ...args)
+      this.$emit('sort-change', ...args)
     },
     /**
      * 多选:操作单项

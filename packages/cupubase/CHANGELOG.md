@@ -1,5 +1,11 @@
 # @cpis/cupubase
 
+## 0.1.13
+
+### Patch Changes
+
+- 换成短横杠命名法
+
 ## 0.1.12
 
 ### Patch Changes

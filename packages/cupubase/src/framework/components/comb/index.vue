@@ -176,7 +176,7 @@ export default {
       this.$emit('toolbar-search', searchData)
     },
     onSortChange(...args) {
-      this.$emit('sortChange', ...args)
+      this.$emit('sort-change', ...args)
     },
     // 浏览事件
     onView() {
