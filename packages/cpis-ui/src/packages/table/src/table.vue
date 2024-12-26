@@ -50,6 +50,7 @@
             <template v-else-if="column.valueType === 'number'">
               <ELTableColumn
                 :key="column.prop"
+                :label-class-name="column.required ? 'is-required' : ''"
                 :label="column.label"
                 :prop="column.prop"
                 :align="column.align || 'right'"
@@ -103,6 +104,7 @@
                 :label="column.label"
                 :prop="column.prop"
                 :width="column.width"
+                :label-class-name="column.required ? 'is-required' : ''"
                 :min-width="column.minWidth || '50'"
               >
                 <template slot-scope="scope">
@@ -325,6 +327,14 @@ export default {
 <style scoped>
 ::v-deep .cellClassName {
   background-color: #f5f5f5;
+}
+::v-deep .cell.is-required::before {
+  @apply text-error;
+  content: '*';
+  font-size: 14px;
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
 }
 ::v-deep .el-pager .number.active,
 ::v-deep .el-pager .number:hover {

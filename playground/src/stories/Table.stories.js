@@ -478,6 +478,54 @@ export const Copyable = {
   },
   name: '配置某一列可以复制'
 }
+
+export const Required = {
+  parameters: {
+    docs: {
+      autodocs: false
+    },
+    controls: {
+      include: ['columns']
+    },
+    dataSource: []
+  },
+  argTypes: {
+    columns: {
+      description: '列配置',
+      control: 'array',
+      table: {
+        category: '列配置'
+      }
+    }
+  },
+  args: {
+    columns: [
+      {
+        label: '姓名',
+        prop: 'name',
+        required: true
+      },
+      {
+        label: '身份证',
+        prop: 'idCard',
+        valueType: 'text',
+        copyable: true,
+        required: true
+      },
+      {
+        label: '年龄',
+        prop: 'age'
+      },
+      {
+        label: '性别',
+        prop: 'sex',
+        valueType: 'select',
+        width: '100px'
+      }
+    ]
+  },
+  name: '表头显示星号'
+}
 export const Selection = {
   parameters: {
     docs: {
