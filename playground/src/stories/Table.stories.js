@@ -397,41 +397,126 @@ export const ConfigSearchText = {
 //   name: '配置数据为空时候的文本'
 // }
 
-// export const HideColumn = {
-//   parameters: {
-//     docs: {
-//       autodocs: false
-//     },
-//     controls: {
-//       include: ['columns']
-//     },
-//     dataSource: []
-//   },
-//   argTypes: {
-//     columns: {
-//       description: '列配置',
-//       control: 'array',
-//       table: {
-//         category: '列配置'
-//       }
-//     }
-//   },
-//   args: {
-//     columns: [
-//       {
-//         label: '姓名',
-//         prop: 'name',
-//         hideInTable: false
-//       },
-//       {
-//         label: '年龄',
-//         prop: 'age',
-//         hideInTable: true
-//       }
-//     ]
-//   },
-//   name: '配置某一列可以隐藏'
-// }
+export const HideColumn = {
+  parameters: {
+    docs: {
+      source: {
+        code: `
+        <template>
+          <CpisTable ref="table" :columns="columns" :request="() => {
+            return {
+              success: true,
+              data: [{
+                name: '张三',
+                age: 18,
+                sex: '男'
+              }],
+            }
+          }" />
+        </template>
+
+        <script>
+        export default {
+          data() {
+            return {
+              hiddenSex: false,
+              columns: [
+                {
+                  label: '姓名', 
+                  prop: 'name',
+                  hideInTable: false
+                },
+                {
+                  label: '年龄',
+                  prop: 'age', 
+                  hideInTable: true
+                },
+                {
+                  label: '三秒后隐藏',
+                  prop: 'sex'
+                }
+              ]
+            }
+          },
+          mounted() {
+            setTimeout(() => {
+              this.columns = this.columns.map(column => {
+                if (column.prop === 'sex') {
+                  column.hideInTable = true
+                }
+                return column
+              })
+            }, 3000)
+          }
+        }
+        </script>`
+      }
+    },
+    controls: {
+      include: ['columns']
+    },
+    dataSource: []
+  },
+  render: (args, { argTypes }) => {
+    return {
+      components: { CpisTable },
+      mounted() {
+        setTimeout(() => {
+          this.columns = this.columns.map(column => {
+            if (column.prop === 'sex') {
+              column.hideInTable = true
+            }
+            return column
+          })
+        }, 3000)
+      },
+      data() {
+        return {
+          hiddenSex: false,
+          columns: [
+            {
+              label: '姓名',
+              prop: 'name',
+              hideInTable: false
+            },
+            {
+              label: '年龄',
+              prop: 'age',
+              hideInTable: true
+            },
+            {
+              label: '三秒后隐藏',
+              prop: 'sex'
+            }
+          ]
+        }
+      },
+      template: `
+        <CpisTable ref="table" v-bind="$props" :columns="columns" :request="() => {
+          return {
+            success: true,
+            data: [{
+              name: '张三',
+              age: 18,
+              sex: '男'
+            }],
+            total: 5
+          }
+        }">
+      `
+    }
+  },
+  argTypes: {
+    columns: {
+      description: '列配置',
+      control: 'array',
+      table: {
+        category: '列配置'
+      }
+    }
+  },
+  name: '配置某一列可以隐藏'
+}
 
 export const Copyable = {
   parameters: {

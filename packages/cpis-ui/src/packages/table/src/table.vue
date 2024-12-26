@@ -15,6 +15,7 @@
       </div>
       <div class="flex-1">
         <ELTable
+          ref="table"
           :empty-text="emptyText"
           :data="dataSource"
           :row-key="rowKey"
@@ -26,52 +27,20 @@
         >
           <template v-for="column in computedColumns">
             <template v-if="column.valueType === 'selection'">
-              <ELTableColumn
-                type="selection"
-                :width="column.width || '50'"
-                :align="column.align || 'center'"
-                :min-width="column.minWidth || '50'"
-              />
+              <ELTableColumn type="selection" :width="column.width || '39'" />
             </template>
             <template v-else-if="column.valueType === 'index'">
               <ELTableColumn
                 type="index"
                 :label="column.label"
-                :width="column.width"
-                :align="column.align || 'center'"
-                :min-width="column.minWidth || '50'"
+                width="50"
+                align="center"
+                min-width="50"
               >
                 <template slot-scope="scope">
                   {{ scope.$index + 1 }}
                 </template>
                 <template v-if="column.copyable"></template>
-              </ELTableColumn>
-            </template>
-            <template v-else-if="column.valueType === 'number'">
-              <ELTableColumn
-                :key="column.prop"
-                :label-class-name="column.required ? 'is-required' : ''"
-                :label="column.label"
-                :prop="column.prop"
-                :align="column.align || 'right'"
-                :min-width="column.minWidth || '50'"
-              >
-                <template slot-scope="scope">
-                  <slot
-                    name="columns"
-                    :column="column"
-                    :row="scope.row"
-                    :$index="scope.$index"
-                  >
-                    {{
-                      column?.formatter?.(scope.row, column, scope.$index) ||
-                      scope.row[column.prop]
-                    }}
-                  </slot>
-                  <template v-if="column.copyable">
-                    <CpisCopyable :text="scope.row[column.prop]" />
-                  </template>
-                </template>
               </ELTableColumn>
             </template>
             <template v-else-if="column.valueType === 'action'">
@@ -99,32 +68,63 @@
               </ELTableColumn>
             </template>
             <template v-else>
-              <ELTableColumn
-                :key="column.prop"
-                :label="column.label"
-                :prop="column.prop"
-                :width="column.width"
-                :label-class-name="column.required ? 'is-required' : ''"
-                :min-width="column.minWidth || '50'"
-              >
-                <template slot-scope="scope">
-                  <slot
-                    name="columns"
-                    :column="column"
-                    :row="scope.row"
-                    :$index="scope.$index"
-                  >
-                    {{
-                      column?.formatter?.(scope.row, column, scope.$index) ||
-                      scope.row[column.prop] ||
-                      columnEmptyText
-                    }}
-                    <template v-if="column.copyable">
+              <template v-if="column.valueType === 'number'">
+                <ELTableColumn
+                  :key="column.prop"
+                  :label-class-name="column.required ? 'is-required' : ''"
+                  :label="column.label"
+                  :prop="column.prop"
+                  :align="column.align || 'right'"
+                  :min-width="column.minWidth || '50'"
+                >
+                  <template slot-scope="scope">
+                    <slot
+                      name="columns"
+                      :column="column"
+                      :row="scope.row"
+                      :$index="scope.$index"
+                    >
+                      {{
+                        column?.formatter?.(scope.row, column, scope.$index) ||
+                        scope.row[column.prop]
+                      }}
+                    </slot>
+                    <template v-if="column.copyable && scope.row[column.prop]">
                       <CpisCopyable :text="scope.row[column.prop]" />
                     </template>
-                  </slot>
-                </template>
-              </ELTableColumn>
+                  </template>
+                </ELTableColumn>
+              </template>
+              <template v-else>
+                <ELTableColumn
+                  :key="column.prop"
+                  :label="column.label"
+                  :prop="column.prop"
+                  :width="column.width"
+                  :label-class-name="column.required ? 'is-required' : ''"
+                  :min-width="column.minWidth || '50'"
+                >
+                  <template slot-scope="scope">
+                    <slot
+                      name="columns"
+                      :column="column"
+                      :row="scope.row"
+                      :$index="scope.$index"
+                    >
+                      {{
+                        column?.formatter?.(scope.row, column, scope.$index) ||
+                        scope.row[column.prop] ||
+                        columnEmptyText
+                      }}
+                      <template
+                        v-if="column.copyable && scope.row[column.prop]"
+                      >
+                        <CpisCopyable :text="scope.row[column.prop]" />
+                      </template>
+                    </slot>
+                  </template>
+                </ELTableColumn>
+              </template>
             </template>
           </template>
         </ELTable>
@@ -320,6 +320,9 @@ export default {
         parameters: this.searchParams
       }
       this.handleFetchData(requestData)
+    },
+    getTable() {
+      return this.$refs.table
     }
   }
 }
