@@ -1,5 +1,6 @@
 import CpisForm from '../../../packages/cpis-ui/src/packages/form/index'
 import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
+import CpisFormSection from '../../../packages/cpis-ui/src/packages/form/src/form-section.vue'
 import { FormItem, Input } from 'element-ui'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
@@ -263,6 +264,78 @@ export default {
         <div class="mt-4 p-4 flex justify-center bg-gray-50 border-t border-gray-200">
           <CpisButton type="primary" @click="submitForm" class="w-32 h-9">提交</CpisButton>
         </div>
+      </div>
+      `
+    }
+  }
+}
+
+export const Section = {
+  name: '表单分区',
+  render: (args, { argTypes }) => {
+    return {
+      props: Object.keys(argTypes),
+      components: {
+        CpisForm,
+        ElFormItem: FormItem,
+        ElInput: Input,
+        CpisButton,
+        CpisFormSection
+      },
+      data: () => ({
+        formData: {},
+        rules: {
+          name: [
+            { required: true, message: '请输入姓名', trigger: 'blur' },
+            { min: 2, max: 5, message: '长度在 2 到 5 个字符', trigger: 'blur' }
+          ],
+          age: [
+            { required: true, message: '请输入年龄', trigger: 'blur' },
+            { type: 'number', message: '年龄必须为数字值', trigger: 'blur' }
+          ],
+          phone: [
+            { required: true, message: '请输入手机号', trigger: 'blur' },
+            {
+              pattern: /^1[3-9]\d{9}$/,
+              message: '请输入正确的手机号格式',
+              trigger: 'blur'
+            }
+          ]
+        }
+      }),
+      template: `
+      <div>
+        <CpisForm 
+          ref="form"
+          :model="formData"
+          :rules="rules"
+          :column="column" 
+          :label-width="labelWidth" 
+          :content-width="contentWidth"
+        >
+          <CpisFormSection title="基础信息">
+            <el-form-item label="姓名" prop="name">
+              <el-input v-model="formData.name" />
+            </el-form-item>
+            <el-form-item label="年龄" prop="age">
+              <el-input v-model="formData.age" />
+            </el-form-item>
+            <el-form-item label="性别" prop="sex">
+              <el-input v-model="formData.sex" />
+            </el-form-item>
+            <el-form-item label="联系电话" prop="phone">
+              <el-input v-model="formData.phone" />
+            </el-form-item>
+            <el-form-item label="家庭住址" prop="address">
+              <el-input v-model="formData.address" />
+            </el-form-item>
+          </CpisFormSection>
+          <CpisFormSection title="其他信息">
+            <el-form-item label="其他" prop="other">
+              <el-input v-model="formData.other" />
+            </el-form-item>
+          </CpisFormSection>
+        </CpisForm>
       </div>
       `
     }
