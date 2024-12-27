@@ -32,6 +32,9 @@
                 <el-dropdown-item command="collapseAll">
                   折叠所有
                 </el-dropdown-item>
+                <el-dropdown-item command="expandAll">
+                  展开所有
+                </el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           </div>
