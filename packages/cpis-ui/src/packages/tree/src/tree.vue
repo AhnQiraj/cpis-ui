@@ -104,4 +104,11 @@ export default {
 .cpis-tree {
   width: 100%;
 }
+::v-deep
+  .el-tree--highlight-current
+  .el-tree-node.is-current
+  > .el-tree-node__content {
+  @apply text-primary-6;
+  @apply bg-primary-1;
+}
 </style>
