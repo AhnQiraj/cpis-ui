@@ -28,9 +28,7 @@
                 icon="el-icon-setting"
               />
               <el-dropdown-menu slot="dropdown" @command="handleCommand">
-                <el-dropdown-item command="expandAll"
-                  >展开所有</el-dropdown-item
-                >
+                <el-dropdown-item command="refresh">刷新</el-dropdown-item>
                 <el-dropdown-item command="collapseAll">
                   折叠所有
                 </el-dropdown-item>
@@ -93,10 +91,10 @@ export default {
   },
   methods: {
     handleCommand(command) {
-      if (command === 'expandAll') {
-        this.getTree().expandAll()
+      if (command === 'refresh') {
+        this.$emit('on-refresh')
       } else if (command === 'collapseAll') {
-        this.getTree().setExpandedKeys([])
+        this.getTree().collapseAll()
       }
     },
     handleCollapse() {

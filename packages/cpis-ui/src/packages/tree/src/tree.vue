@@ -1,6 +1,11 @@
 <template>
   <div class="cpis-tree">
-    <ElTree ref="elTree" v-bind="$attrs" v-on="$listeners">
+    <ElTree
+      ref="elTree"
+      v-bind="$attrs"
+      v-on="$listeners"
+      @node-contextmenu="handleContextMenu"
+    >
       <!-- 透传所有具名插槽 -->
       <template v-for="(_, name) in $slots" #[name]="slotData">
         <slot :name="name" v-bind="slotData" />
@@ -32,6 +37,10 @@ export default {
     }
   },
   methods: {
+    handleContextMenu(...args) {
+      this.$emit('node-contextmenu', ...args)
+      this.$emit('right-click', ...args)
+    },
     // 代理 ElTree 的所有方法
     filter(...args) {
       return this.$refs.elTree.filter(...args)
