@@ -138,3 +138,99 @@ export const Checkable = () => ({
     }
   }
 })
+
+// 右键菜单
+export const ContextMenu = () => ({
+  title: '右键菜单',
+  components: { CpisTree },
+  data() {
+    return {
+      data: [
+        {
+          label: '一级 1',
+          children: [{ label: '二级 1-1' }]
+        }
+      ],
+      contextmenus: [
+        { label: '添加', command: 'add' },
+        { label: '编辑', command: 'edit' },
+        { label: '删除', command: 'delete' }
+      ]
+    }
+  },
+  template: `
+    <cpis-tree
+      :data="data"
+      :props="defaultProps"
+      :contextmenus="contextmenus"
+      @context-menu-click="handleContextMenuClick"
+    />
+  `,
+  methods: {
+    handleContextMenuClick(data) {
+      console.log(data)
+    }
+  }
+})
+
+// 懒加载
+export const LazyLoad = () => ({
+  title: '懒加载',
+  components: { CpisTree },
+  data() {
+    return {
+      data: [
+        {
+          id: 1,
+          label: '一级 1',
+          children: [] // 初始子节点为空
+        },
+        {
+          id: 2,
+          label: '一级 2',
+          children: [] // 初始子节点为空
+        }
+      ],
+      defaultProps: {
+        children: 'children',
+        label: 'label'
+      }
+    }
+  },
+  template: `
+    <cpis-tree
+      :data="data"
+      :props="defaultProps"
+      node-key="id"
+      lazy
+      :load="loadNode"
+      @node-click="handleNodeClick"
+    />
+  `,
+  methods: {
+    loadNode(node, resolve) {
+      // 模拟异步加载数据
+      setTimeout(() => {
+        if (node.level === 0) {
+          return resolve(this.data)
+        }
+        const data = [
+          {
+            id: `${node.data.id}-1`,
+            label: `${node.data.label}-1`,
+            leaf: node.level >= 2 // 第三层及以上节点为叶子节点
+          },
+          {
+            id: `${node.data.id}-2`,
+            label: `${node.data.label}-2`,
+            leaf: node.level >= 2
+          }
+        ]
+        resolve(data)
+      }, 500)
+    },
+    handleNodeClick(data) {
+      console.log(data)
+    }
+  }
+})
