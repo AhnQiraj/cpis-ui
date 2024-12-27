@@ -44,7 +44,11 @@
           :filter-node-method="filterNodeMethod"
           class="flex-1"
           ref="tree"
-          v-bind="treeProps"
+          v-bind="{
+            'expand-on-click-node': false,
+            'highlight-current': true,
+            ...treeProps
+          }"
           v-on="$listeners"
         />
       </div>
