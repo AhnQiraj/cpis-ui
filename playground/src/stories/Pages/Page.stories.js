@@ -1,10 +1,11 @@
 import MarginView from './Components/margin-view.vue'
 import PaddingView from './Components/padding-view.vue'
+import ColorView from './Components/color.vue'
 export default {
   title: '界面/样式规范',
   parameters: {
     // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
-    layout: 'fullscreen',
+    layout: 'fullscreen'
   },
   render: () => {
     return {
@@ -15,12 +16,10 @@ export default {
 
 // 创建一个模板组件
 export const Margin = {
-
-  render: (args, { argTypes, parameters }) => {    
+  render: (args, { argTypes, parameters }) => {
     return {
       components: { MarginView },
-      template:
-        '<MarginView />'
+      template: '<MarginView />'
     }
   },
   name: '外间距'
@@ -34,4 +33,13 @@ export const Padding = {
     }
   },
   name: '内间距'
+}
+export const Color = {
+  render: () => {
+    return {
+      components: { ColorView },
+      template: '<ColorView />'
+    }
+  },
+  name: '颜色'
 }
