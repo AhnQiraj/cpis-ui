@@ -51,9 +51,11 @@ import CpisSearchBar from '../../../packages/cpis-ui/src/packages/search-bar/ind
  * }
  * ```
  *
- * ### 注意:
- * 1. 当type为daterange并且paramaterMode是structured的时可以传入数组对应开始和结束时间
- * 2. 当type为select的时候，enum是必传的
+ * ### ⚠️ 重要注意事项:
+ * 1. `type="daterange"` 且 `paramaterMode="structured"` 时:
+ *    - prop 可以传入数组，分别对应开始和结束时间
+ * 2. `type="select"` 时:
+ *    - enum 为必传项，否则下拉框将无选项
  *
  * ### 示例:
  * ```javascript
