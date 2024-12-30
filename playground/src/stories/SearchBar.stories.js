@@ -1,9 +1,9 @@
 import CpisSearchBar from '../../../packages/cpis-ui/src/packages/search-bar/index'
 
 /**
- * SearchBar 组件支持两种参数模式:
+ * ## 搜索栏参数模式
  *
- * ## 1.扁平化参数模式 (paramaterMode="flat")
+ * ### 1.扁平化参数模式 (paramaterMode="flat")
  *    - 直接使用字段名作为参数名
  *    - 示例输出:
  * ```
@@ -14,7 +14,7 @@ import CpisSearchBar from '../../../packages/cpis-ui/src/packages/search-bar/ind
  *      }
  * ```
  *
- * ## 2.结构化参数模式 (paramaterMode="structured")
+ * ### 2.结构化参数模式 (paramaterMode="structured")
  *    - 使用特定格式的参数名: Q^字段名^操作符
  *    - 示例输出:
  * ```
@@ -32,6 +32,63 @@ import CpisSearchBar from '../../../packages/cpis-ui/src/packages/search-bar/ind
  *          "value": "2024-03-20"
  *        }
  *      ]
+ * ```
+ *
+ * ## Search 配置项说明
+ * search 配置支持以下字段:
+ * ```
+ * {
+ *   prop: string | string[], // 字段名，当type为daterange并且paramaterMode是structured的时候，时可以传入数组对应开始和结束时间
+ *   label: string,          // 标签文本
+ *   type?: string,          // 输入框类型（默认input），支持:
+ *                          // - select: 下拉选择框
+ *                          // - date: 日期选择器
+ *                          // - daterange: 日期范围选择器
+ *   placeholder?: string,   // 输入框占位文本
+ *   enum?: Array,          // 枚举值
+ *   valueKey?: string,     // 枚举值的value值
+ *   labelKey?: string,     // 枚举值的label值
+ * }
+ * ```
+ *
+ * ### 注意:
+ * 1. 当type为daterange并且paramaterMode是structured的时可以传入数组对应开始和结束时间
+ * 2. 当type为select的时候，enum是必传的
+ *
+ * ### 示例:
+ * ```javascript
+ * search: [
+ *   {
+ *     prop: 'name',
+ *     label: '姓名',
+ *     placeholder: '请输入姓名'
+ *   },
+ *   {
+ *     prop: 'status',
+ *     label: '状态',
+ *     type: 'select',
+ *     enum: [
+ *       { name: '启用', key: 1 },
+ *       { name: '禁用', key: 0 }
+ *     ]
+ *   },
+ *  {
+ *     prop: 'status',
+ *     label: '状态',
+ *     type: 'select',
+ *     enum: [
+ *       { label: '启用', value: 1 },
+ *       { label: '禁用', value: 0 }
+ *     ],
+ *     valueKey: 'value',
+ *     labelKey: 'label'
+ *   },
+ *   {
+ *     prop: ['startTime', 'endTime'],
+ *     label: '创建时间',
+ *     type: 'daterange'
+ *   }
+ * ]
  * ```
  */
 
@@ -92,6 +149,15 @@ export const FlatSearch = {
             placeholder: '请输入姓名'
           },
           {
+            prop: 'status',
+            label: '状态',
+            type: 'select',
+            enum: [
+              { name: '启用', key: 1 },
+              { name: '禁用', key: 0 }
+            ]
+          },
+          {
             prop: 'createTime',
             label: '日期',
             type: 'daterange'
@@ -109,6 +175,15 @@ export const FlatSearch = {
             prop: 'name',
             label: '姓名',
             placeholder: '请输入姓名'
+          },
+          {
+            prop: 'status',
+            label: '状态',
+            type: 'select',
+            enum: [
+              { name: '启用', key: 1 },
+              { name: '禁用', key: 0 }
+            ]
           },
           {
             prop: 'date',
@@ -153,6 +228,15 @@ export const StructuredSearch = {
             placeholder: '请输入姓名'
           },
           {
+            prop: 'status',
+            label: '状态',
+            type: 'select',
+            enum: [
+              { name: '启用', key: 1 },
+              { name: '禁用', key: 0 }
+            ]
+          },
+          {
             prop: ['Q^CREATE_TIME_^DL', 'Q^CREATE_TIME_^DG'],
             label: '日期',
             type: 'daterange'
@@ -170,6 +254,15 @@ export const StructuredSearch = {
             prop: 'Q^NAME_^SL',
             label: '姓名',
             placeholder: '请输入姓名'
+          },
+          {
+            prop: 'status',
+            label: '状态',
+            type: 'select',
+            enum: [
+              { name: '启用', key: 1 },
+              { name: '禁用', key: 0 }
+            ]
           },
           {
             prop: ['Q^CREATE_TIME_^DL', 'Q^CREATE_TIME_^DG'],
