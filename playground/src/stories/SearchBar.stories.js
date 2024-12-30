@@ -4,6 +4,17 @@ export default {
   title: '原子组件/搜索栏',
   component: CpisSearchBar,
   tags: ['autodocs'],
+  argTypes: {
+    search: {
+      description: '搜索栏配置，支持布尔和数组',
+      control: 'array'
+    },
+    paramaterMode: {
+      description: '参数模式, flat扁平化参数模式， structured结构化参数模式',
+      control: 'select',
+      options: ['flat', 'structured']
+    }
+  },
   render: (args, { argTypes, parameters }) => {
     return {
       setup() {
@@ -30,88 +41,29 @@ export default {
         }
       }
     }
-  },
-  parameters: {
-    search: {
-      description: '搜索配置',
-      control: 'array'
-    }
   }
 }
 
-export const ConfigSearchText = {
+export const FlatSearch = {
+  name: '配置搜索项-扁平化',
   parameters: {
     docs: {
-      autodocs: false,
-      description: {
-        story: '搜索栏组件，支持文本输入、下拉选择、日期范围等搜索类型'
-      }
-    },
-    controls: {
-      include: ['search']
-    },
-    actions: {
-      handles: ['search', 'reset']
-    }
-  },
-  argTypes: {
-    search: {
-      description: '搜索栏配置，支持布尔和数组',
-      control: 'array'
-    }
-  },
-  play: async ({ args, canvasElement, step }) => {
-    // 这里可以添加交互测试
-    console.log('Story loaded with args:', args)
-  },
-  args: {
-    search: [
-      {
-        prop: 'Q^NAME_^SL',
-        label: '姓名',
-        placeholder: '请输入'
-      },
-
-      {
-        prop: 'Q^SEX_^SL',
-        label: '性别',
-        type: 'select',
-        enum: [
+      source: {
+        code: `<CpisSearchBar paramater-mode="flat" :search="[
           {
-            key: 'protocol',
-            name: '拟稿'
+            prop: 'name',
+            label: '姓名',
+            placeholder: '请输入姓名'
           },
           {
-            key: 'cancel',
-            name: '作废'
+            prop: 'createTime',
+            label: '日期',
+            type: 'daterange'
           }
-        ]
-      },
-      {
-        prop: 'Q^SEX1_^SL',
-        label: '异步select',
-        type: 'select',
-        enum: () => {
-          return [
-            { key: 'protocol', name: '拟稿' },
-            { key: 'cancel', name: '作废' }
-          ]
-        },
-        width: 50
-      },
-      {
-        width: 200,
-        prop: 'Q^date^SL',
-        label: '日期',
-        type: 'daterange'
+        ]"/>`
       }
-    ]
+    }
   },
-  name: '配置搜索项'
-}
-
-export const WithEvents = {
-  name: '查询参数',
   render: () => ({
     components: { CpisSearchBar },
     data() {
@@ -128,38 +80,88 @@ export const WithEvents = {
             type: 'daterange'
           }
         ],
-        searchParams: null
+        searchParams: {}
       }
     },
-    template: `
-      <div>
-        <CpisSearchBar 
-          :search="search"
-          @search="handleSearch"
-          @reset="handleReset"
-        />
-        <div style="margin-top: 16px;">
-          <p>点击查询查看搜索参数:</p>
-          <pre v-if="searchParams">{{ JSON.stringify(searchParams, null, 2) }}</pre>
-        </div>
-      </div>
-    `,
     methods: {
       handleSearch(params) {
-        this.searchParams = params
+        this.searchParams = JSON.parse(JSON.stringify(params))
         console.log('搜索参数:', params)
       },
       handleReset() {
         this.searchParams = null
         console.log('重置搜索')
       }
-    }
-  }),
+    },
+    template: `
+      <div>
+        <CpisSearchBar @search="handleSearch" @reset="handleReset" :search="search" paramater-mode="flat"/>
+        <div style="margin-top: 16px;">
+          <p>点击查询查看搜索参数:</p>
+          <pre v-if="searchParams">{{ JSON.stringify(searchParams, null, 2) }}</pre>
+        </div>
+      </div>
+    `
+  })
+}
+
+export const StructuredSearch = {
+  name: '配置搜索项-结构化',
   parameters: {
     docs: {
-      description: {
-        story: '展示搜索栏的事件处理，包括搜索和重置事件'
+      source: {
+        code: `<CpisSearchBar paramater-mode="structured" :search="[
+          {
+            prop: 'Q^NAME_^SL',
+            label: '姓名',
+            placeholder: '请输入姓名'
+          },
+          {
+            prop: ['Q^CREATE_TIME_^DL', 'Q^CREATE_TIME_^DG'],
+            label: '日期',
+            type: 'daterange'
+          }
+        ]"/>`
       }
     }
-  }
+  },
+  render: () => ({
+    components: { CpisSearchBar },
+    data() {
+      return {
+        search: [
+          {
+            prop: 'Q^NAME_^SL',
+            label: '姓名',
+            placeholder: '请输入姓名'
+          },
+          {
+            prop: ['Q^CREATE_TIME_^DL', 'Q^CREATE_TIME_^DG'],
+            label: '日期',
+            type: 'daterange'
+          }
+        ],
+        searchParams: {}
+      }
+    },
+    methods: {
+      handleSearch(params) {
+        this.searchParams = JSON.parse(JSON.stringify(params))
+        console.log('搜索参数===>', params)
+      },
+      handleReset() {
+        this.searchParams = null
+        console.log('重置搜索===>')
+      }
+    },
+    template: `
+      <div>
+        <CpisSearchBar @search="handleSearch" @reset="handleReset" :search="search" paramater-mode="structured"/>
+        <div style="margin-top: 16px;">
+          <p>点击查询查看搜索参数:</p>
+          <pre v-if="searchParams">{{ JSON.stringify(searchParams, null, 2) }}</pre>
+        </div>
+      </div>
+    `
+  })
 }

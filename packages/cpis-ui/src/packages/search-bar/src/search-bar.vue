@@ -15,7 +15,7 @@
       </template>
       <template v-else-if="item.type === 'daterange'">
         <CpisDatePicker
-          :style="{ width: item.width || '250px' }"
+          :style="{ width: '250px' }"
           :key="item.prop"
           type="daterange"
           :clearable="false"
@@ -65,6 +65,15 @@ export default {
     CpisDatePicker
   },
   props: {
+    paramaterMode: {
+      type: String,
+      default: 'flat',
+      validator: function (value) {
+        return ['flat', 'structured'].indexOf(value) !== -1
+      },
+      default: 'flat',
+      comments: 'flat扁平化参数模式， structured结构化参数模式'
+    },
     search: {
       type: Array,
       default: () => []
@@ -77,7 +86,51 @@ export default {
   },
   methods: {
     handleSearch() {
-      this.$emit('search', this.params)
+      try {
+        if (!this.search || this.search.length === 0) {
+          console.warn('[CpisSearchBar] No search items configured')
+          return
+        }
+        if (this.paramaterMode === 'structured') {
+          const parameters = []
+          for (const [key, value] of Object.entries(this.params)) {
+            // Skip empty values
+            if (value === undefined || value === null || value === '') {
+              continue
+            }
+            if (Array.isArray(value) && key.includes(',')) {
+              const [startKey, endKey] = key.split(',')
+              parameters.push(
+                {
+                  key: startKey,
+                  value: value[0]
+                },
+                {
+                  key: endKey,
+                  value: value[1]
+                }
+              )
+            } else {
+              parameters.push({
+                key: key,
+                value: value
+              })
+            }
+          }
+          this.$emit('search', parameters)
+        } else {
+          // Filter out empty values for flat mode
+          const filteredParams = Object.fromEntries(
+            Object.entries(this.params).filter(
+              ([_, value]) =>
+                value !== undefined && value !== null && value !== ''
+            )
+          )
+          this.$emit('search', filteredParams)
+        }
+      } catch (error) {
+        console.error('[CpisSearchBar] Error during search:', error)
+      }
     },
     handleSearchReset() {
       this.params = {}
