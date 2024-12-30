@@ -16,7 +16,7 @@ export default {
       props: Object.keys(argTypes),
       components: { CpisTable, CpisButton },
       template: `
-        <CpisTable v-bind="$props" key="table-1" :columns="columns" :request="request">
+        <CpisTable v-bind="$props" :columns="columns" :request="request">
           <template v-slot:columns="{column, row}">
             <CpisButton type="text" v-if="column.prop === 'action'">编辑</CpisButton>
           </template>
@@ -267,6 +267,11 @@ export default {
     }
   },
   argTypes: {
+    paramaterMode: {
+      description: '参数模式',
+      control: 'select',
+      options: ['structured', 'flat']
+    },
     dataSource: {
       description: '表格数据',
       control: 'array'
@@ -320,59 +325,142 @@ export const ShowPagination = {
   name: '是否显示分页'
 }
 
-export const ConfigSearchText = {
+export const StructuredSearch = {
   parameters: {
     docs: {
-      autodocs: false
+      autodocs: false,
+      description: {
+        story:
+          '结构化搜索配置示例。更多搜索配置详情请参考 [SearchBar](?path=/docs/原子组件-搜索栏--docs)'
+      },
+      source: {
+        code: `<CpisTable paramaterMode="structured"/>`
+      }
     },
     controls: {
-      include: ['search']
+      include: ['']
     }
   },
-  argTypes: {
-    search: {
-      description: '搜索栏配置，支持布尔和数组',
-      control: 'array'
-    }
-  },
-  args: {
-    search: [
-      {
-        prop: 'Q^NAME_^SL',
-        label: '姓名',
-        placeholder: '请输入'
+  render: () => {
+    return {
+      components: { CpisTable },
+      methods: {
+        request(params) {
+          console.log(params)
+        }
       },
+      template: `
+        <CpisTable 
+          :request="request"
+          paramaterMode="structured"
+          :search="[
+            {
+              prop: 'Q^NAME_^SL',
+              label: '姓名', 
+              placeholder: '请输入'
+            },
+            {
+              prop: 'Q^SEX_^SL',
+              label: '性别',
+              type: 'select',
+              enum: [
+                {
+                  key: 'male',
+                  name: '男'
+                },
+                {
+                  key: 'female', 
+                  name: '女'
+                }
+              ]
+            },
+            {
+              prop: 'Q^status_^SL',
+              label: '异步select',
+              type: 'select',
+              enum: () => {
+                return [
+                  { key: 'protocol', name: '拟稿' },
+                  { key: 'cancel', name: '作废' }
+                ]
+              },
+              width: 50
+            }
+          ]"
+        />
+      `
+    }
+  },
+  name: '配置搜索项-结构化'
+}
 
-      {
-        prop: 'Q^SEX_^SL',
-        label: '性别',
-        type: 'select',
-        enum: [
-          {
-            key: 'protocol',
-            name: '拟稿'
-          },
-          {
-            key: 'cancel',
-            name: '作废'
-          }
-        ]
+export const FlatSearch = {
+  parameters: {
+    docs: {
+      autodocs: false,
+      description: {
+        story:
+          '扁平化搜索配置示例。更多搜索配置详情请参考 [SearchBar](?path=/docs/原子组件-搜索栏--docs)'
       },
-      {
-        prop: 'Q^SEX1_^SL',
-        label: '异步select',
-        type: 'select',
-        enum: () => {
-          return [
-            { key: 'protocol', name: '拟稿' },
-            { key: 'cancel', name: '作废' }
-          ]
-        },
-        width: 50
+      source: {
+        code: `<CpisTable paramaterMode="flat"/>`
       }
-    ]
+    },
+    controls: {
+      include: ['']
+    }
   },
-  name: '配置搜索项'
+  render: () => {
+    return {
+      components: { CpisTable },
+      methods: {
+        request(params) {
+          console.log(params)
+        }
+      },
+      template: `
+        <CpisTable 
+          :request="request"
+          paramaterMode="flat"
+          :search="[
+            {
+              prop: 'name',
+              label: '姓名', 
+              placeholder: '请输入'
+            },
+            {
+              prop: 'sex',
+              label: '性别',
+              type: 'select',
+              enum: [
+                {
+                  key: 'male',
+                  name: '男'
+                },
+                {
+                  key: 'female', 
+                  name: '女'
+                }
+              ]
+            },
+            {
+              prop: 'status',
+              label: '异步select',
+              type: 'select',
+              enum: () => {
+                return [
+                  { key: 'protocol', name: '拟稿' },
+                  { key: 'cancel', name: '作废' }
+                ]
+              },
+              width: 50
+            }
+          ]"
+        />
+      `
+    }
+  },
+  name: '配置搜索项-扁平化'
 }
 
 // export const ConfigEmptyText = {

@@ -4,6 +4,7 @@
       <template>
         <CpisSearchBar
           :search="search"
+          :paramater-mode="paramaterMode"
           @search="handleSearch"
           @reset="handleSearchReset"
         />
@@ -150,6 +151,15 @@ export default {
     CpisSearchBar: CpisSearchBar
   },
   props: {
+    paramaterMode: {
+      type: String,
+      default: 'flat',
+      validator: function (value) {
+        return ['flat', 'structured'].indexOf(value) !== -1
+      },
+      default: 'flat',
+      comments: 'flat扁平化参数模式， structured结构化参数模式'
+    },
     identity: {
       type: String,
       comments: '表格唯一标识'
@@ -254,15 +264,23 @@ export default {
   methods: {
     async handleFetchData(params) {
       this.loading = true
-      if (params?.searchParams) {
-        if (Object.keys(params.searchParams).length === 0) {
-          delete params.searchParams
-        }
-      }
-
+      let requestParams = { ...params }
       if (this.request && typeof this.request === 'function') {
         try {
-          const res = await this.request(params)
+          if (this.paramaterMode === 'structured') {
+            requestParams = {
+              ...requestParams,
+              ...(this.searchParams.length > 0
+                ? { parameters: this.searchParams }
+                : {})
+            }
+          } else {
+            requestParams = {
+              ...requestParams,
+              ...this.searchParams
+            }
+          }
+          const res = await this.request(requestParams)
           if (!res.success) return
           this.dataSource = res.data
           this.total = res.total
@@ -277,8 +295,7 @@ export default {
         requestPage: {
           limit: this.limit,
           pageNo: this.pageNo
-        },
-        parameters: searchParams
+        }
       }
       this.searchParams = searchParams
       this.handleFetchData(params)
