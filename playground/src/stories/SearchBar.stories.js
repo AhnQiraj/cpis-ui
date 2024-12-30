@@ -1,4 +1,40 @@
 import CpisSearchBar from '../../../packages/cpis-ui/src/packages/search-bar/index'
+
+/**
+ * SearchBar 组件支持两种参数模式:
+ *
+ * ## 1.扁平化参数模式 (paramaterMode="flat")
+ *    - 直接使用字段名作为参数名
+ *    - 示例输出:
+ * ```
+ *      {
+ *        "name": "张三",
+ *        "startDate": "2024-03-20",
+ *        "endDate": "2024-03-21"
+ *      }
+ * ```
+ *
+ * ## 2.结构化参数模式 (paramaterMode="structured")
+ *    - 使用特定格式的参数名: Q^字段名^操作符
+ *    - 示例输出:
+ * ```
+ *      [
+ *        {
+ *          "key": "Q^NAME_^SL",
+ *          "value": "张三"
+ *        },
+ *        {
+ *          "key": "Q^CREATE_TIME_^DL",
+ *          "value": "2024-03-21"
+ *        },
+ *        {
+ *          "key": "Q^CREATE_TIME_^DG",
+ *          "value": "2024-03-20"
+ *        }
+ *      ]
+ * ```
+ */
+
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
   title: '原子组件/搜索栏',
