@@ -4,6 +4,26 @@ import CpisFormSection from '../../../packages/cpis-ui/src/packages/form/src/for
 import CpisFormItem from '../../../packages/cpis-ui/src/packages/form/src/form-item.vue'
 import { FormItem, Input } from 'element-ui'
 
+/**
+ *
+ * CPIS Form 是一个基于 element-ui 的表单组件，其用法与 element-ui 的 Form 组件一致。
+ *
+ * 更多详情请参考 [Form](https://element.eleme.cn/#/zh-CN/component/form)
+ *  但是，需要注意的一点，我司的UI样式，需要使用CpisFormSection组件包裹CpisFormItem组件，否则样式会不生效。
+ *
+ * ## 基础用法
+ *
+ * ```vue
+ * <CpisForm :model="formData" :column="2">
+ *   <CpisFormSection>
+ *     <CpisFormItem label="姓名" prop="name">
+ *       <el-input v-model="formData.name" />
+ *     </CpisFormItem>
+ *   </CpisFormSection>
+ * </CpisForm>
+ * ```
+ **/
+
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
   title: '原子组件/表单',
@@ -86,7 +106,7 @@ export const OneColumn = {
           :label-width="labelWidth" 
           :content-width="contentWidth"
         >
-        <CpisFormSection title="基础信息" columns="2">
+        <CpisFormSection columns="2">
           <CpisFormItem label="姓名" prop="name">
             <el-input v-model="formData.name" />
           </CpisFormItem>
@@ -169,22 +189,20 @@ export const RowSpan = {
         ElFormItem: FormItem,
         ElInput: Input,
         CpisButton,
-        CpisFormItem
+        CpisFormItem,
+        CpisFormSection
       },
       data: () => ({
         formData: {}
       }),
       template: `
-      <div>
+
         <CpisForm 
           ref="form"
           :model="formData"
-          :column="column" 
-          :label-width="labelWidth" 
-          :content-width="contentWidth"
         >
         <CpisFormSection title="基础信息" columns="2">
-          <CpisFormItem label="姓名" prop="name">
+          <CpisFormItem label="姓名1" prop="name">
             <el-input v-model="formData.name" />
           </CpisFormItem>
           <CpisFormItem label="年龄" prop="age">
@@ -201,7 +219,6 @@ export const RowSpan = {
           </CpisFormItem>
         </CpisFormSection>
         </CpisForm>
-      </div>
       `
     }
   }
@@ -214,7 +231,7 @@ export const Validation = {
       source: {
         code: `
 <template>
-  <div>
+
     <CpisForm 
       ref="form"
       :model="formData"
@@ -234,7 +251,7 @@ export const Validation = {
     <div>
       <CpisButton type="primary" @click="submitForm">提交</CpisButton>
     </div>
-  </div>
+
 </template>
 
 <script>
@@ -339,7 +356,6 @@ export default {
         }
       },
       template: `
-      <div>
         <CpisForm 
           ref="form"
           :model="formData"
@@ -361,7 +377,6 @@ export default {
         <div class="mt-4 p-4 flex justify-center bg-gray-50 border-t border-gray-200">
           <CpisButton type="primary" @click="submitForm" class="w-32 h-9">提交</CpisButton>
         </div>
-      </div>
       `
     }
   }
@@ -402,7 +417,6 @@ export const Section = {
         }
       }),
       template: `
-      <div>
         <CpisForm 
           ref="form"
           :model="formData"
@@ -442,7 +456,6 @@ export const Section = {
             </CpisFormItem>
           </CpisFormSection>
         </CpisForm>
-      </div>
       `
     }
   }
@@ -450,6 +463,24 @@ export const Section = {
 
 export const SectionCustomSlot = {
   name: '表单分区自定义内容',
+  parameters: {
+    docs: {
+      source: {
+        code: `<template>
+  <CpisFormSection title="基础信息" columns="2">
+    <template #title>
+      <div class="cpis-form-section__title">
+        基础信息
+        <CpisButton type="text">按钮1</CpisButton>
+        <CpisButton type="text">按钮2</CpisButton>
+      </div>
+    </template>
+  </CpisFormSection>
+</template>
+`
+      }
+    }
+  },
   render: (args, { argTypes }) => {
     return {
       props: Object.keys(argTypes),
@@ -462,41 +493,17 @@ export const SectionCustomSlot = {
         CpisFormItem
       },
       data: () => ({
-        formData: {},
-        rules: {
-          name: [
-            { required: true, message: '请输入姓名', trigger: 'blur' },
-            { min: 2, max: 5, message: '长度在 2 到 5 个字符', trigger: 'blur' }
-          ],
-          age: [
-            { required: true, message: '请输入年龄', trigger: 'blur' },
-            { type: 'number', message: '年龄必须为数字值', trigger: 'blur' }
-          ],
-          phone: [
-            { required: true, message: '请输入手机号', trigger: 'blur' },
-            {
-              pattern: /^1[3-9]\d{9}$/,
-              message: '请输入正确的手机号格式',
-              trigger: 'blur'
-            }
-          ]
-        }
+        formData: {}
       }),
       template: `
       <div>
         <CpisForm 
-          ref="form"
-          :model="formData"
-          :rules="rules"
-          :column="column" 
-          :label-width="labelWidth" 
-          :content-width="contentWidth"
         >
         <CpisFormSection title="基础信息" columns="2">
           <template #title>
             <div class="cpis-form-section__title">基础信息
-            <CpisButton type="text">按钮1</CpisButton>
-            <CpisButton type="text">按钮2</CpisButton>
+              <CpisButton type="text">按钮1</CpisButton>
+              <CpisButton type="text">按钮2</CpisButton>
             </div>
           </template>
           <CpisFormItem label="入职日期" prop="entryDate">
