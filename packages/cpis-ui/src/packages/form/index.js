@@ -1,11 +1,16 @@
-import Form from './src/form.vue'
-import FormItem from './src/form-item.vue'
-import FormSection from './src/form-section.vue'
+import CpisForm from './src/form.vue'
+import CpisFormItem from './src/form-item.vue'
+import CpisFormSection from './src/form-section.vue'
 
-Form.install = function (Vue) {
-  Vue.component(Form.name, Form)
-  Vue.component(FormItem.name, FormItem)
-  Vue.component(FormSection.name, FormSection)
+CpisForm.install = function (Vue) {
+  Vue.component(CpisForm.name, CpisForm)
+}
+CpisFormSection.install = function (Vue) {
+  Vue.component(CpisFormSection.name, CpisFormSection)
+}
+CpisFormItem.install = function (Vue) {
+  Vue.component(CpisFormItem.name, CpisFormItem)
 }
 
-export default Form
+export default CpisForm
+export { CpisFormSection, CpisFormItem }
