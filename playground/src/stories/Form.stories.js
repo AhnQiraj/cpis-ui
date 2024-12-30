@@ -82,7 +82,6 @@ export const OneColumn = {
         <CpisForm 
           ref="form"
           :model="formData"
-          :rules="rules"
           :column="column" 
           :label-width="labelWidth" 
           :content-width="contentWidth"
@@ -132,7 +131,6 @@ export const TwoColumn = {
         <CpisForm 
           ref="form"
           :model="formData"
-          :rules="rules"
           :column="column" 
           :label-width="labelWidth" 
           :content-width="contentWidth"
@@ -181,7 +179,6 @@ export const RowSpan = {
         <CpisForm 
           ref="form"
           :model="formData"
-          :rules="rules"
           :column="column" 
           :label-width="labelWidth" 
           :content-width="contentWidth"
