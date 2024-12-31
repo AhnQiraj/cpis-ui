@@ -15,11 +15,12 @@ const preview = {
 }
 
 export const decorators = [
-  (Story) => {
+  Story => {
     document.body.classList.add('theme-cpis-blue')
+    document.body.classList.add('bg-gray-2')
     // 直接修改 body 样式
     return Story()
-  },
-];
+  }
+]
 
 export default preview

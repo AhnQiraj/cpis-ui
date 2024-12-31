@@ -10,7 +10,7 @@
         />
       </template>
     </div>
-    <div class="bg-white flex flex-col gap-2 overflow-hidden">
+    <div class="bg-white flex flex-col p-2 gap-2 overflow-hidden">
       <template v-if="$slots.toolbar">
         <div class="flex flex-row items-center">
           <slot name="toolbar" />
