@@ -170,6 +170,64 @@ export const TitleSlot = {
   }
 }
 
+export const TitleRightSlot = {
+  name: '标题右侧插槽',
+  parameters: {
+    docs: {
+      transform: (code, story) => {
+        // 自定义源码转换逻辑
+        return code
+      }
+    }
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+        <CpisDrawer :visible="visible">
+          <template #title>
+            标题插槽 <span>我可以是任何内容</span>
+          </template>
+          <template #title-right>
+            标题右侧插槽 <span>我可以是任何内容</span>
+          </template>
+        </CpisDrawer>`
+      }
+    }
+  },
+
+  render: (args, { argTypes }) => {
+    return {
+      props: Object.keys(argTypes),
+      components: { CpisDrawer, CpisButton, CpisForm },
+      template: `
+      <CpisDrawer :visible="visible" :title="title">
+          <template #title>
+            标题插槽
+          </template>
+          <template #title-right>
+            右侧插槽
+          </template>
+      </CpisDrawer>
+      `
+    }
+  },
+  argTypes: {
+    visible: {
+      description: '是否显示',
+      control: 'boolean'
+    },
+    title: {
+      description: '标题',
+      control: 'string'
+    }
+  },
+  args: {
+    visible: false,
+    title: '这里是标题'
+  }
+}
+
 export const DrawerForm = {
   name: '配合表单-一行一个',
   render: (args, { argTypes }) => {

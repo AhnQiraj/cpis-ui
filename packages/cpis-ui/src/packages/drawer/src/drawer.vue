@@ -11,7 +11,16 @@ export default {
         props: this.$attrs,
         on: this.$listeners,
         scopedSlots: {
-          title: () => slots.title
+          title: () => [
+            slots['title']
+              ? h('div', { class: 'drawer-title' }, [slots['title']])
+              : null,
+            slots['title-right']
+              ? h('div', { class: 'drawer-title-right' }, [
+                  slots['title-right']
+                ])
+              : null
+          ]
         }
       },
       [
@@ -37,6 +46,8 @@ export default {
   line-height: 24px;
   color: #262626;
   font-weight: 700;
+  display: flex;
+  align-items: center;
 }
 .drawer-footer {
   display: flex;
@@ -54,5 +65,8 @@ export default {
 ::v-deep .el-drawer__body {
   display: flex;
   flex-direction: column;
+}
+.drawer-title-right {
+  margin-left: auto;
 }
 </style>
