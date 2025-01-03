@@ -42,6 +42,24 @@
           :border="true"
           v-on="$listeners"
         >
+          <template v-if="editable">
+            <ELTableColumn prop="edit" width="50" align="center">
+              <template #header>
+                <span
+                  class="el-icon-plus cursor-pointer"
+                  @click="handleAddRow"
+                />
+              </template>
+              <template slot-scope="scope">
+                <span
+                  class="el-icon-minus cursor-pointer"
+                  @click="
+                    handleDeleteRow(scope.row, scope.column, scope.$index)
+                  "
+                />
+              </template>
+            </ELTableColumn>
+          </template>
           <template v-for="column in computedColumns">
             <template v-if="column.valueType === 'selection'">
               <ELTableColumn type="selection" :width="column.width || '39'" />
@@ -113,15 +131,28 @@
                       :row="scope.row"
                       :$index="scope.$index"
                     >
-                      {{
-                        column?.formatter?.(scope.row, column, scope.$index) ||
-                        scope.row[column.prop] ||
-                        columnEmptyText
-                      }}
-                      <template
-                        v-if="column.copyable && scope.row[column.prop]"
-                      >
-                        <CpisCopyable :text="scope.row[column.prop]" />
+                      <template v-if="isEditing(scope.row, column.prop)">
+                        <ELInput
+                          v-model="scope.row[column.prop]"
+                          size="small"
+                          @blur="handleBlur(scope.row, column.prop)"
+                        />
+                      </template>
+                      <template v-else>
+                        {{
+                          column?.formatter?.(
+                            scope.row,
+                            column,
+                            scope.$index
+                          ) ||
+                          scope.row[column.prop] ||
+                          columnEmptyText
+                        }}
+                        <template
+                          v-if="column.copyable && scope.row[column.prop]"
+                        >
+                          <CpisCopyable :text="scope.row[column.prop]" />
+                        </template>
                       </template>
                     </slot>
                   </template>
@@ -145,15 +176,7 @@
 </template>
 
 <script>
-import {
-  Table,
-  TableColumn,
-  Pagination,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DatePicker
-} from 'element-ui'
+import { Table, TableColumn, Pagination, Input } from 'element-ui'
 import CpisCopyable from '../../copyable/index'
 import CpisSearchBar from '../../search-bar/index'
 import CpisButton from '../../button/index'
@@ -163,11 +186,8 @@ export default {
     ELTable: Table,
     ELTableColumn: TableColumn,
     ELPagination: Pagination,
-    ELDropdown: Dropdown,
-    ELDropdownItem: DropdownItem,
-    ELDropdownMenu: DropdownMenu,
     CpisCopyable,
-    ElDatePicker: DatePicker,
+    ELInput: Input,
     CpisSearchBar: CpisSearchBar,
     CpisButton: CpisButton
   },
@@ -202,8 +222,16 @@ export default {
     },
     request: {
       type: Function,
-      default: () => {},
-      comments: '请求函数'
+      default: null,
+      comments: '请求函数',
+      validator: function (value) {
+        return typeof value === 'function'
+      }
+    },
+    data: {
+      type: Array,
+      default: () => [],
+      comments: '表格数据'
     },
     columns: {
       type: Array,
@@ -224,6 +252,11 @@ export default {
       type: String,
       default: '暂无数据',
       comments: '表格无数据时显示的文本例如 - 或者暂无数据'
+    },
+    editable: {
+      type: Boolean,
+      default: false,
+      comments: '是否开启单元格编辑'
     }
   },
   computed: {
@@ -251,6 +284,14 @@ export default {
           }
         })
       }
+    },
+    data: {
+      handler(newVal) {
+        if (newVal && typeof this.request !== 'function') {
+          this.dataSource = newVal
+        }
+      },
+      immediate: true
     }
   },
   data() {
@@ -272,6 +313,10 @@ export default {
     })
   },
   methods: {
+    // 判断单元格是否处于编辑状态
+    isEditing(row, prop) {
+      return this.$props.editable
+    },
     async handleFetchData(params) {
       this.loading = true
       let requestParams = { ...params }
@@ -337,6 +382,15 @@ export default {
     },
     getTable() {
       return this.$refs.table
+    },
+    handleAddRow() {
+      this.$emit('handleAddRow')
+    },
+    handleDeleteRow(row, column, index) {
+      this.$emit('handleDeleteRow', row, column, index)
+    },
+    handleBlur(row, column) {
+      this.$emit('handleBlur', row, column)
     }
   }
 }

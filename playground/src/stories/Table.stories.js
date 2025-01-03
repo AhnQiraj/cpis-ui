@@ -782,8 +782,8 @@ export default {
             :columns="columns"
             :editable="editable"
             :data="data"
-            @handleAdd="handleAddRow"
-            @handleDelete="handleDelete"
+            @handleAddRow="handleAddRow"
+            @handleDeleteRow="handleDeleteRow"
           />
         </div>
       `
