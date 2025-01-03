@@ -702,7 +702,9 @@ export const Editable = {
   <CpisTable 
     :editable="editable"
     :columns="columns"
-    :request="handleRequest"
+    :data="data"
+    @handleAddRow="handleAddRow"
+    @handleDeleteRow="handleDeleteRow"
   />
 </template>
 
@@ -712,29 +714,36 @@ export default {
     return {
       editable: false,
       columns: [
-        { 
-          label: '姓名',
-          prop: 'name'
-        },
-        {
-          label: '年龄', 
-          prop: 'age'
-        }
+            { label: '姓名', prop: 'name' },
+            {
+              label: '性别',
+              prop: 'sex',
+              valueType: 'radio',
+              options: [
+                { label: '男', value: '男' },
+                { label: '女', value: '女' }
+              ]
+            },
+            {
+              label: '年龄',
+              prop: 'age'
+            }
       ],
       data: [
-        { name: '张三', age: 18 },
-        { name: '李四', age: 20 }
+            { name: '张三', age: 18, sex: '男' },
+            { name: '李四', age: 20, sex: '女' }
       ]
     }
   },
   methods: {
-    handleAdd() {
+    handleAddRow() {
       this.data.push({
-        label: '性别',
-        prop: 'sex',
-        valueType: 'select',
-        width: '100px'
+        name: '',
+        age: null
       })
+    },
+    handleDeleteRow(row, column, index) {
+      this.data.splice(index, 1)
     }
   }
 }
@@ -761,10 +770,26 @@ export default {
       data() {
         return {
           editable: false,
-          columns: [{ label: '姓名', prop: 'name' }],
+          columns: [
+            { label: '姓名', prop: 'name' },
+            {
+              label: '性别',
+              prop: 'sex',
+              valueType: 'radio',
+              options: [
+                { label: '男', value: '男' },
+                { label: '女', value: '女' }
+              ]
+            },
+            {
+              label: '年龄',
+              prop: 'age',
+              valueType: 'number'
+            }
+          ],
           data: [
-            { name: '张三', age: 18 },
-            { name: '李四', age: 20 }
+            { name: '张三', age: 18, sex: '男' },
+            { name: '李四', age: 20, sex: '女' }
           ]
         }
       },

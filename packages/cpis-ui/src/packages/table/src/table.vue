@@ -107,14 +107,73 @@
                       :row="scope.row"
                       :$index="scope.$index"
                     >
-                      {{
-                        column?.formatter?.(scope.row, column, scope.$index) ||
-                        scope.row[column.prop]
-                      }}
+                      <template v-if="!isEditing(scope.row, column.prop)">
+                        {{
+                          column?.formatter?.(
+                            scope.row,
+                            column,
+                            scope.$index
+                          ) || scope.row[column.prop]
+                        }}
+                        <template
+                          v-if="column.copyable && scope.row[column.prop]"
+                        >
+                          <CpisCopyable :text="scope.row[column.prop]" />
+                        </template>
+                      </template>
+                      <template v-else>
+                        <ELInput
+                          v-bind="column.formProps"
+                          v-model="scope.row[column.prop]"
+                          type="number"
+                          size="small"
+                          @blur="handleBlur(scope.row, column.prop)"
+                        />
+                      </template>
                     </slot>
-                    <template v-if="column.copyable && scope.row[column.prop]">
-                      <CpisCopyable :text="scope.row[column.prop]" />
-                    </template>
+                  </template>
+                </ELTableColumn>
+              </template>
+              <template v-else-if="column.valueType === 'radio'">
+                <ELTableColumn
+                  v-bind="column"
+                  :key="column.prop"
+                  :label-class-name="column.required ? 'is-required' : ''"
+                  :align="column.align || 'right'"
+                >
+                  <template slot-scope="scope">
+                    <slot
+                      name="columns"
+                      :column="column"
+                      :row="scope.row"
+                      :$index="scope.$index"
+                    >
+                      <template v-if="!isEditing(scope.row, column.prop)">
+                        {{
+                          column?.formatter?.(
+                            scope.row,
+                            column,
+                            scope.$index
+                          ) || scope.row[column.prop]
+                        }}
+                        <template
+                          v-if="column.copyable && scope.row[column.prop]"
+                        >
+                          <CpisCopyable :text="scope.row[column.prop]" />
+                        </template>
+                      </template>
+                      <template v-else>
+                        <ELRadio
+                          v-model="scope.row[column.prop]"
+                          v-bind="column.formProps"
+                          v-for="item in column.options"
+                          :key="item.value"
+                          :label="item.value"
+                        >
+                          {{ item.label }}
+                        </ELRadio>
+                      </template>
+                    </slot>
                   </template>
                 </ELTableColumn>
               </template>
@@ -133,6 +192,7 @@
                     >
                       <template v-if="isEditing(scope.row, column.prop)">
                         <ELInput
+                          v-bind="column.formProps"
                           v-model="scope.row[column.prop]"
                           size="small"
                           @blur="handleBlur(scope.row, column.prop)"
@@ -176,7 +236,7 @@
 </template>
 
 <script>
-import { Table, TableColumn, Pagination, Input } from 'element-ui'
+import { Table, TableColumn, Pagination, Input, Radio } from 'element-ui'
 import CpisCopyable from '../../copyable/index'
 import CpisSearchBar from '../../search-bar/index'
 import CpisButton from '../../button/index'
@@ -188,6 +248,7 @@ export default {
     ELPagination: Pagination,
     CpisCopyable,
     ELInput: Input,
+    ELRadio: Radio,
     CpisSearchBar: CpisSearchBar,
     CpisButton: CpisButton
   },
@@ -444,5 +505,12 @@ export default {
 
 .is-rotating {
   animation: rotate 1s linear 1;
+}
+
+/* 清楚编辑组件的border */
+::v-deep .el-input__inner {
+  border: none;
+  padding: 0;
+  background: transparent;
 }
 </style>
