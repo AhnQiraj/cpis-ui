@@ -75,6 +75,58 @@ export const WithRightClickEvent = {
     `
   })
 }
+// 默认展开所有
+export const DefaultExpandAll = {
+  name: '默认展开所有',
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<CpisTreeContainer 
+  :treeProps="{defaultExpandAll: true}" 
+  title="默认展开所有"
+>
+</CpisTreeContainer>
+`
+      }
+    }
+  },
+  render: args => ({
+    components: { CpisTreeContainer },
+    data() {
+      return {
+        treeProps: {
+          data: [
+            {
+              id: 1,
+              label: '平台业务',
+              children: [
+                { id: 11, label: '业务分类' },
+                { id: 12, label: '终端' },
+                { id: 13, label: '服务分类' }
+              ]
+            },
+            {
+              id: 2,
+              label: '平台管理',
+              children: [{ id: 21, label: '用户管理' }]
+            }
+          ],
+          defaultExpandAll: true
+        }
+      }
+    },
+    template: `
+      <div style="height: 500px; padding: 16px; background-color: #f5f5f5;">
+        <CpisTreeContainer 
+          :treeProps="treeProps" 
+          title=""
+        >
+        </CpisTreeContainer>
+      </div>
+    `
+  })
+}
 
 // 懒加载示例
 export const LazyLoading = {
