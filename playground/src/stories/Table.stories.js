@@ -1,6 +1,47 @@
 import { CpisTag } from '@cpis/cpis-ui'
+import { Switch } from 'element-ui'
 import CpisTable from '../../../packages/cpis-ui/src/packages/table/index'
 import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
+/**
+ * ## CpisTable 的设计
+ * 基于 Element-UI 的 Table 组件进行二次封装。解决重复的工作，例如分页，搜索， 不同数据类型的对齐方式和统一的显示效果。
+ * 同时降低表格类组件的维护入口
+ * ## CpisTable 和 el-table 的不同
+ * - 新增request，用于异步获取数据，可以理解为 el-table 的 data 的异步方案。
+ *   - request使用场景：大部分场景使用请求（request）即可，因为内部处理了分页，搜索，排序，loading
+ *   - data使用场景：如果要使用响应式数据，可以使用 data 属性，此时就需要自己处理分页，搜索，排序，loading
+ * - 新增了 columns 属性，用于配置列。
+ * - 新增了 editable 属性，用于配置单元格编辑。
+ * - 新增了 search 属性，用于配置搜索。
+ * - 新增了 paginationProps 属性，用于配置分页。
+ * - 新增了 toolbar 插槽，用于配置工具栏。
+ * - 新增了 paramaterMode 属性，用于配置参数模式。
+ * - 新增 getTable 方法，用于获取 el-table 的 ref。
+ * - 新增 reload 方法，用于重新加载数据。注：此方法只适用于 request 模式。
+ * - 新增了 handleAddRow 事件，用于新增行。
+ * - 新增了 handleDeleteRow 事件，用于删除行。
+ * 
+ * 
+ * ## CpisTable 参数
+ ### CpisTable Attributes
+  | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+  |---------- |---------------- |---------- |--------------------------------  |-------- |
+  | editable  | 是否开启单元格编辑 | boolean   | true/false |  false |
+  | search  | 搜索配置 | boolean/array   | - |  false |
+  | columns  | 列配置 | array   | — | — |
+
+### CpisTable Methods
+  | 方法名      | 说明          | 参数      |
+  |---------- |---------------- |---------- |
+  | reload  | 重新加载数据 | — |
+  | getTable  | 获取表格实例 | — |
+
+ ### CpisTable Events
+  | 事件名      | 说明          | 回调参数      |
+  |---------- |---------------- |---------- |
+  | handleAddRow  | 新增行事件 | — |
+  | handleDeleteRow  | 删除行事件 | — |
+ */
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
   title: '原子组件/表格',
@@ -652,6 +693,104 @@ export const Copyable = {
   name: '配置某一列可以复制'
 }
 
+export const Editable = {
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<template>
+  <CpisTable 
+    :editable="editable"
+    :columns="columns"
+    :request="handleRequest"
+  />
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      editable: false,
+      columns: [
+        { 
+          label: '姓名',
+          prop: 'name'
+        },
+        {
+          label: '年龄', 
+          prop: 'age'
+        }
+      ],
+      data: [
+        { name: '张三', age: 18 },
+        { name: '李四', age: 20 }
+      ]
+    }
+  },
+  methods: {
+    handleAdd() {
+      this.data.push({
+        label: '性别',
+        prop: 'sex',
+        valueType: 'select',
+        width: '100px'
+      })
+    }
+  }
+}
+</script>
+        `
+      }
+    }
+  },
+  render: (args, { argTypes }) => {
+    return {
+      components: { CpisTable, ElSwitch: Switch },
+      methods: {
+        handleAddRow() {
+          debugger
+          this.data.push({
+            name: '',
+            age: null
+          })
+        },
+        handleDeleteRow(row, column, index) {
+          this.data.splice(index, 1)
+        }
+      },
+      data() {
+        return {
+          editable: false,
+          columns: [{ label: '姓名', prop: 'name' }],
+          data: [
+            { name: '张三', age: 18 },
+            { name: '李四', age: 20 }
+          ]
+        }
+      },
+      template: `
+        <div class="p-4">
+          <div class="mb-4 bg-white h-[32px] flex items-center justify-center p-4">
+            <el-switch 
+              v-model="editable"
+              active-text="编辑状态"
+              inactive-text="正常状态"
+            />
+          </div>
+
+          <CpisTable
+            :columns="columns"
+            :editable="editable"
+            :data="data"
+            @handleAdd="handleAddRow"
+            @handleDelete="handleDelete"
+          />
+        </div>
+      `
+    }
+  },
+  name: '编辑状态'
+}
 export const Required = {
   parameters: {
     docs: {

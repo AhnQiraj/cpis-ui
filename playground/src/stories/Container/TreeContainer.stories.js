@@ -39,6 +39,11 @@ export const WithRightClickEvent = {
                 { id: 12, label: '终端' },
                 { id: 13, label: '服务分类' }
               ]
+            },
+            {
+              id: 2,
+              label: '平台管理',
+              children: [{ id: 21, label: '用户管理' }]
             }
           ]
         }
