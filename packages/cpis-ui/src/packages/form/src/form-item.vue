@@ -97,6 +97,7 @@ export default {
   bottom: 0;
   left: 0;
 }
+// 禁用时，输入框背景颜色为透明
 ::v-deep .el-input.is-disabled .el-input__inner {
   background-color: transparent !important;
 }
