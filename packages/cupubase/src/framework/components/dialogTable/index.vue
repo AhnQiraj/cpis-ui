@@ -15,9 +15,19 @@
           <span>{{ $t('common.field.selectedAreaDoubleClickDelete') }}</span>
         </div>
         <div class="selected-list">
-          <div v-for="(item, index) in tableSeleted" :key="index" @dblclick="onCancelSelection(item, index)">
-            <span>{{ item.showValue }}</span>
-          </div>
+          <draggable 
+            v-model="tableSeleted"
+            @start="drag=true"
+            @end="drag=false"
+          >
+            <div v-for="(item, index) in tableSeleted" 
+              :key="index" 
+              @dblclick="onCancelSelection(item, index)"
+              class="draggable-item"
+            >
+              <span>{{ item.showValue }}</span>
+            </div>
+          </draggable>
         </div>
       </div>
     </div>
@@ -29,9 +39,14 @@
 </template>
 <script>
 import elDragDialog from '../../directive/el-drag-dialog'
+import draggable from 'vuedraggable'
+
 export default {
   name: 'DialogTable',
   directives: { elDragDialog },
+  components: {
+    draggable
+  },
   props: {
     title: { type: String, default: '' },
     key_: { type: String, default: 'id' },
@@ -88,13 +103,24 @@ export default {
       check: {
         flag: true,
         msg: ''
-      }
+      },
+      drag: false
     }
   },
   // 计算属性
   computed: {
-    tableSeleted() {
-      return [...this.tablePageSeleted, ...this.virtualSelected]
+    tableSeleted: {
+      get() {
+        return [...this.tablePageSeleted, ...this.virtualSelected]
+      },
+      set(value) {
+        // Update both arrays based on the dragged order
+        const virtualItems = value.filter(item => item.isVirtual)
+        const tableItems = value.filter(item => !item.isVirtual)
+        
+        this.virtualSelected = virtualItems
+        this.tablePageSeleted = tableItems
+      }
     }
   },
   methods: {
@@ -421,7 +447,8 @@ export default {
     }
     .selected-list {
       width: 100%;
-      div {
+      
+      .draggable-item {
         padding: 0 5px;
         width: 100%;
         height: 40px;
@@ -430,7 +457,12 @@ export default {
         border-right: 1px solid rgb(245, 245, 245);
         border-bottom: 1px solid rgb(245, 245, 245);
         box-sizing: border-box;
-        cursor: pointer;
+        cursor: move;
+        background: #fff;
+        
+        &:hover {
+          background: #f5f7fa;
+        }
       }
     }
   }
