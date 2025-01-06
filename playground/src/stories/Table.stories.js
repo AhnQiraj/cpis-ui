@@ -725,6 +725,11 @@ export default {
               ]
             },
             {
+              prop: 'demo',
+              editable: false,
+              label: '某一行设置不编辑'
+            },
+            {
               label: '年龄',
               prop: 'age'
             }
@@ -782,14 +787,19 @@ export default {
               ]
             },
             {
+              prop: 'demo',
+              editable: false,
+              label: '某一行设置不编辑'
+            },
+            {
               label: '年龄',
               prop: 'age',
               valueType: 'number'
             }
           ],
           data: [
-            { name: '张三', age: 18, sex: '男' },
-            { name: '李四', age: 20, sex: '女' }
+            { name: '张三', age: 18, sex: '男', demo: 'demo' },
+            { name: '李四', age: 20, sex: '女', demo: 'demo' }
           ]
         }
       },

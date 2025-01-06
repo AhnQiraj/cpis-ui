@@ -107,7 +107,7 @@
                       :row="scope.row"
                       :$index="scope.$index"
                     >
-                      <template v-if="!isEditing(scope.row, column.prop)">
+                      <template v-if="!isEditing(scope.row, column)">
                         {{
                           column?.formatter?.(
                             scope.row,
@@ -148,7 +148,7 @@
                       :row="scope.row"
                       :$index="scope.$index"
                     >
-                      <template v-if="!isEditing(scope.row, column.prop)">
+                      <template v-if="!isEditing(scope.row, column)">
                         {{
                           column?.formatter?.(
                             scope.row,
@@ -190,7 +190,7 @@
                       :row="scope.row"
                       :$index="scope.$index"
                     >
-                      <template v-if="isEditing(scope.row, column.prop)">
+                      <template v-if="isEditing(scope.row, column)">
                         <ELInput
                           v-bind="column.editItemProps"
                           v-model="scope.row[column.prop]"
@@ -378,7 +378,9 @@ export default {
   methods: {
     // 判断单元格是否处于编辑状态
     isEditing(row, prop) {
-      return this.$props.editable
+      return typeof prop.editable === 'boolean'
+        ? prop.editable
+        : this.$props.editable
     },
     async handleFetchData(params) {
       let requestParams = { ...params }
