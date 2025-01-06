@@ -123,7 +123,7 @@
                       </template>
                       <template v-else>
                         <ELInput
-                          v-bind="column.formProps"
+                          v-bind="column.editItemProps"
                           v-model="scope.row[column.prop]"
                           type="number"
                           size="small"
@@ -165,7 +165,7 @@
                       <template v-else>
                         <ELRadio
                           v-model="scope.row[column.prop]"
-                          v-bind="column.formProps"
+                          v-bind="column.editItemProps"
                           v-for="item in column.options"
                           :key="item.value"
                           :label="item.value"
@@ -192,7 +192,7 @@
                     >
                       <template v-if="isEditing(scope.row, column.prop)">
                         <ELInput
-                          v-bind="column.formProps"
+                          v-bind="column.editItemProps"
                           v-model="scope.row[column.prop]"
                           size="small"
                           @blur="handleBlur(scope.row, column.prop)"
