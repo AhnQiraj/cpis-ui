@@ -286,7 +286,9 @@ export default {
       default: null,
       comments: '请求函数',
       validator: function (value) {
-        return typeof value === 'function'
+        return (
+          typeof value === 'function' || value === null || value === undefined
+        )
       }
     },
     data: {
@@ -379,7 +381,6 @@ export default {
       return this.$props.editable
     },
     async handleFetchData(params) {
-      this.loading = true
       let requestParams = { ...params }
       if (this.request && typeof this.request === 'function') {
         try {
@@ -396,6 +397,7 @@ export default {
               ...this.searchParams
             }
           }
+          this.loading = true
           const res = await this.request(requestParams)
           if (!res.success) return
           this.dataSource = res.data
