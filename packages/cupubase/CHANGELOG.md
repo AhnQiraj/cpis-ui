@@ -1,5 +1,11 @@
 # @cpis/cupubase
 
+## 0.1.14
+
+### Patch Changes
+
+- 选人组件新增拖拽排序功能
+
 ## 0.1.13
 
 ### Patch Changes
