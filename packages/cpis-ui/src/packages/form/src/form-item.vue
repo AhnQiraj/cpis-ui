@@ -97,6 +97,9 @@ export default {
   bottom: 0;
   left: 0;
 }
+::v-deep .el-input.is-disabled .el-input__inner {
+  background-color: transparent !important;
+}
 .cpis-form-item {
   display: flex;
   align-items: center;
