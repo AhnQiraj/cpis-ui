@@ -54,10 +54,10 @@ export default {
 
 <style lang="scss" scoped>
 .cpis-form-section {
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 
   &__header {
-    margin-bottom: 24px;
+    margin-bottom: 8px;
   }
 
   &__title {
