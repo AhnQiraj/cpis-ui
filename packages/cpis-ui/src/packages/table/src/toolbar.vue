@@ -1,30 +1,32 @@
 <template>
   <div class="cpis-table-toolbar">
     <template v-for="item in hasPermissionToolbar.slice(0, 6)">
-      <template v-if="hasPermission(getPermissionKey(item))">
-        <el-dropdown
-          v-if="Array.isArray(item.children) && item.children.length > 0"
-          @command="handleToolbarClick"
-        >
-          <CpisButton :type="item.type">
-            {{ item.label }}
-            <i class="el-icon-arrow-down el-icon--right" />
-          </CpisButton>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item v-for="item in item.children" :command="item.key">
-              {{ item.label }}
-            </el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
-        <CpisButton
-          v-else
-          :key="item.key"
-          @click="handleToolbarClick(item.key)"
-          v-bind="item"
-        >
+      <el-dropdown
+        v-if="Array.isArray(item.children) && item.children.length > 0"
+        @command="handleToolbarClick"
+      >
+        <CpisButton :type="item.type">
           {{ item.label }}
+          <i class="el-icon-arrow-down el-icon--right" />
         </CpisButton>
-      </template>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item
+            v-for="item in item.children"
+            :command="item.key"
+            :disabled="item.disabled"
+          >
+            {{ item.label }}
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+      <CpisButton
+        v-else
+        :key="item.key"
+        @click="handleToolbarClick(item.key)"
+        v-bind="item"
+      >
+        {{ item.label }}
+      </CpisButton>
     </template>
     <el-dropdown
       v-if="hasPermissionToolbar.length > 6"
@@ -35,6 +37,7 @@
         <el-dropdown-item
           v-for="item in hasPermissionToolbar.slice(6)"
           :command="item.key"
+          :disabled="item.disabled"
         >
           {{ item.label }}
         </el-dropdown-item>
@@ -71,9 +74,28 @@ export default {
   },
   computed: {
     hasPermissionToolbar() {
-      return this.toolbar.filter(item =>
-        this.hasPermission(this.getPermissionKey(item))
-      )
+      return this.toolbar
+        .map(item => {
+          const newItem = { ...item }
+          // 处理 disabled 属性，支持函数和布尔值
+          if (typeof item.disabled === 'function') {
+            newItem.disabled = item.disabled()
+          }
+
+          // 如果有子菜单，处理子菜单的 disabled
+          if (Array.isArray(item.children) && item.children.length > 0) {
+            newItem.children = item.children.map(child => ({
+              ...child,
+              disabled:
+                typeof child.disabled === 'function'
+                  ? child.disabled()
+                  : child.disabled
+            }))
+          }
+
+          return newItem
+        })
+        .filter(item => this.hasPermission(this.getPermissionKey(item)))
     }
   },
   methods: {

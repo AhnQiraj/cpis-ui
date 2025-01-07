@@ -39,8 +39,8 @@ import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
  * - 新增了 paramaterMode 属性，用于配置参数模式。
  * - 新增 getTable 方法，用于获取 el-table 的 ref。
  * - 新增 reload 方法，用于重新加载数据。注：此方法只适用于 request 模式。
- * - 新增了 handleAddRow 事件，用于新增行。
- * - 新增了 handleDeleteRow 事件，用于删除行。
+ * - 新增了 handle-add-row 事件，用于新增行。
+ * - 新增了 handle-delete-row 事件，用于删除行。
  * 
  * 
  * ## CpisTable 参数
@@ -61,8 +61,9 @@ import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
  ### CpisTable Events
   | 事件名      | 说明          | 回调参数      |
   |---------- |---------------- |---------- |
-  | handleAddRow  | 新增行事件 | — |
-  | handleDeleteRow  | 删除行事件 | — |
+  | handle-add-row  | 新增行事件 | — |
+  | handle-delete-row  | 删除行事件 | — |
+  | handle-toolbar-click  | 工具栏点击事件 | — |
  */
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
@@ -380,33 +381,59 @@ export const ToolbarConfig = {
         code: `
 <CpisTable 
   identity="ibps_org_employee"
-  :columns="[
-    {
-      label: '姓名',
-      prop: 'name', 
-      valueType: 'text'
+  :columns="[{
+    label: '姓名',
+    prop: 'name',
+    valueType: 'text'
+  }]"
+  :toolbar="[{
+    key: 'add',
+    label: '新增', 
+    type: 'primary'
+  }, {
+    key: 'edit',
+    label: '修改',
+    disabled: () => {
+      return this.selected.length === 0
     }
-  ]"
-  :toolbar="[
-    {
-      key: 'add',
-      label: '新增',
-      type: 'primary'
-    },
-    {
-      key: 'edit',
-      label: '修改',
-      disabled: () => this.selected.length === 0
-    },
-    {
-      key: 'cancel',
-      label: '取消'
-    },
-    {
-      key: 'delete',
-      label: '删除'
-    }
-  ]"
+  }, {
+    key: 'cancel',
+    label: '取消'
+  }, {
+    key: 'delete',
+    label: '删除'
+  }, {
+    key: 'test1',
+    label: '测试1',
+    children: [{
+      key: 'test1-1',
+      label: '测试1-1',
+      disabled: () => {
+        return this.selected.length === 0
+      }
+    }, {
+      key: 'test1-2',
+      label: '测试1-2'
+    }, {
+      key: 'test1-3',
+      label: '测试1-3'
+    }]
+  }, {
+    key: 'test2',
+    label: '测试2'
+  }, {
+    key: 'test3',
+    label: '测试3'
+  }, {
+    key: 'test4',
+    label: '测试4'
+  }, {
+    key: 'test5',
+    label: '测试5'
+  }, {
+    key: 'test6',
+    label: '测试6'
+  }]"
   @handle-toolbar-click="handleToolbarClick"
 />`
       }
@@ -454,7 +481,13 @@ export const ToolbarConfig = {
               key: 'test1',
               label: '测试1',
               children: [
-                { key: 'test1-1', label: '测试1-1' },
+                {
+                  key: 'test1-1',
+                  label: '测试1-1',
+                  disabled: () => {
+                    return this.selected.length === 0
+                  }
+                },
                 { key: 'test1-2', label: '测试1-2' },
                 { key: 'test1-3', label: '测试1-3' }
               ]
@@ -875,8 +908,8 @@ export const Editable = {
     :editable="editable"
     :columns="columns"
     :data="data"
-    @handleAddRow="handleAddRow"
-    @handleDeleteRow="handleDeleteRow"
+    @handle-add-row="handleAddRow"
+    @handle-delete-row="handleDeleteRow"
   />
 </template>
 
@@ -989,8 +1022,8 @@ export default {
             :columns="columns"
             :editable="editable"
             :data="data"
-            @handleAddRow="handleAddRow"
-            @handleDeleteRow="handleDeleteRow"
+            @handle-add-row="handleAddRow"
+            @handle-delete-row="handleDeleteRow"
           />
         </div>
       `
