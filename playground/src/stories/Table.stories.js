@@ -6,6 +6,14 @@ import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
  * ## CpisTable 的设计
  * 基于 Element-UI 的 Table 组件进行二次封装。解决重复的工作，例如分页，搜索， 不同数据类型的对齐方式和统一的显示效果。
  * 同时降低表格类组件的维护入口
+ * ## CpisTable 的的布局
+ * ![CpisTable](/layout.png)
+ * 
+ * ## 权限 ‼️‼️‼️‼️‼️‼️（这里很重要，这里很重要，这里很重要）
+ * 权限主要对 toolbar 区域，和列的 actions 区域进行权限控制，你需要的做的是：
+ * 1. 给每个表格定义 `identity`， 可以在   `平台` - `业务配置` 下，查看
+ * 2. 给每个按钮定义 `key`， 可以在 `平台` - `菜单管理` 下，查看
+ * 
  * ## CpisTable 和 el-table 的不同
  * - 新增request，用于异步获取数据，可以理解为 el-table 的 data 的异步方案。
  *   - request使用场景：大部分场景使用请求（request）即可，因为内部处理了分页，搜索，排序，loading
@@ -29,6 +37,7 @@ import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
   | editable  | 是否开启单元格编辑 | boolean   | true/false |  false |
   | search  | 搜索配置 | boolean/array   | - |  false |
   | columns  | 列配置 | array   | — | — |
+  | identity  | 表格唯一标识 | string   | — | — |
 
 ### CpisTable Methods
   | 方法名      | 说明          | 参数      |
