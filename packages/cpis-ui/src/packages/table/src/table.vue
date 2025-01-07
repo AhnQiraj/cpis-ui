@@ -11,18 +11,15 @@
       </template>
     </div>
     <div class="bg-white flex flex-col p-2 gap-2 overflow-hidden">
-      <template v-if="$slots.toolbar">
-        <div class="flex flex-row items-center">
-          <slot name="toolbar" />
-          <div class="ml-auto">
-            <slot name="toolbar-right">
-              <!-- <span
-                class="el-icon-refresh-right text-lg cursor-pointer hover:text-primary-6"
-                :class="{ 'is-rotating': loading }"
-                @click="reload"
-              /> -->
-            </slot>
-          </div>
+      <template v-if="$slots.toolbar || toolbar?.length > 0">
+        <div class="cpis-table-toolbar">
+          <slot name="toolbar" class="ml-auto">
+            <CpisToolbar
+              :toolbar="toolbar"
+              :identity="identity"
+              @handleToolbarClick="handleToolbarClick"
+            />
+          </slot>
         </div>
       </template>
       <div class="table-container">
@@ -240,6 +237,7 @@ import { Table, TableColumn, Pagination, Input, Radio } from 'element-ui'
 import CpisCopyable from '../../copyable/index'
 import CpisSearchBar from '../../search-bar/index'
 import CpisButton from '../../button/index'
+import CpisToolbar from './toolbar.vue'
 export default {
   name: 'CpisTable',
   components: {
@@ -250,7 +248,8 @@ export default {
     ELInput: Input,
     ELRadio: Radio,
     CpisSearchBar: CpisSearchBar,
-    CpisButton: CpisButton
+    CpisButton: CpisButton,
+    CpisToolbar: CpisToolbar
   },
   props: {
     paramaterMode: {
@@ -320,6 +319,11 @@ export default {
       type: Boolean,
       default: false,
       comments: '是否开启单元格编辑'
+    },
+    toolbar: {
+      type: Array,
+      default: () => [],
+      comments: '工具栏按钮'
     }
   },
   computed: {
@@ -456,11 +460,23 @@ export default {
     },
     handleBlur(row, column) {
       this.$emit('handleBlur', row, column)
+    },
+    /**
+     * 工具栏点击事件
+     * @param {Object} key 工具栏按钮
+     */
+    handleToolbarClick(...args) {
+      this.$emit('handleToolbarClick', ...args)
     }
   }
 }
 </script>
 <style scoped>
+/* 工具栏 */
+.cpis-table-toolbar {
+  @apply flex flex-row items-center;
+}
+
 ::v-deep .cellClassName {
   background-color: #f5f5f5;
 }
@@ -472,6 +488,7 @@ export default {
   display: inline-block;
   vertical-align: middle;
 }
+/* 分页 页码根据主题色 */
 ::v-deep .el-pager .number.active,
 ::v-deep .el-pager .number:hover {
   @apply !text-primary-6;

@@ -1,5 +1,4 @@
-import { CpisTag } from '@cpis/cpis-ui'
-import { Switch } from 'element-ui'
+import { Switch, Input } from 'element-ui'
 import CpisTable from '../../../packages/cpis-ui/src/packages/table/index'
 import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
 /**
@@ -10,9 +9,23 @@ import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
  * ![CpisTable](/layout.png)
  * 
  * ## 权限 ‼️‼️‼️‼️‼️‼️（这里很重要，这里很重要，这里很重要）
- * 权限主要对 toolbar 区域，和列的 actions 区域进行权限控制，你需要的做的是：
- * 1. 给每个表格定义 `identity`， 可以在   `平台` - `业务配置` 下，查看
- * 2. 给每个按钮定义 `key`， 可以在 `平台` - `菜单管理` 下，查看
+ * 权限主要对 toolbar 区域 ，和列的 actions 区域进行权限控制，你需要的做的是：
+ * 1. 给每个表格定义 `identity`， 可以在   `平台` - `业务配置` 下。
+ * 2. 给每个按钮定义 `key`， 可以在 `平台` - `菜单管理` 下，[查看示例](#toolbar------)
+ * 
+ * ## 关于 toolbar 区域的权限，有两个写法二选一
+ * 1. 配置化写法（推荐）
+ * ```
+ *  <CpisTable :identity="ibps_org_employee" :toolbar="[{key: 'add', permission: 'add'}]" />
+ * ```
+ * 2. 插槽的写法, 需要自己处理权限
+ * ```
+ * <CpisTable>
+ *   <template v-slot:toolbar>
+ *     <CpisButton key="add"  />
+ *   </template>
+ * </CpisTable>
+ * ```
  * 
  * ## CpisTable 和 el-table 的不同
  * - 新增request，用于异步获取数据，可以理解为 el-table 的 data 的异步方案。
@@ -342,7 +355,7 @@ export default {
     }
   }
 }
-export const ShowActions = {
+export const ToolbarSlots = {
   render: () => {
     return {
       components: { CpisTable, CpisButton },
@@ -357,7 +370,98 @@ export const ShowActions = {
       `
     }
   },
-  name: '配置toolbar'
+  name: 'toolbar-插槽写法'
+}
+export const ToolbarConfig = {
+  parameters: {
+    anchor: 'ToolbarConfig',
+    docs: {
+      source: {
+        code: `
+<CpisTable 
+  identity="ibps_org_employee" 
+  :columns="[{label: '姓名', prop: 'name', valueType: 'text'}]" 
+  :toolbar="[{key: 'add', label: '新增', type: 'primary'}, {key: 'edit', label: '修改'}, {key: 'cancel', label: '取消'}, {key: 'delete', label: '删除'}]"
+  @handleToolbarClick="handleToolbarClick"
+/>
+        `
+      }
+    }
+  },
+  render: () => {
+    return {
+      mounted() {
+        window.sessionStorage.setItem('permissions', JSON.stringify(this.json))
+      },
+      data() {
+        return {
+          identity: 'ibps_org_employee',
+          json: {
+            ibps_org_employee_add: true,
+            ibps_org_employee_edit: true,
+            ibps_org_employee_cancel: true,
+            ibps_org_employee_delete: true,
+            ibps_org_employee_test1: true,
+            ibps_org_employee_test2: true,
+            ibps_org_employee_test3: true,
+            ibps_org_employee_test4: true,
+            ibps_org_employee_test5: true,
+            ibps_org_employee_test6: true
+          }
+        }
+      },
+      watch: {
+        json: {
+          handler(newVal) {
+            window.sessionStorage.setItem('permissions', JSON.stringify(newVal))
+          },
+          deep: true
+        }
+      },
+      components: { CpisTable, CpisButton, ElInput: Input, ElSwitch: Switch },
+      template: `
+        <div>
+          <div class="p-6 bg-gray-50 rounded-lg shadow-sm border border-gray-200">
+            <div class="text-xl font-semibold mb-3 text-gray-800">当前权限配置</div>
+            <div class="text-gray-500 text-sm mb-2">平台权限存在localStorage, 这里是做模拟</div>
+            <div class="text-gray-500 text-sm mb-6">当过滤掉无权限的按钮后，按钮数量超过6个会收到更多里</div>
+            <div class="permission-controls space-y-4 bg-white p-4 rounded-md">
+              <div v-for="(value, key) in json" 
+                   :key="key" 
+                   class="flex items-center hover:bg-gray-50 p-2 rounded transition-colors">
+                <el-switch
+                  v-model="json[key]"
+                  :active-text="key"
+                  class="mr-3"
+                />
+              </div>
+            </div>
+          </div>
+          <CpisTable 
+            identity="ibps_org_employee" 
+            :columns="[{label: '姓名', prop: 'name', valueType: 'text'}]" 
+            :toolbar="[
+              {key: 'add', label: '新增', type: 'primary'}, 
+              {key: 'edit', label: '修改'},
+              {key: 'cancel', label: '取消'},
+              {key: 'delete', label: '删除'},
+              {key: 'test1', label: '测试1', children: [
+                {key: 'test1-1', label: '测试1-1'},
+                {key: 'test1-2', label: '测试1-2'},
+                {key: 'test1-3', label: '测试1-3'},
+              ]},
+              {key: 'test2', label: '测试2'},
+              {key: 'test3', label: '测试3'},
+              {key: 'test4', label: '测试4'},
+              {key: 'test5', label: '测试5'},
+              {key: 'test6', label: '测试6'}
+            ]" 
+          />
+        </div>
+      `
+    }
+  },
+  name: 'toolbar-配置化写法'
 }
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const ShowPagination = {
