@@ -453,20 +453,20 @@ export default {
       return this.$refs.table
     },
     handleAddRow() {
-      this.$emit('handleAddRow')
+      this.$emit('handle-add-row')
     },
     handleDeleteRow(row, column, index) {
-      this.$emit('handleDeleteRow', row, column, index)
+      this.$emit('handle-delete-row', row, column, index)
     },
     handleBlur(row, column) {
-      this.$emit('handleBlur', row, column)
+      this.$emit('handle-blur', row, column)
     },
     /**
      * 工具栏点击事件
      * @param {Object} key 工具栏按钮
      */
     handleToolbarClick(...args) {
-      this.$emit('handleToolbarClick', ...args)
+      this.$emit('handle-toolbar-click', ...args)
     }
   }
 }

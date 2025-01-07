@@ -407,7 +407,7 @@ export const ToolbarConfig = {
       label: '删除'
     }
   ]"
-  @handleToolbarClick="handleToolbarClick"
+  @handle-toolbar-click="handleToolbarClick"
 />`
       }
     }
@@ -420,6 +420,9 @@ export const ToolbarConfig = {
       methods: {
         handleSelectionChange(selection) {
           this.selected = selection
+        },
+        handleToolbarClick(key) {
+          console.log(key)
         }
       },
       data() {
@@ -506,6 +509,7 @@ export const ToolbarConfig = {
             </div>
           </div>
           <CpisTable
+            @handle-toolbar-click="handleToolbarClick"
             @selection-change="handleSelectionChange"
             identity="ibps_org_employee"
             :request="request"
