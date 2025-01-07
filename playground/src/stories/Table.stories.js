@@ -390,12 +390,54 @@ export const ToolbarConfig = {
   },
   render: () => {
     return {
-      mounted() {
+      created() {
         window.sessionStorage.setItem('permissions', JSON.stringify(this.json))
+      },
+      methods: {
+        handleSelectionChange(selection) {
+          this.selected = selection
+        }
       },
       data() {
         return {
-          identity: 'ibps_org_employee',
+          identity: 'ibps_org_employee1',
+          request: async () => {
+            return {
+              success: true,
+              data: [{ name: '张三' }, { name: '李四' }, { name: '王五' }]
+            }
+          },
+          selected: [],
+          toolbar: [
+            {
+              key: 'add',
+              label: '新增',
+              type: 'primary'
+            },
+            {
+              key: 'edit',
+              label: '修改',
+              disabled: () => {
+                return this.selected.length === 0
+              }
+            },
+            { key: 'cancel', label: '取消' },
+            { key: 'delete', label: '删除' },
+            {
+              key: 'test1',
+              label: '测试1',
+              children: [
+                { key: 'test1-1', label: '测试1-1' },
+                { key: 'test1-2', label: '测试1-2' },
+                { key: 'test1-3', label: '测试1-3' }
+              ]
+            },
+            { key: 'test2', label: '测试2' },
+            { key: 'test3', label: '测试3' },
+            { key: 'test4', label: '测试4' },
+            { key: 'test5', label: '测试5' },
+            { key: 'test6', label: '测试6' }
+          ],
           json: {
             ibps_org_employee_add: true,
             ibps_org_employee_edit: true,
@@ -413,8 +455,10 @@ export const ToolbarConfig = {
       watch: {
         json: {
           handler(newVal) {
+            this.toolbar = [...this.toolbar]
             window.sessionStorage.setItem('permissions', JSON.stringify(newVal))
           },
+          immediate: true,
           deep: true
         }
       },
@@ -437,25 +481,12 @@ export const ToolbarConfig = {
               </div>
             </div>
           </div>
-          <CpisTable 
-            identity="ibps_org_employee" 
-            :columns="[{label: '姓名', prop: 'name', valueType: 'text'}]" 
-            :toolbar="[
-              {key: 'add', label: '新增', type: 'primary'}, 
-              {key: 'edit', label: '修改'},
-              {key: 'cancel', label: '取消'},
-              {key: 'delete', label: '删除'},
-              {key: 'test1', label: '测试1', children: [
-                {key: 'test1-1', label: '测试1-1'},
-                {key: 'test1-2', label: '测试1-2'},
-                {key: 'test1-3', label: '测试1-3'},
-              ]},
-              {key: 'test2', label: '测试2'},
-              {key: 'test3', label: '测试3'},
-              {key: 'test4', label: '测试4'},
-              {key: 'test5', label: '测试5'},
-              {key: 'test6', label: '测试6'}
-            ]" 
+          <CpisTable
+            @selection-change="handleSelectionChange"
+            identity="ibps_org_employee"
+            :request="request"
+            :columns="[{prop: 'selection', valueType: 'selection'}, {label: '姓名', prop: 'name', valueType: 'text'}]"
+            :toolbar="toolbar" 
           />
         </div>
       `
