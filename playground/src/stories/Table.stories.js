@@ -379,12 +379,36 @@ export const ToolbarConfig = {
       source: {
         code: `
 <CpisTable 
-  identity="ibps_org_employee" 
-  :columns="[{label: '姓名', prop: 'name', valueType: 'text'}]" 
-  :toolbar="[{key: 'add', label: '新增', type: 'primary'}, {key: 'edit', label: '修改'}, {key: 'cancel', label: '取消'}, {key: 'delete', label: '删除'}]"
+  identity="ibps_org_employee"
+  :columns="[
+    {
+      label: '姓名',
+      prop: 'name', 
+      valueType: 'text'
+    }
+  ]"
+  :toolbar="[
+    {
+      key: 'add',
+      label: '新增',
+      type: 'primary'
+    },
+    {
+      key: 'edit',
+      label: '修改',
+      disabled: () => this.selected.length === 0
+    },
+    {
+      key: 'cancel',
+      label: '取消'
+    },
+    {
+      key: 'delete',
+      label: '删除'
+    }
+  ]"
   @handleToolbarClick="handleToolbarClick"
-/>
-        `
+/>`
       }
     }
   },
