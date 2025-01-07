@@ -17,6 +17,9 @@
     "axios": "^1.4.0",
     "vue-i18n": "^8.24.2"
   },
+  "bin": {
+    "cpis-check-update": "./bin/check-update.js"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
