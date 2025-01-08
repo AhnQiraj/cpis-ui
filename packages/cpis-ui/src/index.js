@@ -14,6 +14,7 @@ import CpisDrawer from './packages/drawer/index.js'
 import CpisSearchBar from './packages/search-bar/index.js'
 import CpisTree from './packages/tree/index.js'
 import CpisTreeContainer from './packages/tree-container/index.js'
+import CpisDatePicker from './packages/date-picker/index.js'
 const components = [
   CpisTag,
   CpisProCascader,
@@ -28,7 +29,8 @@ const components = [
   CpisDrawer,
   CpisSearchBar,
   CpisTree,
-  CpisTreeContainer
+  CpisTreeContainer,
+  CpisDatePicker
 ]
 
 const install = function (Vue, opts = {}) {
@@ -56,7 +58,8 @@ export {
   CpisTreeContainer,
   CpisTree,
   CpisFormItem,
-  CpisFormSection
+  CpisFormSection,
+  CpisDatePicker
 }
 export default {
   version: '1.0.0',
@@ -74,5 +77,6 @@ export default {
   CpisTreeContainer,
   CpisTree,
   CpisFormItem,
-  CpisFormSection
+  CpisFormSection,
+  CpisDatePicker
 }
