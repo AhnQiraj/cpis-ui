@@ -2,7 +2,7 @@
 import { DatePicker } from 'element-ui'
 
 export default {
-  name: 'CpisSearchDate',
+  name: 'CpisDatePicker',
   extends: DatePicker
 }
 </script>
