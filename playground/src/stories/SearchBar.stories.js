@@ -45,7 +45,7 @@ import CpisSearchBar from '../../../packages/cpis-ui/src/packages/search-bar/ind
  *                          // - date: 日期选择器
  *                          // - daterange: 日期范围选择器
  *   placeholder?: string,   // 输入框占位文本
- *   enum?: Array,          // 枚举值
+ *   enum?: Array | Function,          // 枚举值
  *   valueKey?: string,     // 枚举值的value值
  *   labelKey?: string,     // 枚举值的label值
  * }
@@ -82,6 +82,21 @@ import CpisSearchBar from '../../../packages/cpis-ui/src/packages/search-bar/ind
  *       { label: '启用', value: 1 },
  *       { label: '禁用', value: 0 }
  *     ],
+ *     valueKey: 'value',
+ *     labelKey: 'label'
+ *   },
+ *   {
+ *     prop: 'asyncEnum',
+ *     label: '异步枚举',
+ *     type: 'select',
+ *     enum: () => {
+ *       // 这里模拟了一个异步请求
+ *       return new Promise((resolve) => {
+ *         setTimeout(() => {
+ *           resolve([{ label: '启用', value: 1 }, { label: '禁用', value: 0 }])
+ *         }, 1000)
+ *       })
+ *     },
  *     valueKey: 'value',
  *     labelKey: 'label'
  *   },
