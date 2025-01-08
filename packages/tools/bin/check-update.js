@@ -25,7 +25,10 @@ function getCurrentVersions() {
   const packageJson = JSON.parse(
     fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf8')
   )
-  return packageJson.dependencies || {}
+  return {
+    ...(packageJson.dependencies || {}),
+    ...(packageJson.devDependencies || {})
+  }
 }
 
 async function checkUpdates() {
@@ -41,6 +44,14 @@ async function checkUpdates() {
 
       if (!currentVersion) {
         console.log('\x1b[33m%s\x1b[0m', `⚠️  警告：未找到 ${pkg} 的版本信息`)
+        continue
+      }
+      // 检查是否使用 latest 标签
+      if (currentVersion === 'latest') {
+        console.log(
+          '\x1b[33m%s\x1b[0m',
+          `⚠️  警告：${pkg} 使用了 latest 标签，建议指定具体版本号`
+        )
         continue
       }
 
