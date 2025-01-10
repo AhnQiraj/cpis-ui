@@ -8,7 +8,7 @@
           :label="item.label"
           :value-key="item.valueKey"
           :label-key="item.labelKey"
-          :placeholder="item.placeholder"
+          :placeholder="item.placeholder || '请选择'"
           v-model="params[item.prop]"
           :enum="item.enum"
         />
@@ -20,7 +20,7 @@
           type="daterange"
           :clearable="false"
           :label="item.label"
-          :placeholder="item.placeholder"
+          :placeholder="item.placeholder || '请选择'"
           v-model="params[item.prop]"
         />
       </template>
@@ -31,7 +31,7 @@
           type="date"
           :clearable="false"
           :label="item.label"
-          :placeholder="item.placeholder"
+          :placeholder="item.placeholder || '请选择'"
           v-model="params[item.prop]"
         />
       </template>
@@ -40,7 +40,7 @@
           :style="{ width: item.width || '150px' }"
           :key="item.prop"
           :label="item.label"
-          :placeholder="item.placeholder"
+          :placeholder="item.placeholder || '请输入'"
           v-model="params[item.prop]"
         />
       </template>
