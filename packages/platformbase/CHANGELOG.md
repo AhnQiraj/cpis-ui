@@ -1,5 +1,11 @@
 # @cpis/platformbase
 
+## 0.1.4
+
+### Patch Changes
+
+- 国际化配置使用optionchain 读取，默认数据兜底
+
 ## 0.1.3
 
 ### Patch Changes
