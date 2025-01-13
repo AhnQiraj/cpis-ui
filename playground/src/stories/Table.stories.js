@@ -1279,6 +1279,94 @@ export const FixedColumn = {
   },
   name: '列操作项默认固定右侧'
 }
+
+export const TableHeight = {
+  render: (args, { argTypes }) => {
+    return {
+      components: { CpisTable },
+      template: `
+        <CpisTable
+          :height="250"
+          :columns="[
+            {
+              label: '姓名',
+              prop: 'name'
+            },
+            {
+              label: '年龄', 
+              prop: 'age'
+            },
+            {
+              label: '性别',
+              prop: 'sex'
+            }
+          ]"
+          :request="() => {
+            return {
+              success: true,
+              data: Array(50).fill(null).map((_, index) => ({
+                name: '张三' + index,
+                age: Math.floor(Math.random() * 40) + 20,
+                sex: Math.random() > 0.5 ? '男' : '女'
+              })),
+              total: 50
+            }
+          }"
+        />
+      `
+    }
+  },
+  argTypes: {
+    columns: {
+      description: '列配置',
+      control: 'array',
+      table: {
+        category: '列配置'
+      }
+    }
+  },
+  args: {
+    columns: [
+      {
+        prop: 'selection',
+        valueType: 'selection'
+      },
+      {
+        label: '姓名',
+        prop: 'name'
+      },
+      {
+        label: '年龄',
+        prop: 'age'
+      },
+      {
+        label: '性别',
+        prop: 'sex',
+        valueType: 'select',
+        width: '100px'
+      },
+      {
+        label: '测试1',
+        prop: 'test1',
+        width: 800
+      },
+      {
+        label: '测试2',
+        prop: 'test2',
+        width: 800
+      },
+
+      {
+        label: '操作',
+        prop: 'action',
+        valueType: 'action',
+        fixed: 'right'
+      }
+    ]
+  },
+  name: '表格高度'
+}
+
 // Story 级别文档
 export const Primary = {
   decorators: [

@@ -30,6 +30,7 @@
           :row-key="rowKey"
           :cell-style="{ paddingTop: '4px', paddingBottom: '4px' }"
           v-loading="loading"
+          :height="height"
           :header-cell-style="{
             backgroundColor: '#F5F5F5',
             color: '#434343',
@@ -324,6 +325,10 @@ export default {
       type: Array,
       default: () => [],
       comments: '工具栏按钮'
+    },
+    height: {
+      type: String,
+      comments: '表格高度'
     }
   },
   computed: {
