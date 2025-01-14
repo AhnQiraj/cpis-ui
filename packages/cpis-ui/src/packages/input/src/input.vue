@@ -458,3 +458,9 @@ export default {
   }
 }
 </script>
+<style scoped>
+.el-input.is-active .el-input__inner,
+.el-input__inner:focus {
+  @apply border-primary;
+}
+</style>
