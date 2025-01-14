@@ -25,13 +25,16 @@ export default {
 ::v-deep .el-input__inner {
   padding-left: 10px;
 }
+// 输入框的日历图标的位置
 ::v-deep .el-input__prefix {
   left: unset;
   right: 5px;
 }
+// 日历图标和close 图标兼容显示问题
 ::v-deep .el-input__prefix:has(~ .el-input__suffix .el-icon-circle-close) {
   display: none;
 }
+// border 样式，解决跟随主题色切换
 ::v-deep .el-input.is-active .el-input__inner,
 ::v-deep .el-input__inner:focus {
   @apply border-primary-6;
