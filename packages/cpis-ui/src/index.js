@@ -6,6 +6,7 @@ import CpisContainerHeader from './packages/container-header/index.js'
 import CpisSearchInput from './packages/search-input/index.js'
 import CpisTable from './packages/table/index.js'
 import CpisButton from './packages/button/index.js'
+import CpisInput from './packages/input/index.js'
 import CpisForm, {
   CpisFormItem,
   CpisFormSection
@@ -22,6 +23,7 @@ const components = [
   CpisSearchInput,
   CpisTable,
   CpisButton,
+  CpisInput,
   CpisContainerHeader,
   CpisForm,
   CpisFormItem,
@@ -51,6 +53,7 @@ export {
   CpisSearchInput,
   CpisTable,
   CpisButton,
+  CpisInput,
   CpisContainerHeader,
   CpisForm,
   CpisDrawer,
@@ -70,6 +73,7 @@ export default {
   CpisSearchInput,
   CpisTable,
   CpisButton,
+  CpisInput,
   CpisContainerHeader,
   CpisForm,
   CpisDrawer,

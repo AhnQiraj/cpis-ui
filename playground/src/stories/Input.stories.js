@@ -7,15 +7,16 @@ import { Input } from 'element-ui'
  * 同时降低表格类组件的维护入口
 
 
- * ## CpisInput 和 el-input 的不同
- * - 新增 clickable 属性，用于处理可点击事件。
+ * ## CpisInput 和 ElInput 的不同
+ * - 新增 `clickable` 属性，用于处理可点击事件。
+ * - 新增 `bordered` 属性，用于处理无边框。
  * - 修改输入框的样式，使其跟随主题色变化。
  * 
  ## CpisInput Attributes（只列举和Element-UI的不同）
   | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
   |---------- |---------------- |---------- |--------------------------------  |-------- |
   | clickable  | 是否开启可点击，开启后，默认输入框后面会显示一个图标，点击后会触发 suffix-click 事件 | boolean   | true/false |  false |
-
+  | bordered  | 是否开启无边框，开启后，输入框的边框会消失 | boolean   | true/false |  true |
  ### CpisInput Events （只列举和Element-UI的不同）
   | 事件名      | 说明          | 回调参数      |
   |---------- |---------------- |---------- |
@@ -26,24 +27,6 @@ export default {
   title: '原子组件/输入框',
   component: CpisInput,
   tags: ['autodocs']
-}
-export const Defaulta = {
-  render: (args, { argTypes }) => {
-    return {
-      props: Object.keys(argTypes),
-      components: { CpisInput, ElInput: Input },
-      data: () => ({
-        inputValue: null
-      }),
-      template: `
-          <div class="bg-gray-2 p-2">
-            <CpisInput v-model="inputValue">
-            </CpisInput>
-          </div>
-          `
-    }
-  },
-  name: '默认1'
 }
 
 export const Clickable = {
@@ -101,7 +84,7 @@ export default {
               `
     }
   },
-  name: '可点击'
+  name: 'Clickable'
 }
 
 export const NoBorder = {
@@ -135,5 +118,5 @@ export const NoBorder = {
                 `
     }
   },
-  name: '无边框'
+  name: 'Bordered'
 }
