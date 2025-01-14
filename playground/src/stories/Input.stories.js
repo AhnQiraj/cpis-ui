@@ -47,15 +47,51 @@ export const Defaulta = {
 }
 
 export const Clickable = {
+  parameters: {
+    layout: 'centered',
+    docs: {
+      source: {
+        code: `
+<template>
+    <CpisInput
+        @suffix-click="handleSuffixClick"
+        :clickable="true"
+        v-model="inputValue"
+    />
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      inputValue: ''
+    }
+  },
+  methods: {
+    handleSuffixClick() {
+      console.log('suffix clicked')
+    }
+  }
+}
+</script>
+        `
+      }
+    }
+  },
   render: (args, { argTypes }) => {
     return {
       props: Object.keys(argTypes),
       components: { CpisInput, ElInput: Input },
+      methods: {
+        handleSuffixClick() {
+          console.log('handle-suffix-click')
+        }
+      },
       template: `
         <div class="flex flex-col gap-2">
-            大<CpisInput size="large" @click="handleClick" :clickable="true" />
-            中（默认）<CpisInput size="medium" @click="handleClick" :clickable="true" />
-            小<CpisInput size="small" @click="handleClick" :clickable="true" />
+            大<CpisInput size="large" @suffix-click="handleSuffixClick" clickable />
+            中（默认）<CpisInput size="medium" @suffix-click="handleSuffixClick" clickable />
+            小<CpisInput size="small" @suffix-click="handleSuffixClick" clickable />
         </div>
               `
     }
