@@ -9,6 +9,10 @@ export default {
       type: String,
       default: '请选择'
     },
+    bordered: {
+      type: Boolean,
+      default: true
+    },
     startPlaceholder: {
       type: String,
       default: '请选择'
@@ -22,9 +26,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-::v-deep .el-input__inner {
-  padding-left: 10px;
-}
 // 输入框的日历图标的位置
 ::v-deep .el-input__prefix {
   left: unset;
