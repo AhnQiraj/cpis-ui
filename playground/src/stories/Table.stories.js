@@ -1225,6 +1225,36 @@ export default {
 export const CustomColumnSlot = {
   parameters: {
     docs: {
+      source: {
+        code: `
+<script>
+export default {
+  data() {
+    return {
+      columns: [
+        { label: '姓名', prop: 'name' },
+        { label: '年龄', prop: 'age' },
+        { label: '性别', prop: 'sex' }
+      ]
+    }
+  },
+  methods: {
+    handleClick(row) {
+      console.log(row)
+    }
+  }
+}
+</script>
+
+<template>
+  <CpisTable :columns="columns">
+    <template #columns="{column, row}">
+      <CpisButton type="text" v-if="column.prop === 'name'" @click="handleClick(row)">可以点击</CpisButton>
+    </template>
+  </CpisTable>
+</template>
+        `
+      },
       autodocs: false
     },
     controls: {
@@ -1286,7 +1316,7 @@ export const CustomColumnSlot = {
       }
     ]
   },
-  name: '自定义列插槽'
+  name: '自定义操作列插槽'
 }
 
 export const FixedColumn = {

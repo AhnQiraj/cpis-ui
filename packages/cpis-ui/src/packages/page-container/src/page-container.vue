@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-gray-2 gap-2 flex box-border"
+    class="bg-gray-2 gap-2 flex box-border h-full "
     :class="layout.includes('aside') ? 'flex-row' : 'flex-col'"
     :style="{ height }"
   >

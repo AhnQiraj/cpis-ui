@@ -1,5 +1,5 @@
 <template>
-  <main class="flex-1 bg-white">
+  <main class="flex-1 bg-white overflow-hidden">
     <slot></slot>
   </main>
 </template>
@@ -7,6 +7,6 @@
 <script>
 export default {
   name: 'CpisContainerMain',
-  componentName: 'CpisContainerMain',
-};
+  componentName: 'CpisContainerMain'
+}
 </script>

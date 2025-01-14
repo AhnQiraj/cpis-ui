@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-2 bg-gray-2">
+  <div class="flex flex-col gap-2 bg-gray-2 h-full">
     <div v-if="search?.length > 0" class="bg-white p-3.5">
       <template>
         <CpisSearchBar
