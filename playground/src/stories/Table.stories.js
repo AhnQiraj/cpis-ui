@@ -51,6 +51,9 @@ import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
   | search  | 搜索配置 | boolean/array   | - |  false |
   | columns  | 列配置 | array   | — | — |
   | identity  | 表格唯一标识 | string   | — | — |
+  | request  | 请求配置，和data两选一 用法见 [request](#request-and-data) | function   | — | — |
+  | data  | 表格数据，和request两选一 用法见 [request](#request-and-data)| array   | — | — |
+  | paramaterMode  | 参数模式 | string   | structured/flat | structured |
 
 ### CpisTable Methods
   | 方法名      | 说明          | 参数      |
@@ -64,6 +67,22 @@ import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
   | handle-add-row  | 新增行事件 | — |
   | handle-delete-row  | 删除行事件 | — |
   | handle-toolbar-click  | 工具栏点击事件 | — |
+  | selection-change  | 多选改变的回调 | — |
+
+  ### Request And Data
+  data和request都可以用于配置表格数据，但是两者有不同的使用场景。request用于异步获取数据，data用于响应式数据。request天然的可以处理分页，搜索，排序，loading。data需要自己处理。
+  但是往往一些场景下，对于数据需要存储，例如编辑表格，此时就需要使用data。
+  data 属性用于配置表格数据，支持数组。和element-ui的data属性一致。
+  request 属性用于配置请求，支持异步函数，返回一个 Promise 对象。
+  request 返回值要求：
+  ```
+{
+  success: true,
+  data: [],
+  total: 0
+}
+  ```
+  其中 success 为布尔值，data 为数组，total 为总数。 只有当sucess为true的时候，data才会被渲染。所以根据后端的接口定义正确判断success的值。
  */
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
@@ -356,6 +375,38 @@ export default {
     }
   }
 }
+export const Request = {
+  render: () => {
+    return {
+      data() {
+        return {
+          request: async () => {
+            // 这里模拟了一个异步请求
+            return new Promise(resolve => {
+              setTimeout(() => {
+                resolve({
+                  success: true,
+                  data: [{ name: '张三' }, { name: '李四' }, { name: '王五' }],
+                  total: 3
+                })
+              }, 1000)
+            })
+          },
+          columns: [
+            {
+              label: '姓名',
+              prop: 'name',
+              valueType: 'text'
+            }
+          ]
+        }
+      },
+      components: { CpisTable },
+      template: `<CpisTable :request="request" :columns="columns" />`
+    }
+  },
+  name: '请求数据'
+}
 export const ToolbarSlots = {
   render: () => {
     return {
@@ -379,63 +430,85 @@ export const ToolbarConfig = {
     docs: {
       source: {
         code: `
-<CpisTable 
-  identity="ibps_org_employee"
-  :columns="[{
-    label: '姓名',
-    prop: 'name',
-    valueType: 'text'
-  }]"
-  :toolbar="[{
-    key: 'add',
-    label: '新增', 
-    type: 'primary'
-  }, {
-    key: 'edit',
-    label: '修改',
-    disabled: () => {
-      return this.selected.length === 0
+<script>
+export default {
+  methods: {
+    handleToolbarClick(key) {
+      console.log(key)
+    },
+    // 多选改变的回调
+    handleSelectionChange(selection) {
+      this.selected = selection
+    },
+  },
+  data() {
+    return {
+      selected: []
     }
-  }, {
-    key: 'cancel',
-    label: '取消'
-  }, {
-    key: 'delete',
-    label: '删除'
-  }, {
-    key: 'test1',
-    label: '测试1',
-    children: [{
-      key: 'test1-1',
-      label: '测试1-1',
+  }
+}
+</script>
+
+<template>
+  <CpisTable 
+    identity="ibps_org_employee"
+    :columns="[{
+      label: '姓名',
+      prop: 'name',
+      valueType: 'text'
+    }]"
+    :toolbar="[{
+      key: 'add',
+      label: '新增', 
+      type: 'primary'
+    }, {
+      key: 'edit',
+      label: '修改',
       disabled: () => {
         return this.selected.length === 0
       }
     }, {
-      key: 'test1-2',
-      label: '测试1-2'
+      key: 'cancel',
+      label: '取消'
     }, {
-      key: 'test1-3',
-      label: '测试1-3'
-    }]
-  }, {
-    key: 'test2',
-    label: '测试2'
-  }, {
-    key: 'test3',
-    label: '测试3'
-  }, {
-    key: 'test4',
-    label: '测试4'
-  }, {
-    key: 'test5',
-    label: '测试5'
-  }, {
-    key: 'test6',
-    label: '测试6'
-  }]"
-  @handle-toolbar-click="handleToolbarClick"
-/>`
+      key: 'delete',
+      label: '删除'
+    }, {
+      key: 'test1',
+      label: '测试1',
+      children: [{
+        key: 'test1-1',
+        label: '测试1-1',
+        disabled: () => {
+          return this.selected.length === 0
+        }
+      }, {
+        key: 'test1-2',
+        label: '测试1-2'
+      }, {
+        key: 'test1-3',
+        label: '测试1-3'
+      }]
+    }, {
+      key: 'test2',
+      label: '测试2'
+    }, {
+      key: 'test3',
+      label: '测试3'
+    }, {
+      key: 'test4',
+      label: '测试4'
+    }, {
+      key: 'test5',
+      label: '测试5'
+    }, {
+      key: 'test6',
+      label: '测试6'
+    }]"
+    @handle-toolbar-click="handleToolbarClick"
+    @selection-change="handleSelectionChange"
+  />
+</template>`
       }
     }
   },
@@ -1081,7 +1154,28 @@ export const Required = {
 export const Selection = {
   parameters: {
     docs: {
-      autodocs: false
+      source: {
+        code: `
+
+<template>
+  <CpisTable @selection-change="handleSelectionChange" />
+</template>
+<script>
+export default {
+  methods: {
+    handleSelectionChange(selection) {
+      this.selected = selection
+    }
+  },
+  data() {
+    return {
+      selected: [],
+    }
+  }
+}
+</script>
+        `
+      }
     },
     controls: {
       include: ['columns']
