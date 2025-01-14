@@ -48,7 +48,13 @@ export default {
     return {
       props: Object.keys(argTypes),
       components: { CpisDatePicker },
-      template: `<CpisDatePicker v-model="value" :size="size" :placeholder="placeholder" :format="format" :readonly="readonly" :disabled="disabled" />`
+      template: `
+        <template>
+          <CpisDatePicker v-model="value" type="date" clearable />
+          <CpisDatePicker v-model="value" type="date" clearable />
+          <CpisDatePicker v-model="value" type="date" clearable />
+        </template>
+      `
     }
   }
 }
@@ -59,12 +65,50 @@ export const Basic = () => ({
     CpisDatePicker
   },
   template: `
-    <cpis-date-picker
-      v-model="value"
-      type="date"
-      clearable
-      placeholder="选择日期">
-    </cpis-date-picker>
+    <div class="flex flex-col gap-2">
+        小<CpisDatePicker :bordered="false" size="small" v-model="value" type="date" clearable />
+        中<CpisDatePicker :bordered="false" size="medium" v-model="value" type="date" clearable />
+        大<CpisDatePicker :bordered="false" size="large" v-model="value" type="date" clearable />
+    </div>
+  `,
+  data() {
+    return {
+      value: ''
+    }
+  }
+})
+
+// 基础日期选择器
+export const DateTime = () => ({
+  components: {
+    CpisDatePicker
+  },
+  template: `
+    <div class="flex flex-col gap-2">
+        小<CpisDatePicker size="small" v-model="value" type="datetime" clearable />
+        中<CpisDatePicker size="medium" v-model="value" type="datetime" clearable />
+        大<CpisDatePicker size="large" v-model="value" type="datetime" clearable />
+    </div>
+  `,
+  data() {
+    return {
+      value: ''
+    }
+  }
+})
+
+// 基础日期选择器
+export const DateRangeange = () => ({
+  components: {
+    CpisDatePicker
+  },
+  template: `
+    <div class="flex flex-col gap-2">
+  
+      小<CpisDatePicker size="small" v-model="value" type="daterange" clearable  />
+      中<CpisDatePicker size="medium" v-model="value" type="daterange" clearable  />
+      大<CpisDatePicker size="large" v-model="value" type="daterange" clearable  />
+    </div>
   `,
   data() {
     return {
