@@ -23,6 +23,7 @@ import { FormItem } from 'element-ui'
 
 export default {
   name: 'CpisFormItem',
+  componentName: 'ElFormItem',
   components: {
     ElFormItem: FormItem
   },
