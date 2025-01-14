@@ -11,7 +11,7 @@
         'el-input-group--prepend': $slots.prepend,
         'el-input--prefix': $slots.prefix || prefixIcon,
         'el-input--suffix':
-          $slots.suffix || suffixIcon || clearable || showPassword
+          $slots.suffix || this.computedSuffixIcon || clearable || showPassword
       }
     ]"
     @mouseenter="hovering = true"
@@ -51,7 +51,12 @@
         <span class="el-input__suffix-inner">
           <template v-if="!showClear || !showPwdVisible || !isWordLimitVisible">
             <slot name="suffix"></slot>
-            <i class="el-input__icon" v-if="suffixIcon" :class="suffixIcon">
+            <i
+              class="el-input__icon"
+              v-if="computedSuffixIcon"
+              :class="computedSuffixIcon"
+              @click="handleSuffixClick"
+            >
             </i>
           </template>
           <i
@@ -194,10 +199,20 @@ export default {
       type: Boolean,
       default: false
     },
-    tabindex: String
+    tabindex: String,
+    clickable: {
+      type: Boolean,
+      default: false
+    }
   },
 
   computed: {
+    computedSuffixIcon() {
+      if (this.clickable) {
+        return 'el-icon-edit-outline text-lg cursor-pointer'
+      }
+      return this.$props.suffixIcon
+    },
     _elFormItemSize() {
       return (this.elFormItem || {}).elFormItemSize
     },
@@ -313,6 +328,9 @@ export default {
           click: 'click is removed.'
         }
       }
+    },
+    handleSuffixClick() {
+      this.$emit('suffix-click')
     },
     handleBlur(event) {
       this.focused = false
@@ -434,7 +452,7 @@ export default {
     getSuffixVisible() {
       return (
         this.$slots.suffix ||
-        this.suffixIcon ||
+        this.computedSuffixIcon ||
         this.showClear ||
         this.showPassword ||
         this.isWordLimitVisible ||
