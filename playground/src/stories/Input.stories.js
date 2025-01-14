@@ -82,6 +82,11 @@ export default {
     return {
       props: Object.keys(argTypes),
       components: { CpisInput, ElInput: Input },
+      data: () => ({
+        inputValue: null,
+        inputValue2: null,
+        inputValue3: null
+      }),
       methods: {
         handleSuffixClick() {
           console.log('handle-suffix-click')
@@ -89,12 +94,46 @@ export default {
       },
       template: `
         <div class="flex flex-col gap-2">
-            大<CpisInput size="large" @suffix-click="handleSuffixClick" clickable />
-            中（默认）<CpisInput size="medium" @suffix-click="handleSuffixClick" clickable />
-            小<CpisInput size="small" @suffix-click="handleSuffixClick" clickable />
+            大<CpisInput size="large" @suffix-click="handleSuffixClick" clickable v-model="inputValue" />
+            中（默认）<CpisInput size="medium" @suffix-click="handleSuffixClick" clickable v-model="inputValue2" />
+            小<CpisInput size="small" @suffix-click="handleSuffixClick" clickable v-model="inputValue3" />
         </div>
               `
     }
   },
   name: '可点击'
+}
+
+export const NoBorder = {
+  parameters: {
+    layout: 'centered',
+    docs: {
+      source: {
+        code: `
+<template>
+    <CpisInput :bordered="false" />
+</template>
+          `
+      }
+    }
+  },
+  render: (args, { argTypes }) => {
+    return {
+      props: Object.keys(argTypes),
+      components: { CpisInput, ElInput: Input },
+      data: () => ({
+        inputValue: null,
+        inputValue2: null,
+        inputValue3: null
+      }),
+      template: `
+          <div class="flex flex-col gap-2">
+              大<CpisInput size="large" :bordered="false" v-model="inputValue"/>
+              中（默认）<CpisInput size="medium" :bordered="false" v-model="inputValue2" />
+              小<CpisInput size="small" :bordered="false" v-model="inputValue3" />
+          </div>
+                `
+    }
+  },
+  name: '无边框'
 }

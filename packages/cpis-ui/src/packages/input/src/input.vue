@@ -26,6 +26,7 @@
         :tabindex="tabindex"
         v-if="type !== 'textarea'"
         class="el-input__inner"
+        :class="{ '!border-none': !bordered }"
         v-bind="$attrs"
         :type="showPassword ? (passwordVisible ? 'text' : 'password') : type"
         :disabled="inputDisabled"
@@ -190,6 +191,10 @@ export default {
     clearable: {
       type: Boolean,
       default: false
+    },
+    bordered: {
+      type: Boolean,
+      default: true
     },
     showPassword: {
       type: Boolean,
