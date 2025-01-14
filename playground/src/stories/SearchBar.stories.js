@@ -162,8 +162,7 @@ export const FlatSearch = {
         code: `<CpisSearchBar paramater-mode="flat" :search="[
           {
             prop: 'name',
-            label: '姓名',
-            placeholder: '请输入姓名'
+            label: '姓名'
           },
           {
             prop: 'status',
@@ -173,11 +172,6 @@ export const FlatSearch = {
               { name: '启用', key: 1 },
               { name: '禁用', key: 0 }
             ]
-          },
-          {
-            prop: 'createTime',
-            label: '日期',
-            type: 'daterange'
           }
         ]"/>`
       }
@@ -190,8 +184,7 @@ export const FlatSearch = {
         search: [
           {
             prop: 'name',
-            label: '姓名',
-            placeholder: '请输入姓名'
+            label: '姓名'
           },
           {
             prop: 'status',
@@ -203,9 +196,14 @@ export const FlatSearch = {
             ]
           },
           {
+            prop: ['createTime', 'endTime'],
+            label: '日期区间',
+            type: 'daterange'
+          },
+          {
             prop: 'date',
             label: '日期',
-            type: 'daterange'
+            type: 'date'
           }
         ],
         searchParams: {}
@@ -242,7 +240,6 @@ export const StructuredSearch = {
           {
             prop: 'Q^NAME_^SL',
             label: '姓名',
-            placeholder: '请输入姓名'
           },
           {
             prop: 'status',
@@ -269,8 +266,7 @@ export const StructuredSearch = {
         search: [
           {
             prop: 'Q^NAME_^SL',
-            label: '姓名',
-            placeholder: '请输入姓名'
+            label: '姓名'
           },
           {
             prop: 'status',
