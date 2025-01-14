@@ -359,9 +359,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .el-input__inner {
-  @apply border-none h-[30px] !pl-0;
-}
-.el-input__icon {
-  line-height: 1 !important;
+  @apply border-none !pl-0;
 }
 </style>
