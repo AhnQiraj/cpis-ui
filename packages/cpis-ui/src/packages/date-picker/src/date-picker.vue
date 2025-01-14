@@ -3,7 +3,21 @@ import { DatePicker } from 'element-ui'
 
 export default {
   name: 'CpisDatePicker',
-  extends: DatePicker
+  extends: DatePicker,
+  props: {
+    placeholder: {
+      type: String,
+      default: '请选择'
+    },
+    startPlaceholder: {
+      type: String,
+      default: '请选择'
+    },
+    endPlaceholder: {
+      type: String,
+      default: '请选择'
+    }
+  }
 }
 </script>
 
