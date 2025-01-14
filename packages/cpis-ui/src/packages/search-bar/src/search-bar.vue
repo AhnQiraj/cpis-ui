@@ -3,7 +3,7 @@
     <template v-for="(item, index) in search">
       <template v-if="item.type === 'select'">
         <CpisSearchSelect
-          :style="{ width: item.width || '150px' }"
+          :style="{ width: (item.width || '150px') + '' }"
           :key="item.prop"
           :label="item.label"
           :value-key="item.valueKey"
@@ -15,7 +15,7 @@
       </template>
       <template v-else-if="item.type === 'daterange'">
         <CpisDatePicker
-          :style="{ width: '250px' }"
+          :style="{ width: (item.width || '300px') + '' }"
           :key="item.prop"
           type="daterange"
           :clearable="false"
@@ -26,7 +26,7 @@
       </template>
       <template v-else-if="item.type === 'date'">
         <CpisDatePicker
-          :style="{ width: item.width || '260px' }"
+          :style="{ width: (item.width || '150px') + '' }"
           :key="item.prop"
           type="date"
           :clearable="false"
@@ -37,7 +37,7 @@
       </template>
       <template v-else>
         <CpisSearchInput
-          :style="{ width: item.width || '150px' }"
+          :style="{ width: (item.width || '150px') + '' }"
           :key="item.prop"
           :label="item.label"
           :placeholder="item.placeholder || '请输入'"
