@@ -5,7 +5,7 @@
     <span v-if="!!label" class="whitespace-nowrap text-sm text-gray-6"
       >{{ label }}：</span
     >
-    <ElDatePicker
+    <CpisDatePicker
       :value="value"
       @input="$emit('input', $event)"
       class="border-none"
@@ -27,12 +27,12 @@
 </template>
 
 <script>
-import { DatePicker } from 'element-ui'
+import DatePicker from '../../date-picker/index'
 
 export default {
   name: 'CpisSearchDate',
   components: {
-    ElDatePicker: DatePicker
+    CpisDatePicker: DatePicker
   },
   props: {
     value: {
@@ -139,15 +139,5 @@ export default {
 <style scoped>
 ::v-deep .el-input__inner {
   border: none;
-  height: 30px !important;
-}
-::v-deep .el-range-separator {
-  line-height: 24px;
-}
-::v-deep .el-icon-date {
-  order: 1;
-}
-::v-deep .el-range-editor.el-input__inner {
-  padding: 4px 4px;
 }
 </style>
