@@ -1153,6 +1153,7 @@ export const Required = {
 }
 export const Selection = {
   parameters: {
+    nchor: 'CustomColumnSlot',
     docs: {
       source: {
         code: `
@@ -1316,7 +1317,8 @@ export default {
       }
     ]
   },
-  name: '自定义操作列插槽'
+
+  name: 'CustomColumnSlot'
 }
 
 export const FixedColumn = {
