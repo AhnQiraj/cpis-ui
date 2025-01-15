@@ -10,6 +10,7 @@
               :label="item.label"
               :value-key="item.valueKey"
               :label-key="item.labelKey"
+              :multiple="item.multiple"
               :placeholder="item.placeholder || '请选择'"
               v-model="params[item.prop]"
               :style="{
@@ -158,15 +159,12 @@ export default {
     calculateWidth(placeholder, label) {
       // 假设每个中文字符宽度为14px，英文字符为7px
       const baseWidth = 32 // 基础padding和border宽度
-      const labelWidth = (label || '').split('').reduce((acc, char) => {
-        return acc + (/[\u4e00-\u9fa5]/.test(char) ? 14 : 7)
-      }, 0)
 
       const placeholderWidth = placeholder.split('').reduce((acc, char) => {
         return acc + (/[\u4e00-\u9fa5]/.test(char) ? 14 : 7)
       }, 0)
 
-      return `${Math.max(baseWidth + labelWidth + placeholderWidth, 120)}px`
+      return `${Math.max(baseWidth + placeholderWidth, 60)}px`
     },
     getEnumOptions(item) {
       return typeof item.enum === 'function' ? item.enum() : item.enum
