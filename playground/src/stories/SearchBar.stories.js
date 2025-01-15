@@ -43,7 +43,10 @@ import CpisSearchBar from '../../../packages/cpis-ui/src/packages/search-bar/ind
  *   type?: string,          // 输入框类型（默认input），支持:
  *                          // - select: 下拉选择框
  *                          // - date: 日期选择器
+ *                          // - datetime: 日期时间选择器
  *                          // - daterange: 日期范围选择器
+ *                          // - datetimerange: 日期时间范围选择器
+ *                          // - multiple-select: 多选下拉选择框
  *   placeholder?: string,   // 输入框占位文本
  *   enum?: Array | Function,          // 枚举值
  *   valueKey?: string,     // 枚举值的value值
@@ -293,6 +296,70 @@ export const StructuredSearch = {
   })
 }
 
+export const Multiple = {
+  name: '多选',
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<template>
+  <CpisSearchBar paramater-mode="structured" :search="search"/>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      dict: [
+        status: {}
+      ],
+      search: [
+        {
+          prop: 'status',
+          label: '状态', 
+          type: 'multiple-select',
+          enum: [
+            { name: '启用', key: 1 },
+            { name: '禁用', key: 0 }
+          ]
+        }
+      ]
+    }
+  },
+}
+</script>
+        `
+      }
+    }
+  },
+  render: () => ({
+    components: { CpisSearchBar },
+    data() {
+      return {
+        search: [
+          {
+            prop: 'status',
+            label: '状态',
+            type: 'multiple-select',
+            enum: [
+              { name: '选项1', key: 1 },
+              { name: '选项2', key: 2 },
+              { name: '选项3', key: 3 },
+              { name: '选项4', key: 4 },
+              { name: '选项5', key: 5 }
+            ]
+          }
+        ]
+      }
+    },
+    template: `
+      <div>
+        <CpisSearchBar :search="search" paramater-mode="structured"/>
+      </div>
+    `
+  })
+}
+
 export const AsyncEnum = {
   name: 'AsyncEnum',
   parameters: {
@@ -358,6 +425,78 @@ export default {
           { name: '禁用', key: 0 }
         ]
       }, 2000)
+    },
+    template: `
+      <div>
+        <CpisSearchBar :search="search" paramater-mode="structured"/>
+      </div>
+    `
+  })
+}
+
+export const AutoWidth = {
+  name: '根据placeholder自动计算宽度',
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<template>
+  <CpisSearchBar paramater-mode="structured" :search="search"/>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      dict: [
+        status: {}
+      ],
+      search: [
+        {
+          prop: 'status',
+          label: '状态', 
+          type: 'select',
+          enum: () => this.dict
+        }
+      ]
+    }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.dict.status = [
+        { name: '启用', key: 1 },
+        { name: '禁用', key: 0 }
+      ]
+    }, 2000)
+  }
+}
+</script>
+        `
+      }
+    }
+  },
+  render: () => ({
+    components: { CpisSearchBar },
+    data() {
+      return {
+        search: [
+          {
+            prop: 'status',
+            label: '状态',
+            placeholder: '请输入状态'
+          },
+          {
+            prop: 'name',
+            label: '姓名',
+            placeholder: '请输入姓名请输入姓名'
+          },
+          {
+            prop: 'location',
+            label: '位置',
+            placeholder: '请输入详细的位置'
+          }
+        ]
+      }
     },
     template: `
       <div>

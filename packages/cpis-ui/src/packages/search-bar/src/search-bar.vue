@@ -1,68 +1,71 @@
 <template>
-  <div class="search-bar flex gap-2">
-    <el-form v-model="params" :inline="true">
-      <template v-for="(item, index) in search">
-        <template v-if="item.type === 'select'">
-          <el-form-item :label="item.label">
-            <CpisSelect
-              size="small"
-              :key="item.prop"
-              :label="item.label"
-              :value-key="item.valueKey"
-              :label-key="item.labelKey"
-              :multiple="item.multiple"
-              :placeholder="item.placeholder || '请选择'"
-              v-model="params[item.prop]"
-              :style="{
-                width: calculateWidth(item.placeholder || '请选择', item.label)
-              }"
-            >
-              <el-option
-                v-for="option in getEnumOptions(item)"
-                :key="option[item.valueKey || 'key']"
-                :label="option[item.labelKey || 'name']"
-                :value="option[item.valueKey || 'key']"
-              />
-            </CpisSelect>
-          </el-form-item>
-        </template>
-        <template
-          v-else-if="
-            ['daterange', 'date', 'datetime', 'datetimerange'].includes(
-              item.type
+  <div class="cpis-search-bar flex flex-row gap-2">
+    <div
+      v-for="(item, index) in search"
+      :key="item.prop"
+      class="flex flex-row items-center gap-2 border-solid border-1 border-gray-3 rounded px-2.5"
+    >
+      <div v-if="!!item.label" class="whitespace-nowrap text-sm text-gray-6">
+        {{ item.label }}：
+      </div>
+      <template v-if="['select', 'multiple-select'].includes(item.type)">
+        <CpisSelect
+          size="small"
+          :key="item.prop"
+          :label="item.label"
+          clearable
+          :value-key="item.valueKey"
+          :label-key="item.labelKey"
+          :multiple="item.type === 'multiple-select'"
+          :collapse-tags="item.type === 'multiple-select'"
+          :placeholder="item.placeholder || '请选择'"
+          v-model="params[item.prop]"
+          :style="{
+            width: calculateWidth(
+              item.placeholder || '请选择',
+              item.type === 'multiple-select' ? 100 : 0
             )
-          "
+          }"
         >
-          <el-form-item :label="item.label">
-            <CpisDatePicker
-              size="small"
-              :key="item.prop"
-              :type="item.type"
-              :clearable="false"
-              :label="item.label"
-              style="width: 200px"
-              v-model="params[item.prop]"
-            />
-          </el-form-item>
-        </template>
-        <template v-else>
-          <el-form-item :label="item.label">
-            <CpisInput
-              size="small"
-              :key="item.prop"
-              :label="item.label"
-              :placeholder="item.placeholder || '请输入'"
-              v-model="params[item.prop]"
-              :style="{
-                width: calculateWidth(item.placeholder || '请输入', item.label)
-              }"
-            />
-          </el-form-item>
-        </template>
+          <el-option
+            v-for="option in getEnumOptions(item)"
+            :key="option[item.valueKey || 'key']"
+            :label="option[item.labelKey || 'name']"
+            :value="option[item.valueKey || 'key']"
+          />
+        </CpisSelect>
       </template>
-      <CpisButton type="primary" @click="handleSearch">查询</CpisButton>
-      <CpisButton @click="handleSearchReset">重置</CpisButton>
-    </el-form>
+      <template
+        v-else-if="
+          ['daterange', 'date', 'datetime', 'datetimerange'].includes(item.type)
+        "
+      >
+        <CpisDatePicker
+          size="small"
+          :key="item.prop"
+          :type="item.type"
+          clearable
+          :label="item.label"
+          style="width: 200px"
+          v-model="params[item.prop]"
+        />
+      </template>
+      <template v-else>
+        <CpisInput
+          size="small"
+          clearable
+          :key="item.prop"
+          :label="item.label"
+          :placeholder="item.placeholder || '请输入'"
+          v-model="params[item.prop]"
+          :style="{
+            width: calculateWidth(item.placeholder || '请输入')
+          }"
+        />
+      </template>
+    </div>
+    <CpisButton type="primary" @click="handleSearch">查询</CpisButton>
+    <CpisButton @click="handleSearchReset">重置</CpisButton>
   </div>
 </template>
 
@@ -156,7 +159,7 @@ export default {
       this.params = {}
       this.$emit('reset')
     },
-    calculateWidth(placeholder, label) {
+    calculateWidth(placeholder, additionalWidth = 0) {
       // 假设每个中文字符宽度为14px，英文字符为7px
       const baseWidth = 32 // 基础padding和border宽度
 
@@ -164,7 +167,7 @@ export default {
         return acc + (/[\u4e00-\u9fa5]/.test(char) ? 14 : 7)
       }, 0)
 
-      return `${Math.max(baseWidth + placeholderWidth, 60)}px`
+      return `${Math.max(baseWidth + placeholderWidth + additionalWidth, 60)}px`
     },
     getEnumOptions(item) {
       return typeof item.enum === 'function' ? item.enum() : item.enum
@@ -173,17 +176,7 @@ export default {
 }
 </script>
 <style scoped>
-::v-deep .el-form-item {
-  @apply border-solid border-1 border-gray-3 rounded px-2.5;
-}
-::v-deep .el-form-item__label {
-  @apply text-sm text-gray-6;
-  line-height: 32px;
-}
-::v-deep .el-form-item__content {
-  line-height: 32px;
-}
 ::v-deep .el-input__inner {
-  @apply border-none !pl-0;
+  @apply border-none;
 }
 </style>
