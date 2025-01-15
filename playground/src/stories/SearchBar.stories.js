@@ -86,21 +86,6 @@ import CpisSearchBar from '../../../packages/cpis-ui/src/packages/search-bar/ind
  *     labelKey: 'label'
  *   },
  *   {
- *     prop: 'asyncEnum',
- *     label: '异步枚举',
- *     type: 'select',
- *     enum: () => {
- *       // 这里模拟了一个异步请求
- *       return new Promise((resolve) => {
- *         setTimeout(() => {
- *           resolve([{ label: '启用', value: 1 }, { label: '禁用', value: 0 }])
- *         }, 1000)
- *       })
- *     },
- *     valueKey: 'value',
- *     labelKey: 'label'
- *   },
- *   {
  *     prop: ['startTime', 'endTime'],
  *     label: '创建时间',
  *     type: 'daterange'
@@ -303,6 +288,80 @@ export const StructuredSearch = {
           <p>点击查询查看搜索参数:</p>
           <pre v-if="searchParams">{{ JSON.stringify(searchParams, null, 2) }}</pre>
         </div>
+      </div>
+    `
+  })
+}
+
+export const AsyncEnum = {
+  name: 'AsyncEnum',
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<template>
+  <CpisSearchBar paramater-mode="structured" :search="search"/>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      dict: [
+        status: {}
+      ],
+      search: [
+        {
+          prop: 'status',
+          label: '状态', 
+          type: 'select',
+          enum: () => this.dict
+        }
+      ]
+    }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.dict.status = [
+        { name: '启用', key: 1 },
+        { name: '禁用', key: 0 }
+      ]
+    }, 2000)
+  }
+}
+</script>
+        `
+      }
+    }
+  },
+  render: () => ({
+    components: { CpisSearchBar },
+    data() {
+      return {
+        search: [
+          {
+            prop: 'status',
+            label: '状态',
+            type: 'select',
+            enum: () => this.dict?.status ?? []
+          }
+        ],
+        dict: {
+          status: []
+        }
+      }
+    },
+    mounted() {
+      setTimeout(() => {
+        this.dict.status = [
+          { name: '启用', key: 1 },
+          { name: '禁用', key: 0 }
+        ]
+      }, 2000)
+    },
+    template: `
+      <div>
+        <CpisSearchBar :search="search" paramater-mode="structured"/>
       </div>
     `
   })

@@ -1,68 +1,87 @@
 <template>
   <div class="search-bar flex gap-2">
-    <template v-for="(item, index) in search">
-      <template v-if="item.type === 'select'">
-        <CpisSearchSelect
-          :style="{ width: (item.width || '150px') + '' }"
-          :key="item.prop"
-          :label="item.label"
-          :value-key="item.valueKey"
-          :label-key="item.labelKey"
-          :placeholder="item.placeholder || '请选择'"
-          v-model="params[item.prop]"
-          :enum="item.enum"
-        />
+    <el-form v-model="params" :inline="true">
+      <template v-for="(item, index) in search">
+        <template v-if="item.type === 'select'">
+          <el-form-item :label="item.label">
+            <CpisSelect
+              size="small"
+              :key="item.prop"
+              :label="item.label"
+              :value-key="item.valueKey"
+              :label-key="item.labelKey"
+              :placeholder="item.placeholder || '请选择'"
+              v-model="params[item.prop]"
+              :style="{
+                width: calculateWidth(item.placeholder || '请选择', item.label)
+              }"
+            >
+              <el-option
+                v-for="option in getEnumOptions(item)"
+                :key="option[item.valueKey || 'key']"
+                :label="option[item.labelKey || 'name']"
+                :value="option[item.valueKey || 'key']"
+              />
+            </CpisSelect>
+          </el-form-item>
+        </template>
+        <template
+          v-else-if="
+            ['daterange', 'date', 'datetime', 'datetimerange'].includes(
+              item.type
+            )
+          "
+        >
+          <el-form-item :label="item.label">
+            <CpisDatePicker
+              size="small"
+              :key="item.prop"
+              :type="item.type"
+              :clearable="false"
+              :label="item.label"
+              style="width: 200px"
+              v-model="params[item.prop]"
+            />
+          </el-form-item>
+        </template>
+        <template v-else>
+          <el-form-item :label="item.label">
+            <CpisInput
+              size="small"
+              :key="item.prop"
+              :label="item.label"
+              :placeholder="item.placeholder || '请输入'"
+              v-model="params[item.prop]"
+              :style="{
+                width: calculateWidth(item.placeholder || '请输入', item.label)
+              }"
+            />
+          </el-form-item>
+        </template>
       </template>
-      <template v-else-if="item.type === 'daterange'">
-        <CpisDatePicker
-          :style="{ width: (item.width || '300px') + '' }"
-          :key="item.prop"
-          type="daterange"
-          :clearable="false"
-          :label="item.label"
-          :placeholder="item.placeholder || '请选择'"
-          v-model="params[item.prop]"
-        />
-      </template>
-      <template v-else-if="item.type === 'date'">
-        <CpisDatePicker
-          :style="{ width: (item.width || '150px') + '' }"
-          :key="item.prop"
-          type="date"
-          :clearable="false"
-          :label="item.label"
-          :placeholder="item.placeholder || '请选择'"
-          v-model="params[item.prop]"
-        />
-      </template>
-      <template v-else>
-        <CpisSearchInput
-          :style="{ width: (item.width || '150px') + '' }"
-          :key="item.prop"
-          :label="item.label"
-          :placeholder="item.placeholder || '请输入'"
-          v-model="params[item.prop]"
-        />
-      </template>
-    </template>
-    <CpisButton type="primary" @click="handleSearch">查询</CpisButton>
-    <CpisButton @click="handleSearchReset">重置</CpisButton>
+      <CpisButton type="primary" @click="handleSearch">查询</CpisButton>
+      <CpisButton @click="handleSearchReset">重置</CpisButton>
+    </el-form>
   </div>
 </template>
 
 <script>
-import CpisSearchInput from '../../search-input/index'
-import CpisSearchSelect from '../../search-select/index'
+import CpisInput from '../../input/index'
+import CpisSelect from '../../select/index'
 import CpisButton from '../../button/index'
-import CpisDatePicker from '../../search-date/index'
+import CpisDatePicker from '../../date-picker/index'
+import { FormItem, Form, Option } from 'element-ui'
 
 export default {
   name: 'CpisSearchBar',
   components: {
-    CpisSearchInput,
-    CpisSearchSelect,
+    CpisInput,
+    CpisSelect,
     CpisButton,
-    CpisDatePicker
+    CpisDatePicker,
+    ElFormItem: FormItem,
+    ElForm: Form,
+    ElOption: Option
   },
   props: {
     paramaterMode: {
@@ -135,7 +154,38 @@ export default {
     handleSearchReset() {
       this.params = {}
       this.$emit('reset')
+    },
+    calculateWidth(placeholder, label) {
+      // 假设每个中文字符宽度为14px，英文字符为7px
+      const baseWidth = 32 // 基础padding和border宽度
+      const labelWidth = (label || '').split('').reduce((acc, char) => {
+        return acc + (/[\u4e00-\u9fa5]/.test(char) ? 14 : 7)
+      }, 0)
+
+      const placeholderWidth = placeholder.split('').reduce((acc, char) => {
+        return acc + (/[\u4e00-\u9fa5]/.test(char) ? 14 : 7)
+      }, 0)
+
+      return `${Math.max(baseWidth + labelWidth + placeholderWidth, 120)}px`
+    },
+    getEnumOptions(item) {
+      return typeof item.enum === 'function' ? item.enum() : item.enum
     }
   }
 }
 </script>
+<style scoped>
+::v-deep .el-form-item {
+  @apply border-solid border-1 border-gray-3 rounded px-2.5;
+}
+::v-deep .el-form-item__label {
+  @apply text-sm text-gray-6;
+  line-height: 32px;
+}
+::v-deep .el-form-item__content {
+  line-height: 32px;
+}
+::v-deep .el-input__inner {
+  @apply border-none !pl-0;
+}
+</style>
