@@ -6,7 +6,10 @@
     v-on="$listeners"
   >
     <template #label>
-      <div class="cpis-form-item__label" :style="{ width: labelWidth + 'px' }">
+      <div
+        class="cpis-form-item__label h-full"
+        :style="{ width: labelWidth + 'px' }"
+      >
         <span v-if="isRequired" class="required-star">*</span>
         {{ label }}
       </div>
@@ -91,6 +94,9 @@ export default {
 }
 ::v-deep .el-form-item__label:before {
   content: unset !important;
+}
+::v-deep .el-form-item__label {
+  height: 100%;
 }
 ::v-deep .el-form-item__error {
   position: absolute;
