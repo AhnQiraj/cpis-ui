@@ -139,18 +139,6 @@ export const LazyLoading = {
 data() {
   return {
     treeProps: {
-      data: [
-        {
-          id: 1,
-          label: '根节点 1',
-          hasChildren: true
-        },
-        {
-          id: 2,
-          label: '根节点 2',
-          hasChildren: true
-        }
-      ],
       lazy: true,
       load: this.loadNode
     }
@@ -166,13 +154,11 @@ methods: {
         return resolve([
           {
             id: 1,
-            label: '根节点 1',
-            hasChildren: true
+            label: '根节点 1'
           },
           {
             id: 2,
-            label: '根节点 2',
-            hasChildren: true
+            label: '根节点 2'
           }
         ])
       }
@@ -181,12 +167,10 @@ methods: {
         {
           id: \`\${node.data.id}-1\`,
           label: \`\${node.data.label}-1\`,
-          hasChildren: node.level < 3
         },
         {
           id: \`\${node.data.id}-2\`,
           label: \`\${node.data.label}-2\`,
-          hasChildren: node.level < 3
         }
       ]
 
@@ -222,18 +206,6 @@ methods: {
     data() {
       return {
         treeProps: {
-          data: [
-            {
-              id: 1,
-              label: '根节点 1',
-              hasChildren: true
-            },
-            {
-              id: 2,
-              label: '根节点 2',
-              hasChildren: true
-            }
-          ],
           lazy: true,
           load: this.loadNode
         }
@@ -261,13 +233,11 @@ methods: {
           const data = [
             {
               id: `${node.data.id}-1`,
-              label: `${node.data.label}-1`,
-              hasChildren: node.level < 3
+              label: `${node.data.label}-1`
             },
             {
               id: `${node.data.id}-2`,
-              label: `${node.data.label}-2`,
-              hasChildren: node.level < 3
+              label: `${node.data.label}-2`
             }
           ]
 
