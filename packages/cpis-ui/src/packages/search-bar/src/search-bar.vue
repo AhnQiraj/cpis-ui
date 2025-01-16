@@ -1,71 +1,86 @@
 <template>
-  <div class="cpis-search-bar flex flex-row gap-2">
+  <div class="cpis-search-bar flex flex-row gap-2 100vw">
     <div
-      v-for="(item, index) in search"
-      :key="item.prop"
-      class="flex flex-row items-center gap-2 border-solid border-1 border-gray-3 rounded px-2.5"
+      class="cpis-search-bar-items-wrapper flex gap-2"
+      :style="{ 'flex-wrap': isExpanded ? 'wrap' : 'nowrap' }"
     >
-      <div v-if="!!item.label" class="whitespace-nowrap text-sm text-gray-6">
-        {{ item.label }}：
-      </div>
-      <template v-if="['select', 'multiple-select'].includes(item.type)">
-        <CpisSelect
-          size="small"
-          :key="item.prop"
-          :label="item.label"
-          clearable
-          :value-key="item.valueKey"
-          :label-key="item.labelKey"
-          :multiple="item.type === 'multiple-select'"
-          :collapse-tags="item.type === 'multiple-select'"
-          :placeholder="item.placeholder || '请选择'"
-          v-model="params[item.prop]"
-          :style="{
-            width: calculateWidth(
-              item.placeholder || '请选择',
-              item.type === 'multiple-select' ? 100 : 0
-            )
-          }"
-        >
-          <el-option
-            v-for="option in getEnumOptions(item)"
-            :key="option[item.valueKey || 'key']"
-            :label="option[item.labelKey || 'name']"
-            :value="option[item.valueKey || 'key']"
-          />
-        </CpisSelect>
-      </template>
-      <template
-        v-else-if="
-          ['daterange', 'date', 'datetime', 'datetimerange'].includes(item.type)
-        "
+      <div
+        v-for="(item, index) in search"
+        v-show="isExpanded || index <= 4"
+        :key="item.prop"
+        class="flex flex-row items-center gap-2 border-solid border-1 border-gray-3 rounded px-2.5"
       >
-        <CpisDatePicker
-          size="small"
-          :key="item.prop"
-          :type="item.type"
-          clearable
-          :label="item.label"
-          style="width: 200px"
-          v-model="params[item.prop]"
-        />
-      </template>
-      <template v-else>
-        <CpisInput
-          size="small"
-          clearable
-          :key="item.prop"
-          :label="item.label"
-          :placeholder="item.placeholder || '请输入'"
-          v-model="params[item.prop]"
-          :style="{
-            width: calculateWidth(item.placeholder || '请输入')
-          }"
-        />
-      </template>
+        <div v-if="!!item.label" class="whitespace-nowrap text-sm text-gray-6">
+          {{ item.label }}：
+        </div>
+        <template v-if="['select', 'multiple-select'].includes(item.type)">
+          <CpisSelect
+            size="small"
+            :key="item.prop"
+            :label="item.label"
+            clearable
+            :value-key="item.valueKey"
+            :label-key="item.labelKey"
+            :multiple="item.type === 'multiple-select'"
+            :collapse-tags="item.type === 'multiple-select'"
+            :placeholder="item.placeholder || '请选择'"
+            v-model="params[item.prop]"
+            :style="{
+              width: calculateWidth(
+                item.placeholder || '请选择',
+                item.type === 'multiple-select' ? 100 : 0
+              )
+            }"
+          >
+            <el-option
+              v-for="option in getEnumOptions(item)"
+              :key="option[item.valueKey || 'key']"
+              :label="option[item.labelKey || 'name']"
+              :value="option[item.valueKey || 'key']"
+            />
+          </CpisSelect>
+        </template>
+        <template
+          v-else-if="
+            ['daterange', 'date', 'datetime', 'datetimerange'].includes(
+              item.type
+            )
+          "
+        >
+          <CpisDatePicker
+            size="small"
+            :key="item.prop"
+            :type="item.type"
+            clearable
+            :style="{
+              width: calculateDateWidth(item.type) + 'px'
+            }"
+            :label="item.label"
+            v-model="params[item.prop]"
+          />
+        </template>
+        <template v-else>
+          <CpisInput
+            size="small"
+            clearable
+            :key="item.prop"
+            :label="item.label"
+            :placeholder="item.placeholder || '请输入'"
+            v-model="params[item.prop]"
+            :style="{
+              width: calculateWidth(item.placeholder || '请输入')
+            }"
+          />
+        </template>
+      </div>
+      <div class="cpis-search-bar-actions flex flex-row gap-2">
+        <CpisButton type="primary" @click="handleSearch">查询</CpisButton>
+        <CpisButton @click="handleSearchReset">重置</CpisButton>
+        <CpisButton v-if="search.length > 5" @click="handleExpand">{{
+          isExpanded ? '收起' : '展开'
+        }}</CpisButton>
+      </div>
     </div>
-    <CpisButton type="primary" @click="handleSearch">查询</CpisButton>
-    <CpisButton @click="handleSearchReset">重置</CpisButton>
   </div>
 </template>
 
@@ -74,8 +89,7 @@ import CpisInput from '../../input/index'
 import CpisSelect from '../../select/index'
 import CpisButton from '../../button/index'
 import CpisDatePicker from '../../date-picker/index'
-import { FormItem, Form, Option } from 'element-ui'
-
+import { Option } from 'element-ui'
 export default {
   name: 'CpisSearchBar',
   components: {
@@ -83,8 +97,6 @@ export default {
     CpisSelect,
     CpisButton,
     CpisDatePicker,
-    ElFormItem: FormItem,
-    ElForm: Form,
     ElOption: Option
   },
   props: {
@@ -104,7 +116,8 @@ export default {
   },
   data() {
     return {
-      params: {}
+      params: {},
+      isExpanded: false
     }
   },
   methods: {
@@ -159,6 +172,9 @@ export default {
       this.params = {}
       this.$emit('reset')
     },
+    handleExpand() {
+      this.isExpanded = !this.isExpanded
+    },
     calculateWidth(placeholder, additionalWidth = 0) {
       // 假设每个中文字符宽度为14px，英文字符为7px
       const baseWidth = 32 // 基础padding和border宽度
@@ -171,6 +187,15 @@ export default {
     },
     getEnumOptions(item) {
       return typeof item.enum === 'function' ? item.enum() : item.enum
+    },
+    calculateDateWidth(type) {
+      const widht = {
+        date: 100,
+        datetime: 150,
+        datetimerange: 350,
+        daterange: 250
+      }
+      return widht[type] || 100
     }
   }
 }
@@ -178,5 +203,13 @@ export default {
 <style scoped>
 ::v-deep .el-input__inner {
   @apply border-none;
+}
+/* date 组件的样式，padding-left 原设定过于大 */
+::v-deep .el-date-editor--date > .el-input__inner {
+  padding-left: 0px !important;
+}
+/* datetime 组件的样式，padding-left 原设定过于大 */
+::v-deep .el-date-editor--datetime > .el-input__inner {
+  padding-left: 0px !important;
 }
 </style>

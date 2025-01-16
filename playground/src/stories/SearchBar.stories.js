@@ -434,6 +434,86 @@ export default {
   })
 }
 
+export const DateRange = {
+  name: '各种日期选择器',
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<template>
+  <CpisSearchBar paramater-mode="structured" :search="search"/>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      dict: [
+        status: {}
+      ],
+      search: [
+        {
+          prop: 'date',
+          label: 'date',
+          type: 'daterange'
+        },
+        {
+          prop: 'datetime',
+          label: 'datetime',
+          type: 'datetime'
+        }
+      ]
+    }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.dict.status = [
+        { name: '启用', key: 1 },
+        { name: '禁用', key: 0 }
+      ]
+    }, 2000)
+  }
+}
+</script>
+        `
+      }
+    }
+  },
+  render: () => ({
+    components: { CpisSearchBar },
+    data() {
+      return {
+        search: [
+          {
+            prop: 'date',
+            label: 'date',
+            type: 'date'
+          },
+          {
+            prop: 'datetime',
+            label: 'datetime',
+            type: 'datetime'
+          },
+          {
+            prop: 'daterange',
+            label: 'daterange',
+            type: 'daterange'
+          },
+          {
+            prop: 'datetimerange',
+            label: 'datetimerange',
+            type: 'datetimerange'
+          }
+        ]
+      }
+    },
+    template: `
+      <div>
+        <CpisSearchBar :search="search" paramater-mode="structured"/>
+      </div>
+    `
+  })
+}
 export const AutoWidth = {
   name: '根据placeholder自动计算宽度',
   parameters: {
@@ -491,23 +571,33 @@ export default {
             placeholder: '请输入姓名请输入姓名'
           },
           {
-            prop: 'location',
-            label: '位置',
-            placeholder: '请输入详细的位置'
-          },
-          {
             prop: 'location1',
-            label: '位置',
+            label: '位置1',
             placeholder: '请输入详细的位置'
           },
           {
             prop: 'location2',
-            label: '位置',
+            label: '位置2',
             placeholder: '请输入详细的位置'
           },
           {
             prop: 'location3',
-            label: '位置',
+            label: '位置3',
+            placeholder: '请输入详细的位置'
+          },
+          {
+            prop: 'location4',
+            label: '位置4',
+            placeholder: '请输入详细的位置'
+          },
+          {
+            prop: 'location5',
+            label: '位置5',
+            placeholder: '请输入详细的位置'
+          },
+          {
+            prop: 'location6',
+            label: '位置6',
             placeholder: '请输入详细的位置'
           }
         ]
