@@ -494,6 +494,21 @@ export default {
             prop: 'location',
             label: '位置',
             placeholder: '请输入详细的位置'
+          },
+          {
+            prop: 'location1',
+            label: '位置',
+            placeholder: '请输入详细的位置'
+          },
+          {
+            prop: 'location2',
+            label: '位置',
+            placeholder: '请输入详细的位置'
+          },
+          {
+            prop: 'location3',
+            label: '位置',
+            placeholder: '请输入详细的位置'
           }
         ]
       }
