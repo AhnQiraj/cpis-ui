@@ -2,6 +2,7 @@ import CpisForm from '../../../packages/cpis-ui/src/packages/form/index'
 import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
 import CpisFormSection from '../../../packages/cpis-ui/src/packages/form/src/form-section.vue'
 import CpisFormItem from '../../../packages/cpis-ui/src/packages/form/src/form-item.vue'
+import CpisInput from '../../../packages/cpis-ui/src/packages/input/index.js'
 import { FormItem, Input } from 'element-ui'
 
 /**
@@ -14,7 +15,7 @@ import { FormItem, Input } from 'element-ui'
  * ## 基础用法
  *
  * ```vue
- * <CpisForm :model="formData" :column="2">
+ * <CpisForm :model="formData" :columns="2">
  *   <CpisFormSection>
  *     <CpisFormItem label="姓名" prop="name">
  *       <el-input v-model="formData.name" />
@@ -79,6 +80,54 @@ export default {
     contentWidth: {
       description: '内容宽度',
       control: 'number'
+    }
+  }
+}
+export const Default = {
+  name: 'Default',
+  render: (args, { argTypes }) => {
+    return {
+      props: Object.keys(argTypes),
+      components: {
+        CpisForm,
+        ElFormItem: FormItem,
+        ElInput: Input,
+        CpisButton,
+        CpisFormItem,
+        CpisFormSection
+      },
+      data: () => ({
+        formData: {}
+      }),
+      template: `
+      <div>
+        <CpisForm 
+          ref="form"
+          :model="formData"
+          :column="column" 
+          :label-width="labelWidth" 
+          :content-width="contentWidth"
+        >
+        <CpisFormSection columns="2">
+          <CpisFormItem label="姓名" prop="name">
+            <el-input v-model="formData.name" />
+          </CpisFormItem>
+          <CpisFormItem label="年龄" prop="age">
+            <el-input v-model="formData.age" />
+          </CpisFormItem>
+          <CpisFormItem label="家庭住址" prop="address" :span="2">
+            <el-input v-model="formData.address" />
+          </CpisFormItem>
+          <CpisFormItem label="textarea" prop="phone">
+          <el-input v-model="formData.phone" type="textarea" />
+          </CpisFormItem>
+          <CpisFormItem label="数字" prop="number">
+            <el-input type="number" v-model="formData.number"   />
+          </CpisFormItem>
+        </CpisFormSection>
+        </CpisForm>
+      </div>
+      `
     }
   }
 }

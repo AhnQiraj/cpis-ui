@@ -8,7 +8,7 @@
     <template #label>
       <div
         class="cpis-form-item__label h-full"
-        :style="{ width: labelWidth + 'px' }"
+        :style="{ width: labelWidth + 'px', height: '100%' }"
       >
         <span v-if="isRequired" class="required-star">*</span>
         {{ label }}
@@ -91,12 +91,14 @@ export default {
 <style lang="scss" scoped>
 ::v-deep .el-form-item__content {
   flex: 1;
+  padding-left: 10px;
 }
 ::v-deep .el-form-item__label:before {
   content: unset !important;
 }
 ::v-deep .el-form-item__label {
   height: 100%;
+  padding-right: 0px;
 }
 ::v-deep .el-form-item__error {
   position: absolute;
@@ -140,6 +142,15 @@ export default {
         padding: 0;
         height: 32px;
         line-height: 32px;
+      }
+
+      .el-textarea__inner {
+        // scrollbar-width: none;
+        // &::-webkit-scrollbar {
+        //   display: none;
+        // }
+        border: none;
+        padding: 0;
       }
 
       .el-select {
