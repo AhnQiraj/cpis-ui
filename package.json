@@ -13,7 +13,8 @@
     "@unocss/preset-uno": "^0.63.3",
     "@cpis/uno-preset": "^1.0.0",
     "@vitejs/plugin-vue2-jsx": "^1.1.1",
-    "@vitejs/plugin-vue2": "^2.3.1"
+    "@vitejs/plugin-vue2": "^2.3.1",
+    "unocss-preset-scrollbar-hide": "^1.0.1"
   },
   "dependencies": {
     "axios": "^1.4.0",
