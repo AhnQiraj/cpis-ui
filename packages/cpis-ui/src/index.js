@@ -50,7 +50,6 @@ const install = function (Vue, opts = {}) {
 export {
   CpisTag,
   CpisProCascader,
-  install,
   CpisPageContainer,
   CpisSearchInput,
   CpisTable,
@@ -69,22 +68,5 @@ export {
 }
 export default {
   version: '1.0.0',
-  install,
-  CpisTag,
-  CpisProCascader,
-  CpisPageContainer,
-  CpisSearchInput,
-  CpisTable,
-  CpisButton,
-  CpisInput,
-  CpisContainerHeader,
-  CpisForm,
-  CpisDrawer,
-  CpisSearchBar,
-  CpisTreeContainer,
-  CpisTree,
-  CpisFormItem,
-  CpisFormSection,
-  CpisDatePicker,
-  CpisSelect
+  install
 }
