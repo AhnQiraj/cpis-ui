@@ -19,7 +19,8 @@
     "vue-i18n": "^8.24.2"
   },
   "bin": {
-    "cpis-check-update": "./bin/check-update.js"
+    "cpis-check-update": "./bin/check-update.js",
+    "cpis-i18n": "./bin/i18n.js"
   },
   "exports": {
     ".": {
