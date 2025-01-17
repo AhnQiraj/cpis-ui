@@ -59,7 +59,7 @@ async function checkUpdates() {
         // 使用内网 registry 检查最新版本
         const latestVersion = execSync(
           `npm view ${pkg} version --registry=${INTERNAL_REGISTRY}`,
-          { timeout: 5000 } // 设置5秒超时
+          { timeout: 20 * 1000 } // 设置5秒超时
         )
           .toString()
           .trim()
