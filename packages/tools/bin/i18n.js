@@ -51,6 +51,24 @@ async function main() {
       throw new Error(`目录 ${directory} 不存在`)
     }
 
+    // 新增：选择 i18n_module
+    const modules = ['Platform', 'Tickets', 'Equipment', 'I18n']
+    console.log('\n可选的模块：')
+    modules.forEach((module, index) => {
+      console.log(`${index + 1}. ${module}`)
+    })
+
+    const moduleChoice = (await question('\n请选择模块编号（默认1）: ')) || '1'
+    const moduleIndex = parseInt(moduleChoice) - 1
+    if (
+      isNaN(moduleIndex) ||
+      moduleIndex < 0 ||
+      moduleIndex >= modules.length
+    ) {
+      throw new Error('无效的模块选择')
+    }
+    const selectedModule = modules[moduleIndex]
+
     const filePath = `./${directory}/${locale}.json`
     if (!fs.existsSync(filePath)) {
       throw new Error(`文件 ${filePath} 不存在`)
@@ -86,7 +104,7 @@ async function main() {
       for (const [key, value] of Object.entries(flattenedData)) {
         const escapedValue = value.replace(/'/g, "''")
         values.push(
-          `(${id}, '${locale}', '${key}', '${escapedValue}', 'I18n', '管理员', 1, NOW(), '管理员', 1, NOW())`
+          `(${id}, '${locale}', '${key}', '${escapedValue}', '${selectedModule}', '管理员', 1, NOW(), '管理员', 1, NOW())`
         )
         id++
       }

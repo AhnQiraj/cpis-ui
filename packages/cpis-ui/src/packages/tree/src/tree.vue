@@ -2,6 +2,7 @@
   <div class="cpis-tree">
     <ElTree
       ref="elTree"
+      class="text-sm"
       v-bind="$attrs"
       v-on="$listeners"
       @node-contextmenu="handleContextMenu"

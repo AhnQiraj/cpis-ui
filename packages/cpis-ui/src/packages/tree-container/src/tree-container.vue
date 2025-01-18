@@ -6,29 +6,30 @@
       slot="aside"
     >
       <div
-        class="flex items-center h-[46px] border-b-2 border-b-solid border-gray-2"
+        class="border-b-2 border-b-solid border-gray-2"
         :class="{ 'px-0': collapse, 'px-4': !collapse }"
       >
-        <span class="text-base font-bold" v-show="!collapse">{{ title }}</span>
+        <span class="text-base font-bold leading-[46px]" v-show="!collapse">{{
+          title
+        }}</span>
         <i
-          class="el-icon-d-arrow-left ml-auto cursor-pointer transition-transform duration-300"
+          class="el-icon-d-arrow-left float-right cursor-pointer transition-transform duration-300 leading-[46px]"
           :class="{ 'rotate-180': collapse }"
           @click="handleCollapse"
         />
       </div>
-      <div class="p-y-4 p-x-2 flex flex-col gap-2">
+      <div class="p-y-4 p-x-2 flex flex-col gap-2 flex-1 overflow-hidden">
         <slot name="search">
           <div class="search-box flex" v-show="!collapse">
             <el-input placeholder="请输入" v-model="searchValue" size="small">
             </el-input>
-            <el-dropdown>
+            <el-dropdown @command="handleCommand">
               <CpisButton
                 type="primary"
                 @click="handleSetting"
                 icon="el-icon-setting"
               />
-              <el-dropdown-menu slot="dropdown" @command="handleCommand">
-                <el-dropdown-item command="refresh">刷新</el-dropdown-item>
+              <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item command="collapseAll">
                   折叠所有
                 </el-dropdown-item>
@@ -39,18 +40,20 @@
             </el-dropdown>
           </div>
         </slot>
-        <CpisTree
-          v-show="!collapse"
-          :filter-node-method="filterNodeMethod"
-          class="flex-1"
-          ref="tree"
-          v-bind="{
-            'expand-on-click-node': false,
-            'highlight-current': true,
-            ...treeProps
-          }"
-          v-on="$listeners"
-        />
+        <div class="overflow-auto">
+          <CpisTree
+            v-show="!collapse"
+            :filter-node-method="filterNodeMethod"
+            class="flex-1"
+            ref="tree"
+            v-bind="{
+              'expand-on-click-node': false,
+              'highlight-current': true,
+              ...treeProps
+            }"
+            v-on="$listeners"
+          />
+        </div>
       </div>
     </div>
     <template #main>
@@ -98,10 +101,16 @@ export default {
   },
   methods: {
     handleCommand(command) {
-      if (command === 'refresh') {
-        this.$emit('on-refresh')
-      } else if (command === 'collapseAll') {
-        this.getTree().collapseAll()
+      if (command === 'collapseAll') {
+        // debugger
+        // // 获取所有节点数据
+        // const nodes = this.getTree().getCheckedNodes(false, true)
+        // // 遍历所有节点并展开
+        // nodes.forEach(node => {
+        //   this.getTree().setChecked(node, true)
+        // })
+      } else if (command === 'expandAll') {
+        // this.getTree().expandAll()
       }
     },
     handleCollapse() {
