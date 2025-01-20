@@ -29,14 +29,6 @@ function flattenObject(obj, prefix = '') {
 
 async function main() {
   try {
-    // 获取并验证ID前缀
-    const idPrefix = await question(
-      '请输入ID前缀（http://172.169.50.28:8090/pages/viewpage.action?pageId=26116435查看）: '
-    )
-    if (!/^\d{3}$/.test(idPrefix)) {
-      throw new Error('ID前缀必须是3位数字')
-    }
-
     // 获取并验证语言
     const locale =
       (await question('请输入语言（zh-CN/en，默认zh-CN）: ')) || 'zh-CN'
@@ -52,10 +44,29 @@ async function main() {
     }
 
     // 新增：选择 i18n_module
-    const modules = ['Platform', 'Tickets', 'Equipment', 'I18n']
+    // idPrefix
+    const modules = [
+      'Platform',
+      'Tickets',
+      'Safety',
+      'Equipment',
+      'Workorder',
+      'Examination',
+      'Shiftduty',
+      'Inspection',
+      'Material',
+      'Assess',
+      'Calculation',
+      'Supervision',
+      'Engineering',
+      'Eqeval',
+      'External',
+      'Datapush',
+      'Portalsite'
+    ]
     console.log('\n可选的模块：')
     modules.forEach((module, index) => {
-      console.log(`${index + 1}. ${module}`)
+      console.log(`${index + 1}. ${module}(${100 + index + 1})`)
     })
 
     const moduleChoice = (await question('\n请选择模块编号（默认1）: ')) || '1'
@@ -68,6 +79,7 @@ async function main() {
       throw new Error('无效的模块选择')
     }
     const selectedModule = modules[moduleIndex]
+    let idPrefix = 100 + parseInt(moduleChoice)
 
     const filePath = `./${directory}/${locale}.json`
     if (!fs.existsSync(filePath)) {
