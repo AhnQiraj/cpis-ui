@@ -10,7 +10,7 @@
         />
       </template>
     </div>
-    <div class="bg-white flex flex-col p-2 gap-2 overflow-hidden">
+    <div class="bg-white flex flex-1 flex-col p-2 gap-2 overflow-hidden">
       <template v-if="$slots.toolbar || toolbar?.length > 0">
         <div class="cpis-table-toolbar">
           <slot name="toolbar" class="ml-auto">
@@ -22,7 +22,7 @@
           </slot>
         </div>
       </template>
-      <div class="table-container">
+      <div class="table-container flex-1">
         <ELTable
           ref="table"
           :empty-text="emptyText"
