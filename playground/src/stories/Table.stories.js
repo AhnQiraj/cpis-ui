@@ -1493,82 +1493,142 @@ export const TableHeight = {
   name: '表格高度'
 }
 
-// Story 级别文档
-export const Primary = {
-  decorators: [
-    Story => ({
-      components: { Story },
+export const ToolTip = {
+  parameters: {
+    docs: {
+      source: {
+        code: `
+        <CpisTable :columns="[{label: '地址', prop: 'address', width: 100, tooltip: true}]" />
+        `
+      }
+    }
+  },
+  render: (args, { argTypes }) => {
+    return {
+      props: Object.keys(argTypes),
+      components: { CpisTable },
       template: `
-            <div>
-              <div class="docs-section">
-                <h2>Columns 列定义</h2
-                <table style="border-collapse: collapse; width: 100%; margin: 16px 0;">
-                    <tr>
-                        <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left;">参数</th>
-                        <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left;">说明</th>
-                        <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left;">默认值</th>
-                    </tr>
-                    <tr>
-                        <td style="border: 1px solid #ddd; padding: 12px;">valueType</td>
-                        <td style="border: 1px solid #ddd; padding: 12px;">列类型，详细配置查看下面 <a href="#valueType">valueType</a></td>
-                        <td style="border: 1px solid #ddd; padding: 12px;">text</td>
-                    </tr>
-                    <tr>
-                        <td style="border: 1px solid #ddd; padding: 12px;">copyable</td>
-                        <td style="border: 1px solid #ddd; padding: 12px;">是否支持复制</td>
-                        <td style="border: 1px solid #ddd; padding: 12px;">false</td>
-                    </tr>
-                    <tr>
-                        <td style="border: 1px solid #ddd; padding: 12px;">ellipsis</td>
-                        <td style="border: 1px solid #ddd; padding: 12px;">是否超长省略</td>
-                        <td style="border: 1px solid #ddd; padding: 12px;">可以通过设置valueEnum预设一些状态</td>
-                    </tr>
-                    <tr>
-                        <td style="border: 1px solid #ddd; padding: 12px;">search</td>
-                        <td style="border: 1px solid #ddd; padding: 12px;">配置列的搜索相关，false 为隐藏	</td>
-                        <td style="border: 1px solid #ddd; padding: 12px;">false</td>
-                    </tr>
-                    <tr>
-                        <td style="border: 1px solid #ddd; padding: 12px;">hideInTable</td>
-                        <td style="border: 1px solid #ddd; padding: 12px;">在表格中隐藏此列</td>
-                        <td style="border: 1px solid #ddd; padding: 12px;">false</td>
-                    </tr>
-                    
-                </table>
-                <h3>valueType</h3>
-                <p>valueType 是列定义中最重要的参数，决定了列的显示方式</p>
-                <table style="border-collapse: collapse; width: 100%; margin: 16px 0;" id="valueType">
-                    <tr>
-                        <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left;">类型</th>
-                        <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left;">说明</th>
-                        <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left;">特性</th>
-                    </tr>
-                    <tr>
-                        <td style="border: 1px solid #ddd; padding: 12px;">text</td>
-                        <td style="border: 1px solid #ddd; padding: 12px;">默认文本类型</td>
-                        <td style="border: 1px solid #ddd; padding: 12px;">居中显示</td>
-                    </tr>
-                    <tr>
-                        <td style="border: 1px solid #ddd; padding: 12px;">number</td>
-                        <td style="border: 1px solid #ddd; padding: 12px;">数字类型</td>
-                        <td style="border: 1px solid #ddd; padding: 12px;">居右显示</td>
-                    </tr>
-                    <tr>
-                        <td style="border: 1px solid #ddd; padding: 12px;">select</td>
-                        <td style="border: 1px solid #ddd; padding: 12px;">枚举类型</td>
-                        <td style="border: 1px solid #ddd; padding: 12px;">可以通过设置valueEnum预设一些状态</td>
-                    </tr>
-                    <tr>
-                        <td style="border: 1px solid #ddd; padding: 12px;">date</td>
-                        <td style="border: 1px solid #ddd; padding: 12px;">日期</td>
-                        <td style="border: 1px solid #ddd; padding: 12px;">可以预设一些状态</td>
-                    </tr>
-                    
-                </table>
-              </div>
-            </div>
-          `
-    })
-  ],
-  name: '列设置'
+        <CpisTable
+          :columns="[
+            {
+              label: '姓名',
+              prop: 'name'
+            },
+            {
+              label: '年龄', 
+              prop: 'age'
+            },
+            {
+              label: '地址',
+              prop: 'address',
+              valueType: 'text',
+              width: 100,
+              tooltip: true
+            }
+          ]"
+          :request="() => {
+            return {
+              success: true,
+              data: [{
+                name: '张三',
+                age: 18,
+                address: '北京市海淀区中关村大街1号'
+              }],
+              total: 50
+            }
+          }"
+        />
+      `
+    }
+  },
+  argTypes: {
+    columns: {
+      description: '列配置',
+      control: 'array',
+      table: {
+        category: '列配置'
+      }
+    }
+  },
+  name: '超长溢出和tooltip'
 }
+
+// Story 级别文档
+// export const Primary = {
+//   decorators: [
+//     Story => ({
+//       components: { Story },
+//       template: `
+//             <div>
+//               <div class="docs-section">
+//                 <h2>Columns 列定义</h2
+//                 <table style="border-collapse: collapse; width: 100%; margin: 16px 0;">
+//                     <tr>
+//                         <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left;">参数</th>
+//                         <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left;">说明</th>
+//                         <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left;">默认值</th>
+//                     </tr>
+//                     <tr>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">valueType</td>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">列类型，详细配置查看下面 <a href="#valueType">valueType</a></td>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">text</td>
+//                     </tr>
+//                     <tr>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">copyable</td>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">是否支持复制</td>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">false</td>
+//                     </tr>
+//                     <tr>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">ellipsis</td>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">是否超长省略</td>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">可以通过设置valueEnum预设一些状态</td>
+//                     </tr>
+//                     <tr>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">search</td>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">配置列的搜索相关，false 为隐藏	</td>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">false</td>
+//                     </tr>
+//                     <tr>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">hideInTable</td>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">在表格中隐藏此列</td>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">false</td>
+//                     </tr>
+
+//                 </table>
+//                 <h3>valueType</h3>
+//                 <p>valueType 是列定义中最重要的参数，决定了列的显示方式</p>
+//                 <table style="border-collapse: collapse; width: 100%; margin: 16px 0;" id="valueType">
+//                     <tr>
+//                         <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left;">类型</th>
+//                         <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left;">说明</th>
+//                         <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left;">特性</th>
+//                     </tr>
+//                     <tr>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">text</td>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">默认文本类型</td>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">居中显示</td>
+//                     </tr>
+//                     <tr>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">number</td>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">数字类型</td>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">居右显示</td>
+//                     </tr>
+//                     <tr>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">select</td>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">枚举类型</td>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">可以通过设置valueEnum预设一些状态</td>
+//                     </tr>
+//                     <tr>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">date</td>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">日期</td>
+//                         <td style="border: 1px solid #ddd; padding: 12px;">可以预设一些状态</td>
+//                     </tr>
+
+//                 </table>
+//               </div>
+//             </div>
+//           `
+//     })
+//   ],
+//   name: '列设置'
+// }

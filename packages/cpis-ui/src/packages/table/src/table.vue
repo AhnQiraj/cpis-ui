@@ -197,15 +197,7 @@
                         />
                       </template>
                       <template v-else>
-                        {{
-                          column?.formatter?.(
-                            scope.row,
-                            column,
-                            scope.$index
-                          ) ||
-                          scope.row[column.prop] ||
-                          columnEmptyText
-                        }}
+                        {{ scope.row[column.prop] || columnEmptyText }}
                         <template
                           v-if="column.copyable && scope.row[column.prop]"
                         >
@@ -333,7 +325,14 @@ export default {
   },
   computed: {
     computedColumns() {
-      return this.columns.filter(column => !column.hideInTable)
+      return this.columns
+        .filter(column => !column.hideInTable)
+        .map(column => {
+          if (column.tooltip) {
+            column.showOverflowTooltip = true
+          }
+          return column
+        })
     }
   },
   watch: {
