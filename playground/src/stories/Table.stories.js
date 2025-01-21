@@ -836,23 +836,20 @@ export const HideColumn = {
                 {
                   label: '年龄',
                   prop: 'age', 
-                  hideInTable: true
+                  hideInTable: true // 支持直接写布尔值
                 },
                 {
                   label: '三秒后隐藏',
-                  prop: 'sex'
+                  prop: 'sex',
+                  hideInTable: () => this.hiddenSex // 也支持绑定变量，但是需要写成肩头函数
                 }
               ]
             }
           },
           mounted() {
+            // 这里模拟了一个3秒后返回的请求，在你那里就是实际的接口
             setTimeout(() => {
-              this.columns = this.columns.map(column => {
-                if (column.prop === 'sex') {
-                  column.hideInTable = true
-                }
-                return column
-              })
+              this.hiddenSex = true
             }, 3000)
           }
         }
@@ -869,12 +866,7 @@ export const HideColumn = {
       components: { CpisTable },
       mounted() {
         setTimeout(() => {
-          this.columns = this.columns.map(column => {
-            if (column.prop === 'sex') {
-              column.hideInTable = true
-            }
-            return column
-          })
+          this.hiddenSex = true
         }, 3000)
       },
       data() {
@@ -893,7 +885,8 @@ export const HideColumn = {
             },
             {
               label: '三秒后隐藏',
-              prop: 'sex'
+              prop: 'sex',
+              hideInTable: () => this.hiddenSex
             }
           ]
         }

@@ -326,7 +326,15 @@ export default {
   computed: {
     computedColumns() {
       return this.columns
-        .filter(column => !column.hideInTable)
+        .filter(column => {
+          if (typeof column.hideInTable === 'boolean') {
+            return !column.hideInTable
+          }
+          if (typeof column.hideInTable === 'function') {
+            return !column.hideInTable()
+          }
+          return true
+        })
         .map(column => {
           if (column.tooltip) {
             column.showOverflowTooltip = true
