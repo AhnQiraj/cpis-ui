@@ -44,9 +44,8 @@ export default {
       default: ''
     },
     span: {
-      type: Number,
-      default: 1,
-      validator: value => value > 0
+      type: [Number, String],
+      default: 1
     },
     labelWidth: {
       type: Number,

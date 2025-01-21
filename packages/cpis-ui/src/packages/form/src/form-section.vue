@@ -24,7 +24,7 @@ export default {
     },
     // 每行显示的列数
     columns: {
-      type: Number,
+      type: [Number, String],
       default: 1
     },
     // 列间距
