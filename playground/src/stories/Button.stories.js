@@ -8,7 +8,7 @@ export default {
   parameters: {
     controls: {
       include: ['type', 'loading', 'disabled']
-    },
+    }
   },
   render: (args, { argTypes }) => {
     return {
@@ -51,10 +51,17 @@ export const Text = {
   name: 'Text'
 }
 
-
 export const Disabled = {
   args: {
     disabled: true
   },
   name: 'Disabled'
+}
+
+export const DisabledText = {
+  args: {
+    disabled: true,
+    type: 'text'
+  },
+  name: 'Disabled + Text'
 }

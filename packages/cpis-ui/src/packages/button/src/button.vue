@@ -103,7 +103,8 @@ export default {
     @apply !bg-transparent !border-transparent;
   }
 }
-.is-disabled {
+
+.is-disabled:not(.el-button--text) {
   @apply !bg-gray-2 !border-gray-3 !text-gray-4;
   &:hover {
     @apply !bg-gray-2 !border-gray-3 !text-gray-4;
@@ -112,6 +113,14 @@ export default {
     @apply !bg-gray-2 !border-gray-3 !text-gray-4;
   }
 }
+
+.is-disabled.el-button--text {
+  @apply !bg-transparent !border-none !text-gray-4;
+  &:hover {
+    @apply !bg-transparent !border-none !text-gray-4;
+  }
+  &:active {
+    @apply !bg-transparent !border-none !text-gray-4;
+  }
+}
 </style>
-
-
