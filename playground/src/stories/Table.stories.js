@@ -915,7 +915,7 @@ export const HideColumn = {
       }
     }
   },
-  name: '配置某一列可以隐藏'
+  name: 'hiddenInTable'
 }
 
 export const Copyable = {
