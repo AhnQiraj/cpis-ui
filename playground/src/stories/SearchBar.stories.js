@@ -382,18 +382,19 @@ export default {
           prop: 'status',
           label: '状态', 
           type: 'select',
-          enum: () => this.dict
+          enum: () => this.dict.status
         }
       ]
     }
   },
   mounted() {
+    // 这里模拟了一个3秒后返回的请求，在你那里就是实际的接口
     setTimeout(() => {
       this.dict.status = [
         { name: '启用', key: 1 },
         { name: '禁用', key: 0 }
       ]
-    }, 2000)
+    }, 3000)
   }
 }
 </script>
