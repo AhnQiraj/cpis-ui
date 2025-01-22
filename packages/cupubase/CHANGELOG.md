@@ -1,5 +1,11 @@
 # @cpis/cupubase
 
+## 0.1.15
+
+### Patch Changes
+
+- 上传组件 UploadList, 修改预览方式，判断文件类型，图片类型直接用img， 其他类型使用iframe (原逻辑)
+
 ## 0.1.14
 
 ### Patch Changes
