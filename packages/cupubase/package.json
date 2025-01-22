@@ -1,6 +1,6 @@
 {
   "name": "@cpis/cupubase",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "基础UI",
   "main": "lib/cupubase.umd.js",
   "module": "src/index.js",
