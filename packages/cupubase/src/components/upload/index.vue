@@ -57,7 +57,11 @@
         </el-tooltip>
       </template>
     </el-upload>
-    <el-dialog :visible.sync="previewDialogVisible" height="90%" :title="title">
+    <el-dialog
+      :visible.sync="previewDialogVisible"
+      height="90%"
+      :title="getImage.title"
+    >
       <el-link
         v-if="fileList != null && fileList.length > 1"
         class="arrow l-arrow"
@@ -76,10 +80,17 @@
         id="pptRow"
         style="overflow: hidden; width: 100%; height: calc(100% - 40px)"
       >
+        <img
+          v-if="getImage.type === 'image'"
+          :src="getImage.url"
+          alt=""
+          style="width: 100%; height: 100%; object-fit: contain"
+        />
         <iframe
+          v-else
           id="frameForm"
           ref="frameForm"
-          :src="getImage()"
+          :src="getImage.url"
           frameborder="0"
           style="overflow-y: auto; width: 100%; height: 98%"
         />
@@ -127,7 +138,7 @@ export default {
   },
   watch: {
     value: {
-      handler: function(val) {
+      handler: function (val) {
         if (val) {
           this.collectionId = val
           this.init(val)
@@ -147,6 +158,17 @@ export default {
     }
   },
   computed: {
+    getImage() {
+      const file = this.fileList?.[this.curIndex]
+      if (!file) return {}
+      return {
+        title:
+          '文件预览（部分格式文件预览乱码或预览失败，请下载原文件查看）' +
+          file.name,
+        url: this.getPath(file.id),
+        type: ['jpg', 'png', 'jpeg'].includes(file.ext) ? 'image' : 'other'
+      }
+    },
     tooltip() {
       return this.tip.replace('{sizeLimit}', this.sizeLimit / 1024 / 1024 + '')
     }
@@ -188,7 +210,7 @@ export default {
         this.collectionId = this.guid()
       }
       const { businessCode, subBusinessCode, businessDataCode } =
-      this.params || {}
+        this.params || {}
       window.apiList['file/attachment']
         .uploadFileset(
           file,
@@ -246,14 +268,6 @@ export default {
         id
       )
     },
-    getImage() {
-      const file = this.fileList?.[this.curIndex]
-      if (!file) return
-      this.title =
-        '文件预览（部分格式文件预览乱码或预览失败，请下载原文件查看）' +
-        file.name
-      return this.getPath(file.id)
-    },
     // 下载文件
     downFile() {
       const file = this.fileList?.[this.curIndex]
@@ -300,20 +314,16 @@ export default {
     preFile() {
       this.curIndex =
         this.curIndex === 0 ? this.fileList.length - 1 : this.curIndex - 1
-      let file = this.fileList[this.curIndex]
-      this.getImage(file.id, file.name)
     },
     nextFile() {
       this.curIndex =
         this.curIndex === this.fileList.length - 1 ? 0 : this.curIndex + 1
-      let file = this.fileList[this.curIndex]
-      this.getImage(file.id, file.name)
     }
   }
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 #cpis-upload-list {
   ::v-deep .el-dialog {
     height: 72vh !important;
