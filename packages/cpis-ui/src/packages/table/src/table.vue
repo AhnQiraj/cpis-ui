@@ -197,7 +197,17 @@
                         />
                       </template>
                       <template v-else>
-                        {{ scope.row[column.prop] || columnEmptyText }}
+                        {{
+                          column?.formatter?.(
+                            scope.row,
+                            column,
+                            scope.row[column.prop],
+                            scope.$index
+                          ) ||
+                          scope.row[column.prop] ||
+                          columnEmptyText
+                        }}
+
                         <template
                           v-if="column.copyable && scope.row[column.prop]"
                         >
