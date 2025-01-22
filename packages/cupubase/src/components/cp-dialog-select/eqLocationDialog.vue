@@ -103,7 +103,7 @@ export default {
             manageObjName: '',
             eqTypeId: '',
             eqTypeName: '',
-            isOn: 'Y',
+            isOn: 1,
             companyId: '',
             path: '',
             pathLocaId: '',
@@ -226,7 +226,7 @@ export default {
     })
     // 设备位置属性
     window.apiList['equipment/index'].eqLocationAttrList({}).then(res => {
-      if (res.code === 0) {
+      if (res.state === 200) {
         this.locaAttrList = res.data
       }
     })
@@ -264,7 +264,7 @@ export default {
       return selection.locaName
     },
     onReset() {
-      this.locationDialogProp.toolbarProp.searchData.isOn = 'Y'
+      this.locationDialogProp.toolbarProp.searchData.isOn = 1
       this.locationDialogProp.toolbarProp.searchData.path = ''
       this.locationDialogProp.toolbarProp.searchData.pathLocaId = ''
       this.locationDialogProp.toolbarProp.searchData.locaId = ''
