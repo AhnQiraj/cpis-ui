@@ -1,5 +1,11 @@
 # @cpis/cupubase
 
+## 2.0.1
+
+### Patch Changes
+
+- 设备位置弹窗，兼容2.0的接口和参数
+
 ## 2.0.0
 
 ### Major Changes
