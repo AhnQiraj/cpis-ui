@@ -51,7 +51,7 @@ export default {
           // 搜索数据
           searchData: {
             key: '',
-            isOn: 'Y',
+            isOn: 1,
             companyId: '',
             pathEqTypeId: '',
             path: ''

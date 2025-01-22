@@ -60,7 +60,7 @@ export default {
             manageObjNo: '',
             manageObjName: '',
             objectType: '',
-            isOn: 'Y',
+            isOn: 1,
             companyId: '',
             pathManageObjectId: '',
             path: ''
@@ -168,7 +168,7 @@ export default {
       return selection.manageObjName
     },
     onReset() {
-      this.manageObjectDialogProp.toolbarProp.searchData.isOn = 'Y'
+      this.manageObjectDialogProp.toolbarProp.searchData.isOn = 1
       this.manageObjectDialogProp.toolbarProp.searchData.path = ''
       this.manageObjectDialogProp.toolbarProp.searchData.pathManageObjectId = ''
     },

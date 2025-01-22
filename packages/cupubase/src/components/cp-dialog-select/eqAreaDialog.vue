@@ -57,7 +57,7 @@ export default {
             dutyDeptId: '',
             areaNo: '',
             areaName: '',
-            isOn: '1',
+            isOn: 1,
             companyId: '',
             pathAreaId: '',
             path: ''
@@ -159,7 +159,7 @@ export default {
     onReset() {
       this.areaDialogProp.toolbarProp.searchData.path = ''
       this.areaDialogProp.toolbarProp.searchData.pathAreaId = ''
-      this.areaDialogProp.toolbarProp.searchData.isOn = '1' //默认查询状态为启用的区域
+      this.areaDialogProp.toolbarProp.searchData.isOn = 1 //默认查询状态为启用的区域
     },
     /**
      * 弹出表格确定事件

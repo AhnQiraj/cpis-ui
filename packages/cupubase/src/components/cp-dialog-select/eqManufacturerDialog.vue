@@ -51,7 +51,7 @@ export default {
           searchData: {
             key: '',
             companyId: '',
-            isOn: 'Y'
+            isOn: 1
           }
         },
         // 表格属性

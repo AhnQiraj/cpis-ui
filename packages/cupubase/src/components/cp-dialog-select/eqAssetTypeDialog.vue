@@ -69,7 +69,7 @@ export default {
             eqTypeName: '',
             manufacturerId: '',
             manufacturerName: '',
-            isOn: 'Y' //默认查询状态为启用的区域
+            isOn: 1 //默认查询状态为启用的区域
           }
         },
         // 表格属性
