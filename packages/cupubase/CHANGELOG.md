@@ -1,5 +1,11 @@
 # @cpis/cupubase
 
+## 2.0.0
+
+### Major Changes
+
+- 开启新纪源 2.0 时代
+
 ## 0.1.15
 
 ### Patch Changes
