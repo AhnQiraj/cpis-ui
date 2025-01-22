@@ -51,6 +51,15 @@
             size="small"
             :key="item.prop"
             :type="item.type"
+            :value-format="
+              item.format ||
+              {
+                date: 'yyyy-MM-dd',
+                datetime: 'yyyy-MM-dd HH:mm:ss',
+                datetimerange: 'yyyy-MM-dd HH:mm:ss',
+                daterange: 'yyyy-MM-dd'
+              }[item.type]
+            "
             clearable
             :style="{
               width: calculateDateWidth(item.type) + 'px'
