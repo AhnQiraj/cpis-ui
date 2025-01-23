@@ -116,3 +116,23 @@ export const DateRangeange = () => ({
     }
   }
 })
+
+// 基础日期选择器
+export const DateTimeRangeange = () => ({
+  components: {
+    CpisDatePicker
+  },
+  template: `
+    <div class="flex flex-col gap-2">
+  
+      小<CpisDatePicker size="small" v-model="value" type="datetimerange" clearable  />
+      中<CpisDatePicker size="medium" v-model="value" type="datetimerange" clearable  />
+      大<CpisDatePicker size="large" v-model="value" type="datetimerange" clearable  />
+    </div>
+  `,
+  data() {
+    return {
+      value: ''
+    }
+  }
+})

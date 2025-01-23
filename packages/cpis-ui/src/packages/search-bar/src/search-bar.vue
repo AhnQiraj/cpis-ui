@@ -60,6 +60,11 @@
                 daterange: 'yyyy-MM-dd'
               }[item.type]
             "
+            :default-time="
+              item.type === 'datetimerange'
+                ? ['00:00:00', '23:59:59']
+                : undefined
+            "
             clearable
             :style="{
               width: calculateDateWidth(item.type) + 'px'
