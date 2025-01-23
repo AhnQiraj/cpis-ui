@@ -346,9 +346,7 @@ export default {
           return true
         })
         .map(column => {
-          if (column.tooltip) {
-            column.showOverflowTooltip = true
-          }
+          column.showOverflowTooltip = typeof column.tooltip === 'boolean' ? column.tooltip : true
           return column
         })
     }
