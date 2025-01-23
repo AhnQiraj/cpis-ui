@@ -160,6 +160,16 @@ export const FlatSearch = {
               { name: '启用', key: 1 },
               { name: '禁用', key: 0 }
             ]
+          },
+          {
+            prop: 'createTime',
+            label: '日期区间',
+            type: 'daterange'
+          },
+          {
+            prop: 'date',
+            label: '日期',
+            type: 'date'
           }
         ]"/>`
       }
@@ -184,7 +194,7 @@ export const FlatSearch = {
             ]
           },
           {
-            prop: ['createTime', 'endTime'],
+            prop: 'createTime',
             label: '日期区间',
             type: 'daterange'
           },

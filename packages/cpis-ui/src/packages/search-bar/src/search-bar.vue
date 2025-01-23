@@ -221,4 +221,8 @@ export default {
 ::v-deep .el-date-editor--datetime > .el-input__inner {
   padding-left: 0px !important;
 }
+
+::v-deep .el-input .el-input__inner {
+  padding-left: 0px !important;
+}
 </style>
