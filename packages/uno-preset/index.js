@@ -13,7 +13,12 @@ export function preseet() {
     preflights: [
       ...presetMini().preflights,
       {
-        getCSS: () => `${generateCSSVars(themes)}`
+        getCSS: () => `${generateCSSVars(themes)} \n
+        .grayscale {
+          filter: grayscale(100%);
+          -webkit-filter: grayscale(100%);
+        }
+        `
       }
     ],
     extendTheme: theme => {

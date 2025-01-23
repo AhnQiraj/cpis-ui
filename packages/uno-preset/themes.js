@@ -59,39 +59,39 @@ export const themes = [
       }
     }
   },
-  {
-    name: 'cpis-green',
-    label: '翡翠绿',
-    cssVars: {
-      dark: {
-        'level-1': '#f6ffed',
-        'level-2': '#d9f7be',
-        'level-3': '#b7eb8f',
-        'level-4': '#95de64',
-        'level-5': '#73d13d',
-        'level-6': '#52c41a',
-        'level-7': '#389e0d',
-        'level-8': '#237804',
-        'level-9': '#135200',
-        'level-10': '#092b00'
-      },
-      light: {
-        'level-1': '#f6ffed',
-        'level-2': '#d9f7be',
-        'level-3': '#b7eb8f',
-        'level-4': '#95de64',
-        'level-5': '#73d13d',
-        'level-6': '#52c41a',
-        'level-7': '#389e0d',
-        'level-8': '#237804',
-        'level-9': '#135200',
-        'level-10': '#092b00'
-      }
-    }
-  },
+  // {
+  //   name: 'cpis-green',
+  //   label: '翡翠绿',
+  //   cssVars: {
+  //     dark: {
+  //       'level-1': '#f6ffed',
+  //       'level-2': '#d9f7be',
+  //       'level-3': '#b7eb8f',
+  //       'level-4': '#95de64',
+  //       'level-5': '#73d13d',
+  //       'level-6': '#52c41a',
+  //       'level-7': '#389e0d',
+  //       'level-8': '#237804',
+  //       'level-9': '#135200',
+  //       'level-10': '#092b00'
+  //     },
+  //     light: {
+  //       'level-1': '#f6ffed',
+  //       'level-2': '#d9f7be',
+  //       'level-3': '#b7eb8f',
+  //       'level-4': '#95de64',
+  //       'level-5': '#73d13d',
+  //       'level-6': '#52c41a',
+  //       'level-7': '#389e0d',
+  //       'level-8': '#237804',
+  //       'level-9': '#135200',
+  //       'level-10': '#092b00'
+  //     }
+  //   }
+  // },
   {
     name: 'cpis-orange',
-    label: '活力城',
+    label: '活力橙',
     cssVars: {
       light: {
         'level-1': '#FFF7E6',
