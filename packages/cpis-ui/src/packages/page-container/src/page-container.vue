@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-gray-2 gap-2 flex box-border h-full "
+    class="bg-gray-2 gap-2 flex box-border h-full"
     :class="layout.includes('aside') ? 'flex-row' : 'flex-col'"
     :style="{ height }"
   >
@@ -22,6 +22,9 @@
           :is="getComponent(item)"
           v-bind="item === 'header' ? { title } : {}"
         >
+          <template v-if="item === 'header'" #right>
+            <slot name="header-right" />
+          </template>
           <slot :name="item" />
         </component>
       </template>
