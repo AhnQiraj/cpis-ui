@@ -509,14 +509,62 @@ export const Section = {
     }
   }
 }
-
-export const SectionCustomSlot = {
-  name: '表单分区自定义内容',
+export const SectionCustomRightSlot = {
+  name: '表单分区自定义右侧内容',
   parameters: {
     docs: {
       source: {
         code: `<template>
-  <CpisFormSection title="基础信息" columns="2">
+  <CpisFormSection title="基础信息" columns="1">
+    <template #right>
+      右侧内容
+    </template>
+  </CpisFormSection>
+</template>
+`
+      }
+    }
+  },
+  render: (args, { argTypes }) => {
+    return {
+      props: Object.keys(argTypes),
+      components: {
+        CpisForm,
+        ElFormItem: FormItem,
+        ElInput: Input,
+        CpisButton,
+        CpisFormSection,
+        CpisFormItem
+      },
+      data: () => ({
+        formData: {}
+      }),
+      template: `
+      <div>
+        <CpisForm 
+        >
+          <CpisFormSection title="基础信息" columns="1">
+          <template #right>
+            右侧内容
+          </template>
+          <CpisFormItem label="入职日期" prop="entryDate">
+            <el-input v-model="formData.entryDate" />
+          </CpisFormItem>
+          </CpisFormSection>
+        </CpisForm>
+      </div>
+      `
+    }
+  }
+}
+
+export const SectionCustomSlot = {
+  name: '表单分区完全自定义标题',
+  parameters: {
+    docs: {
+      source: {
+        code: `<template>
+  <CpisFormSection title="基础信息" columns="1">
     <template #title>
       <div class="cpis-form-section__title">
         基础信息
@@ -548,7 +596,7 @@ export const SectionCustomSlot = {
       <div>
         <CpisForm 
         >
-        <CpisFormSection title="基础信息" columns="2">
+        <CpisFormSection title="基础信息" columns="1">
           <template #title>
             <div class="cpis-form-section__title">基础信息
               <CpisButton type="text">按钮1</CpisButton>

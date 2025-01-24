@@ -1,10 +1,16 @@
 <template>
   <div class="cpis-form-section">
     <!-- 标题区域 -->
-    <div class="cpis-form-section__header" v-if="title || $slots.title">
+    <div
+      class="flex items-center cpis-form-section__header"
+      v-if="title || $slots.title"
+    >
       <slot name="title">
         <div class="cpis-form-section__title">{{ title }}</div>
       </slot>
+      <div v-if="$slots.right" class="ml-auto">
+        <slot name="right"></slot>
+      </div>
     </div>
 
     <!-- 内容区域 -->
@@ -57,11 +63,12 @@ export default {
   margin-bottom: 16px;
 
   &__header {
+    @apply bg-primary-1 h-[32px]
     margin-bottom: 8px;
   }
 
   &__title {
-    @apply bg-primary-1 h-[32px] text-gray-8 text-base font-bold leading-[32px];
+    @apply text-gray-8 text-base font-bold leading-[32px];
     position: relative;
     padding-left: 12px;
 

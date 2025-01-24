@@ -1146,7 +1146,6 @@ export const Required = {
 }
 export const Selection = {
   parameters: {
-    nchor: 'CustomColumnSlot',
     docs: {
       source: {
         code: `
@@ -1226,9 +1225,10 @@ export default {
   data() {
     return {
       columns: [
-        { label: '姓名', prop: 'name' },
-        { label: '年龄', prop: 'age' },
-        { label: '性别', prop: 'sex' }
+        { label: '插槽1', prop: 'slot1' },
+        { label: '插槽2', prop: 'slot2' },
+        { label: '插槽3', prop: 'slot3' },
+        { label: '插槽4', prop: 'slot4' }
       ]
     }
   },
@@ -1243,7 +1243,10 @@ export default {
 <template>
   <CpisTable :columns="columns">
     <template #columns="{column, row}">
-      <CpisButton type="text" v-if="column.prop === 'name'" @click="handleClick(row)">可以点击</CpisButton>
+      <CpisButton type="text" v-if="column.prop === 'slot1'" @click="handleClick(row)">slot1</CpisButton>
+      <CpisButton type="text" v-else-if="column.prop === 'slot2'" @click="handleClick(row)">slot2</CpisButton>
+      <CpisButton type="text" v-else-if="column.prop === 'slot3'" @click="handleClick(row)">slot3</CpisButton>
+      <CpisButton type="text" v-else-if="column.prop === 'slot4'" @click="handleClick(row)">slot4</CpisButton>
     </template>
   </CpisTable>
 </template>
@@ -1273,7 +1276,10 @@ export default {
         }
       }">
       <template #columns="{column, row}">
-        <CpisButton type="text" v-if="column.prop === 'name'">可以点击</CpisButton>
+        <CpisButton type="text" v-if="column.prop === 'slot1'">slot1</CpisButton>
+        <CpisButton type="text" v-if="column.prop === 'slot2'">slot2</CpisButton>
+        <CpisButton type="text" v-if="column.prop === 'slot3'">slot3</CpisButton>
+        <CpisButton type="text" v-if="column.prop === 'slot4'">slot4</CpisButton>
       </template>
       </CpisTable>
       `
@@ -1295,18 +1301,20 @@ export default {
         valueType: 'selection'
       },
       {
-        label: '姓名',
-        prop: 'name'
+        label: '插槽1',
+        prop: 'slot1'
       },
       {
-        label: '年龄',
-        prop: 'age'
+        label: '插槽2',
+        prop: 'slot2'
       },
       {
-        label: '性别',
-        prop: 'sex',
-        valueType: 'select',
-        width: '100px'
+        label: '插槽3',
+        prop: 'slot3'
+      },
+      {
+        label: '插槽3',
+        prop: 'slot3'
       }
     ]
   },
