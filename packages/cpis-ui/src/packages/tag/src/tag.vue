@@ -1,5 +1,7 @@
 <template>
-  <ElTag :type="type" :size='size'>{{ $slots.default[0].text }}</ElTag>
+  <ElTag :type="type" v-bind="$attrs">
+    <slot></slot>
+  </ElTag>
 </template>
 
 <script>
@@ -16,7 +18,9 @@ export default {
         submitted: 'default',
         draft: 'warning',
         completed: 'success',
+        end: 'success',
         cancelled: 'info',
+        cancel: 'info',
         overdue: 'danger',
         default: 'default'
       }[this.$props.type]
@@ -26,19 +30,8 @@ export default {
     type: {
       type: String,
       default: 'default',
-      comment: '标签类型',
-      validator: function (value) {
-        return ['small', 'medium', 'large'].indexOf(value) !== -1;
-      },
-    },
-    size: {
-      type: String,
-      comment: '尺寸',
-      default: 'medium',
-      validator: function (value) {
-        return ['small', 'medium', 'large'].indexOf(value) !== -1;
-      },
-    },
+      comment: '标签类型'
+    }
   }
 }
 </script>

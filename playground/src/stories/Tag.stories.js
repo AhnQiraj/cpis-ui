@@ -1,5 +1,19 @@
 import 'element-ui/lib/theme-chalk/index.css'
-import { CpisTag } from '@cpis/cpis-ui'
+import CpisTag from '../../../packages/cpis-ui/src/packages/tag/index'
+
+/**
+ * ## CpisTag 的状态 Mapping
+ * 以下业务状态的值，会映射到 CpisTag 的 type 属性。举个例子： `<cpis-tag type="completed">`和 `<cpis-tag type="end">` 的颜色是同一个。不传就是默认发起
+ *
+ *
+ * | 业务状态 | 对照字典值 |
+ * |---------|---------|
+ * | submitted, 默认,其他 | 发起，提交，其他状态 |
+ * | draft | 拟定，拟稿 |
+ * | completed， end | 结束，完成 |
+ * | cancelled, cancel | 作废，取消 |
+ * | overdue | 超期 |
+ */
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
@@ -30,6 +44,12 @@ export default {
   }
 }
 
+export const Default = {
+  args: {
+    label: '默认'
+  },
+  name: '默认'
+}
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Submitted = {
   args: {

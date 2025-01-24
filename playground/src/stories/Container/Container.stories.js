@@ -85,7 +85,6 @@ export const CustomHeaderRight = {
       }
     }
   },
-  name: '自定义标题右侧',
   render: args => ({
     components: { CpisPageContainer },
     template: `
@@ -123,7 +122,6 @@ export const CustomHeader = {
       }
     }
   },
-  name: '自定义标题',
   render: args => ({
     components: { CpisPageContainer },
     template: `
