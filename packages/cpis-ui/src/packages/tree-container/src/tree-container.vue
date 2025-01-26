@@ -109,8 +109,9 @@ export default {
         // nodes.forEach(node => {
         //   this.getTree().setChecked(node, true)
         // })
+        this.getTree().collapseAll()
       } else if (command === 'expandAll') {
-        // this.getTree().expandAll()
+        this.getTree().expandAll()
       }
     },
     handleCollapse() {
