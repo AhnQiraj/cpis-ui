@@ -117,13 +117,10 @@ export default {
     handleCollapse() {
       this.collapse = !this.collapse
     },
-    handleSearch() {
-      this.getTree().filter(node => {
-        return node.label.includes(this.searchValue)
-      })
-    },
     filterNodeMethod(query, data) {
-      return data.label.indexOf(query) > -1
+      return (
+        data[this?.treeProps?.props?.label ?? 'label']?.indexOf?.(query) > -1
+      )
     },
 
     getTree() {
