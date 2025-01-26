@@ -10,3 +10,8 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.el-form {
+  padding: 8px;
+}
+</style>
