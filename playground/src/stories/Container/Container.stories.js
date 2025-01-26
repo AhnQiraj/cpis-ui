@@ -1,6 +1,30 @@
 import 'element-ui/lib/theme-chalk/index.css'
 import CpisPageContainer from '../../../../packages/cpis-ui/src/packages/page-container/index.js'
 
+/**
+ *
+ * CPIS PageContainer 是方便实现页面布局的容器组件。常常用于每个界面最外层的容器。
+ *
+ * > **重要提示：** 当使用插槽时，请使用 `<template #header>`、`<template #main>`、`<template #footer>` 语法。除非你明确知道自己的需求，否则不建议直接使用 `<div>`。
+ *
+ *
+ * ## 基础用法
+ *
+ * ```vue
+ * <CpisPageContainer :layout="['header', 'main', 'footer']" title="标题">
+ *   <template #header>
+ *     <div>自定义标题</div>
+ *   </template>
+ *   <template #main>
+ *     <div>主内容</div>
+ *   </template>
+ *   <template #footer>
+ *     <div>页脚</div>
+ *   </template>
+ * </CpisPageContainer>
+ * ```
+ **/
+
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
   components: { CpisPageContainer },
@@ -42,6 +66,24 @@ export default {
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default = {
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<div style="height: 500px; padding: 16px; background-color: #f5f5f5;">
+  <CpisPageContainer :layout="['header', 'main', 'footer']" title="标题">
+    <template #header>
+      <div>标题，主内容和页脚</div>
+    </template>
+    <template #main>
+      <div>页脚</div>
+    </template>
+  </CpisPageContainer>
+</div>
+      `
+      }
+    }
+  },
   args: {
     title: '标题，主内容和页脚',
     layout: ['header', 'main', 'footer']
