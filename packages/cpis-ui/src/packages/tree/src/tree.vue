@@ -96,6 +96,22 @@ export default {
     },
     insertAfter(...args) {
       return this.$refs.elTree.insertAfter(...args)
+    },
+    expandAll() {
+      const nodes = this.$refs.elTree.$el.querySelectorAll(
+        '.el-tree-node__expand-icon'
+      )
+      nodes.forEach(icon => {
+        icon.click()
+      })
+    },
+    collapseAll() {
+      const nodes = this.$refs.elTree.$el.querySelectorAll(
+        '.el-tree-node__expand-icon.expanded'
+      )
+      nodes.forEach(icon => {
+        icon.click()
+      })
     }
   }
 }
