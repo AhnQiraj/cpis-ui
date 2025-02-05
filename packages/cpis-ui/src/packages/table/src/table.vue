@@ -425,7 +425,7 @@ export default {
           }
           this.loading = true
           const res = await this.request(requestParams)
-          if (!res.success) return
+          if (!Array.isArray(res.data)) return
           this.dataSource = res.data
           this.total = res.total
         } catch (error) {
