@@ -51,6 +51,7 @@ import CpisSearchBar from '../../../packages/cpis-ui/src/packages/search-bar/ind
  *   enum?: Array | Function,          // 枚举值
  *   valueKey?: string,     // 枚举值的value值
  *   labelKey?: string,     // 枚举值的label值
+ *   defaultValue?: any,     // 默认值
  * }
  * ```
  *
@@ -303,6 +304,115 @@ export const StructuredSearch = {
         </div>
       </div>
     `
+  })
+}
+
+export const DefaultValue = {
+  name: 'DefaultValue',
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<template>
+  <CpisSearchBar paramater-mode="flat" :search="search"/>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      search: [
+        {
+          prop: 'name',
+          label: '姓名',
+          defaultValue: '张三'
+        },
+        {
+          prop: 'status',
+          label: '状态',
+          type: 'select',
+          enum: [
+            { name: '启用', key: 1 },
+            { name: '禁用', key: 0 }
+          ],
+          defaultValue: 1
+        },
+        {
+          prop: 'createTime',
+          label: '日期区间',
+          type: 'daterange',
+          defaultValue: ['2024-01-01', '2024-01-01']
+        },
+        {
+          prop: 'date',
+          label: '日期',
+          type: 'date',
+          defaultValue: '2024-01-01'
+        }
+      ]
+    }
+  }
+}
+</script>
+`
+      }
+    }
+  },
+  render: () => ({
+    components: { CpisSearchBar },
+    data() {
+      return {
+        search: [
+          {
+            prop: 'name',
+            label: '姓名',
+            defaultValue: '张三'
+          },
+          {
+            prop: 'status',
+            label: '状态',
+            type: 'select',
+            enum: [
+              { name: '启用', key: 1 },
+              { name: '禁用', key: 0 }
+            ],
+            defaultValue: 1
+          },
+          {
+            prop: 'createTime',
+            label: '日期区间',
+            type: 'daterange',
+            defaultValue: ['2024-01-01', '2024-01-01']
+          },
+          {
+            prop: 'date',
+            label: '日期',
+            type: 'date',
+            defaultValue: '2024-01-01'
+          }
+        ],
+        searchParams: {}
+      }
+    },
+    methods: {
+      handleSearch(params) {
+        this.searchParams = JSON.parse(JSON.stringify(params))
+        console.log('搜索参数:', params)
+      },
+      handleReset() {
+        this.searchParams = null
+        console.log('重置搜索')
+      }
+    },
+    template: `
+    <div>
+      <CpisSearchBar @search="handleSearch" @reset="handleReset" :search="search" paramater-mode="flat"/>
+      <div style="margin-top: 16px;">
+        <p>点击查询查看搜索参数:</p>
+        <pre v-if="searchParams">{{ JSON.stringify(searchParams, null, 2) }}</pre>
+      </div>
+    </div>
+  `
   })
 }
 

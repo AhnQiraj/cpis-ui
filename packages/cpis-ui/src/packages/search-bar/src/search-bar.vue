@@ -134,6 +134,15 @@ export default {
       isExpanded: false
     }
   },
+  mounted() {
+    let params = {}
+    this.search.map(item => {
+      if (item.defaultValue) {
+        params[item.prop] = item.defaultValue
+      }
+    })
+    this.params = { ...params }
+  },
   methods: {
     handleSearch() {
       try {
