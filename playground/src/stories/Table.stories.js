@@ -76,13 +76,15 @@ import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
   request 属性用于配置请求，支持异步函数，返回一个 Promise 对象。
   request 返回值要求：
   ```
-{
-  success: true,
-  data: [],
-  total: 0
-}
+  {
+    data: [],
+    total: 0
+  }
   ```
-  其中 success 为布尔值，data 为数组，total 为总数。 只有当sucess为true的时候，data才会被渲染。所以根据后端的接口定义正确判断success的值。
+  其中 ~~success 为布尔值~~，data 为数组，total 为总数。 只有当~~sucess为true的时候~~，data才会被渲染。~~所以根据后端的接口定义正确判断success的值。~~
+
+  **0.0.54 版本后**，success 被移除，data 为数组，total 为总数。 只有当data为数组的时候，data才会被渲染。所以根据后端的接口定义正确判断data的值。
+
  */
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
@@ -160,7 +162,6 @@ export default {
       return await new Promise(resolve => {
         setTimeout(() => {
           resolve({
-            success: true,
             data: [
               {
                 id: 1,
@@ -385,7 +386,6 @@ export const Request = {
             return new Promise(resolve => {
               setTimeout(() => {
                 resolve({
-                  success: true,
                   data: [{ name: '张三' }, { name: '李四' }, { name: '王五' }],
                   total: 3
                 })
@@ -530,7 +530,6 @@ export default {
           identity: 'ibps_org_employee1',
           request: async () => {
             return {
-              success: true,
               data: [{ name: '张三' }, { name: '李四' }, { name: '王五' }]
             }
           },
@@ -812,7 +811,6 @@ export const HideColumn = {
         <template>
           <CpisTable ref="table" :columns="columns" :request="() => {
             return {
-              success: true,
               data: [{
                 name: '张三',
                 age: 18,
@@ -894,7 +892,6 @@ export const HideColumn = {
       template: `
         <CpisTable ref="table" v-bind="$props" :columns="columns" :request="() => {
           return {
-            success: true,
             data: [{
               name: '张三',
               age: 18,
@@ -1266,7 +1263,6 @@ export default {
       template: `
       <CpisTable v-bind="$props" :columns="columns" :request="() => {
         return {
-          success: true,
           data: [{
             name: '张三',
             age: 18,
@@ -1339,7 +1335,6 @@ export const FixedColumn = {
       template: `
       <CpisTable v-bind="$props" :columns="columns" :request="() => {
         return {
-          success: true,
           data: [{
             name: '张三',
             age: 18,
@@ -1430,7 +1425,6 @@ export const TableHeight = {
           ]"
           :request="() => {
             return {
-              success: true,
               data: Array(50).fill(null).map((_, index) => ({
                 name: '张三' + index,
                 age: Math.floor(Math.random() * 40) + 20,
@@ -1529,7 +1523,6 @@ export const ToolTip = {
           ]"
           :request="() => {
             return {
-              success: true,
               data: [{
                 name: '张三',
                 age: 18,
