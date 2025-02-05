@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col gap-2 bg-gray-2 h-full">
-    <div v-if="search?.length > 0" class="bg-white p-3.5">
+    <div v-if="search?.length > 0" class="bg-white p-3.5 cpis-table-searchbar">
       <template>
         <CpisSearchBar
           :search="search"
@@ -30,7 +30,7 @@
           :row-key="rowKey"
           :cell-style="{ paddingTop: '4px', paddingBottom: '4px' }"
           v-loading="loading"
-          :height="height"
+          :height="computedHeight"
           :header-cell-style="{
             backgroundColor: '#F5F5F5',
             color: '#434343',
@@ -223,6 +223,7 @@
         </ELTable>
       </div>
       <ELPagination
+        class="cpis-table-pagination"
         v-if="paginationProps !== false"
         layout="total, sizes, prev, pager, next, jumper"
         :total="total"
@@ -241,8 +242,11 @@ import CpisCopyable from '../../copyable/index'
 import CpisSearchBar from '../../search-bar/index'
 import CpisButton from '../../button/index'
 import CpisToolbar from './toolbar.vue'
+import fixHeight from '../../../mixins/fixHeight'
+
 export default {
   name: 'CpisTable',
+  mixins: [fixHeight],
   components: {
     ELTable: Table,
     ELTableColumn: TableColumn,
@@ -346,9 +350,13 @@ export default {
           return true
         })
         .map(column => {
-          column.showOverflowTooltip = typeof column.tooltip === 'boolean' ? column.tooltip : true
+          column.showOverflowTooltip =
+            typeof column.tooltip === 'boolean' ? column.tooltip : true
           return column
         })
+    },
+    computedHeight() {
+      return this.height || this.tableHeight
     }
   },
   watch: {
@@ -524,7 +532,6 @@ export default {
 /* 解决宽度无限延长 start */
 .table-container {
   width: 100%;
-  overflow-x: auto;
 }
 
 ::v-deep .el-table {
