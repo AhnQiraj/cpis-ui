@@ -479,7 +479,7 @@ export default {
     },
     template: `
     <div>
-      <CpisSearchBar ref="searchBar" @search="handleSearch" @reset="handleReset" :search="search" paramater-mode="flat"/>
+      <CpisSearchBar ref="searchBar" :search="search" paramater-mode="flat"/>
       <CpisButton style="margin-top: 16px;" @click="getParams">获取搜索参数</CpisButton>
     </div>
   `
