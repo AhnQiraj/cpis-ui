@@ -150,43 +150,7 @@ export default {
           console.warn('[CpisSearchBar] No search items configured')
           return
         }
-        if (this.paramaterMode === 'structured') {
-          const parameters = []
-          for (const [key, value] of Object.entries(this.params)) {
-            // Skip empty values
-            if (value === undefined || value === null || value === '') {
-              continue
-            }
-            if (Array.isArray(value) && key.includes(',')) {
-              const [startKey, endKey] = key.split(',')
-              parameters.push(
-                {
-                  key: startKey,
-                  value: value[0]
-                },
-                {
-                  key: endKey,
-                  value: value[1]
-                }
-              )
-            } else {
-              parameters.push({
-                key: key,
-                value: value
-              })
-            }
-          }
-          this.$emit('search', parameters)
-        } else {
-          // Filter out empty values for flat mode
-          const filteredParams = Object.fromEntries(
-            Object.entries(this.params).filter(
-              ([_, value]) =>
-                value !== undefined && value !== null && value !== ''
-            )
-          )
-          this.$emit('search', filteredParams)
-        }
+        this.$emit('search', this.getParams())
       } catch (error) {
         console.error('[CpisSearchBar] Error during search:', error)
       }
@@ -219,6 +183,45 @@ export default {
         daterange: 250
       }
       return widht[type] || 100
+    },
+    getParams() {
+      let params = {}
+      if (this.paramaterMode === 'structured') {
+        params = []
+        for (const [key, value] of Object.entries(this.params)) {
+          // Skip empty values
+          if (value === undefined || value === null || value === '') {
+            continue
+          }
+          if (Array.isArray(value) && key.includes(',')) {
+            const [startKey, endKey] = key.split(',')
+            params.push(
+              {
+                key: startKey,
+                value: value[0]
+              },
+              {
+                key: endKey,
+                value: value[1]
+              }
+            )
+          } else {
+            params.push({
+              key: key,
+              value: value
+            })
+          }
+        }
+      } else {
+        // Filter out empty values for flat mode
+        params = Object.fromEntries(
+          Object.entries(this.params).filter(
+            ([_, value]) =>
+              value !== undefined && value !== null && value !== ''
+          )
+        )
+      }
+      return params
     }
   }
 }

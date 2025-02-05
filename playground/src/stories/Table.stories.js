@@ -60,6 +60,7 @@ import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
   |---------- |---------------- |---------- |
   | reload  | 重新加载数据 | — |
   | getTable  | 获取表格实例 | — |
+  | getSearchBar  | 获取搜索栏实例 | — |
 
  ### CpisTable Events
   | 事件名      | 说明          | 回调参数      |

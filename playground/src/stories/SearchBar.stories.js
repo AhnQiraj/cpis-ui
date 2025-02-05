@@ -1,9 +1,9 @@
 import CpisSearchBar from '../../../packages/cpis-ui/src/packages/search-bar/index'
-
+import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
 /**
- * ## 搜索栏参数模式
+ * ### 搜索栏参数模式
  *
- * ### 1.扁平化参数模式 (paramaterMode="flat")
+ * #### 1.扁平化参数模式 (paramaterMode="flat")
  *    - 直接使用字段名作为参数名
  *    - 示例输出:
  * ```
@@ -14,7 +14,7 @@ import CpisSearchBar from '../../../packages/cpis-ui/src/packages/search-bar/ind
  *      }
  * ```
  *
- * ### 2.结构化参数模式 (paramaterMode="structured")
+ * #### 2.结构化参数模式 (paramaterMode="structured")
  *    - 使用特定格式的参数名: Q^字段名^操作符
  *    - 示例输出:
  * ```
@@ -34,7 +34,7 @@ import CpisSearchBar from '../../../packages/cpis-ui/src/packages/search-bar/ind
  *      ]
  * ```
  *
- * ## Search 配置项说明
+ * ### Search 配置项说明
  * search 配置支持以下字段:
  * ```
  * {
@@ -54,6 +54,11 @@ import CpisSearchBar from '../../../packages/cpis-ui/src/packages/search-bar/ind
  *   defaultValue?: any,     // 默认值
  * }
  * ```
+ *
+ * ### CpisSearchBar Methods
+  | 方法名      | 说明          | 参数      |
+  |---------- |---------------- |---------- |
+  | getParams  | 获取搜索参数 | — |
  *
  * ### ⚠️ 重要注意事项:
  * 1. `type="daterange"` 且 `paramaterMode="structured"` 时:
@@ -411,6 +416,71 @@ export default {
         <p>点击查询查看搜索参数:</p>
         <pre v-if="searchParams">{{ JSON.stringify(searchParams, null, 2) }}</pre>
       </div>
+    </div>
+  `
+  })
+}
+
+export const GetParams = {
+  name: 'GetParams',
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<template>
+  <CpisSearchBar ref="searchBar" paramater-mode="flat" :search="search"/>
+  <CpisButton class="mt-2" @click="getParams">获取搜索参数</CpisButton>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      search: [
+        {
+          prop: 'name',
+          label: '姓名',
+          defaultValue: '张三'
+        }
+      ]
+    },
+    methods: {
+      getParams() {
+        const params = this.$refs.searchBar.getParams()
+        alert('搜索参数:' + JSON.stringify(params))
+      }
+    }
+  }
+}
+</script>
+`
+      }
+    }
+  },
+  render: () => ({
+    components: { CpisSearchBar, CpisButton },
+    data() {
+      return {
+        search: [
+          {
+            prop: 'name',
+            label: '姓名',
+            defaultValue: '张三'
+          }
+        ],
+        searchParams: {}
+      }
+    },
+    methods: {
+      getParams() {
+        const params = this.$refs.searchBar.getParams()
+        alert('搜索参数:' + JSON.stringify(params))
+      }
+    },
+    template: `
+    <div>
+      <CpisSearchBar ref="searchBar" @search="handleSearch" @reset="handleReset" :search="search" paramater-mode="flat"/>
+      <CpisButton style="margin-top: 16px;" @click="getParams">获取搜索参数</CpisButton>
     </div>
   `
   })

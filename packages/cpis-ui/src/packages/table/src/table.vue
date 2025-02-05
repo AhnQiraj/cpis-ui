@@ -3,6 +3,7 @@
     <div v-if="search?.length > 0" class="bg-white p-3.5 cpis-table-searchbar">
       <template>
         <CpisSearchBar
+          ref="searchBar"
           :search="search"
           :paramater-mode="paramaterMode"
           @search="handleSearch"
@@ -495,6 +496,9 @@ export default {
      */
     handleToolbarClick(...args) {
       this.$emit('handle-toolbar-click', ...args)
+    },
+    getSearchBar() {
+      return this.$refs.searchBar
     }
   }
 }
