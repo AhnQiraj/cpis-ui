@@ -1,5 +1,5 @@
 <template>
-  <main class="flex-1 bg-white overflow-hidden">
+  <main class="flex-1 bg-white overflow-y-auto">
     <slot></slot>
   </main>
 </template>
