@@ -26,7 +26,6 @@
             <el-dropdown @command="handleCommand">
               <CpisButton
                 type="primary"
-                @click="handleSetting"
                 icon="el-icon-setting"
               />
               <el-dropdown-menu slot="dropdown">
