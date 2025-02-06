@@ -74,7 +74,6 @@
                 <template slot-scope="scope">
                   {{ scope.$index + 1 }}
                 </template>
-                <template v-if="column.copyable"></template>
               </ELTableColumn>
             </template>
             <template v-else-if="column.valueType === 'action'">
@@ -114,11 +113,6 @@
                             scope.$index
                           ) || scope.row[column.prop]
                         }}
-                        <template
-                          v-if="column.copyable && scope.row[column.prop]"
-                        >
-                          <CpisCopyable :text="scope.row[column.prop]" />
-                        </template>
                       </template>
                       <template v-else>
                         <ELInput
@@ -155,11 +149,6 @@
                             scope.$index
                           ) || scope.row[column.prop]
                         }}
-                        <template
-                          v-if="column.copyable && scope.row[column.prop]"
-                        >
-                          <CpisCopyable :text="scope.row[column.prop]" />
-                        </template>
                       </template>
                       <template v-else>
                         <ELRadio
@@ -208,7 +197,6 @@
                           scope.row[column.prop] ||
                           columnEmptyText
                         }}
-
                         <template
                           v-if="column.copyable && scope.row[column.prop]"
                         >
