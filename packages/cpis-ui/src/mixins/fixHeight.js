@@ -23,8 +23,6 @@ export default {
     calculateTableHeight() {
       const container = this.$el
       if (!container) return
-      debugger
-
       // Get container height
       const containerHeight = container.getBoundingClientRect().height
 
