@@ -24,10 +24,7 @@
             <el-input placeholder="请输入" v-model="searchValue" size="small">
             </el-input>
             <el-dropdown @command="handleCommand">
-              <CpisButton
-                type="primary"
-                icon="el-icon-setting"
-              />
+              <CpisButton type="primary" icon="el-icon-setting" />
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item command="collapseAll">
                   折叠所有
@@ -136,5 +133,14 @@ export default {
 
 .rotate-180 {
   transform: rotate(180deg);
+}
+
+.search-box ::v-deep .el-input__inner {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.search-box ::v-deep .el-dropdown > .el-button {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
 </style>
