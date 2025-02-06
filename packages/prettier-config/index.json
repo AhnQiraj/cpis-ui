@@ -7,14 +7,12 @@
   "jsxBracketSameLine": false,
   "arrowParens": "avoid",
   "trailingComma": "none",
-  "htmlWhitespaceSensitivity": "css",
-  "insertPragma": false,
-  "jsxSingleQuote": true,
-  "printWidth": 120,
-  "proseWrap": "preserve",
-  "quoteProps": "preserve",
-  "requirePragma": false,
   "vueIndentScriptAndStyle": false,
-  "endOfLine": "lf",
-  "singleAttributePerLine": false
+  "printWidth": 120,
+  "quoteProps": "as-needed",
+  "jsxSingleQuote": false,
+  "bracketSameLine": false,
+  "htmlWhitespaceSensitivity": "ignore",
+  "singleAttributePerLine": false,
+  "endOfLine": "auto"
 }
