@@ -109,14 +109,11 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.cpis-table-toolbar {
-  @apply flex flex-row items-center;
+<style>
+.cpis-table-toolbar .el-button + .el-button {
+  margin-left: 0px;
 }
-/* 解决按钮和下拉菜单之间的间距 */
-::v-deep .el-button + .el-dropdown,
-::v-deep .el-dropdown + .el-button {
-  margin-left: 10px;
+.cpis-table-toolbar {
+  @apply flex flex-row items-center gap-2;
 }
 </style>

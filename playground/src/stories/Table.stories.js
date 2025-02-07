@@ -90,7 +90,7 @@ import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
   autoHeight 默认为true，属性用于配置表格高度。
   autoHeight 为true的时候（默认值），表格会自己计算高度，逻辑是，表格容器高度-搜索栏高度-工具栏高度-分页高度-表格间距 = 表格高度。所以依赖于表格容器高度，标高容器高度默认是 height: 100%。所以如果他有父级的时候，父级需要有明确的高度。
   设置一个明确的高度，会实现表头固定的效果（https://element.eleme.cn/#/zh-CN/component/table#gu-ding-biao-tou）
-  
+
   autoHeight 为false的时候，表格会自动根据内容撑开高度。
   同时也可以传入height属性，强制设置高度。
   ### paramaterMode
@@ -625,6 +625,7 @@ export default {
             </div>
           </div>
           <CpisTable
+            :height="130"
             @handle-toolbar-click="handleToolbarClick"
             @selection-change="handleSelectionChange"
             identity="ibps_org_employee"
