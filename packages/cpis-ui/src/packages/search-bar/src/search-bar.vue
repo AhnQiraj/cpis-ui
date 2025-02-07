@@ -242,4 +242,7 @@ export default {
 ::v-deep .el-input .el-input__inner {
   padding-left: 0px !important;
 }
+.cpis-search-bar-actions ::v-deep .el-button + .el-button {
+  margin-left: 0;
+}
 </style>
