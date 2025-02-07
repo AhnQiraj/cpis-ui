@@ -286,6 +286,11 @@ export default {
         )
       }
     },
+    autoHeight: {
+      type: Boolean,
+      default: true,
+      comments: '是否自动高度'
+    },
     data: {
       type: Array,
       default: () => [],
@@ -322,7 +327,7 @@ export default {
       comments: '工具栏按钮'
     },
     height: {
-      type: String,
+      type: [String, Number],
       comments: '表格高度'
     }
   },
@@ -345,7 +350,10 @@ export default {
         })
     },
     computedHeight() {
-      return this.height || this.tableHeight
+      if (this.autoHeight) {
+        return this.height || this.tableHeight
+      }
+      return this.height
     }
   },
   watch: {
