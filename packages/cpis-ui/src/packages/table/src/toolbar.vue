@@ -4,6 +4,7 @@
       <el-dropdown
         v-if="Array.isArray(item.children) && item.children.length > 0"
         @command="handleToolbarClick"
+        :key="item.key"
       >
         <CpisButton :type="item.type">
           {{ item.label }}
@@ -37,6 +38,7 @@
         <el-dropdown-item
           v-for="item in hasPermissionToolbar.slice(6)"
           :command="item.key"
+          :key="item.key"
           :disabled="item.disabled"
         >
           {{ item.label }}

@@ -22,6 +22,7 @@ import CpisMenuItem from './packages/menu-item/index.js'
 import CpisSubmenu from './packages/submenu/index.js'
 import CpisTabs from './packages/tabs/index.js'
 import CpisTabPane from './packages/tab-pane/index.js'
+
 const components = [
   CpisTag,
   CpisProCascader,

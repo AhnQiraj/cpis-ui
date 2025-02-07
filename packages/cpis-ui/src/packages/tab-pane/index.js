@@ -1,8 +1,8 @@
-import CpisTabPane from '../tabs/src/tab-pane.vue';
+import CpisTabPane from '../tabs/src/tab-pane.vue'
 
 /* istanbul ignore next */
-CpisTabPane.install = function(Vue) {
-  Vue.component(CpisTabPane.name, CpisTabPane);
-};
+CpisTabPane.install = function (Vue) {
+  Vue.component(CpisTabPane.name, CpisTabPane)
+}
 
-export default CpisTabPane;
+export default CpisTabPane
