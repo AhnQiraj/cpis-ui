@@ -54,6 +54,7 @@ import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
   | request  | 请求配置，和data两选一 用法见 [request](#request-and-data) | function   | — | — |
   | data  | 表格数据，和request两选一 用法见 [request](#request-and-data)| array   | — | — |
   | paramaterMode  | 参数模式 | string   | structured/flat | structured |
+  | autoHeight  | 是否自动高度 | boolean   | true/false | true |
 
 ### CpisTable Methods
   | 方法名      | 说明          | 参数      |
@@ -85,7 +86,14 @@ import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
   其中 ~~success 为布尔值~~，data 为数组，total 为总数。 只有当~~sucess为true的时候~~，data才会被渲染。~~所以根据后端的接口定义正确判断success的值。~~
 
   **0.0.54 版本后**，success 被移除，data 为数组，total 为总数。 只有当data为数组的时候，data才会被渲染。所以根据后端的接口定义正确判断data的值。
-
+  ### AutoHeight
+  autoHeight 默认为true，属性用于配置表格高度。
+  autoHeight 为true的时候（默认值），表格会自己计算高度，逻辑是，表格容器高度-搜索栏高度-工具栏高度-分页高度-表格间距 = 表格高度。所以依赖于表格容器高度，标高容器高度默认是 height: 100%。所以如果他有父级的时候，父级需要有明确的高度。
+  autoHeight 为false的时候，表格会自动根据内容撑开高度。
+  同时也可以传入height属性，强制设置高度。
+  ### paramaterMode
+  paramaterMode 属性用于配置参数模式。
+  paramaterMode 为structured的时候，参数会按照structured模式进行传递。
  */
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
