@@ -61,6 +61,7 @@ export default {
 .drawer-content {
   flex: 1;
   overflow-y: auto; /* 添加滚动 */
+  overflow-x: hidden;
 }
 ::v-deep .el-drawer__body {
   display: flex;
