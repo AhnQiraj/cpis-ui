@@ -20,6 +20,8 @@ import CpisSelect from './packages/select/index.js'
 import CpisMenu from './packages/menu/index.js'
 import CpisMenuItem from './packages/menu-item/index.js'
 import CpisSubmenu from './packages/submenu/index.js'
+import CpisTabs from './packages/tabs/index.js'
+import CpisTabPane from './packages/tab-pane/index.js'
 const components = [
   CpisTag,
   CpisProCascader,
@@ -40,7 +42,9 @@ const components = [
   CpisSelect,
   CpisMenu,
   CpisMenuItem,
-  CpisSubmenu
+  CpisSubmenu,
+  CpisTabs,
+  CpisTabPane
 ]
 
 const install = function (Vue, opts = {}) {
@@ -73,7 +77,9 @@ export {
   CpisSelect,
   CpisMenu,
   CpisMenuItem,
-  CpisSubmenu
+  CpisSubmenu,
+  CpisTabs,
+  CpisTabPane
 }
 export default {
   version: '1.0.0',
