@@ -15,7 +15,7 @@
         aria-modal="true"
         :aria-label="title || 'dialog'"
         :class="[
-          'el-dialog',
+          'el-dialog flex flex-col min-w-[560px]',
           {
             'is-fullscreen': fullscreen,
             'el-dialog--center': center,
@@ -52,7 +52,7 @@
             </button>
           </div>
         </div>
-        <div class="el-dialog__body" v-if="rendered"><slot></slot></div>
+        <div class="flex-1 el-dialog__body" v-if="rendered"><slot></slot></div>
         <div class="el-dialog__footer" v-if="$slots.footer">
           <slot name="footer"></slot>
         </div>
