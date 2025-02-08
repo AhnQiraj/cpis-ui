@@ -16,7 +16,11 @@
         :aria-label="title || 'dialog'"
         :class="[
           'el-dialog',
-          { 'is-fullscreen': fullscreen, 'el-dialog--center': center },
+          {
+            'is-fullscreen': fullscreen,
+            'el-dialog--center': center,
+            'aspect-video': keepAspectRatio
+          },
           customClass
         ]"
         ref="dialog"
@@ -120,6 +124,10 @@ export default {
         // 40 60 80
         return ['small', 'medium', 'large'].includes(value)
       }
+    },
+    keepAspectRatio: {
+      type: Boolean,
+      default: true
     },
 
     customClass: {
