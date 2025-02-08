@@ -120,8 +120,94 @@ export const DefaultExpandAll = {
       <div style="height: 500px; padding: 16px; background-color: #f5f5f5;">
         <CpisTreeContainer 
           :treeProps="treeProps" 
-          title=""
+          title="默认展开所有"
         >
+        </CpisTreeContainer>
+      </div>
+    `
+  })
+}
+
+// 懒加载示例
+export const WithHeader = {
+  name: '带头部',
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<CpisTreeContainer 
+  title="带头部"
+>
+ <template #header>
+    Header
+  </template>
+  <div>
+    Main
+  </div>
+</CpisTreeContainer>`
+      }
+    }
+  },
+  render: args => ({
+    components: { CpisTreeContainer },
+    data() {
+      return {
+        treeProps: {
+          lazy: true,
+          load: this.loadNode
+        }
+      }
+    },
+    methods: {
+      loadNode(node, resolve) {
+        // 模拟异步加载数据
+        setTimeout(() => {
+          if (node.level === 0) {
+            return resolve([
+              {
+                id: 1,
+                label: '根节点 1',
+                hasChildren: true
+              },
+              {
+                id: 2,
+                label: '根节点 2',
+                hasChildren: true
+              }
+            ])
+          }
+
+          const data = [
+            {
+              id: `${node.data.id}-1`,
+              label: `${node.data.label}-1`
+            },
+            {
+              id: `${node.data.id}-2`,
+              label: `${node.data.label}-2`
+            }
+          ]
+
+          resolve(data)
+        }, 500)
+      },
+      handleNodeClick(node) {
+        console.log('节点被点击:', node)
+      }
+    },
+    template: `
+      <div style="height: 500px; padding: 16px; background-color: #f5f5f5;">
+        <CpisTreeContainer 
+          :treeProps="treeProps" 
+          title="懒加载树"
+          @node-click="handleNodeClick"
+        >
+          <template #header>
+            Header
+          </template>
+          <div style="padding: 8px;">
+            Main
+          </div>
         </CpisTreeContainer>
       </div>
     `
