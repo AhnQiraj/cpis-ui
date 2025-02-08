@@ -6,14 +6,12 @@
       slot="aside"
     >
       <div
-        class="border-b-2 border-b-solid border-gray-2"
+        class="border-b-2 border-b-solid border-gray-2 flex items-center justify-between h-[46px]"
         :class="{ 'px-0': collapse, 'px-4': !collapse }"
       >
-        <span class="text-base font-bold leading-[46px]" v-show="!collapse">{{
-          title
-        }}</span>
+        <span class="text-base font-bold" v-show="!collapse">{{ title }}</span>
         <i
-          class="el-icon-d-arrow-left float-right cursor-pointer transition-transform duration-300 leading-[46px]"
+          class="el-icon-d-arrow-left float-right cursor-pointer transition-transform duration-300"
           :class="{ 'rotate-180': collapse }"
           @click="handleCollapse"
         />
