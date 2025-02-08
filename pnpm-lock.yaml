@@ -1271,7 +1271,7 @@ packages:
     resolution: {integrity: sha512-mbHTk1dHGikPpznPeheV+YYrl34Wkq4B2+Zxq1FGd1/wj2w2L+X3uUZTLK28GL7FlnI/Zw1RIAAT+iymNQGKcg==}
 
   '@cpis/uno-preset@1.0.2':
-    resolution: {integrity: sha512-CdWR1+78EGmAN6yLldWWMCvvHG1LY5bUJ9/cwsOieHWicwuIMHAkQoD2nseZCGtaCxr6kUhVheUzOl8qw11Meg==}
+    resolution: {integrity: sha512-NFKO2uqW0PLQkisDtm6wlNmTN1niSzK0gVrHxEmXkhhzDh6dz1A+jUx3p49AIhoLSz5F8lXL9dn5QUk8WTWexw==}
 
   '@discoveryjs/json-ext@0.5.7':
     resolution: {integrity: sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==}
