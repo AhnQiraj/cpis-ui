@@ -1,5 +1,10 @@
 <template>
-  <CpisPageContainer :layout="['aside', 'main']">
+  <CpisPageContainer
+    :layout="$slots.header ? ['header', ['aside', 'main']] : ['aside', 'main']"
+  >
+    <template #header>
+      <slot name="header" />
+    </template>
     <div
       class="h-full overflow-hidden flex flex-col transition-all duration-100 overflow-x-hidden"
       :class="{ 'w-[20px]': collapse, 'w-[280px]': !collapse }"
