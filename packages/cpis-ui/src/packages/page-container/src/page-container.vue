@@ -6,7 +6,10 @@
   >
     <template v-for="item in layout">
       <template v-if="Array.isArray(item)">
-        <div class="flex flex-col gap-2 flex-1">
+        <div
+          class="flex gap-2 flex-1"
+          :class="item.includes('aside') ? 'flex-row' : 'flex-col'"
+        >
           <template v-for="subItem in item">
             <component
               :is="getComponent(subItem)"
