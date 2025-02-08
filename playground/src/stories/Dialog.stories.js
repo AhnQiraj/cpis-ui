@@ -134,6 +134,56 @@ export const Size = {
   }
 }
 
+export const Footer = {
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<template>
+  <CpisDialog :visible.sync="visible">
+    <div>
+      <p>这里是内容</p>
+    </div>
+    <template #footer>
+      <CpisButton @click="visible = false">取消</CpisButton>
+      <CpisButton type="primary">确定</CpisButton>
+    </template>
+  </CpisDialog>
+</template>
+        `
+      }
+    }
+  },
+  render: (args, { argTypes }) => {
+    return {
+      props: Object.keys(argTypes),
+      data() {
+        return {
+          visible: false
+        }
+      },
+      template: `
+          <div>
+          <el-button type="primary" size="small" @click="visible = true">点击打开</el-button>
+          <CpisDialog :visible="visible" :title="title" :modal-append-to-body="false" @close="visible = false">
+            <div>
+              <p>这里是内容</p>
+            </div>
+            <template #footer>
+              <CpisButton @click="visible = false">取消</CpisButton>
+              <CpisButton type="primary">确定</CpisButton>
+            </template>
+          </CpisDialog>
+          </div>
+          `
+    }
+  },
+  args: {
+    visible: false,
+    title: '这里是标题'
+  }
+}
+
 export const ShowFullscreen = {
   name: '显示全屏按钮',
   render: (args, { argTypes }) => {
