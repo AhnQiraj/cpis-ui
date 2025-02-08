@@ -15,7 +15,7 @@
         aria-modal="true"
         :aria-label="title || 'dialog'"
         :class="[
-          'el-dialog flex flex-col min-w-[560px]',
+          'el-dialog flex flex-col min-w-[560px] max-h-[80vh]',
           {
             'is-fullscreen': fullscreen,
             'el-dialog--center': center,
