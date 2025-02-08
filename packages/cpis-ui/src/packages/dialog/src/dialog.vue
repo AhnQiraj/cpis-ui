@@ -113,6 +113,14 @@ export default {
     },
 
     width: String,
+    size: {
+      type: String,
+      default: 'medium',
+      validator(value) {
+        // 40 60 80
+        return ['small', 'medium', 'large'].includes(value)
+      }
+    },
 
     customClass: {
       type: String,
@@ -167,7 +175,7 @@ export default {
   computed: {
     computedFullscreen() {
       // 外部没传 就data中定义的fullscreen
-      return this.$attrs.fullscreen === 'undefined'
+      return this.$attrs.fullscreen === undefined
         ? this.fullscreen
         : this.$attrs.fullscreen
     },
@@ -175,8 +183,15 @@ export default {
       let style = {}
       if (!this.fullscreen) {
         style.marginTop = this.top
-        if (this.width) {
-          style.width = this.width
+        if (this.width || this.size) {
+          style.width =
+            this.width === undefined
+              ? {
+                  small: '40%',
+                  medium: '60%',
+                  large: '80%'
+                }[this.size]
+              : this.width
         }
       }
       return style
