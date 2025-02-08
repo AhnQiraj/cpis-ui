@@ -96,7 +96,6 @@ export const Size = {
       }
     }
   },
-  name: '默认',
   render: (args, { argTypes }) => {
     return {
       props: Object.keys(argTypes),
