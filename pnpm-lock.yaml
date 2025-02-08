@@ -28,8 +28,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       '@cpis/uno-preset':
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.0.2
+        version: 1.0.2
       '@unocss/preset-uno':
         specifier: ^0.63.3
         version: 0.63.6
@@ -45,6 +45,9 @@ importers:
       unocss:
         specifier: ^0.62.3
         version: 0.62.4(postcss@8.4.47)(rollup@4.22.4)(vite@5.4.8(@types/node@22.7.3)(sass@1.79.3)(terser@5.34.0))
+      unocss-preset-scrollbar-hide:
+        specifier: ^1.0.1
+        version: 1.0.1(unocss@0.62.4(postcss@8.4.47)(rollup@4.22.4)(vite@5.4.8(@types/node@22.7.3)(sass@1.79.3)(terser@5.34.0)))
       vite:
         specifier: ^5.4.8
         version: 5.4.8(@types/node@22.7.3)(sass@1.79.3)(terser@5.34.0)
@@ -1267,8 +1270,8 @@ packages:
   '@cpis/prettier-config@1.0.0':
     resolution: {integrity: sha512-mbHTk1dHGikPpznPeheV+YYrl34Wkq4B2+Zxq1FGd1/wj2w2L+X3uUZTLK28GL7FlnI/Zw1RIAAT+iymNQGKcg==}
 
-  '@cpis/uno-preset@1.0.0':
-    resolution: {integrity: sha512-Vqm64kahtcgD/LbOA5oufFo6SLIgcj63yZR33lPZI4skT2cYXkZotK0dPFk3m/Bhl8KuhCuN0Ny3hblKPkdooA==}
+  '@cpis/uno-preset@1.0.2':
+    resolution: {integrity: sha512-CdWR1+78EGmAN6yLldWWMCvvHG1LY5bUJ9/cwsOieHWicwuIMHAkQoD2nseZCGtaCxr6kUhVheUzOl8qw11Meg==}
 
   '@discoveryjs/json-ext@0.5.7':
     resolution: {integrity: sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==}
@@ -9060,6 +9063,17 @@ packages:
     resolution: {integrity: sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw==}
     engines: {node: '>= 10.0.0'}
 
+  unocss-preset-scrollbar-hide@1.0.1:
+    resolution: {integrity: sha512-U+JcxAMhgvI14ZtveQBRSbyYGkgYRDlOJzAW2pUbrTvsGZwTyb3dWLvNiMdtN4s1dFEGMCBRAgnoBPLh21APPQ==}
+    peerDependencies:
+      '@unocss/nuxt': ^0.40.0
+      unocss: ^0.40.0
+    peerDependenciesMeta:
+      '@unocss/nuxt':
+        optional: true
+      unocss:
+        optional: true
+
   unocss@0.62.4:
     resolution: {integrity: sha512-SaGbxXQkk8GDPeJpWsBCZ8a23Knu4ixVTt6pvcQWKjOCGTd9XBd+vLZzN2WwdwgBPVwmMmx5wp+/gPHKFNOmIw==}
     engines: {node: '>=14'}
@@ -10949,7 +10963,7 @@ snapshots:
 
   '@cpis/prettier-config@1.0.0': {}
 
-  '@cpis/uno-preset@1.0.0': {}
+  '@cpis/uno-preset@1.0.2': {}
 
   '@discoveryjs/json-ext@0.5.7': {}
 
@@ -20436,6 +20450,10 @@ snapshots:
   universalify@0.1.2: {}
 
   universalify@2.0.1: {}
+
+  unocss-preset-scrollbar-hide@1.0.1(unocss@0.62.4(postcss@8.4.47)(rollup@4.22.4)(vite@5.4.8(@types/node@22.7.3)(sass@1.79.3)(terser@5.34.0))):
+    optionalDependencies:
+      unocss: 0.62.4(postcss@8.4.47)(rollup@4.22.4)(vite@5.4.8(@types/node@22.7.3)(sass@1.79.3)(terser@5.34.0))
 
   unocss@0.62.4(postcss@8.4.47)(rollup@4.22.4)(vite@5.4.8(@types/node@22.7.3)(sass@1.79.3)(terser@5.34.0)):
     dependencies:
