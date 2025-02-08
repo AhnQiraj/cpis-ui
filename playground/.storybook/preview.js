@@ -1,6 +1,12 @@
+import Vue from 'vue'
+
 import 'virtual:uno.css'
 import 'element-ui/lib/theme-chalk/index.css'
+import ElementUI from 'element-ui'
+import CpisUI from '../../packages/cpis-ui/src/index'
 
+Vue.use(ElementUI)
+Vue.use(CpisUI)
 /** @type { import('@storybook/vue').Preview } */
 const preview = {
   parameters: {

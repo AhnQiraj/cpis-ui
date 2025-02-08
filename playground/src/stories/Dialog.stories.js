@@ -1,9 +1,6 @@
-import CpisDialog from '../../../packages/cpis-ui/src/packages/dialog/index'
-import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
   title: '原子组件/Dialog',
-  component: CpisDialog,
   layout: 'fullscreen',
   decorators: [
     () => ({
@@ -20,8 +17,8 @@ export default {
     }
   },
   args: {
-    visible: false,
-    'modal-append-to-body': false // 为所有故事添加默认参数
+    'modal-append-to-body': false, // 为所有故事添加默认参数
+    visible: false
   },
   tags: ['autodocs']
 }
@@ -30,17 +27,23 @@ export const Default = {
   render: (args, { argTypes }) => {
     return {
       props: Object.keys(argTypes),
-      components: { CpisDialog, CpisButton },
+      methods: {
+        handleClick() {
+          this.visible = true
+        }
+      },
       template: `
-      <CpisDialog :visible="visible" :title="title" :modal-append-to-body="false">
+      <div><el-button type="primary" size="small" @click="handleClick">点击打开</el-button>
+      <CpisDialog :visible="visible" :title="title" :modal-append-to-body="false" @close="visible = false">
         <div>
           <p>这里是内容</p>
         </div>
         <template #footer>
-          <CpisButton>取消</CpisButton>
+          <CpisButton @click="visible = false">取消</CpisButton>
           <CpisButton type="primary">确定</CpisButton>
         </template>
       </CpisDialog>
+      </div>
       `
     }
   },

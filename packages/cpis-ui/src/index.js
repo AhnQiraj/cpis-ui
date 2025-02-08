@@ -22,6 +22,7 @@ import CpisMenuItem from './packages/menu-item/index.js'
 import CpisSubmenu from './packages/submenu/index.js'
 import CpisTabs from './packages/tabs/index.js'
 import CpisTabPane from './packages/tab-pane/index.js'
+import CpisDialog from './packages/dialog/index.js'
 
 const components = [
   CpisTag,
@@ -45,7 +46,8 @@ const components = [
   CpisMenuItem,
   CpisSubmenu,
   CpisTabs,
-  CpisTabPane
+  CpisTabPane,
+  CpisDialog
 ]
 
 const install = function (Vue, opts = {}) {
@@ -80,7 +82,8 @@ export {
   CpisMenuItem,
   CpisSubmenu,
   CpisTabs,
-  CpisTabPane
+  CpisTabPane,
+  CpisDialog
 }
 export default {
   version: '1.0.0',
