@@ -27,7 +27,16 @@
             <span class="el-dialog__title">{{ title }}</span>
           </slot>
 
-          <div>
+          <div class="flex items-center gap-2">
+            <button
+              type="button"
+              class="el-dialog__headerbtn"
+              aria-label="Fullscreen"
+              v-if="showFullscreen"
+              @click="fullscreen = !fullscreen"
+            >
+              <i class="el-dialog__close el-icon el-icon-full-screen"></i>
+            </button>
             <button
               type="button"
               class="el-dialog__headerbtn"
@@ -98,10 +107,12 @@ export default {
       type: Boolean,
       default: true
     },
+    showFullscreen: {
+      type: Boolean,
+      default: false
+    },
 
     width: String,
-
-    fullscreen: Boolean,
 
     customClass: {
       type: String,
@@ -124,7 +135,8 @@ export default {
   data() {
     return {
       closed: false,
-      key: 0
+      key: 0,
+      fullscreen: false
     }
   },
 
@@ -153,6 +165,12 @@ export default {
   },
 
   computed: {
+    computedFullscreen() {
+      // 外部没传 就data中定义的fullscreen
+      return this.$attrs.fullscreen === 'undefined'
+        ? this.fullscreen
+        : this.$attrs.fullscreen
+    },
     style() {
       let style = {}
       if (!this.fullscreen) {

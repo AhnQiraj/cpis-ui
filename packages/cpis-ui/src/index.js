@@ -23,6 +23,7 @@ import CpisSubmenu from './packages/submenu/index.js'
 import CpisTabs from './packages/tabs/index.js'
 import CpisTabPane from './packages/tab-pane/index.js'
 import CpisDialog from './packages/dialog/index.js'
+import CpisDialogTable from './packages/dialog/src/dialog-table.vue'
 
 const components = [
   CpisTag,
@@ -47,7 +48,8 @@ const components = [
   CpisSubmenu,
   CpisTabs,
   CpisTabPane,
-  CpisDialog
+  CpisDialog,
+  CpisDialogTable
 ]
 
 const install = function (Vue, opts = {}) {
@@ -83,7 +85,8 @@ export {
   CpisSubmenu,
   CpisTabs,
   CpisTabPane,
-  CpisDialog
+  CpisDialog,
+  CpisDialogTable
 }
 export default {
   version: '1.0.0',
