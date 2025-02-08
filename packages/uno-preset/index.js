@@ -50,6 +50,7 @@ export function preseet() {
             8: '#1351AD',
             9: '#083787',
             10: '#031531',
+            border: '#B0DDFF',
             DEFAULT: '#3491FA'
           },
           green: {
@@ -63,7 +64,8 @@ export function preseet() {
             8: '#237804',
             9: '#135200',
             10: '#092b00',
-            DEFAULT: '#52C41A'
+            DEFAULT: '#52C41A',
+            border: '#b7eb8f'
           },
           success: {
             DEFAULT: '#52c41a'
@@ -79,7 +81,8 @@ export function preseet() {
             8: '#A41022',
             9: '#780617',
             10: '#2A0007',
-            DEFAULT: '#FC323D'
+            DEFAULT: '#FC323D',
+            border: '#FEA39F'
           },
           error: {
             DEFAULT: '#FC323D'
@@ -95,7 +98,8 @@ export function preseet() {
             8: '#262626',
             9: '#1F1F1F',
             10: '#000000',
-            DEFAULT: '#595959'
+            DEFAULT: '#595959',
+            border: '#D9D9D9'
           },
           grey: {
             1: '#FAFAFA',
@@ -108,7 +112,8 @@ export function preseet() {
             8: '#262626',
             9: '#1F1F1F',
             10: '#000000',
-            DEFAULT: '#595959'
+            DEFAULT: '#595959',
+            border: '#D9D9D9'
           },
           orange: {
             1: '#FFF7E6',
@@ -121,7 +126,8 @@ export function preseet() {
             8: '#AD4E00',
             9: '#873800',
             10: '#301200',
-            DEFAULT: '#FA8C16'
+            DEFAULT: '#FA8C16',
+            border: '#FFD591'
           },
           active: {
             DEFAULT: '#FAAD14'
