@@ -52,7 +52,12 @@
             </button>
           </div>
         </div>
-        <div class="flex-1 el-dialog__body" v-if="rendered"><slot></slot></div>
+        <div
+          class="flex-1 el-dialog__body overflow-hidden"
+          v-if="rendered"
+        >
+          <slot></slot>
+        </div>
         <div class="el-dialog__footer" v-if="$slots.footer">
           <slot name="footer"></slot>
         </div>
