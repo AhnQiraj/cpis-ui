@@ -38,16 +38,11 @@ export default {
 
 <style scoped>
 ::v-deep .el-drawer .el-drawer__header {
+  @apply text-base font-bold h-[42px] px-2 p-0 flex items-center;
   margin-bottom: 0 !important;
-  padding: 8px;
   background-color: #f5f5f5;
   border-bottom: 1px solid #d9d9d9;
-  font-size: 16px;
-  line-height: 24px;
   color: #262626;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
 }
 .drawer-footer {
   display: flex;
@@ -68,6 +63,7 @@ export default {
   flex-direction: column;
 }
 .drawer-title-right {
+  font-weight: normal;
   margin-left: auto;
 }
 </style>
