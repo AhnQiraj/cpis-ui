@@ -49,7 +49,7 @@ export default {
     },
     labelWidth: {
       type: Number,
-      default: 220
+      default: 150
     }
   },
   computed: {
