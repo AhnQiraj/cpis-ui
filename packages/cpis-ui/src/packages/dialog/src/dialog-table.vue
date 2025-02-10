@@ -1,8 +1,19 @@
 <template>
-  <CpisDialog v-bind="$attrs" v-on="$listeners">
+  <CpisDialog
+    :visible.sync="visible"
+    :size="size"
+    v-bind="$attrs"
+    v-on="$listeners"
+  >
     <CpisTreeContainer :tree-props="treeProps">
       <CpisTable v-bind="tableProps" />
     </CpisTreeContainer>
+    <template #footer>
+      <slot name="footer">
+        <CpisButton type="primary" @click="handleOk">确定</CpisButton>
+        <CpisButton @click="visible = false">取消</CpisButton>
+      </slot>
+    </template>
   </CpisDialog>
 </template>
 <script>
@@ -14,7 +25,28 @@ export default {
     CpisDialog,
     CpisTreeContainer
   },
+  methods: {
+    handleOk() {
+      this.$emit('ok')
+    }
+  },
   props: {
+    visible: {
+      type: Boolean,
+      default: false
+    },
+    multiple: {
+      type: Boolean,
+      default: false
+    },
+    size: {
+      type: String,
+      default: 'medium',
+      validator(value) {
+        // 40 60 80
+        return ['small', 'medium', 'large'].includes(value)
+      }
+    },
     treeProps: {
       type: Object,
       default: () => ({})
