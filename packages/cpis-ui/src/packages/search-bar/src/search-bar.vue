@@ -5,9 +5,9 @@
       :style="{ 'flex-wrap': isExpanded ? 'wrap' : 'nowrap' }"
     >
       <div
-        v-for="(item, index) in search"
+        v-for="(item, index) in _search"
         v-show="isExpanded || index <= 4"
-        :key="item.prop"
+        :key="item.key"
         class="flex flex-row items-center gap-2 border-solid border-1 border-gray-3 rounded px-2.5"
       >
         <div v-if="!!item.label" class="whitespace-nowrap text-sm text-gray-6">
@@ -16,7 +16,6 @@
         <template v-if="['select', 'multiple-select'].includes(item.type)">
           <CpisSelect
             size="small"
-            :key="item.prop"
             :label="item.label"
             clearable
             :value-key="item.valueKey"
@@ -49,7 +48,6 @@
         >
           <CpisDatePicker
             size="small"
-            :key="item.prop"
             :type="item.type"
             :value-format="
               item.format ||
@@ -77,7 +75,6 @@
           <CpisInput
             size="small"
             clearable
-            :key="item.prop"
             :label="item.label"
             :placeholder="item.placeholder || '请输入'"
             v-model="params[item.prop]"
@@ -126,6 +123,14 @@ export default {
     search: {
       type: Array,
       default: () => []
+    }
+  },
+  computed: {
+    _search() {
+      return this.search.map(item => ({
+        ...item,
+        key: Array.isArray(item.prop) ? item.prop.join(',') : item.prop
+      }))
     }
   },
   data() {
