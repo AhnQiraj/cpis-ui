@@ -556,7 +556,7 @@ export default {
 }
 
 /* 清楚编辑组件的border */
-::v-deep .el-input__inner {
+::v-deep .el-table__body .el-table__cell .el-input__inner {
   border: none;
   padding: 0;
   background: transparent;
