@@ -34,10 +34,7 @@ export default {
   },
   props: {
     type: {
-      type: String,
-      validator(value) {
-        return ['primary', 'text'].includes(value)
-      }
+      type: String
     },
     size: String,
     icon: {
