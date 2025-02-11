@@ -92,7 +92,7 @@ export default {
   }
 }
 .el-button--text {
-  @apply !bg-transparent !border-transparent !px-0;
+  @apply !bg-transparent !border-transparent !p-0;
   &:hover {
     @apply !bg-transparent !border-transparent;
   }
