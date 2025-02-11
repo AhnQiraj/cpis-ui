@@ -165,6 +165,34 @@
                   </template>
                 </ELTableColumn>
               </template>
+              <template v-else-if="column.valueType === 'tag'">
+                <CpisTagColumn :key="column.prop" v-bind="column" />
+                <!-- <ELTableColumn
+                  v-bind="column"
+                  :key="column.prop"
+                  :label-class-name="column.required ? 'is-required' : ''"
+                  :align="column.align || 'right'"
+                >
+                  <template slot-scope="scope">
+                    <slot
+                      name="columns"
+                      :column="column"
+                      :row="scope.row"
+                      :$index="scope.$index"
+                    >
+                      <CpisTag>
+                        {{
+                          column?.formatter?.(
+                            scope.row,
+                            column,
+                            scope.$index
+                          ) || scope.row[column.prop]
+                        }}
+                      </CpisTag>
+                    </slot>
+                  </template>
+                </ELTableColumn> -->
+              </template>
               <template v-else>
                 <ELTableColumn
                   v-bind="column"
@@ -231,6 +259,7 @@ import CpisCopyable from '../../copyable/index'
 import CpisSearchBar from '../../search-bar/index'
 import CpisButton from '../../button/index'
 import CpisToolbar from './toolbar.vue'
+import CpisTagColumn from './tag.vue'
 import fixHeight from '../../../mixins/fixHeight'
 
 export default {
@@ -245,7 +274,8 @@ export default {
     ELRadio: Radio,
     CpisSearchBar: CpisSearchBar,
     CpisButton: CpisButton,
-    CpisToolbar: CpisToolbar
+    CpisToolbar: CpisToolbar,
+    CpisTagColumn: CpisTagColumn
   },
   props: {
     paramaterMode: {
