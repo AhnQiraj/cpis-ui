@@ -84,9 +84,10 @@ export default {
             newItem.disabled = item.disabled()
           }
 
+          const children = Array.isArray(item.children) ? item.children : typeof item.children === 'function' ? item.children() : []
           // 如果有子菜单，处理子菜单的 disabled
-          if (Array.isArray(item.children) && item.children.length > 0) {
-            newItem.children = item.children.map(child => ({
+          if (children.length > 0) {
+            newItem.children = children.map(child => ({
               ...child,
               disabled:
                 typeof child.disabled === 'function'
