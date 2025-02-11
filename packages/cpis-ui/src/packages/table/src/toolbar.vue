@@ -22,7 +22,7 @@
       </el-dropdown>
       <CpisButton
         v-else
-        :key="item.key"
+        :key="`button-${item.key}`"
         @click="handleToolbarClick(item.key)"
         v-bind="item"
       >

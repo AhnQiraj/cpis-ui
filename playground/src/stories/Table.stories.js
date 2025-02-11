@@ -49,12 +49,22 @@ import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
   |---------- |---------------- |---------- |--------------------------------  |-------- |
   | editable  | 是否开启单元格编辑 | boolean   | true/false |  false |
   | search  | 搜索配置 | boolean/array   | - |  false |
-  | columns  | 列配置 | array   | — | — |
+  | columns  | 列配置,详见 [Column Attributes](#column-attributes) | array   | — | — |
   | identity  | 表格唯一标识 | string   | — | — |
   | request  | 请求配置，和data两选一 用法见 [request](#request-and-data) | function   | — | — |
   | data  | 表格数据，和request两选一 用法见 [request](#request-and-data)| array   | — | — |
   | paramaterMode  | 参数模式 | string   | structured/flat | structured |
   | autoHeight  | 是否自动高度 | boolean   | true/false | true |
+### Column Attributes
+
+  这里不列举element文档的参数，需要去element文档查看。
+
+  | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+  |---------- |---------------- |---------- |--------------------------------  |-------- |
+  | valueType  | 列数据类型 | string   | text/number/select/action/index/tag | text |
+  | align  | 列对齐方式 | string   | left/center/right | tag 为center， number为left， 其他为right |
+  | editItemProps  | 编辑状态下会透传给编辑组件 | object/function   | — | — |
+  | fieldProps  | 非编辑状态下会透传给 valueTyp 对应的组件 | object/function   | — | — |
 
 ### CpisTable Methods
   | 方法名      | 说明          | 参数      |
@@ -63,7 +73,7 @@ import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
   | getTable  | 获取表格实例 | — |
   | getSearchBar  | 获取搜索栏实例 | — |
 
- ### CpisTable Events
+### CpisTable Events
   | 事件名      | 说明          | 回调参数      |
   |---------- |---------------- |---------- |
   | handle-add-row  | 新增行事件 | — |
@@ -1557,6 +1567,99 @@ export const ToolTip = {
     }
   },
   name: '超长溢出和tooltip'
+}
+
+export const ValueType_Tag = {
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<template>
+  <CpisTable :columns="columns" :request="request" />
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      columns: [
+        {
+          label: '状态1',
+          prop: 'status1',
+          valueType: 'tag',
+          fieldProps: {type: 'success'},
+          formatter: row => row.status1 === 'success' ? '成功' : '失败'
+        },
+        {
+          label: '状态2',
+          prop: 'status2',
+          valueType: 'tag',
+          fieldProps: row => ({
+            type: row.status2 === 'draft' ? 'draft' : 'completed'
+          }),
+          formatter: row => row.status2 === 'draft' ? '延期' : '正常'
+        }
+      ],
+      request: async () => ({
+        data: [{
+          status1: 'success',
+          status2: 'draft'
+        }],
+        total: 50
+      })
+    }
+  }
+}
+</script>`
+      }
+    }
+  },
+  render: (args, { argTypes }) => ({
+    props: Object.keys(argTypes),
+    components: { CpisTable },
+    template: `
+      <CpisTable
+        :columns="[
+          {
+            label: '状态1',
+            prop: 'status1',
+            valueType: 'tag',
+            fieldProps: {type: 'success'},
+            formatter: row => row.status1 === 'success' ? '成功' : '失败'
+          },
+          {
+            label: '状态2',
+            prop: 'status2',
+            valueType: 'tag',
+            fieldProps: row => ({
+              type: row.status2 === 'draft' ? 'draft' : 'completed'
+            }),
+            formatter: row => row.status2 === 'draft' ? '延期' : '正常'
+          }
+        ]"
+        :request="() => ({
+          data: [{
+            status1: 'success',
+            status2: 'draft'
+          }],
+          total: 50
+        })"
+      />
+    `
+  }),
+  argTypes: {
+    columns: {
+      description: '列配置',
+      control: 'array',
+      table: {
+        category: '列配置'
+      }
+    },
+    request: {
+      description: '请求配置',
+      control: 'function'
+    }
+  }
 }
 
 // Story 级别文档
