@@ -38,9 +38,13 @@ import Vue from 'vue'
 import $ from 'jquery'
 import { d2CrudPlus } from 'd2-crud-plus'
 import { crudOptions } from './crud'
+import { d2CrudX } from 'd2-crud-x'
 Vue.use(d2CrudPlus)
 export default {
   name: 'Z-Table',
+  components: {
+    d2CrudX
+  },
   mixins: [d2CrudPlus.crud],
   props: {
     indexRow: {
