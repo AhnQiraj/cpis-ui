@@ -111,7 +111,7 @@
                             scope.row,
                             column,
                             scope.$index
-                          ) || scope.row[column.prop]
+                          ) ?? scope.row[column.prop]
                         }}
                       </template>
                       <template v-else>
@@ -147,7 +147,7 @@
                             scope.row,
                             column,
                             scope.$index
-                          ) || scope.row[column.prop]
+                          ) ?? scope.row[column.prop]
                         }}
                       </template>
                       <template v-else>
