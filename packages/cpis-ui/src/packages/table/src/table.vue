@@ -222,7 +222,7 @@
                               column,
                               scope.row[column.prop],
                               scope.$index
-                            ) || scope.row[column.prop]
+                            ) ?? scope.row[column.prop]
                           )
                         }}
                         <template

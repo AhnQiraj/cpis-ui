@@ -53,6 +53,9 @@
           <section class="el-drawer__body" v-if="rendered">
             <slot></slot>
           </section>
+          <footer class="drawer-footer" v-if="rendered">
+            <slot name="footer"></slot>
+          </footer>
         </div>
       </div>
     </div>

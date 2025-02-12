@@ -407,7 +407,23 @@ export const Request = {
             return new Promise(resolve => {
               setTimeout(() => {
                 resolve({
-                  data: [{ name: '张三' }, { name: '李四' }, { name: '王五' }],
+                  data: [
+                    {
+                      name: '张三',
+                      functionScore: 0,
+                      businessScore: 0
+                    },
+                    {
+                      name: '李四',
+                      functionScore: 1,
+                      businessScore: 1
+                    },
+                    {
+                      name: '王五',
+                      functionScore: 2,
+                      businessScore: 2
+                    }
+                  ],
                   total: 3
                 })
               }, 1000)
@@ -418,6 +434,21 @@ export const Request = {
               label: '姓名',
               prop: 'name',
               valueType: 'text'
+            },
+            {
+              label: '职能绩效',
+              prop: 'functionScore'
+            },
+            {
+              label: '业务绩效',
+              prop: 'businessScore'
+            },
+            {
+              label: '总分',
+              prop: 'totalScore',
+              formatter: (row, column, value) => {
+                return row.functionScore + row.businessScore
+              }
             }
           ]
         }
