@@ -216,14 +216,14 @@
                       </template>
                       <template v-else>
                         {{
-                          column?.formatter?.(
-                            scope.row,
-                            column,
-                            scope.row[column.prop],
-                            scope.$index
-                          ) !== undefined ||
-                          scope.row[column.prop] !== undefined ||
-                          columnEmptyText
+                          renderEmptyText(
+                            column?.formatter?.(
+                              scope.row,
+                              column,
+                              scope.row[column.prop],
+                              scope.$index
+                            ) || scope.row[column.prop]
+                          )
                         }}
                         <template
                           v-if="column.copyable && scope.row[column.prop]"
@@ -435,6 +435,12 @@ export default {
     })
   },
   methods: {
+    renderEmptyText(value) {
+      if (value === undefined) {
+        return this.columnEmptyText
+      }
+      return value
+    },
     // 判断单元格是否处于编辑状态
     isEditing(row, prop) {
       return typeof prop.editable === 'boolean'
