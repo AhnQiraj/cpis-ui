@@ -221,8 +221,8 @@
                             column,
                             scope.row[column.prop],
                             scope.$index
-                          ) ||
-                          scope.row[column.prop] ||
+                          ) !== undefined ||
+                          scope.row[column.prop] !== undefined ||
                           columnEmptyText
                         }}
                         <template
