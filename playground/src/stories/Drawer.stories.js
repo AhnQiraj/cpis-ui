@@ -177,10 +177,7 @@ export const TitleRightSlot = {
       template: `
       <div>
         <CpisButton @click="visible = true">打开</CpisButton>
-        <CpisDrawer :visible.sync="visible" :title="title">
-            <template #title>
-              标题插槽
-            </template>
+        <CpisDrawer :visible.sync="visible" title="标题11">
             <template #title-right>
               右侧插槽
             </template>
