@@ -53,7 +53,7 @@
           <section class="el-drawer__body" v-if="rendered">
             <slot></slot>
           </section>
-          <footer class="drawer-footer" v-if="rendered">
+          <footer class="drawer-footer" v-if="rendered && $slots.footer">
             <slot name="footer"></slot>
           </footer>
         </div>
