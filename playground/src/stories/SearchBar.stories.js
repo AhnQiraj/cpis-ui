@@ -119,6 +119,23 @@ export default {
       options: ['flat', 'structured']
     }
   },
+  decorators: [
+    () => ({
+      template: `
+        <div style="
+          height: 400px;
+          position: relative;
+          background-color: #fff;
+          padding: 20px;
+          border: 1px solid #eee;
+          border-radius: 4px;
+          box-shadow: 0 2px 12px 0 rgba(0,0,0,0.1);
+        ">
+          <story />
+        </div>
+      `
+    })
+  ],
   render: (args, { argTypes, parameters }) => {
     return {
       setup() {
