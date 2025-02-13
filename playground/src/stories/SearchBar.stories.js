@@ -159,6 +159,11 @@ export const FlatSearch = {
             label: '姓名'
           },
           {
+            prop: 'isActive',
+            label: '是否有效',
+            type: 'checkbox'
+          },
+          {
             prop: 'status',
             label: '状态',
             type: 'select',
@@ -189,6 +194,11 @@ export const FlatSearch = {
           {
             prop: 'name',
             label: '姓名'
+          },
+          {
+            prop: 'isActive',
+            label: '是否有效',
+            type: 'checkbox'
           },
           {
             prop: 'status',

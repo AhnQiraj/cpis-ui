@@ -8,9 +8,16 @@
         v-for="(item, index) in _search"
         v-show="isExpanded || index <= 4"
         :key="item.key"
-        class="flex flex-row items-center gap-2 border-solid border-1 border-gray-3 rounded px-2.5"
+        class="flex flex-row items-center gap-2 px-2.5"
+        :class="{
+          'border-solid border-1 border-gray-3 rounded':
+            item.type !== 'checkbox'
+        }"
       >
-        <div v-if="!!item.label" class="whitespace-nowrap text-sm text-gray-6">
+        <div
+          v-if="!!item.label && item.type !== 'checkbox'"
+          class="whitespace-nowrap text-sm text-gray-6"
+        >
           {{ item.label }}：
         </div>
         <template v-if="['select', 'multiple-select'].includes(item.type)">
@@ -71,6 +78,11 @@
             v-model="params[item.prop]"
           />
         </template>
+        <template v-else-if="['checkbox'].includes(item.type)">
+          <ElCheckbox v-model="params[item.prop]">
+            {{ item.label }}
+          </ElCheckbox>
+        </template>
         <template v-else>
           <CpisInput
             size="small"
@@ -100,7 +112,7 @@ import CpisInput from '../../input/index'
 import CpisSelect from '../../select/index'
 import CpisButton from '../../button/index'
 import CpisDatePicker from '../../date-picker/index'
-import { Option } from 'element-ui'
+import { Option, Checkbox } from 'element-ui'
 export default {
   name: 'CpisSearchBar',
   components: {
@@ -108,7 +120,8 @@ export default {
     CpisSelect,
     CpisButton,
     CpisDatePicker,
-    ElOption: Option
+    ElOption: Option,
+    ElCheckbox: Checkbox
   },
   props: {
     paramaterMode: {
