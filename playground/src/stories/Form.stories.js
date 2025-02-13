@@ -405,27 +405,29 @@ export default {
         }
       },
       template: `
-        <CpisForm 
-          ref="form"
-          :model="formData"
-          :rules="rules"
-          :column="column" 
-          :label-width="labelWidth" 
-          :content-width="contentWidth"
-        >
-          <CpisFormItem label="姓名" prop="name">
-            <el-input v-model="formData.name" />
-          </CpisFormItem>
-          <CpisFormItem label="年龄" prop="age">
-            <el-input v-model.number="formData.age" />
-          </CpisFormItem>
-          <CpisFormItem label="手机号" prop="phone">
-            <el-input v-model="formData.phone" />
-          </CpisFormItem>
-        </CpisForm>
-        <div class="mt-4 p-4 flex justify-center bg-gray-50 border-t border-gray-200">
-          <CpisButton type="primary" @click="submitForm" class="w-32 h-9">提交</CpisButton>
-        </div>
+        <template>
+          <CpisForm
+            ref="form"
+            :model="formData"
+            :rules="rules"
+            :column="column"
+            :label-width="labelWidth"
+            :content-width="contentWidth"
+          >
+            <CpisFormItem label="姓名" prop="name">
+              <el-input v-model="formData.name" />
+            </CpisFormItem>
+            <CpisFormItem label="年龄" prop="age">
+              <el-input v-model.number="formData.age" />
+            </CpisFormItem>
+            <CpisFormItem label="手机号" prop="phone">
+              <el-input v-model="formData.phone" />
+            </CpisFormItem>
+          </CpisForm>
+          <div class="mt-4 p-4 flex justify-center bg-gray-50 border-t border-gray-200">
+            <CpisButton type="primary" @click="submitForm" class="w-32 h-9">提交</CpisButton>
+          </div>
+        </template>
       `
     }
   }
