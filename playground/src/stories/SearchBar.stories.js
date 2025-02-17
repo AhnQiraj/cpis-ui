@@ -127,6 +127,7 @@ export default {
           position: relative;
           background-color: #fff;
           padding: 20px;
+          overflow-y: auto;
           border: 1px solid #eee;
           border-radius: 4px;
           box-shadow: 0 2px 12px 0 rgba(0,0,0,0.1);
@@ -699,22 +700,43 @@ export default {
   },
   render: () => ({
     components: { CpisSearchBar },
+    methods: {
+      handleSearch(params) {
+        this.searchParams = JSON.parse(JSON.stringify(params))
+        console.log('搜索参数:', params)
+      },
+      handleReset() {
+        this.searchParams = null
+        console.log('重置搜索')
+      }
+    },
     data() {
       return {
+        searchParams: {},
         search: [
           {
             prop: 'date',
-            label: 'date',
+            label: '日期',
             type: 'date'
           },
           {
             prop: 'datetime',
-            label: 'datetime',
+            label: '日期时间',
             type: 'datetime'
           },
           {
+            prop: 'month',
+            label: '月份',
+            type: 'month'
+          },
+          {
+            prop: 'year',
+            label: '年份',
+            type: 'year'
+          },
+          {
             prop: 'daterange',
-            label: 'daterange',
+            label: '日期',
             type: 'daterange'
           },
           {
@@ -727,7 +749,11 @@ export default {
     },
     template: `
       <div>
-        <CpisSearchBar :search="search" paramater-mode="structured"/>
+        <CpisSearchBar :search="search" paramater-mode="structured" @search="handleSearch" @reset="handleReset"/>
+        <div style="margin-top: 16px;">
+          <p>点击查询查看搜索参数:</p>
+          <pre v-if="searchParams">{{ JSON.stringify(searchParams, null, 2) }}</pre>
+        </div>
       </div>
     `
   })

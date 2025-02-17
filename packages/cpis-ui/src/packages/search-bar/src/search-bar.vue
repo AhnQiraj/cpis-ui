@@ -48,9 +48,14 @@
         </template>
         <template
           v-else-if="
-            ['daterange', 'date', 'datetime', 'datetimerange'].includes(
-              item.type
-            )
+            [
+              'daterange',
+              'date',
+              'datetime',
+              'datetimerange',
+              'month',
+              'year'
+            ].includes(item.type)
           "
         >
           <CpisDatePicker
@@ -62,7 +67,9 @@
                 date: 'yyyy-MM-dd',
                 datetime: 'yyyy-MM-dd HH:mm:ss',
                 datetimerange: 'yyyy-MM-dd HH:mm:ss',
-                daterange: 'yyyy-MM-dd'
+                daterange: 'yyyy-MM-dd',
+                month: 'yyyy-MM',
+                year: 'yyyy'
               }[item.type]
             "
             :default-time="
