@@ -659,37 +659,46 @@ export const DatePickerTypes = {
       source: {
         code: `
 <template>
-  <CpisSearchBar paramater-mode="structured" :search="search"/>
+  <CpisSearchBar :search="search"/>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      dict: [
-        status: {}
-      ],
       search: [
         {
-          prop: 'date',
-          label: 'date',
-          type: 'daterange'
-        },
-        {
-          prop: 'datetime',
-          label: 'datetime',
-          type: 'datetime'
-        }
+            prop: 'date',
+            label: '日期',
+            type: 'date'
+          },
+          {
+            prop: 'datetime',
+            label: '日期时间',
+            type: 'datetime'
+          },
+          {
+            prop: 'month',
+            label: '月份',
+            type: 'month'
+          },
+          {
+            prop: 'year',
+            label: '年份',
+            type: 'year'
+          },
+          {
+            prop: 'daterange',
+            label: '日期',
+            type: 'daterange'
+          },
+          {
+            prop: 'datetimerange',
+            label: 'datetimerange',
+            type: 'datetimerange'
+          }
       ]
     }
-  },
-  mounted() {
-    setTimeout(() => {
-      this.dict.status = [
-        { name: '启用', key: 1 },
-        { name: '禁用', key: 0 }
-      ]
-    }, 2000)
   }
 }
 </script>
