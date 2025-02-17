@@ -12,6 +12,7 @@
         </CpisButton>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item
+            :key="`dropdown-item-${item.key}`"
             v-for="item in item.children"
             :command="item.key"
             :disabled="item.disabled"
