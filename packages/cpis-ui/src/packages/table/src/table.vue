@@ -338,7 +338,7 @@ export default {
     },
     columnEmptyText: {
       type: String,
-      default: '暂无数据',
+      default: '--',
       comments: '列无数据时显示的文本例如 - 或者暂无数据'
     },
     emptyText: {
