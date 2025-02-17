@@ -36,9 +36,7 @@
               </slot>
             </div>
             <div class="drawer-title-right">
-              <slot name="title-right">
-                <span role="heading" :title="title">{{ title }}</span>
-              </slot>
+              <slot name="title-right"></slot>
             </div>
             <button
               :aria-label="`close ${title || 'drawer'}`"
