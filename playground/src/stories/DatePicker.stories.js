@@ -65,10 +65,101 @@ export const Basic = () => ({
     CpisDatePicker
   },
   template: `
-    <div class="flex flex-col gap-2">
-        小<CpisDatePicker :bordered="false" size="small" v-model="value" type="date" clearable />
-        中<CpisDatePicker :bordered="false" size="medium" v-model="value" type="date" clearable />
-        大<CpisDatePicker :bordered="false" size="large" v-model="value" type="date" clearable />
+    <div class="flex flex-col gap-8">
+      <div class="flex flex-col gap-2">
+        <h3 class="text-gray-600 font-medium">日期选择器</h3>
+        <div class="flex items-center gap-2">
+          <div class="w-16 text-gray-500">小号</div>
+          <CpisDatePicker :bordered="false" size="small" v-model="value" type="date" clearable />
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-16 text-gray-500">中号</div>
+          <CpisDatePicker :bordered="false" size="medium" v-model="value" type="date" clearable />
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-16 text-gray-500">大号</div>
+          <CpisDatePicker :bordered="false" size="large" v-model="value" type="date" clearable />
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <h3 class="text-gray-600 font-medium">日期时间选择器</h3>
+        <div class="flex items-center gap-2">
+          <div class="w-16 text-gray-500">小号</div>
+          <CpisDatePicker :bordered="false" size="small" v-model="value" type="datetime" clearable />
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-16 text-gray-500">中号</div>
+          <CpisDatePicker :bordered="false" size="medium" v-model="value" type="datetime" clearable />
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-16 text-gray-500">大号</div>
+          <CpisDatePicker :bordered="false" size="large" v-model="value" type="datetime" clearable />
+        </div>
+      </div>
+    
+      <div class="flex flex-col gap-2">
+        <h3 class="text-gray-600 font-medium">年份选择器</h3>
+        <div class="flex items-center gap-2">
+          <div class="w-16 text-gray-500">小号</div>
+          <CpisDatePicker :bordered="false" size="small" v-model="value" type="month" clearable />
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-16 text-gray-500">中号</div>
+          <CpisDatePicker :bordered="false" size="medium" v-model="value" type="month" clearable />
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-16 text-gray-500">大号</div>
+          <CpisDatePicker :bordered="false" size="large" v-model="value" type="month" clearable />
+        </div>
+
+      <div class="flex flex-col gap-2">
+        <h3 class="text-gray-600 font-medium">月份选择器</h3>
+        <div class="flex items-center gap-2">
+          <div class="w-16 text-gray-500">小号</div>
+          <CpisDatePicker :bordered="false" size="small" v-model="value" type="month" clearable />
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-16 text-gray-500">中号</div>
+          <CpisDatePicker :bordered="false" size="medium" v-model="value" type="month" clearable />
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-16 text-gray-500">大号</div>
+          <CpisDatePicker :bordered="false" size="large" v-model="value" type="month" clearable />
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <h3 class="text-gray-600 font-medium">日期范围选择器</h3>
+        <div class="flex items-center gap-2">
+          <div class="w-16 text-gray-500">小号</div>
+          <CpisDatePicker :bordered="false" size="small" v-model="value" type="daterange" clearable />
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-16 text-gray-500">中号</div>
+          <CpisDatePicker :bordered="false" size="medium" v-model="value" type="daterange" clearable />
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-16 text-gray-500">大号</div>
+          <CpisDatePicker :bordered="false" size="large" v-model="value" type="daterange" clearable />
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <h3 class="text-gray-600 font-medium">日期时间范围选择器</h3>
+        <div class="flex items-center gap-2">
+          <div class="w-16 text-gray-500">小号</div>
+          <CpisDatePicker :bordered="false" size="small" v-model="value" type="datetimerange" clearable />
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-16 text-gray-500">中号</div>
+          <CpisDatePicker :bordered="false" size="medium" v-model="value" type="datetimerange" clearable />
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-16 text-gray-500">大号</div>
+          <CpisDatePicker :bordered="false" size="large" v-model="value" type="datetimerange" clearable />
+        </div>
+      </div>
     </div>
   `,
   data() {
