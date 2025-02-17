@@ -653,8 +653,7 @@ export default {
   })
 }
 
-export const DateRange = {
-  name: '各种日期选择器',
+export const DatePickerTypes = {
   parameters: {
     docs: {
       source: {
