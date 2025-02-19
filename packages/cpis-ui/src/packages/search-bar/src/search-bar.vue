@@ -54,7 +54,8 @@
               'datetime',
               'datetimerange',
               'month',
-              'year'
+              'year',
+              'monthrange'
             ].includes(item.type)
           "
         >
@@ -69,7 +70,8 @@
                 datetimerange: 'yyyy-MM-dd HH:mm:ss',
                 daterange: 'yyyy-MM-dd',
                 month: 'yyyy-MM',
-                year: 'yyyy'
+                year: 'yyyy',
+                monthrange: 'yyyy-MM'
               }[item.type]
             "
             :default-time="
@@ -205,7 +207,8 @@ export default {
         date: 100,
         datetime: 150,
         datetimerange: 350,
-        daterange: 250
+        daterange: 250,
+        monthrange: 250
       }
       return widht[type] || 100
     },

@@ -751,6 +751,11 @@ export default {
             prop: 'datetimerange',
             label: 'datetimerange',
             type: 'datetimerange'
+          },
+          {
+            prop: 'monthrange',
+            label: '月份',
+            type: 'monthrange'
           }
         ]
       }
