@@ -1,5 +1,5 @@
 <template>
-  <ElTag :type="type" v-bind="$attrs">
+  <ElTag :type="computedType" v-bind="$attrs" v-on="$listeners">
     <slot></slot>
   </ElTag>
 </template>
@@ -13,7 +13,7 @@ export default {
     ElTag: Tag
   },
   computed: {
-    type() {
+    computedType() {
       return {
         submitted: 'default',
         draft: 'warning',
