@@ -52,6 +52,7 @@ import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
  *   valueKey?: string,     // 枚举值的value值
  *   labelKey?: string,     // 枚举值的label值
  *   defaultValue?: any,     // 默认值
+ *   fieldEvents?: Object,     // 字段事件 具体参考[下方示例](#示例)
  * }
  * ```
  *
@@ -72,7 +73,15 @@ import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
  *   {
  *     prop: 'name',
  *     label: '姓名',
- *     placeholder: '请输入姓名'
+ *     placeholder: '请输入姓名',
+ *     fieldEvents: {
+ *       focus: (event, item) => {
+ *         console.log('focus', event, item)
+ *       },
+ *       blur: (event, item) => {
+ *         console.log('blur', event, item)
+ *       }
+ *     }
  *   },
  *   {
  *     prop: 'status',
@@ -174,7 +183,12 @@ export const FlatSearch = {
         code: `<CpisSearchBar paramater-mode="flat" :search="[
           {
             prop: 'name',
-            label: '姓名'
+            label: '姓名',
+            fieldEvents: {
+              focus: (event, item) => {
+                console.log('focus', event, item)
+              }
+            }
           },
           {
             prop: 'isActive',
@@ -211,7 +225,12 @@ export const FlatSearch = {
         search: [
           {
             prop: 'name',
-            label: '姓名'
+            label: '姓名',
+            fieldEvents: {
+              focus: (event, item) => {
+                console.log('focus', event, item)
+              }
+            }
           },
           {
             prop: 'isActive',

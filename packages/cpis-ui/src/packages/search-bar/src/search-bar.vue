@@ -31,6 +31,7 @@
             :collapse-tags="item.type === 'multiple-select'"
             :placeholder="item.placeholder || '请选择'"
             v-model="params[item.prop]"
+            v-on="getComponentListeners(item)"
             :style="{
               width: calculateWidth(
                 item.placeholder || '请选择',
@@ -88,7 +89,10 @@
           />
         </template>
         <template v-else-if="['checkbox'].includes(item.type)">
-          <ElCheckbox v-model="params[item.prop]">
+          <ElCheckbox
+            v-model="params[item.prop]"
+            v-on="getComponentListeners(item)"
+          >
             {{ item.label }}
           </ElCheckbox>
         </template>
@@ -99,6 +103,7 @@
             :label="item.label"
             :placeholder="item.placeholder || '请输入'"
             v-model="params[item.prop]"
+            v-on="getComponentListeners(item)"
             :style="{
               width: calculateWidth(item.placeholder || '请输入')
             }"
@@ -250,6 +255,18 @@ export default {
         )
       }
       return params
+    },
+    getComponentListeners(item) {
+      const listeners = {}
+      // 如果item中有events配置，则应用对应的事件处理器
+      if (item.fieldEvents) {
+        Object.entries(item.fieldEvents).forEach(([event, handler]) => {
+          listeners[event] = (...args) => {
+            handler(...args, item)
+          }
+        })
+      }
+      return listeners
     }
   }
 }
