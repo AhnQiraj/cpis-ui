@@ -12,10 +12,5 @@
   "main": "index.js",
   "publishConfig": {
     "registry": "http://172.169.50.28:5000/"
-  },
-  "devDependencies": {
-    "browserslist": "^4.24.4",
-    "lightningcss": "^1.29.1",
-    "unocss-preset-autoprefixer": "^0.0.9"
   }
 }
