@@ -263,6 +263,11 @@ export default {
         return typeof value === 'function' || value === null || value === undefined
       }
     },
+    selectable: {
+      type: Boolean,
+      default: false,
+      comments: '是否开启选择'
+    },
     autoHeight: {
       type: Boolean,
       default: true,
@@ -310,7 +315,7 @@ export default {
   },
   computed: {
     computedColumns() {
-      return this.columns
+      const newColumns = this.columns
         .filter(column => {
           if (typeof column.hideInTable === 'boolean') {
             return !column.hideInTable
@@ -324,6 +329,13 @@ export default {
           column.showOverflowTooltip = typeof column.tooltip === 'boolean' ? column.tooltip : true
           return column
         })
+      if (this.selectable && !newColumns.find(column => column.valueType === 'selection')) {
+        newColumns.unshift({
+          prop: 'selection',
+          valueType: 'selection'
+        })
+      }
+      return newColumns
     },
     computedHeight() {
       if (this.autoHeight) {
