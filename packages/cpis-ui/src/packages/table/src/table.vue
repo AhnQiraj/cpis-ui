@@ -484,44 +484,39 @@ export default {
 .cpis-table-container .cpis-table-toolbar .el-table__cell .el-dropdown {
   @apply text-primary-6;
 }
-</style>
-<style scoped>
-::v-deep .cellClassName {
-  background-color: #f5f5f5;
+
+.cpis-table.el-table--border,
+.cpis-table.el-table--border .el-table__cell,
+.cpis-table.el-table td.el-table__cell,
+.cpis-table.el-table th.el-table__cell {
+  @apply border-gray-3;
 }
-::v-deep .cell.is-required::before {
+
+.cpis-table.el-table {
+  width: 100% !important;
+}
+.cpis-table.el-table .el-table__body {
+  width: 100% !important;
+}
+
+/* 清楚编辑组件的border */
+.cpis-table.el-table .el-table__body .el-table__cell .el-input__inner {
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+
+/* 分页 页码根据主题色 */
+.cpis-table-pagination.el-pagination .el-pager .number.active,
+.cpis-table-pagination.el-pagination .el-pager .number:hover {
+  @apply !text-primary-6;
+}
+.cpis-table.el-table .cell.is-required::before {
   @apply text-error;
   content: '*';
   font-size: 14px;
   line-height: 1;
   display: inline-block;
   vertical-align: middle;
-}
-/* 分页 页码根据主题色 */
-::v-deep .el-pager .number.active,
-::v-deep .el-pager .number:hover {
-  @apply !text-primary-6;
-}
-
-::v-deep .el-table--border,
-::v-deep .el-table--border .el-table__cell,
-::v-deep .el-table td.el-table__cell,
-::v-deep .el-table th.el-table__cell {
-  @apply border-gray-3;
-}
-
-::v-deep .el-table {
-  width: 100% !important;
-}
-
-::v-deep .el-table__body {
-  width: 100% !important;
-}
-
-/* 清楚编辑组件的border */
-::v-deep .el-table__body .el-table__cell .el-input__inner {
-  border: none;
-  padding: 0;
-  background: transparent;
 }
 </style>
