@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-2 bg-gray-2 h-full">
+  <div class="cpis-table-container flex flex-col gap-2 bg-gray-2 h-full">
     <div v-if="search?.length > 0" class="bg-white p-3.5 cpis-table-searchbar">
       <template>
         <CpisSearchBar
@@ -15,17 +15,14 @@
       <template v-if="$slots.toolbar || toolbar?.length > 0">
         <div class="cpis-table-toolbar">
           <slot name="toolbar" class="ml-auto">
-            <CpisToolbar
-              :toolbar="toolbar"
-              :identity="identity"
-              @handleToolbarClick="handleToolbarClick"
-            />
+            <CpisToolbar :toolbar="toolbar" :identity="identity" @handleToolbarClick="handleToolbarClick" />
           </slot>
         </div>
       </template>
-      <div class="table-container flex-1">
+      <div class="w-full flex-1">
         <ELTable
           ref="table"
+          class="cpis-table"
           :empty-text="emptyText"
           :data="dataSource"
           :row-key="rowKey"
@@ -44,39 +41,21 @@
           <template v-if="editable">
             <ELTableColumn prop="edit" width="50" align="center">
               <template #header>
-                <span
-                  class="el-icon-plus cursor-pointer"
-                  @click="handleAddRow"
-                />
+                <span class="el-icon-plus cursor-pointer" @click="handleAddRow" />
               </template>
               <template slot-scope="scope">
                 <span
                   class="el-icon-minus cursor-pointer"
-                  @click="
-                    handleDeleteRow(scope.row, scope.column, scope.$index)
-                  "
+                  @click="handleDeleteRow(scope.row, scope.column, scope.$index)"
                 />
               </template>
             </ELTableColumn>
           </template>
-          <template
-            v-if="
-              selectable ||
-              computedColumns.some(column => column.valueType === 'selection')
-            "
-          >
+          <template v-if="selectable || computedColumns.some(column => column.valueType === 'selection')">
             <ELTableColumn type="selection" width="40" />
           </template>
-          <template
-            v-if="computedColumns.some(column => column.valueType === 'index')"
-          >
-            <ELTableColumn
-              v-bind="column"
-              type="index"
-              width="50"
-              align="center"
-              min-width="50"
-            >
+          <template v-if="computedColumns.some(column => column.valueType === 'index')">
+            <ELTableColumn v-bind="column" type="index" width="50" align="center" min-width="50">
               <template slot-scope="scope">
                 {{ scope.$index + 1 }}
               </template>
@@ -86,12 +65,7 @@
             <template v-if="column.valueType === 'action'">
               <ELTableColumn v-bind="column" :fixed="column.fixed || 'right'">
                 <template slot-scope="scope">
-                  <slot
-                    name="columns"
-                    :column="column"
-                    :row="scope.row"
-                    :$index="scope.$index"
-                  >
+                  <slot name="columns" :column="column" :row="scope.row" :$index="scope.$index">
                     {{ scope.row[column.prop] }}
                   </slot>
                 </template>
@@ -106,20 +80,9 @@
                   :align="column.align || 'right'"
                 >
                   <template slot-scope="scope">
-                    <slot
-                      name="columns"
-                      :column="column"
-                      :row="scope.row"
-                      :$index="scope.$index"
-                    >
+                    <slot name="columns" :column="column" :row="scope.row" :$index="scope.$index">
                       <template v-if="!isEditing(scope.row, column)">
-                        {{
-                          column?.formatter?.(
-                            scope.row,
-                            column,
-                            scope.$index
-                          ) ?? scope.row[column.prop]
-                        }}
+                        {{ column?.formatter?.(scope.row, column, scope.$index) ?? scope.row[column.prop] }}
                       </template>
                       <template v-else>
                         <ELInput
@@ -142,20 +105,9 @@
                   :align="column.align || 'right'"
                 >
                   <template slot-scope="scope">
-                    <slot
-                      name="columns"
-                      :column="column"
-                      :row="scope.row"
-                      :$index="scope.$index"
-                    >
+                    <slot name="columns" :column="column" :row="scope.row" :$index="scope.$index">
                       <template v-if="!isEditing(scope.row, column)">
-                        {{
-                          column?.formatter?.(
-                            scope.row,
-                            column,
-                            scope.$index
-                          ) ?? scope.row[column.prop]
-                        }}
+                        {{ column?.formatter?.(scope.row, column, scope.$index) ?? scope.row[column.prop] }}
                       </template>
                       <template v-else>
                         <ELRadio
@@ -207,12 +159,7 @@
                   :label-class-name="column.required ? 'is-required' : ''"
                 >
                   <template slot-scope="scope">
-                    <slot
-                      name="columns"
-                      :column="column"
-                      :row="scope.row"
-                      :$index="scope.$index"
-                    >
+                    <slot name="columns" :column="column" :row="scope.row" :$index="scope.$index">
                       <template v-if="isEditing(scope.row, column)">
                         <ELInput
                           v-bind="column.editItemProps"
@@ -224,17 +171,11 @@
                       <template v-else>
                         {{
                           renderEmptyText(
-                            column?.formatter?.(
-                              scope.row,
-                              column,
-                              scope.row[column.prop],
-                              scope.$index
-                            ) ?? scope.row[column.prop]
+                            column?.formatter?.(scope.row, column, scope.row[column.prop], scope.$index) ??
+                              scope.row[column.prop]
                           )
                         }}
-                        <template
-                          v-if="column.copyable && scope.row[column.prop]"
-                        >
+                        <template v-if="column.copyable && scope.row[column.prop]">
                           <CpisCopyable :text="scope.row[column.prop]" />
                         </template>
                       </template>
@@ -323,9 +264,7 @@ export default {
       default: null,
       comments: '请求函数',
       validator: function (value) {
-        return (
-          typeof value === 'function' || value === null || value === undefined
-        )
+        return typeof value === 'function' || value === null || value === undefined
       }
     },
     autoHeight: {
@@ -386,8 +325,7 @@ export default {
           return true
         })
         .map(column => {
-          column.showOverflowTooltip =
-            typeof column.tooltip === 'boolean' ? column.tooltip : true
+          column.showOverflowTooltip = typeof column.tooltip === 'boolean' ? column.tooltip : true
           return column
         })
     },
@@ -455,9 +393,7 @@ export default {
     },
     // 判断单元格是否处于编辑状态
     isEditing(row, prop) {
-      return typeof prop.editable === 'boolean'
-        ? prop.editable
-        : this.$props.editable
+      return typeof prop.editable === 'boolean' ? prop.editable : this.$props.editable
     },
     async handleFetchData(params) {
       let requestParams = { ...params }
@@ -466,9 +402,7 @@ export default {
           if (this.paramaterMode === 'structured') {
             requestParams = {
               ...requestParams,
-              ...(this.searchParams.length > 0
-                ? { parameters: this.searchParams }
-                : {})
+              ...(this.searchParams.length > 0 ? { parameters: this.searchParams } : {})
             }
           } else {
             requestParams = {
@@ -547,12 +481,16 @@ export default {
   }
 }
 </script>
-<style scoped>
-/* 工具栏 */
-.cpis-table-toolbar {
+<style>
+.cpis-table-container .cpis-table-toolbar {
   @apply flex flex-row items-center;
 }
 
+.cpis-table-container .cpis-table-toolbar .el-table__cell .el-dropdown {
+  @apply text-primary-6;
+}
+</style>
+<style scoped>
 ::v-deep .cellClassName {
   background-color: #f5f5f5;
 }
@@ -577,30 +515,12 @@ export default {
   @apply border-gray-3;
 }
 
-/* 解决宽度无限延长 start */
-.table-container {
-  width: 100%;
-}
-
 ::v-deep .el-table {
   width: 100% !important;
 }
 
 ::v-deep .el-table__body {
   width: 100% !important;
-}
-/* 解决宽度无限延长 end */
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.is-rotating {
-  animation: rotate 1s linear 1;
 }
 
 /* 清楚编辑组件的border */
