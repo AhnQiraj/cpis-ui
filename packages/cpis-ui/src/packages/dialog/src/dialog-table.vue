@@ -41,7 +41,7 @@ export default {
     },
     size: {
       type: String,
-      default: 'medium',
+      default: 'large',
       validator(value) {
         // 40 60 80
         return ['small', 'medium', 'large'].includes(value)
