@@ -35,6 +35,7 @@
             paddingBottom: '8px',
             paddingTop: '8px'
           }"
+          v-bind="$attrs"
           :border="true"
           v-on="$listeners"
         >
