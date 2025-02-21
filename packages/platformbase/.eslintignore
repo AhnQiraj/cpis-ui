@@ -1,6 +1,0 @@
-/node_modules
-/dist
-/package-lock.json
-/lib/platformbase.umd.js
-lib/platformbase.umd.js
-.DS_Store 
