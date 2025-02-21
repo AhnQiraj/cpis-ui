@@ -39,7 +39,7 @@
             </button>
           </div>
         </div>
-        <div class="flex-1 el-dialog__body bg-gray-2 overflow-hidden p-2" v-if="rendered">
+        <div class="el-dialog__body cpis-dialog__body" v-if="rendered">
           <slot></slot>
         </div>
         <div class="el-dialog__footer cpis-dialog__footer" v-if="$slots.footer">
@@ -266,5 +266,8 @@ export default {
 // 标题样式
 .el-dialog__header.cpis-dialog__header .el-dialog__title {
   @apply text-base font-bold;
+}
+.el-dialog__body.cpis-dialog__body {
+  @apply flex-1 bg-gray-2 overflow-hidden p-2;
 }
 </style>
