@@ -1,0 +1,506 @@
+@font-face {
+    font-family: 'cpisfont';
+    src:
+      url('./fonts/cpisfont.ttf?520l7i') format('truetype'),
+      url('./fonts/cpisfont.woff?520l7i') format('woff'),
+      url('./fonts/cpisfont.svg?520l7i#cpisfont') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+  
+  [class^="cpis-icon-"], [class*=" cpis-icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'cpisfont' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .cpis-icon-mr01:before {
+    content: "\e99d";
+  }
+  .cpis-icon-sb01:before {
+    content: "\e900";
+  }
+  .cpis-icon-sb02:before {
+    content: "\e901";
+  }
+  .cpis-icon-sb03:before {
+    content: "\e902";
+  }
+  .cpis-icon-sb04:before {
+    content: "\e903";
+  }
+  .cpis-icon-sb05:before {
+    content: "\e904";
+  }
+  .cpis-icon-sb06:before {
+    content: "\e905";
+  }
+  .cpis-icon-yx01:before {
+    content: "\e906";
+  }
+  .cpis-icon-yx02:before {
+    content: "\e907";
+  }
+  .cpis-icon-yx03:before {
+    content: "\e908";
+  }
+  .cpis-icon-yx04:before {
+    content: "\e909";
+  }
+  .cpis-icon-yx05:before {
+    content: "\e90a";
+  }
+  .cpis-icon-yx06:before {
+    content: "\e90b";
+  }
+  .cpis-icon-jx01:before {
+    content: "\e90c";
+  }
+  .cpis-icon-jx02:before {
+    content: "\e90d";
+  }
+  .cpis-icon-jx03:before {
+    content: "\e90e";
+  }
+  .cpis-icon-jx04:before {
+    content: "\e90f";
+  }
+  .cpis-icon-lp01:before {
+    content: "\e910";
+  }
+  .cpis-icon-lp02:before {
+    content: "\e911";
+  }
+  .cpis-icon-lp03:before {
+    content: "\e912";
+  }
+  .cpis-icon-lp04:before {
+    content: "\e913";
+  }
+  .cpis-icon-aq01:before {
+    content: "\e914";
+  }
+  .cpis-icon-aq02:before {
+    content: "\e915";
+  }
+  .cpis-icon-aq03:before {
+    content: "\e916";
+  }
+  .cpis-icon-aq04:before {
+    content: "\e917";
+  }
+  .cpis-icon-uniE989:before {
+    content: "\e989";
+  }
+  .cpis-icon-aq05:before {
+    content: "\e918";
+  }
+  .cpis-icon-aq06:before {
+    content: "\e919";
+  }
+  .cpis-icon-aq07:before {
+    content: "\e91a";
+  }
+  .cpis-icon-aq08:before {
+    content: "\e91b";
+  }
+  .cpis-icon-aq09:before {
+    content: "\e91c";
+  }
+  .cpis-icon-aq10:before {
+    content: "\e91d";
+  }
+  .cpis-icon-aq11:before {
+    content: "\e91e";
+  }
+  .cpis-icon-aq12:before {
+    content: "\e91f";
+  }
+  .cpis-icon-aq13:before {
+    content: "\e920";
+  }
+  .cpis-icon-aq14:before {
+    content: "\e921";
+  }
+  .cpis-icon-aq16:before {
+    content: "\e922";
+  }
+  .cpis-icon-aq17:before {
+    content: "\e923";
+  }
+  .cpis-icon-aq18:before {
+    content: "\e924";
+  }
+  .cpis-icon-aq19:before {
+    content: "\e925";
+  }
+  .cpis-icon-aq20:before {
+    content: "\e926";
+  }
+  .cpis-icon-aq21:before {
+    content: "\e927";
+  }
+  .cpis-icon-aq22:before {
+    content: "\e928";
+  }
+  .cpis-icon-aq15:before {
+    content: "\e929";
+  }
+  .cpis-icon-px01:before {
+    content: "\e92a";
+  }
+  .cpis-icon-px02:before {
+    content: "\e92b";
+  }
+  .cpis-icon-px03:before {
+    content: "\e92c";
+  }
+  .cpis-icon-px04:before {
+    content: "\e92d";
+  }
+  .cpis-icon-px05:before {
+    content: "\e92e";
+  }
+  .cpis-icon-px06:before {
+    content: "\e92f";
+  }
+  .cpis-icon-xj01:before {
+    content: "\e930";
+  }
+  .cpis-icon-xj02:before {
+    content: "\e931";
+  }
+  .cpis-icon-xj03:before {
+    content: "\e932";
+  }
+  .cpis-icon-xj04:before {
+    content: "\e933";
+  }
+  .cpis-icon-xj05:before {
+    content: "\e934";
+  }
+  .cpis-icon-xj06:before {
+    content: "\e935";
+  }
+  .cpis-icon-xj07:before {
+    content: "\e936";
+  }
+  .cpis-icon-xj08:before {
+    content: "\e937";
+  }
+  .cpis-icon-xj09:before {
+    content: "\e938";
+  }
+  .cpis-icon-xj10:before {
+    content: "\e939";
+  }
+  .cpis-icon-xj11:before {
+    content: "\e93a";
+  }
+  .cpis-icon-xj12:before {
+    content: "\e93b";
+  }
+  .cpis-icon-xj13:before {
+    content: "\e93c";
+  }
+  .cpis-icon-xj14:before {
+    content: "\e93d";
+  }
+  .cpis-icon-xt01:before {
+    content: "\e93e";
+  }
+  .cpis-icon-xt02:before {
+    content: "\e93f";
+  }
+  .cpis-icon-xt03:before {
+    content: "\e940";
+  }
+  .cpis-icon-xt04:before {
+    content: "\e941";
+  }
+  .cpis-icon-xt05:before {
+    content: "\e942";
+  }
+  .cpis-icon-bz01:before {
+    content: "\e943";
+  }
+  .cpis-icon-bz02:before {
+    content: "\e944";
+  }
+  .cpis-icon-bz03:before {
+    content: "\e945";
+  }
+  .cpis-icon-bz04:before {
+    content: "\e946";
+  }
+  .cpis-icon-jd01:before {
+    content: "\e947";
+  }
+  .cpis-icon-jd02:before {
+    content: "\e948";
+  }
+  .cpis-icon-jd03:before {
+    content: "\e949";
+  }
+  .cpis-icon-jd04:before {
+    content: "\e94a";
+  }
+  .cpis-icon-jd05:before {
+    content: "\e94b";
+  }
+  .cpis-icon-jd06:before {
+    content: "\e94c";
+  }
+  .cpis-icon-jd07:before {
+    content: "\e94d";
+  }
+  .cpis-icon-jd08:before {
+    content: "\e94e";
+  }
+  .cpis-icon-jk01:before {
+    content: "\e94f";
+  }
+  .cpis-icon-jk02:before {
+    content: "\e950";
+  }
+  .cpis-icon-jk03:before {
+    content: "\e951";
+  }
+  .cpis-icon-jk04:before {
+    content: "\e952";
+  }
+  .cpis-icon-jk05:before {
+    content: "\e953";
+  }
+  .cpis-icon-jk06:before {
+    content: "\e954";
+  }
+  .cpis-icon-jk07:before {
+    content: "\e955";
+  }
+  .cpis-icon-jk08:before {
+    content: "\e956";
+  }
+  .cpis-icon-jk09:before {
+    content: "\e957";
+  }
+  .cpis-icon-jk10:before {
+    content: "\e958";
+  }
+  .cpis-icon-jk11:before {
+    content: "\e959";
+  }
+  .cpis-icon-jk12:before {
+    content: "\e95a";
+  }
+  .cpis-icon-jk13:before {
+    content: "\e95b";
+  }
+  .cpis-icon-jk14:before {
+    content: "\e95c";
+  }
+  .cpis-icon-jk15:before {
+    content: "\e95d";
+  }
+  .cpis-icon-jk16:before {
+    content: "\e95e";
+  }
+  .cpis-icon-jk17:before {
+    content: "\e95f";
+  }
+  .cpis-icon-jk18:before {
+    content: "\e960";
+  }
+  .cpis-icon-jk19:before {
+    content: "\e961";
+  }
+  .cpis-icon-jk20:before {
+    content: "\e962";
+  }
+  .cpis-icon-jk21:before {
+    content: "\e963";
+  }
+  .cpis-icon-jk22:before {
+    content: "\e964";
+  }
+  .cpis-icon-jk23:before {
+    content: "\e965";
+  }
+  .cpis-icon-jk24:before {
+    content: "\e966";
+  }
+  .cpis-icon-jk25:before {
+    content: "\e967";
+  }
+  .cpis-icon-jk26:before {
+    content: "\e968";
+  }
+  .cpis-icon-jk27:before {
+    content: "\e969";
+  }
+  .cpis-icon-jk28:before {
+    content: "\e96a";
+  }
+  .cpis-icon-jk29:before {
+    content: "\e96b";
+  }
+  .cpis-icon-jk30:before {
+    content: "\e96c";
+  }
+  .cpis-icon-jk31:before {
+    content: "\e96d";
+  }
+  .cpis-icon-jy01:before {
+    content: "\e96e";
+  }
+  .cpis-icon-jy02:before {
+    content: "\e96f";
+  }
+  .cpis-icon-jy03:before {
+    content: "\e970";
+  }
+  .cpis-icon-jy04:before {
+    content: "\e971";
+  }
+  .cpis-icon-jy05:before {
+    content: "\e972";
+  }
+  .cpis-icon-jy06:before {
+    content: "\e973";
+  }
+  .cpis-icon-yj11:before {
+    content: "\e978";
+  }
+  .cpis-icon-jy12:before {
+    content: "\e979";
+  }
+  .cpis-icon-jy13:before {
+    content: "\e97a";
+  }
+  .cpis-icon-jy07:before {
+    content: "\e974";
+  }
+  .cpis-icon-jy08:before {
+    content: "\e975";
+  }
+  .cpis-icon-jy09:before {
+    content: "\e976";
+  }
+  .cpis-icon-jy10:before {
+    content: "\e977";
+  }
+  .cpis-icon-rl01:before {
+    content: "\e97b";
+  }
+  .cpis-icon-rl02:before {
+    content: "\e97c";
+  }
+  .cpis-icon-rl03:before {
+    content: "\e97d";
+  }
+  .cpis-icon-rl04:before {
+    content: "\e97e";
+  }
+  .cpis-icon-rl05:before {
+    content: "\e97f";
+  }
+  .cpis-icon-rl06:before {
+    content: "\e980";
+  }
+  .cpis-icon-rl07:before {
+    content: "\e981";
+  }
+  .cpis-icon-rl08:before {
+    content: "\e982";
+  }
+  .cpis-icon-rl09:before {
+    content: "\e983";
+  }
+  .cpis-icon-rl10:before {
+    content: "\e984";
+  }
+  .cpis-icon-rl11:before {
+    content: "\e985";
+  }
+  .cpis-icon-rl12:before {
+    content: "\e986";
+  }
+  .cpis-icon-rl13:before {
+    content: "\e987";
+  }
+  .cpis-icon-rl14:before {
+    content: "\e988";
+  }
+  .cpis-icon-pz01:before {
+    content: "\e98f";
+  }
+  .cpis-icon-pz02:before {
+    content: "\e98a";
+  }
+  .cpis-icon-pz03:before {
+    content: "\e98b";
+  }
+  .cpis-icon-pz04:before {
+    content: "\e98c";
+  }
+  .cpis-icon-pz05:before {
+    content: "\e98d";
+  }
+  .cpis-icon-pz06:before {
+    content: "\e98e";
+  }
+  .cpis-icon-mh01:before {
+    content: "\e990";
+  }
+  .cpis-icon-mh02:before {
+    content: "\e991";
+  }
+  .cpis-icon-mh03:before {
+    content: "\e992";
+  }
+  .cpis-icon-mh04:before {
+    content: "\e993";
+  }
+  .cpis-icon-mh05:before {
+    content: "\e994";
+  }
+  .cpis-icon-mh06:before {
+    content: "\e995";
+  }
+  .cpis-icon-mh07:before {
+    content: "\e996";
+  }
+  .cpis-icon-iot01:before {
+    content: "\e997";
+  }
+  .cpis-icon-iot02:before {
+    content: "\e998";
+  }
+  .cpis-icon-iot03:before {
+    content: "\e999";
+  }
+  .cpis-icon-iot04:before {
+    content: "\e99a";
+  }
+  .cpis-icon-iot05:before {
+    content: "\e99b";
+  }
+  .cpis-icon-iot06:before {
+    content: "\e99c";
+  }
+  .cpis-icon-iot07:before {
+    content: "\e99e";
+  }
+  .cpis-icon-iot08:before {
+    content: "\e99f";
+  }
+  

@@ -4,6 +4,7 @@ import 'virtual:uno.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import ElementUI from 'element-ui'
 import CpisUI from '../../packages/cpis-ui/src/index'
+import '../assets/icon.css'
 
 Vue.use(ElementUI)
 Vue.use(CpisUI)
