@@ -1,22 +1,15 @@
 <template>
-  <transition
-    name="dialog-fade"
-    @after-enter="afterEnter"
-    @after-leave="afterLeave"
-  >
-    <div
-      v-show="visible"
-      class="el-dialog__wrapper"
-      @click.self="handleWrapperClick"
-    >
+  <transition name="dialog-fade" @after-enter="afterEnter" @after-leave="afterLeave">
+    <div v-show="visible" class="el-dialog__wrapper .cpis-dialog__wrapper" @click.self="handleWrapperClick">
       <div
         role="dialog"
         :key="key"
         aria-modal="true"
         :aria-label="title || 'dialog'"
         :class="[
-          'el-dialog flex flex-col min-w-[560px] max-h-[80vh]',
+          'el-dialog flex flex-col min-w-[560px]',
           {
+            'max-h-[80vh]': !fullscreen,
             'is-fullscreen': fullscreen,
             'el-dialog--center': center,
             'aspect-video': keepAspectRatio
@@ -26,7 +19,7 @@
         ref="dialog"
         :style="style"
       >
-        <div class="el-dialog__header">
+        <div class="el-dialog__header cpis-dialog__header">
           <slot name="title">
             <span class="el-dialog__title">{{ title }}</span>
           </slot>
@@ -41,24 +34,15 @@
             >
               <i class="el-dialog__close el-icon el-icon-full-screen"></i>
             </button>
-            <button
-              type="button"
-              class="el-dialog__headerbtn"
-              aria-label="Close"
-              v-if="showClose"
-              @click="handleClose"
-            >
+            <button type="button" class="el-dialog__headerbtn" aria-label="Close" v-if="showClose" @click="handleClose">
               <i class="el-dialog__close el-icon el-icon-close"></i>
             </button>
           </div>
         </div>
-        <div
-          class="flex-1 el-dialog__body overflow-hidden"
-          v-if="rendered"
-        >
+        <div class="flex-1 el-dialog__body bg-gray-2 overflow-hidden p-2" v-if="rendered">
           <slot></slot>
         </div>
-        <div class="el-dialog__footer" v-if="$slots.footer">
+        <div class="el-dialog__footer cpis-dialog__footer" v-if="$slots.footer">
           <slot name="footer"></slot>
         </div>
       </div>
@@ -188,9 +172,7 @@ export default {
   computed: {
     computedFullscreen() {
       // 外部没传 就data中定义的fullscreen
-      return this.$attrs.fullscreen === undefined
-        ? this.fullscreen
-        : this.$attrs.fullscreen
+      return this.$attrs.fullscreen === undefined ? this.fullscreen : this.$attrs.fullscreen
     },
     style() {
       let style = {}
@@ -268,30 +250,21 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
+.cpis-dialog__footer.el-dialog__footer {
+  @apply flex items-center justify-center border-t border-t-solid border-t-gray-3 p-0 h-[64px];
+}
 // 头部样式
-.el-dialog__header {
-  @apply flex items-center justify-between h-[40px] border-b border-b-solid border-b-gray-3 p-x-4 p-y-0;
+.el-dialog__header.cpis-dialog__header {
+  @apply flex items-center justify-between h-[40px] border-b border-b-solid border-b-gray-3 p-x-4 p-y-0 bg-gray-2;
+  & .el-dialog__headerbtn {
+    top: unset;
+    right: unset;
+    position: unset;
+  }
 }
 // 标题样式
-.el-dialog__header .el-dialog__title {
+.el-dialog__header.cpis-dialog__header .el-dialog__title {
   @apply text-base font-bold;
-}
-.el-dialog__body {
-  @apply p-2;
-}
-.el-dialog__header,
-.el-dialog__body {
-  @apply bg-gray-2;
-}
-// 关闭按钮，现在flex布局后 清楚原来close 按钮样式
-.el-dialog__header .el-dialog__headerbtn {
-  top: unset;
-  right: unset;
-  position: unset;
-}
-// 底部样式
-.el-dialog__footer {
-  @apply flex items-center justify-center border-t border-t-solid border-t-gray-3 p-0 h-[64px];
 }
 </style>
