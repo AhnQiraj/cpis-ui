@@ -6,7 +6,7 @@ import ElementUI from 'element-ui'
 import CpisUI from '../../packages/cpis-ui/src/index'
 import '../assets/icon.css'
 
-Vue.use(ElementUI)
+Vue.use(ElementUI, { size: 'small' })
 Vue.use(CpisUI)
 /** @type { import('@storybook/vue').Preview } */
 const preview = {

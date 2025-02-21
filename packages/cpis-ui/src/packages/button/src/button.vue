@@ -1,6 +1,6 @@
 <template>
   <button
-    class="el-button"
+    class="el-button cpis-button"
     @click="handleClick"
     :disabled="buttonDisabled || loading"
     :autofocus="autofocus"
@@ -59,9 +59,7 @@ export default {
       return this.size || this._elFormItemSize || (this.$ELEMENT || {}).size
     },
     buttonDisabled() {
-      return this.$options.propsData.hasOwnProperty('disabled')
-        ? this.disabled
-        : (this.elForm || {}).disabled
+      return this.$options.propsData.hasOwnProperty('disabled') ? this.disabled : (this.elForm || {}).disabled
     }
   },
 
@@ -72,52 +70,55 @@ export default {
   }
 }
 </script>
-<style scoped>
-.el-button {
-  @apply !px-4 !py-2 text-primary-6 border-primary-6 bg-white;
+<style>
+.cpis-button.el-button.el-button--small {
+  font-size: 14px;
+}
+.cpis-button.el-button {
+  @apply px-4 py-2 text-primary-6 border-primary-6 bg-white;
   &:hover {
-    @apply !border-primary-5 !text-primary-5;
+    @apply border-primary-5 text-primary-5;
   }
   &:active {
-    @apply !border-primary-7 !text-primary-7;
+    @apply border-primary-7 text-primary-7;
   }
 }
-.el-button--primary {
-  @apply !bg-primary-6 !border-primary-5 text-white;
+.cpis-button.el-button.el-button--primary {
+  @apply bg-primary-6 text-white;
   &:hover {
-    @apply !border-primary-5 !bg-primary-5 !text-white;
+    @apply bg-primary-5 text-white;
   }
   &:active {
-    @apply !border-primary-7 !bg-primary-7 !text-white;
+    @apply bg-primary-7 text-white;
   }
 }
-.el-button--text {
-  @apply !bg-transparent !border-transparent !p-0;
+.cpis-button.el-button.el-button--text {
+  @apply bg-transparent border-transparent p-0;
   &:hover {
-    @apply !bg-transparent !border-transparent;
+    @apply bg-transparent border-transparent;
   }
   &:active {
-    @apply !bg-transparent !border-transparent;
-  }
-}
-
-.is-disabled:not(.el-button--text) {
-  @apply !bg-gray-2 !border-gray-3 !text-gray-4;
-  &:hover {
-    @apply !bg-gray-2 !border-gray-3 !text-gray-4;
-  }
-  &:active {
-    @apply !bg-gray-2 !border-gray-3 !text-gray-4;
+    @apply bg-transparent border-transparent;
   }
 }
 
-.is-disabled.el-button--text {
-  @apply !bg-transparent !border-none !text-gray-4;
+.cpis-button.el-button.is-disabled {
+  @apply bg-gray-2 border-gray-3 text-gray-4;
   &:hover {
-    @apply !bg-transparent !border-none !text-gray-4;
+    @apply bg-gray-2 border-gray-3 text-gray-4;
   }
   &:active {
-    @apply !bg-transparent !border-none !text-gray-4;
+    @apply bg-gray-2 border-gray-3 text-gray-4;
+  }
+}
+
+.cpis-button.el-button.el-button--text.is-disabled {
+  @apply bg-transparent border-none text-gray-4;
+  &:hover {
+    @apply bg-transparent border-none text-gray-4;
+  }
+  &:active {
+    @apply bg-transparent border-none text-gray-4;
   }
 }
 </style>
