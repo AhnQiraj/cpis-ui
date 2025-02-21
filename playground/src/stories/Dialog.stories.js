@@ -403,9 +403,19 @@ export const DialogTable_Multiple = {
                   { name: '孙十三', age: 38 },
                   { name: '周十四', age: 40 },
                   { name: '吴十五', age: 42 },
-                  { name: '郑十六', age: 44 }
+                  { name: '郑十六', age: 44 },
+                  { name: '钱十七', age: 46 },
+                  { name: '孙十八', age: 48 },
+                  { name: '李十九', age: 50 },
+                  { name: '周二十', age: 52 },
+                  { name: '吴二一', age: 54 },
+                  { name: '郑二二', age: 56 },
+                  { name: '王二三', age: 58 },
+                  { name: '赵二四', age: 60 },
+                  { name: '钱二五', age: 62 },
+                  { name: '孙二六', age: 64 }
                 ],
-                total: 16
+                total: 26
               }
             }
           }
