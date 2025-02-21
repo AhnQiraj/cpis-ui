@@ -11,7 +11,7 @@
     "prettier": "^3.2.5",
     "unocss": "^0.62.3",
     "@unocss/preset-uno": "^0.63.3",
-    "@cpis/uno-preset": "^1.0.2",
+    "@cpis/uno-preset": "workspace:*",
     "@vitejs/plugin-vue2-jsx": "^1.1.1",
     "@vitejs/plugin-vue2": "^2.3.1",
     "unocss-preset-scrollbar-hide": "^1.0.1"

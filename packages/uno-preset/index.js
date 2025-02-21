@@ -10,11 +10,12 @@ export function preseet() {
     preflights: [
       ...presetMini().preflights,
       {
-        getCSS: () => `${generateCSSVars(themes)} \n
-        .grayscale {
-          filter: grayscale(100%);
-          -webkit-filter: grayscale(100%);
-        }
+        getCSS: () => `
+${generateCSSVars(themes)}
+.grayscale {
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+}
         `
       }
     ],
