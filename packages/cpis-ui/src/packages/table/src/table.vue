@@ -51,18 +51,18 @@
               </template>
             </ELTableColumn>
           </template>
-          <template v-if="selectable || computedColumns.some(column => column.valueType === 'selection')">
-            <ELTableColumn type="selection" width="40" />
-          </template>
-          <template v-if="computedColumns.some(column => column.valueType === 'index')">
-            <ELTableColumn v-bind="column" type="index" width="50" align="center" min-width="50">
-              <template slot-scope="scope">
-                {{ scope.$index + 1 }}
-              </template>
-            </ELTableColumn>
-          </template>
           <template v-for="column in computedColumns">
-            <template v-if="column.valueType === 'action'">
+            <template v-if="column.valueType === 'selection'">
+              <ELTableColumn type="selection" width="40" />
+            </template>
+            <template v-else-if="column.valueType === 'index'">
+              <ELTableColumn v-bind="column" type="index" width="50" align="center" min-width="50">
+                <template slot-scope="scope">
+                  {{ scope.$index + 1 }}
+                </template>
+              </ELTableColumn>
+            </template>
+            <template v-else-if="column.valueType === 'action'">
               <ELTableColumn v-bind="column" :fixed="column.fixed || 'right'">
                 <template slot-scope="scope">
                   <slot name="columns" :column="column" :row="scope.row" :$index="scope.$index">
@@ -253,11 +253,6 @@ export default {
       }),
       comments:
         '这个参数有两种类型，一种是布尔值，一种是对象，当为布尔值时，表示是否显示分页，当为对象时，表示分页的配置'
-    },
-    selectable: {
-      type: Boolean,
-      default: false,
-      comments: '是否开启选择'
     },
     request: {
       type: Function,
