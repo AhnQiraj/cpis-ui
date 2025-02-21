@@ -1,10 +1,7 @@
 <template>
   <div class="cpis-form-section">
     <!-- 标题区域 -->
-    <div
-      class="flex items-center cpis-form-section__header"
-      v-if="title || $slots.title"
-    >
+    <div class="flex items-center cpis-form-section__header" v-if="title || $slots.title">
       <slot name="title">
         <div class="cpis-form-section__title">{{ title }}</div>
       </slot>
@@ -58,7 +55,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .cpis-form-section {
   margin-bottom: 16px;
 

@@ -112,6 +112,15 @@ export default {
   title: '原子组件/表格',
   component: CpisTable,
   tags: ['autodocs'],
+  decorators: [
+    () => ({
+      template: `
+        <div style="height: 400px; position: relative; border: 1px solid #eee;">
+          <story />
+        </div>
+      `
+    })
+  ],
   render: (args, { argTypes, parameters }) => {
     return {
       setup() {
@@ -386,13 +395,11 @@ export default {
       control: 'array'
     },
     paginationProps: {
-      description:
-        '分页配置，支持布尔值或对象。布尔值控制是否显示分页，对象可配置分页参数',
+      description: '分页配置，支持布尔值或对象。布尔值控制是否显示分页，对象可配置分页参数',
       control: 'boolean'
     },
     search: {
-      description:
-        '搜索配置，支持布尔值或数组。布尔值控制是否显示搜索，数组可配置搜索参数',
+      description: '搜索配置，支持布尔值或数组。布尔值控制是否显示搜索，数组可配置搜索参数',
       control: 'boolean'
     }
   }
@@ -701,8 +708,7 @@ export const StructuredSearch = {
     docs: {
       autodocs: false,
       description: {
-        story:
-          '结构化搜索配置示例。更多搜索配置详情请参考 [SearchBar](?path=/docs/原子组件-搜索栏--docs)'
+        story: '结构化搜索配置示例。更多搜索配置详情请参考 [SearchBar](?path=/docs/原子组件-搜索栏--docs)'
       },
       source: {
         code: `<CpisTable paramaterMode="structured"/>`
@@ -770,8 +776,7 @@ export const FlatSearch = {
     docs: {
       autodocs: false,
       description: {
-        story:
-          '扁平化搜索配置示例。更多搜索配置详情请参考 [SearchBar](?path=/docs/原子组件-搜索栏--docs)'
+        story: '扁平化搜索配置示例。更多搜索配置详情请参考 [SearchBar](?path=/docs/原子组件-搜索栏--docs)'
       },
       source: {
         code: `<CpisTable paramaterMode="flat"/>`
