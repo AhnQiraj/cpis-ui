@@ -13,7 +13,7 @@
   "type": "module",
   "license": "ISC",
   "dependencies": {
-    "@cpis/cpis-ui": "^1.0.0",
+    "@cpis/cpis-ui": "workspace:*",
     "vue": "^2.7.16",
     "element-ui": "^2.15.1"
   },

@@ -1,13 +1,12 @@
 import { themes } from './themes.js'
 import { generateCSSVars } from './generate.js'
-import {
-  presetMini,
-  transformerVariantGroup,
-  transformerDirectives
-} from 'unocss'
+import { presetMini, transformerVariantGroup, transformerDirectives } from 'unocss'
+import presetAutoprefixer from 'unocss-preset-autoprefixer'
+
 export function preseet() {
   return {
     ...presetMini(),
+    ...presetAutoprefixer(),
     name: 'cpis-preset',
     transformers: [transformerVariantGroup(), transformerDirectives()],
     preflights: [
