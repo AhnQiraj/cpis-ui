@@ -213,7 +213,7 @@ export default {
 
   computed: {
     computedSuffixIcon() {
-      if (this.clickable) {
+      if (this.clickable && !this.inputDisabled) {
         return 'el-icon-edit-outline text-lg cursor-pointer'
       }
       return this.$props.suffixIcon

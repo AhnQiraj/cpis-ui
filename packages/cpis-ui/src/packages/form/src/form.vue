@@ -5,7 +5,8 @@ export default {
   extends: Form,
   provide() {
     return {
-      form: this
+      form: this,
+      elForm: this
     }
   }
 }
