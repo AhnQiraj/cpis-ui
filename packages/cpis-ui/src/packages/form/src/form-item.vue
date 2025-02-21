@@ -1,15 +1,7 @@
 <template>
-  <el-form-item
-    class="cpis-form-item"
-    v-bind="$attrs"
-    :style="itemStyle"
-    v-on="$listeners"
-  >
-    <template #label>
-      <div
-        class="cpis-form-item__label h-full"
-        :style="{ width: labelWidth + 'px', height: '100%' }"
-      >
+  <el-form-item class="cpis-form-item" v-bind="$attrs" :style="itemStyle" v-on="$listeners">
+    <template #label v-if="label">
+      <div class="cpis-form-item__label h-full" :style="{ width: labelWidth + 'px', height: '100%' }">
         <span v-if="isRequired" class="required-star">*</span>
         {{ label }}
       </div>
