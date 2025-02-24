@@ -1,5 +1,5 @@
 <template>
-  <div class="cpis-table-toolbar">
+  <div class="cpis-table__toolbar">
     <template v-for="item in hasPermissionToolbar.slice(0, 6)">
       <el-dropdown
         v-if="Array.isArray(item.children) && item.children.length > 0"
@@ -21,19 +21,11 @@
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
-      <CpisButton
-        v-else
-        :key="`button-${item.key}`"
-        @click="handleToolbarClick(item.key)"
-        v-bind="item"
-      >
+      <CpisButton v-else :key="`button-${item.key}`" @click="handleToolbarClick(item.key)" v-bind="item">
         {{ item.label }}
       </CpisButton>
     </template>
-    <el-dropdown
-      v-if="hasPermissionToolbar.length > 6"
-      @command="handleToolbarClick"
-    >
+    <el-dropdown v-if="hasPermissionToolbar.length > 6" @command="handleToolbarClick">
       <CpisButton type="text">更多</CpisButton>
       <el-dropdown-menu slot="dropdown">
         <el-dropdown-item
@@ -85,15 +77,16 @@ export default {
             newItem.disabled = item.disabled()
           }
 
-          const children = Array.isArray(item.children) ? item.children : typeof item.children === 'function' ? item.children() : []
+          const children = Array.isArray(item.children)
+            ? item.children
+            : typeof item.children === 'function'
+              ? item.children()
+              : []
           // 如果有子菜单，处理子菜单的 disabled
           if (children.length > 0) {
             newItem.children = children.map(child => ({
               ...child,
-              disabled:
-                typeof child.disabled === 'function'
-                  ? child.disabled()
-                  : child.disabled
+              disabled: typeof child.disabled === 'function' ? child.disabled() : child.disabled
             }))
           }
 
@@ -114,10 +107,10 @@ export default {
 }
 </script>
 <style>
-.cpis-table-toolbar .el-button + .el-button {
+.cpis-table__toolbar .el-button + .el-button {
   margin-left: 0px;
 }
-.cpis-table-toolbar {
+.cpis-table__toolbar {
   @apply flex flex-row items-center gap-2;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="cpis-table-container flex flex-col gap-2 bg-gray-2 h-full">
-    <div v-if="search?.length > 0" class="bg-white p-3.5 cpis-table-searchbar">
+    <div v-if="search?.length > 0" class="bg-white p-3.5 cpis-table__search">
       <template>
         <CpisSearchBar
           ref="searchBar"
@@ -11,15 +11,18 @@
         />
       </template>
     </div>
-    <div class="bg-white flex flex-1 flex-col p-2 gap-2 overflow-hidden">
+    <div
+      class="bg-white flex flex-1 flex-col gap-2 overflow-hidden cpis-table__main"
+      :style="{ padding: `${mainPadding}px` }"
+    >
       <template v-if="$slots.toolbar || toolbar?.length > 0">
-        <div class="cpis-table-toolbar">
+        <div class="cpis-table__toolbar">
           <slot name="toolbar" class="ml-auto">
             <CpisToolbar :toolbar="toolbar" :identity="identity" @handleToolbarClick="handleToolbarClick" />
           </slot>
         </div>
       </template>
-      <div class="w-full flex-1">
+      <div class="w-full flex-1 cpis-table__body">
         <ELTable
           ref="table"
           class="cpis-table"
@@ -127,31 +130,6 @@
               </template>
               <template v-else-if="column.valueType === 'tag'">
                 <CpisTagColumn :key="column.prop" v-bind="column" />
-                <!-- <ELTableColumn
-                  v-bind="column"
-                  :key="column.prop"
-                  :label-class-name="column.required ? 'is-required' : ''"
-                  :align="column.align || 'right'"
-                >
-                  <template slot-scope="scope">
-                    <slot
-                      name="columns"
-                      :column="column"
-                      :row="scope.row"
-                      :$index="scope.$index"
-                    >
-                      <CpisTag>
-                        {{
-                          column?.formatter?.(
-                            scope.row,
-                            column,
-                            scope.$index
-                          ) || scope.row[column.prop]
-                        }}
-                      </CpisTag>
-                    </slot>
-                  </template>
-                </ELTableColumn> -->
               </template>
               <template v-else>
                 <ELTableColumn
@@ -189,7 +167,7 @@
         </ELTable>
       </div>
       <ELPagination
-        class="cpis-table-pagination"
+        class="cpis-table__pagination"
         v-if="paginationProps !== false"
         layout="total, sizes, prev, pager, next, jumper"
         :total="total"
@@ -239,6 +217,11 @@ export default {
     identity: {
       type: String,
       comments: '表格唯一标识'
+    },
+    mainPadding: {
+      type: [String, Number],
+      default: '8',
+      comments: '表格主体的padding'
     },
     search: {
       type: [Array, Boolean],
@@ -490,11 +473,11 @@ export default {
 }
 </script>
 <style>
-.cpis-table-container .cpis-table-toolbar {
+.cpis-table-container .cpis-table__toolbar {
   @apply flex flex-row items-center;
 }
 
-.cpis-table-container .cpis-table-toolbar .el-table__cell .el-dropdown {
+.cpis-table-container .cpis-table__toolbar .el-table__cell .el-dropdown {
   @apply text-primary-6;
 }
 
@@ -520,8 +503,8 @@ export default {
 }
 
 /* 分页 页码根据主题色 */
-.cpis-table-pagination.el-pagination .el-pager .number.active,
-.cpis-table-pagination.el-pagination .el-pager .number:hover {
+.cpis-table__pagination.el-pagination .el-pager .number.active,
+.cpis-table__pagination.el-pagination .el-pager .number:hover {
   @apply !text-primary-6;
 }
 .cpis-table.el-table .cell.is-required::before {

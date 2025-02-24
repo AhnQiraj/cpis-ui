@@ -27,25 +27,13 @@ export default {
       const containerHeight = container.getBoundingClientRect().height
 
       // Calculate other elements' heights
-      const searchBarHeight =
-        container.querySelector('.cpis-table-searchbar')?.offsetHeight || 0
-      const toolbarHeight =
-        container.querySelector('.cpis-table-toolbar')?.offsetHeight || 0
-      const paginationHeight =
-        container.querySelector('.cpis-table-pagination')?.offsetHeight || 0
+      const searchBarHeight = container.querySelector('.cpis-table__search')?.offsetHeight || 0
+      const toolbarHeight = container.querySelector('.cpis-table__toolbar')?.offsetHeight || 0
+      const paginationHeight = container.querySelector('.cpis-table__pagination')?.offsetHeight || 0
       const padding = 16 // Account for container padding
-      const gap =
-        (searchBarHeight > 0 ? 8 : 0) +
-        (toolbarHeight > 0 ? 8 : 0) +
-        (paginationHeight > 0 ? 8 : 0)
+      const gap = (searchBarHeight > 0 ? 8 : 0) + (toolbarHeight > 0 ? 8 : 0) + (paginationHeight > 0 ? 8 : 0)
       // Calculate table height
-      this.tableHeight =
-        containerHeight -
-        searchBarHeight -
-        toolbarHeight -
-        paginationHeight -
-        padding -
-        gap
+      this.tableHeight = containerHeight - searchBarHeight - toolbarHeight - paginationHeight - padding - gap
     },
 
     initResizeObserver() {
