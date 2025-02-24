@@ -1,6 +1,18 @@
 <!--用户选择框-->
 <template>
-  <z-dialog-table ref="dialogTable" :father-method="fatherMethod" :title="dialogProp.title" :toolbar-prop="dialogProp.toolbarProp" :table-prop="dialogProp.tableProp" :tree-prop="dialogProp.treeProp" :selection-handle="dialogProp.selectionHandle" @toolbar-search="onSearch" @tree-click="onTreeClick" @ok="onDialogTableOk" @onDialogClose="onDialogClose">
+  <z-dialog-table
+    ref="dialogTable"
+    :father-method="fatherMethod"
+    :title="dialogProp.title"
+    :toolbar-prop="dialogProp.toolbarProp"
+    :table-prop="dialogProp.tableProp"
+    :tree-prop="dialogProp.treeProp"
+    :selection-handle="dialogProp.selectionHandle"
+    @toolbar-search="onSearch"
+    @tree-click="onTreeClick"
+    @ok="onDialogTableOk"
+    @onDialogClose="onDialogClose"
+  >
     <template slot="searchBar">
       <el-form-item :label="$t('common.field.name')" prop="name_">
         <el-input v-model="dialogProp.toolbarProp.searchData.name_" clearable />

@@ -1,9 +1,33 @@
 <template>
   <!-- 弹出框 -->
-  <el-dialog v-el-drag-dialog :title="title" :append-to-body="true" :modal-append-to-body="modal" close-on-click-modal :visible.sync="visible" width="80%" @close="onClose">
+  <el-dialog
+    v-el-drag-dialog
+    :title="title"
+    :append-to-body="true"
+    :modal-append-to-body="modal"
+    close-on-click-modal
+    :visible.sync="visible"
+    width="80%"
+    @close="onClose"
+  >
     <div class="dialog-container">
       <div :class="[insideTableProp.showChoosed ? 'dialog-comb' : 'dialog-combTwo']">
-        <z-comb ref="combDialog" :toolbar-prop="insideToolbarProp" :key_="key_" :table-prop="insideTableProp" :tree-prop="insideTreeProp" @toolbar-search="onToolbarSearch" @table-selection-change="onDialogTableSelectionChange" @table-selection-one="onDialogTableSelectionOne" @table-selection-all="onDialogTableSelectionAll" @table-page="onPageChange" @table-pagesize="onPagesizeChange" @table-loadDone="onTableLoadDone" @on-reset="OnRest" @tree-click="onTreeClick">
+        <z-comb
+          ref="combDialog"
+          :toolbar-prop="insideToolbarProp"
+          :key_="key_"
+          :table-prop="insideTableProp"
+          :tree-prop="insideTreeProp"
+          @toolbar-search="onToolbarSearch"
+          @table-selection-change="onDialogTableSelectionChange"
+          @table-selection-one="onDialogTableSelectionOne"
+          @table-selection-all="onDialogTableSelectionAll"
+          @table-page="onPageChange"
+          @table-pagesize="onPagesizeChange"
+          @table-loadDone="onTableLoadDone"
+          @on-reset="OnRest"
+          @tree-click="onTreeClick"
+        >
           <!-- 搜索条件 -->
           <template slot="searchBar">
             <slot name="searchBar" />
@@ -15,13 +39,10 @@
           <span>{{ $t('common.field.selectedAreaDoubleClickDelete') }}</span>
         </div>
         <div class="selected-list">
-          <draggable 
-            v-model="tableSeleted"
-            @start="drag=true"
-            @end="drag=false"
-          >
-            <div v-for="(item, index) in tableSeleted" 
-              :key="index" 
+          <draggable v-model="tableSeleted" @start="drag = true" @end="drag = false">
+            <div
+              v-for="(item, index) in tableSeleted"
+              :key="index"
               @dblclick="onCancelSelection(item, index)"
               class="draggable-item"
             >
@@ -117,7 +138,7 @@ export default {
         // Update both arrays based on the dragged order
         const virtualItems = value.filter(item => item.isVirtual)
         const tableItems = value.filter(item => !item.isVirtual)
-        
+
         this.virtualSelected = virtualItems
         this.tablePageSeleted = tableItems
       }
@@ -392,7 +413,7 @@ export default {
       this.close()
     },
     closeDialog() {
-      this.$emit("onDialogClose", "flag")
+      this.$emit('onDialogClose', 'flag')
       this.close()
     },
     // 分页事件
@@ -447,7 +468,7 @@ export default {
     }
     .selected-list {
       width: 100%;
-      
+
       .draggable-item {
         padding: 0 5px;
         width: 100%;
@@ -459,7 +480,7 @@ export default {
         box-sizing: border-box;
         cursor: move;
         background: #fff;
-        
+
         &:hover {
           background: #f5f7fa;
         }
