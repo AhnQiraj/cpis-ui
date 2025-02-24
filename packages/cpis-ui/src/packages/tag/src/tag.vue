@@ -1,5 +1,5 @@
 <template>
-  <ElTag :type="computedType" v-bind="$attrs" v-on="$listeners">
+  <ElTag :type="computedType" :size="size" v-bind="$attrs" v-on="$listeners">
     <slot></slot>
   </ElTag>
 </template>
@@ -27,6 +27,11 @@ export default {
     }
   },
   props: {
+    size: {
+      type: String,
+      default: 'small',
+      comment: '标签大小'
+    },
     type: {
       type: String,
       default: 'default',

@@ -251,6 +251,6 @@ export default {
   flex-direction: column;
 }
 .drawer-title-right {
-  @apply text-sm font-normal ml-auto;
+  @apply text-sm font-normal ml-auto text-sm;
 }
 </style>

@@ -6,25 +6,16 @@
   >
     <template v-for="item in layout">
       <template v-if="Array.isArray(item)">
-        <div
-          class="flex gap-2 flex-1"
-          :class="item.includes('aside') ? 'flex-row' : 'flex-col'"
-        >
+        <div class="flex gap-2 flex-1" :class="item.includes('aside') ? 'flex-row' : 'flex-col'">
           <template v-for="subItem in item">
-            <component
-              :is="getComponent(subItem)"
-              v-bind="subItem === 'header' ? { title } : {}"
-            >
+            <component :is="getComponent(subItem)" v-bind="subItem === 'header' ? { title } : {}">
               <slot :name="subItem" />
             </component>
           </template>
         </div>
       </template>
       <template v-else>
-        <component
-          :is="getComponent(item)"
-          v-bind="item === 'header' ? { title } : {}"
-        >
+        <component :is="getComponent(item)" v-bind="item === 'header' ? { title } : {}">
           <template v-if="item === 'header'" #right>
             <slot name="header-right" />
           </template>
@@ -75,3 +66,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.cpis-page-container {
+  .el-button + .el-button,
+  .el-checkbox.is-bordered + .el-checkbox.is-bordered {
+    margin-left: 8px;
+  }
+}
+</style>
