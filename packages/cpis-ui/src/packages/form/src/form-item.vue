@@ -83,7 +83,7 @@ export default {
   @apply flex items-center border border-gray-3 border-solid;
   margin: -1px 0 0 -1px !important;
   background-color: #fff;
-  min-height: 32px;
+  min-height: 42px;
   box-sizing: border-box;
   & .el-form-item__label {
     height: 100%;
@@ -106,12 +106,8 @@ export default {
     content: unset !important;
   }
   &__label {
-    @apply bg-gray-2 flex items-center justify-end;
+    @apply bg-gray-2 flex items-center justify-end border-r border-r-gray-3 border-r-solid text-sm pr-3 whitespace-nowrap;
 
-    color: var(--el-text-color-regular);
-    font-size: 14px;
-    padding-right: 12px;
-    white-space: nowrap;
     .required-star {
       @apply text-error mr-2;
     }
@@ -121,19 +117,13 @@ export default {
     flex: 1;
     min-width: 0;
 
-    .el-input__inner {
+    .el-input .el-input__inner {
       width: 100%;
       border: none;
       padding: 0;
-      height: 32px;
-      line-height: 32px;
     }
 
     .el-textarea__inner {
-      // scrollbar-width: none;
-      // &::-webkit-scrollbar {
-      //   display: none;
-      // }
       border: none;
       padding: 0;
     }
