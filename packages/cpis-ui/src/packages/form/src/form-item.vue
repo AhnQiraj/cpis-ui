@@ -78,38 +78,33 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-::v-deep .el-form-item__content {
-  flex: 1;
-  padding-left: 10px;
-}
-::v-deep .el-form-item__label:before {
-  content: unset !important;
-}
-::v-deep .el-form-item__label {
-  height: 100%;
-  padding-right: 0px;
-}
-::v-deep .el-form-item__error {
-  position: absolute;
-  top: unset;
-  bottom: 0;
-  left: 0;
-}
-// 禁用时，输入框背景颜色为透明
-::v-deep .el-input.is-disabled .el-input__inner {
-  background-color: transparent !important;
-}
+<style lang="scss">
 .cpis-form-item {
-  display: flex;
-  align-items: center;
-  border: 1px solid #ebeef5;
+  @apply flex items-center border border-gray-3 border-solid;
   margin: -1px 0 0 -1px !important;
   background-color: #fff;
   min-height: 32px;
   box-sizing: border-box;
-
+  & .el-form-item__label {
+    height: 100%;
+    padding-right: 0px;
+  }
+  & .el-form-item__error {
+    position: absolute;
+    top: unset;
+    bottom: 0;
+    left: 0;
+  }
+  & .el-input.is-disabled .el-input__inner {
+    background-color: transparent;
+  }
+  & .el-form-item__content {
+    flex: 1;
+    padding-left: 10px;
+  }
+  .el-form-item__label:before {
+    content: unset !important;
+  }
   &__label {
     @apply bg-gray-2 flex items-center justify-end;
 
@@ -126,31 +121,29 @@ export default {
     flex: 1;
     min-width: 0;
 
-    ::v-deep {
-      .el-input__inner {
-        width: 100%;
-        border: none;
-        padding: 0;
-        height: 32px;
-        line-height: 32px;
-      }
+    .el-input__inner {
+      width: 100%;
+      border: none;
+      padding: 0;
+      height: 32px;
+      line-height: 32px;
+    }
 
-      .el-textarea__inner {
-        // scrollbar-width: none;
-        // &::-webkit-scrollbar {
-        //   display: none;
-        // }
-        border: none;
-        padding: 0;
-      }
+    .el-textarea__inner {
+      // scrollbar-width: none;
+      // &::-webkit-scrollbar {
+      //   display: none;
+      // }
+      border: none;
+      padding: 0;
+    }
 
-      .el-select {
-        width: 100%;
-      }
+    .el-select {
+      width: 100%;
+    }
 
-      .el-date-editor {
-        width: 100%;
-      }
+    .el-date-editor {
+      width: 100%;
     }
   }
 }
