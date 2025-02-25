@@ -30,6 +30,15 @@ export default {
   title: '原子组件/表单',
   component: CpisForm,
   tags: ['autodocs'],
+  decorators: [
+    () => ({
+      template: `
+        <div style="background-color: white; padding: 16px; position: relative; border: 1px solid #eee;">
+          <story />
+        </div>
+      `
+    })
+  ],
   render: (args, { argTypes }) => {
     return {
       props: Object.keys(argTypes),

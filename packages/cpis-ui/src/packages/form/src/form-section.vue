@@ -57,11 +57,12 @@ export default {
 
 <style lang="scss">
 .cpis-form-section {
-  margin-bottom: 16px;
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
 
   &__header {
-    @apply bg-primary-1 h-[32px]
-    margin-bottom: 8px;
+    @apply bg-primary-1 h-[32px] mb-2;
   }
 
   &__title {
