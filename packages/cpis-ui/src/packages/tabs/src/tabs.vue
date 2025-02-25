@@ -58,19 +58,12 @@ export default {
     calcPaneInstances(isForceUpdate = false) {
       if (this.$slots.default) {
         const paneSlots = this.$slots.default.filter(
-          vnode =>
-            vnode.tag &&
-            ['CpisTabPane', 'ElTabPane'].includes(
-              vnode.componentOptions.Ctor.options.name
-            )
+          vnode => vnode.tag && ['CpisTabPane', 'ElTabPane'].includes(vnode.componentOptions.Ctor.options.name)
         )
         // update indeed
-        const panes = paneSlots.map(
-          ({ componentInstance }) => componentInstance
-        )
+        const panes = paneSlots.map(({ componentInstance }) => componentInstance)
         const panesChanged = !(
-          panes.length === this.panes.length &&
-          panes.every((pane, index) => pane === this.panes[index])
+          panes.length === this.panes.length && panes.every((pane, index) => pane === this.panes[index])
         )
         if (isForceUpdate || panesChanged) {
           this.panes = panes
@@ -194,6 +187,7 @@ export default {
           flex: true,
           'flex-col': true,
           'el-tabs': true,
+          'cpis-tabs': true,
           'el-tabs--card': type === 'card',
           [`el-tabs--${tabPosition}`]: true,
           'el-tabs--border-card': type === 'border-card'
@@ -222,22 +216,24 @@ export default {
 }
 </script>
 
-<style scoped>
-::v-deep .el-tabs__nav-wrap {
-  @apply px-4;
-}
-::v-deep .el-tabs__item {
-  height: 44px;
-  line-height: 44px;
-  font-weight: bold;
-}
-::v-deep .el-tabs__item.is-active {
-  @apply text-primary-6;
-}
-::v-deep .el-tabs__item:hover {
-  @apply text-primary-6 cursor-pointer;
-}
-::v-deep .el-tabs__active-bar {
-  @apply bg-primary-6;
+<style lang="scss">
+.cpis-tabs.cpis-tabs {
+  & .el-tabs__nav-wrap {
+    @apply px-4;
+  }
+  & .el-tabs__nav .el-tabs__item {
+    height: 44px;
+    line-height: 44px;
+    font-weight: bold;
+    &.is-active {
+      @apply text-primary-6;
+    }
+    &:hover {
+      @apply text-primary-6 cursor-pointer;
+    }
+  }
+  & .el-tabs__nav .el-tabs__active-bar {
+    @apply bg-primary-6;
+  }
 }
 </style>

@@ -5,6 +5,15 @@ export default {
   title: '原子组件/tabs',
   component: CpisTabs,
   tags: ['autodocs'],
+  decorators: [
+    () => ({
+      template: `
+        <div style="height: 400px;background: white; padding: 8px; position: relative; border: 1px solid #eee;">
+          <story />
+        </div>
+      `
+    })
+  ],
   parameters: {
     docs: {
       description: {
