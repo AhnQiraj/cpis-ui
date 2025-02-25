@@ -296,15 +296,17 @@ export const Validation = {
     :rules="rules"
     :column="2"
   >
-    <el-form-item label="姓名" prop="name">
-      <el-input v-model="formData.name" />
-    </el-form-item>
-    <el-form-item label="年龄" prop="age">
-      <el-input v-model.number="formData.age" />
-    </el-form-item>
-    <el-form-item label="手机号" prop="phone">
-      <el-input v-model="formData.phone" />
-    </el-form-item>
+    <CpisFormSection title="基础信息" columns="2">
+      <el-form-item label="姓名" prop="name">
+        <el-input v-model="formData.name" />
+      </el-form-item>
+      <el-form-item label="年龄" prop="age">
+        <el-input v-model.number="formData.age" />
+      </el-form-item>
+      <el-form-item label="手机号" prop="phone">
+        <el-input v-model="formData.phone" />
+      </el-form-item>
+    </CpisFormSection>
   </CpisForm>
   <CpisButton type="primary" @click="submitForm">提交</CpisButton>
 </div>
@@ -421,15 +423,17 @@ export default {
               :label-width="labelWidth"
               :content-width="contentWidth"
             >
-              <CpisFormItem label="姓名" prop="name">
-                <el-input v-model="formData.name" />
-              </CpisFormItem>
-              <CpisFormItem label="年龄" prop="age">
-                <el-input v-model.number="formData.age" />
-              </CpisFormItem>
-              <CpisFormItem label="手机号" prop="phone">
-                <el-input v-model="formData.phone" />
-              </CpisFormItem>
+              <CpisFormSection title="基础信息" columns="2">
+                <CpisFormItem label="姓名" prop="name">
+                  <el-input v-model="formData.name" />
+                </CpisFormItem>
+                <CpisFormItem label="年龄" prop="age">
+                  <el-input v-model.number="formData.age" />
+                </CpisFormItem>
+                <CpisFormItem label="手机号" prop="phone">
+                  <el-input v-model="formData.phone" />
+                </CpisFormItem>
+              </CpisFormSection>
             </CpisForm>
             <div class="mt-4 p-4 flex justify-center bg-gray-50 border-t border-gray-200">
               <CpisButton type="primary" @click="submitForm" class="w-32 h-9">提交</CpisButton>
@@ -617,6 +621,65 @@ export const SectionCustomSlot = {
             <el-input v-model="formData.entryDate" />
           </CpisFormItem>
           </CpisFormSection>
+        </CpisForm>
+      </div>
+      `
+    }
+  }
+}
+
+export const Disabled = {
+  render: (args, { argTypes }) => {
+    return {
+      props: Object.keys(argTypes),
+      components: {
+        CpisForm,
+        ElFormItem: FormItem,
+        ElInput: Input,
+        CpisButton,
+        CpisFormItem
+      },
+      data: () => ({
+        disabled: false,
+        formData: {}
+      }),
+      template: `
+      <div>
+        <cpis-button @click="disabled = !disabled">切换状态</cpis-button>
+        <CpisForm 
+          ref="form"
+          :model="formData"
+          :column="column" 
+          :label-width="labelWidth" 
+          :content-width="contentWidth"
+          :disabled="disabled"
+        >
+        <CpisFormSection columns="1">
+          <CpisFormItem label="输入框" prop="input">
+            <cpis-input v-model="formData.input" placeholder="请输入" />
+          </CpisFormItem>
+          <CpisFormItem label="文本域" prop="textarea">
+            <cpis-input type="textarea" v-model="formData.textarea" placeholder="请输入" />
+          </CpisFormItem>
+          <CpisFormItem label="选择器" prop="select">
+            <el-select v-model="formData.select" placeholder="请选择">
+              <el-option label="选项1" value="1" />
+              <el-option label="选项2" value="2" />
+            </el-select>
+          </CpisFormItem>
+          <CpisFormItem label="单选框" prop="radio">
+            <el-radio-group v-model="formData.radio">
+              <el-radio label="1">选项1</el-radio>
+              <el-radio label="2">选项2</el-radio>
+            </el-radio-group>
+          </CpisFormItem>
+          <CpisFormItem label="开关" prop="switch">
+            <el-switch v-model="formData.switch" />
+          </CpisFormItem>
+          <CpisFormItem label="日期选择器" prop="date">
+            <cpis-date-picker v-model="formData.date" type="date" placeholder="选择日期" />
+          </CpisFormItem>
+        </CpisFormSection>
         </CpisForm>
       </div>
       `

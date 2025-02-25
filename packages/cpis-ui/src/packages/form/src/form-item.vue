@@ -95,8 +95,12 @@ export default {
     bottom: 0;
     left: 0;
   }
-  & .el-input.is-disabled .el-input__inner {
+  // 处理disabled的颜色
+  & .el-input.is-disabled .el-input__inner,
+  & .el-textarea.is-disabled .el-textarea__inner,
+  & .el-radio__input.is-disabled + span.el-radio__label {
     background-color: transparent;
+    @apply text-gray-5;
   }
   & .el-form-item__content {
     flex: 1;
