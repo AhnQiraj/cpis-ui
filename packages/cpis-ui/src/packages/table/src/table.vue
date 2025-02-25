@@ -480,6 +480,12 @@ export default {
 .cpis-table-container .cpis-table__toolbar .el-table__cell .el-dropdown {
   @apply text-primary-6;
 }
+/* element 用这种方式实现的下面和右侧的border */
+.cpis-table.el-table--border:after,
+.el-table--group:after,
+.el-table:before {
+  @apply bg-gray-3;
+}
 
 .cpis-table.el-table--border,
 .cpis-table.el-table--border .el-table__cell,
