@@ -129,7 +129,10 @@
                 </ELTableColumn>
               </template>
               <template v-else-if="column.valueType === 'tag'">
-                <CpisTagColumn :key="column.prop" v-bind="column" />
+                <Cpis-Tag-Column :key="column.prop" v-bind="column" />
+              </template>
+              <template v-else-if="column.valueType === 'link'">
+                <CpisLinkColumn :key="column.prop" v-bind="column" />
               </template>
               <template v-else>
                 <ELTableColumn
@@ -186,7 +189,8 @@ import CpisCopyable from '../../copyable/index'
 import CpisSearchBar from '../../search-bar/index'
 import CpisButton from '../../button/index'
 import CpisToolbar from './toolbar.vue'
-import CpisTagColumn from './tag.vue'
+import CpisTagColumn from './column/tag.vue'
+import CpisLinkColumn from './column/link.vue'
 import fixHeight from '../../../mixins/fixHeight'
 
 export default {
@@ -202,7 +206,8 @@ export default {
     CpisSearchBar: CpisSearchBar,
     CpisButton: CpisButton,
     CpisToolbar: CpisToolbar,
-    CpisTagColumn: CpisTagColumn
+    CpisTagColumn: CpisTagColumn,
+    CpisLinkColumn: CpisLinkColumn
   },
   props: {
     paramaterMode: {
