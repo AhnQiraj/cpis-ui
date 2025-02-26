@@ -129,10 +129,10 @@
                 </ELTableColumn>
               </template>
               <template v-else-if="column.valueType === 'tag'">
-                <CpisTagColumn :key="column.prop" />
+                <Cpis-Tag-Column :key="column.prop" v-bind="column" />
               </template>
               <template v-else-if="column.valueType === 'link'">
-                <CpisLinkColumn :key="column.prop" v-bind="column" :prop="column.prop" />
+                <CpisLinkColumn :key="column.prop" v-bind="column" />
               </template>
               <template v-else>
                 <ELTableColumn
@@ -196,6 +196,11 @@ import fixHeight from '../../../mixins/fixHeight'
 export default {
   name: 'CpisTable',
   mixins: [fixHeight],
+  provide() {
+    return {
+      cpisTable: this
+    }
+  },
   components: {
     ELTable: Table,
     ELTableColumn: TableColumn,

@@ -21,6 +21,7 @@ export default {
   components: {
     ElTableColumn: TableColumn
   },
+  inject: ['cpisTable'],
   methods: {
     getColumn(column) {
       return {
