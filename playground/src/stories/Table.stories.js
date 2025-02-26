@@ -65,6 +65,7 @@ import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
   | align  | 列对齐方式 | string   | left/center/right | tag 为center， number为left， 其他为right |
   | editItemProps  | 编辑状态下会透传给编辑组件 | object/function   | — | — |
   | fieldProps  | 非编辑状态下会透传给 valueTyp 对应的组件 | object/function   | — | — |
+  | fieldEvents  | 透传给 valueTyp 对应的组件的事件 | object   | — | — |
 
 ### CpisTable Methods
   | 方法名      | 说明          | 参数      |
@@ -1698,6 +1699,110 @@ export default {
   }
 }
 
+export const ValueType_Link = {
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<template>
+  <CpisTable :columns="columns" :request="request" />
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      columns: [
+        {
+          label: 'Link',
+          prop: 'link1',
+          valueType: 'link',
+          fieldEvents: {
+            click: (event, { row, $index, column }) => {
+              console.log(column)
+            }
+          }
+        },
+        {
+          label: 'Link',
+          prop: 'link2',
+          valueType: 'link',
+          fieldEvents: {
+            click: (event, { row, $index, column }) => {
+              console.log(column)
+            }
+          }
+        }
+      ],
+      request: async () => ({
+        data: [{
+          link1: 'link1',
+          link2: 'link2'
+        }],
+        total: 50
+      })
+    }
+  }
+}
+</script>`
+      }
+    }
+  },
+  render: (args, { argTypes }) => ({
+    components: { CpisTable },
+    data() {
+      return {
+        columns: [
+          {
+            label: 'Link',
+            prop: 'link1',
+            valueType: 'link',
+            fieldEvents: {
+              click: (event, { row, $index, column }) => {
+                console.log(column)
+              }
+            }
+          },
+          {
+            label: 'Link',
+            prop: 'link2',
+            valueType: 'link',
+            fieldEvents: {
+              click: (event, { row, $index, column }) => {
+                console.log(column)
+              }
+            }
+          }
+        ]
+      }
+    },
+    template: `
+      <CpisTable
+        :columns="columns"
+        :request="() => ({
+          data: [{
+            link1: 'link1',
+            link2: 'link2'
+          }],
+          total: 50
+        })"
+      />
+    `
+  }),
+  argTypes: {
+    columns: {
+      description: '列配置',
+      control: 'array',
+      table: {
+        category: '列配置'
+      }
+    },
+    request: {
+      description: '请求配置',
+      control: 'function'
+    }
+  }
+}
 // Story 级别文档
 // export const Primary = {
 //   decorators: [

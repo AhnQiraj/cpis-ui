@@ -129,10 +129,10 @@
                 </ELTableColumn>
               </template>
               <template v-else-if="column.valueType === 'tag'">
-                <Cpis-Tag-Column :key="column.prop" v-bind="column" />
+                <CpisTagColumn :key="column.prop" />
               </template>
               <template v-else-if="column.valueType === 'link'">
-                <CpisLinkColumn :key="column.prop" v-bind="column" />
+                <CpisLinkColumn :key="column.prop" v-bind="column" :prop="column.prop" />
               </template>
               <template v-else>
                 <ELTableColumn

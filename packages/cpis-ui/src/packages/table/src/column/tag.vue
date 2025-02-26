@@ -1,29 +1,14 @@
 <template>
-  <el-table-column
-    :prop="prop"
-    :label-class-name="required ? 'is-required' : ''"
-    :align="align"
-    v-bind="$attrs"
-  >
+  <el-table-column :prop="prop" :label-class-name="required ? 'is-required' : ''" :align="align" v-bind="$attrs">
     <template slot-scope="scope">
-      <slot
-        name="columns"
-        :column="scope.column"
-        :row="scope.row"
-        :$index="scope.$index"
-      >
+      <slot name="columns" :column="getColumn(scope.column)" :row="scope.row" :$index="scope.$index">
         <CpisTag
           size="small"
           v-bind="
-            typeof fieldProps === 'function'
-              ? fieldProps(scope.row, scope.column, scope.$index)
-              : fieldProps
+            typeof fieldProps === 'function' ? fieldProps(scope.row, getColumn(scope.column), scope.$index) : fieldProps
           "
         >
-          {{
-            formatter?.(scope.row, scope.column, scope.$index) ||
-            scope.row?.[prop]
-          }}
+          {{ formatter?.(scope.row, getColumn(scope.column), scope.$index) || scope.row?.[prop] }}
         </CpisTag>
       </slot>
     </template>
@@ -35,6 +20,14 @@ export default {
   name: 'CpisTagColumn',
   components: {
     ElTableColumn: TableColumn
+  },
+  methods: {
+    getColumn(column) {
+      return {
+        ...column,
+        prop: this.prop
+      }
+    }
   },
   props: {
     required: {

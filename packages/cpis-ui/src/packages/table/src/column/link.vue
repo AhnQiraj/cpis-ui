@@ -1,13 +1,21 @@
 <template>
-  <el-table-column :prop="prop" :label-class-name="required ? 'is-required' : ''" :align="align" v-bind="$attrs">
+  <el-table-column
+    :prop="prop"
+    :property="prop"
+    :label-class-name="required ? 'is-required' : ''"
+    :align="align"
+    v-bind="$attrs"
+  >
     <template slot-scope="scope">
-      <slot name="columns" :column="scope.column" :row="scope.row" :$index="scope.$index">
+      <slot name="columns" :column="getColumn(scope.column)" :row="scope.row" :$index="scope.$index">
         <span
           v-on="getComponentListeners(scope)"
           class="cursor-pointer text-primary"
-          v-bind="typeof fieldProps === 'function' ? fieldProps(scope.row, scope.column, scope.$index) : fieldProps"
+          v-bind="
+            typeof fieldProps === 'function' ? fieldProps(scope.row, getColumn(scope.column), scope.$index) : fieldProps
+          "
         >
-          {{ formatter?.(scope.row, scope.column, scope.$index) || scope.row?.[prop] }}
+          {{ formatter?.(scope.row, getColumn(scope.column), scope.$index) || scope.row?.[prop] }}
         </span>
       </slot>
     </template>
@@ -20,18 +28,21 @@ export default {
   components: {
     ElTableColumn: TableColumn
   },
+
   methods: {
-    handleClick(row, column, index) {
-      console.log(row, column, index)
+    getColumn(column) {
+      return {
+        ...column,
+        prop: this.prop
+      }
     },
     getComponentListeners(item) {
-      debugger
       const listeners = {}
       // 如果item中有events配置，则应用对应的事件处理器
       if (this.fieldEvents) {
         Object.entries(this.fieldEvents).forEach(([event, handler]) => {
           listeners[event] = (...args) => {
-            handler(...args, item)
+            handler(...args, { ...item, column: this.getColumn(item.column) })
           }
         })
       }
