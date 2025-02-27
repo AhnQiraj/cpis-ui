@@ -66,7 +66,7 @@ export default {
   }
 
   &__title {
-    @apply text-gray-8 text-base font-bold leading-[32px];
+    @apply text-gray-8 text-sm font-bold leading-[32px];
     position: relative;
     padding-left: 12px;
 
