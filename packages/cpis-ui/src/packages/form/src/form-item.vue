@@ -100,8 +100,12 @@ export default {
   & .el-textarea.is-disabled .el-textarea__inner,
   & .el-radio__input.is-disabled + span.el-radio__label {
     background-color: transparent;
-    @apply text-gray-5;
+    @apply text-gray-6;
   }
+  & .el-form-item__label .cpis-form-item__label {
+    @apply text-gray-6;
+  }
+
   & .el-form-item__content {
     flex: 1;
     padding-left: 10px;
