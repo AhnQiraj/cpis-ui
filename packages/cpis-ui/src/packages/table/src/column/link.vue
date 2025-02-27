@@ -7,17 +7,15 @@
     v-bind="$attrs"
   >
     <template slot-scope="scope">
-      <slot name="columns" :column="getColumn(scope.column)" :row="scope.row" :$index="scope.$index">
-        <span
-          v-on="getComponentListeners(scope)"
-          class="cursor-pointer text-primary"
-          v-bind="
-            typeof fieldProps === 'function' ? fieldProps(scope.row, getColumn(scope.column), scope.$index) : fieldProps
-          "
-        >
-          {{ formatter?.(scope.row, getColumn(scope.column), scope.$index) || scope.row?.[prop] }}
-        </span>
-      </slot>
+      <span
+        v-on="getComponentListeners(scope)"
+        class="cursor-pointer text-primary"
+        v-bind="
+          typeof fieldProps === 'function' ? fieldProps(scope.row, getColumn(scope.column), scope.$index) : fieldProps
+        "
+      >
+        {{ formatter?.(scope.row, getColumn(scope.column), scope.$index) || scope.row?.[prop] }}
+      </span>
     </template>
   </el-table-column>
 </template>
@@ -55,17 +53,13 @@ export default {
       type: Boolean,
       default: false
     },
-    isEdit: {
-      type: Boolean,
-      default: false
-    },
     prop: {
       type: String,
       default: ''
     },
     align: {
       type: String,
-      default: 'center'
+      default: 'left'
     },
     formatter: {
       type: Function,
