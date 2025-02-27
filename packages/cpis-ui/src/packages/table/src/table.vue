@@ -131,6 +131,13 @@
               <template v-else-if="column.valueType === 'tag'">
                 <Cpis-Tag-Column :key="column.prop" v-bind="column" />
               </template>
+              <template v-else-if="column.valueType === 'expand'">
+                <ELTableColumn v-bind="column" type="expand">
+                  <template slot-scope="scope">
+                    <slot name="columns" :column="column" :row="scope.row" :$index="scope.$index"></slot>
+                  </template>
+                </ELTableColumn>
+              </template>
               <template v-else-if="column.valueType === 'link'">
                 <CpisLinkColumn :key="column.prop" v-bind="column" />
               </template>

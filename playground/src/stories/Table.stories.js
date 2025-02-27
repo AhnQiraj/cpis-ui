@@ -1803,6 +1803,197 @@ export default {
     }
   }
 }
+
+export const ValueType_Number = {
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<template>
+  <CpisTable :columns="columns" :request="request" />
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      columns: [
+        {
+          label: 'Number1',
+          prop: 'number1',
+          valueType: 'number'
+        },
+        {
+          label: 'Number2',
+          prop: 'number2',
+          valueType: 'number'
+        }
+      ],
+      request: async () => ({
+        data: [{
+          number1: 1,
+          number2: 2
+        }],
+        total: 50
+      })
+    }
+  }
+}
+</script>`
+      }
+    }
+  },
+  render: (args, { argTypes }) => ({
+    components: { CpisTable },
+    data() {
+      return {
+        columns: [
+          {
+            label: 'Number1',
+            prop: 'number1',
+            valueType: 'number'
+          },
+          {
+            label: 'Number2',
+            prop: 'number2',
+            valueType: 'number'
+          }
+        ]
+      }
+    },
+    template: `
+      <CpisTable
+        :columns="columns"
+        :request="() => ({
+          data: [{
+            number1: 1,
+            number2: 2
+          }],
+          total: 50
+        })"
+      />
+    `
+  }),
+  argTypes: {
+    columns: {
+      description: '列配置',
+      control: 'array',
+      table: {
+        category: '列配置'
+      }
+    },
+    request: {
+      description: '请求配置',
+      control: 'function'
+    }
+  }
+}
+
+export const ValueType_Expand = {
+  parameters: {
+    docs: {
+      source: {
+        code: `<CpisTable
+  :columns="[
+    {
+      valueType: 'expand',
+      width: 100,
+      prop: 'expand1'
+    },
+    {
+      label: 'Number2',
+      prop: 'number2',
+      width: 100
+    },
+    {
+      label: 'Number3',
+      prop: 'number3',
+      valueType: 'number'
+    },
+    {
+      label: 'Number4',
+      prop: 'number4',
+      valueType: 'number'
+    }
+  ]"
+  :request="() => ({
+    data: [{
+      number1: 1,
+      number2: 2
+    }],
+    total: 50
+  })"
+>
+  <template #columns="{column, row}">
+    <div v-if="column.prop === 'expand1'">
+      expand1
+    </div>
+  </template>
+</CpisTable>`
+      }
+    }
+  },
+  render: (args, { argTypes }) => ({
+    components: { CpisTable },
+    data() {
+      return {
+        columns: [
+          {
+            valueType: 'expand',
+            width: 100,
+            prop: 'expand1'
+          },
+          {
+            label: 'Number2',
+            prop: 'number2',
+            width: 100
+          },
+          {
+            label: 'Number3',
+            prop: 'number3',
+            valueType: 'number'
+          },
+          {
+            label: 'Number4',
+            prop: 'number4',
+            valueType: 'number'
+          }
+        ]
+      }
+    },
+    template: `
+      <CpisTable
+        :columns="columns"
+        :request="() => ({
+          data: [{
+            number1: 1,
+            number2: 2
+          }],
+          total: 50
+        })"
+      >
+        <template #columns="{column, row}">
+          <div v-if="column.prop === 'expand1'">
+            expand1
+          </div>
+        </template>
+      </CpisTable>
+    `
+  }),
+  argTypes: {
+    columns: {
+      description: '列配置',
+      control: 'array',
+      table: {
+        category: '列配置'
+      }
+    },
+    request: {
+      description: '请求配置',
+      control: 'function'
+    }
+  }
+}
 // Story 级别文档
 // export const Primary = {
 //   decorators: [
