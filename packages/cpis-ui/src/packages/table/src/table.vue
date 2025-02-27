@@ -29,7 +29,7 @@
           :empty-text="emptyText"
           :data="dataSource"
           :row-key="rowKey"
-          :cell-style="{ paddingTop: '4px', paddingBottom: '4px' }"
+          :cell-style="{ paddingTop: '8px', paddingBottom: '8px' }"
           v-loading="loading"
           :height="computedHeight"
           :header-cell-style="{
