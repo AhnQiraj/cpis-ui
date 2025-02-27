@@ -221,6 +221,9 @@ export default {
   & .el-tabs__nav-wrap {
     @apply px-4;
   }
+  & .el-tabs__header {
+    @apply mb-2;
+  }
   & .el-tabs__nav .el-tabs__item {
     height: 44px;
     line-height: 44px;
