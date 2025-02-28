@@ -494,6 +494,9 @@ export default {
 }
 </script>
 <style>
+.cpis-table-container .cpis-table.el-table--small {
+  font-size: 14px;
+}
 .cpis-table-container .cpis-table__toolbar {
   @apply flex flex-row items-center;
 }
