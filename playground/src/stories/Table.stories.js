@@ -55,13 +55,14 @@ import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
   | data  | 表格数据，和request两选一 用法见 [request](#request-and-data)| array   | — | — |
   | paramaterMode  | 参数模式 | string   | structured/flat | structured |
   | autoHeight  | 是否自动高度 | boolean   | true/false | true |
+  | expandable  | 是否开启展开行 | boolean   | true/false | false |
 ### Column Attributes
 
   这里不列举element文档的参数，需要去element文档查看。
 
   | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
   |---------- |---------------- |---------- |--------------------------------  |-------- |
-  | valueType  | 列数据类型 | string   | text/number/select/action/index/tag | text |
+  | valueType  | 列数据类型 | string   | text/number/select/action/index/tag/link | text |
   | align  | 列对齐方式 | string   | left/center/right | tag 为center， number为left， 其他为right |
   | editItemProps  | 编辑状态下会透传给编辑组件 | object/function   | — | — |
   | fieldProps  | 非编辑状态下会透传给 valueTyp 对应的组件 | object/function   | — | — |
@@ -1893,43 +1894,58 @@ export const ValueType_Expand = {
   parameters: {
     docs: {
       source: {
-        code: `<CpisTable
-  :columns="[
-    {
-      valueType: 'expand',
-      width: 100,
-      prop: 'expand1'
-    },
-    {
-      label: 'Number2',
-      prop: 'number2',
-      width: 100
-    },
-    {
-      label: 'Number3',
-      prop: 'number3',
-      valueType: 'number'
-    },
-    {
-      label: 'Number4',
-      prop: 'number4',
-      valueType: 'number'
+        code: `
+<template>
+  <CpisTable
+    :columns="columns"
+    :request="request"
+    :expandable="true"
+  >
+    <template #expand="{ row, $index }">
+      <div>row.id: {{ row.id }}</div>
+    </template>
+  </CpisTable>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      columns: [
+        {
+          label: 'Number1',
+          prop: 'number1', 
+          width: 100
+        },
+        {
+          label: 'Number2',
+          prop: 'number2',
+        }
+      ],
+      request: () => ({
+        data: [
+          {
+            id: 1,
+            number1: 1,
+            number2: 2
+          },
+          {
+            id: 2,
+            number1: 1,
+            number2: 2
+          },
+          {
+            id: 3,
+            number1: 1,
+            number2: 2
+          }
+        ],
+        total: 50
+      })
     }
-  ]"
-  :request="() => ({
-    data: [{
-      number1: 1,
-      number2: 2
-    }],
-    total: 50
-  })"
->
-  <template #columns="{column, row}">
-    <div v-if="column.prop === 'expand1'">
-      expand1
-    </div>
-  </template>
-</CpisTable>`
+  }
+}
+</script>`
       }
     }
   },
@@ -1939,43 +1955,41 @@ export const ValueType_Expand = {
       return {
         columns: [
           {
-            valueType: 'expand',
-            width: 100,
-            prop: 'expand1'
-          },
-          {
-            label: 'Number2',
+            label: 'Number1',
             prop: 'number2',
             width: 100
           },
           {
-            label: 'Number3',
-            prop: 'number3',
-            valueType: 'number'
-          },
-          {
-            label: 'Number4',
-            prop: 'number4',
-            valueType: 'number'
+            label: 'Number2',
+            prop: 'number2'
           }
         ]
       }
     },
     template: `
       <CpisTable
+        row-key="id"
+        :expandable="true"
         :columns="columns"
         :request="() => ({
           data: [{
+            id: 1,
+            number1: 1,
+            number2: 2
+          },{
+            id: 2,
+            number1: 1,
+            number2: 2
+          },{
+            id: 3,
             number1: 1,
             number2: 2
           }],
           total: 50
         })"
       >
-        <template #columns="{column, row}">
-          <div v-if="column.prop === 'expand1'">
-            expand1
-          </div>
+        <template #expand="{ row, $index }">
+          <div>row.id: {{ row.id }}</div>
         </template>
       </CpisTable>
     `

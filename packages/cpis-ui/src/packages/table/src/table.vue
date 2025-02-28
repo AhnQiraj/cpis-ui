@@ -55,6 +55,11 @@
               </template>
             </ELTableColumn>
           </template>
+          <ELTableColumn v-if="expandable" prop="expand" width="50" type="expand">
+            <template slot-scope="props">
+              <slot name="expand" v-bind="props" />
+            </template>
+          </ELTableColumn>
           <template v-for="column in computedColumns">
             <template v-if="column.valueType === 'selection'">
               <ELTableColumn type="selection" width="40" />
@@ -131,13 +136,7 @@
               <template v-else-if="column.valueType === 'tag'">
                 <Cpis-Tag-Column :key="column.prop" v-bind="column" />
               </template>
-              <template v-else-if="column.valueType === 'expand'">
-                <ELTableColumn v-bind="column" type="expand">
-                  <template slot-scope="scope">
-                    <slot name="columns" :column="column" :row="scope.row" :$index="scope.$index"></slot>
-                  </template>
-                </ELTableColumn>
-              </template>
+
               <template v-else-if="column.valueType === 'link'">
                 <CpisLinkColumn :key="column.prop" v-bind="column" />
               </template>
@@ -267,6 +266,11 @@ export default {
       type: Boolean,
       default: false,
       comments: '是否开启选择'
+    },
+    expandable: {
+      type: Boolean,
+      default: false,
+      comments: '是否开启行展开'
     },
     autoHeight: {
       type: Boolean,
