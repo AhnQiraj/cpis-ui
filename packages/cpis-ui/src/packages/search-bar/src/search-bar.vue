@@ -1,23 +1,16 @@
 <template>
   <div class="cpis-search-bar flex flex-row gap-2 100vw">
-    <div
-      class="cpis-search-bar-items-wrapper flex gap-2"
-      :style="{ 'flex-wrap': isExpanded ? 'wrap' : 'nowrap' }"
-    >
+    <div class="cpis-search-bar-items-wrapper flex gap-2" :style="{ 'flex-wrap': isExpanded ? 'wrap' : 'nowrap' }">
       <div
         v-for="(item, index) in _search"
         v-show="isExpanded || index <= 4"
         :key="item.key"
         class="flex flex-row items-center gap-2 px-2.5"
         :class="{
-          'border-solid border-1 border-gray-3 rounded':
-            item.type !== 'checkbox'
+          'border-solid border-1 border-gray-3 rounded': item.type !== 'checkbox'
         }"
       >
-        <div
-          v-if="!!item.label && item.type !== 'checkbox'"
-          class="whitespace-nowrap text-sm text-gray-6"
-        >
+        <div v-if="!!item.label && item.type !== 'checkbox'" class="whitespace-nowrap text-sm text-gray-6">
           {{ item.label }}：
         </div>
         <template v-if="['select', 'multiple-select'].includes(item.type)">
@@ -49,15 +42,7 @@
         </template>
         <template
           v-else-if="
-            [
-              'daterange',
-              'date',
-              'datetime',
-              'datetimerange',
-              'month',
-              'year',
-              'monthrange'
-            ].includes(item.type)
+            ['daterange', 'date', 'datetime', 'datetimerange', 'month', 'year', 'monthrange'].includes(item.type)
           "
         >
           <CpisDatePicker
@@ -75,11 +60,7 @@
                 monthrange: 'yyyy-MM'
               }[item.type]
             "
-            :default-time="
-              item.type === 'datetimerange'
-                ? ['00:00:00', '23:59:59']
-                : undefined
-            "
+            :default-time="item.type === 'datetimerange' ? ['00:00:00', '23:59:59'] : undefined"
             clearable
             :style="{
               width: calculateDateWidth(item.type) + 'px'
@@ -89,10 +70,7 @@
           />
         </template>
         <template v-else-if="['checkbox'].includes(item.type)">
-          <ElCheckbox
-            v-model="params[item.prop]"
-            v-on="getComponentListeners(item)"
-          >
+          <ElCheckbox v-model="params[item.prop]" v-on="getComponentListeners(item)">
             {{ item.label }}
           </ElCheckbox>
         </template>
@@ -248,10 +226,7 @@ export default {
       } else {
         // Filter out empty values for flat mode
         params = Object.fromEntries(
-          Object.entries(this.params).filter(
-            ([_, value]) =>
-              value !== undefined && value !== null && value !== ''
-          )
+          Object.entries(this.params).filter(([_, value]) => value !== undefined && value !== null && value !== '')
         )
       }
       return params
