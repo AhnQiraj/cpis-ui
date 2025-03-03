@@ -5,7 +5,7 @@
         v-for="(item, index) in _search"
         v-show="isExpanded || index <= 4"
         :key="item.key"
-        class="flex flex-row items-center gap-2 px-2.5"
+        class="flex flex-row items-center px-2.5"
         :class="{
           'border-solid border-1 border-gray-3 rounded': item.type !== 'checkbox'
         }"
@@ -197,8 +197,8 @@ export default {
         date: 100,
         datetime: 150,
         datetimerange: 350,
-        daterange: 250,
-        monthrange: 250
+        daterange: 200,
+        monthrange: 200
       }
       return widht[type] || 100
     },
@@ -283,6 +283,7 @@ export default {
   flex-wrap: nowrap;
 }
 .autoWidth .el-input__prefix {
+  text-wrap: nowrap;
   position: relative;
   box-sizing: border-box;
   border: 1px solid #ffffff00;
