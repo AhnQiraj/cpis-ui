@@ -52,7 +52,7 @@ import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
  *   valueKey?: string,     // 枚举值的value值
  *   labelKey?: string,     // 枚举值的label值
  *   defaultValue?: any,     // 默认值
- *   fieldEvents?: Object,     // 字段事件 具体参考[下方示例](#示例)
+ *   fieldEvents?: Object,     // 字段事件, 透传给element 对应组件的 event 具体参考[下方示例](#示例)
  * }
  * ```
  *
@@ -87,6 +87,11 @@ import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
  *     prop: 'status',
  *     label: '状态',
  *     type: 'select',
+ *     fieldEvents: {
+ *       change: (event, item) => {
+ *         console.log('change', event, item)
+ *       }
+ *     },
  *     enum: [
  *       { name: '启用', key: 1 },
  *       { name: '禁用', key: 0 }
@@ -244,7 +249,12 @@ export const FlatSearch = {
             enum: [
               { name: '启用', key: 1 },
               { name: '禁用', key: 0 }
-            ]
+            ],
+            fieldEvents: {
+              change: (event, item) => {
+                console.log('change', event, item)
+              }
+            }
           },
           {
             prop: 'createTime',
