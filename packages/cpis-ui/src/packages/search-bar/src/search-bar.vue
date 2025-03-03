@@ -15,6 +15,7 @@
         </div>
         <template v-if="['select', 'multiple-select'].includes(item.type)">
           <CpisSelect
+            class="autoWidth"
             size="small"
             :label="item.label"
             clearable
@@ -25,13 +26,10 @@
             :placeholder="item.placeholder || '请选择'"
             v-model="params[item.prop]"
             v-on="getComponentListeners(item)"
-            :style="{
-              width: calculateWidth(
-                item.placeholder || '请选择',
-                item.type === 'multiple-select' ? 100 : 0
-              )
-            }"
           >
+            <template slot="prefix">
+              {{ getPrefixLabel(item) }}
+            </template>
             <el-option
               v-for="option in getEnumOptions(item)"
               :key="option[item.valueKey || 'key']"
@@ -154,6 +152,12 @@ export default {
     this.params = { ...params }
   },
   methods: {
+    getPrefixLabel(item) {
+      const options = this.getEnumOptions(item)
+      const value = this.params[item.prop]
+      const finded = options.find(item => item[item.valueKey || 'key'] === value)
+      return finded ? finded[item.labelKey || 'name'] : ''
+    },
     handleSearch() {
       try {
         if (!this.search || this.search.length === 0) {
@@ -264,5 +268,29 @@ export default {
 }
 .cpis-search-bar-actions ::v-deep .el-button + .el-button {
   margin-left: 0;
+}
+</style>
+
+<style>
+.autoWidth {
+  min-width: 70px;
+  text-align: start;
+}
+.autoWidth .el-select__tags {
+  flex-wrap: nowrap;
+}
+.autoWidth .el-input__prefix {
+  position: relative;
+  box-sizing: border-box;
+  border: 1px solid #ffffff00;
+  padding: 0 20px;
+  height: 32px;
+  line-height: 32px;
+  color: #606266;
+  left: 0;
+  visibility: hidden;
+}
+.autoWidth .el-input__inner {
+  position: absolute;
 }
 </style>
