@@ -244,11 +244,19 @@ export const FlatSearch = {
           },
           {
             prop: 'status',
-            label: '状态',
+            label: '单选',
             type: 'select',
             enum: [
-              { name: '启用', key: 1 },
-              { name: '禁用', key: 0 }
+              { name: '一', key: 1 },
+              { name: '二三', key: 2 },
+              { name: '四五六', key: 3 },
+              { name: '七八九十', key: 4 },
+              { name: '一二三四五', key: 5 },
+              { name: '六七八九十', key: 6 },
+              { name: '一二三四五六七', key: 7 },
+              { name: '八九十一二三四五', key: 8 },
+              { name: '六七八九十一二三四', key: 9 },
+              { name: '一二三四五六七八九十', key: 10 }
             ],
             fieldEvents: {
               change: (event, item) => {

@@ -15,7 +15,7 @@
         </div>
         <template v-if="['select', 'multiple-select'].includes(item.type)">
           <CpisSelect
-            class="autoWidth"
+            :class="{ autoWidth: item.type === 'select', 'w-[100px]': item.type === 'multiple-select' }"
             size="small"
             :label="item.label"
             clearable
@@ -27,7 +27,7 @@
             v-model="params[item.prop]"
             v-on="getComponentListeners(item)"
           >
-            <template slot="prefix">
+            <template v-if="item.type === 'select'" slot="prefix">
               {{ getPrefixLabel(item) }}
             </template>
             <el-option
