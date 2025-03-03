@@ -153,8 +153,11 @@ export default {
   },
   methods: {
     getPrefixLabel(item) {
-      const options = this.getEnumOptions(item)
       const value = this.params[item.prop]
+      if (!value) {
+        return item.placeholder || '请选择'
+      }
+      const options = this.getEnumOptions(item)
       const finded = options.find(item => item[item.valueKey || 'key'] === value)
       return finded ? finded[item.labelKey || 'name'] : ''
     },
