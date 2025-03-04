@@ -46,7 +46,10 @@ export default {
 }
 // 日期区间选择器和日期时间区间选择器的图标,使用 order 控制图标到末尾位置
 .el-date-editor--daterange .el-icon-date,
-.el-date-editor--datetimerange .el-icon-time {
+.el-date-editor--datetimerange .el-icon-time,
+.el-date-editor--daterange .el-range__close-icon,
+.el-date-editor--datetimerange .el-range__close-icon {
+  margin-left: auto; // 移动到最左面
   order: 1;
 }
 // 日期区间选择器和日期时间区间选择器的关闭图标,因为是flex布局,不display:none的会占用位置
