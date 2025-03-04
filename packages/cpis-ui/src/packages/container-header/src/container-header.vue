@@ -6,7 +6,7 @@
     <div v-else class="px-4 flex flex-row items-center h-[52px]">
       <div class="bg-primary-6 w-1 h-[18px] line-height-none" />
       <div class="text-lg font-bold ml-2">{{ title }}</div>
-      <div v-if="$slots.right" class="ml-auto text-sm">
+      <div v-if="$slots.right" class="title-right">
         <slot name="right" />
       </div>
     </div>
