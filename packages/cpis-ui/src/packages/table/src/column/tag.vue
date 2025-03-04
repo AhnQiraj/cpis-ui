@@ -43,7 +43,7 @@ export default {
     },
     align: {
       type: String,
-      default: 'center'
+      default: 'left'
     },
     formatter: {
       type: Function,
