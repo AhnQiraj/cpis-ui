@@ -1,12 +1,6 @@
 <template>
   <div class="cpis-tree">
-    <ElTree
-      ref="elTree"
-      class="text-sm"
-      v-bind="$attrs"
-      v-on="$listeners"
-      @node-contextmenu="handleContextMenu"
-    >
+    <ElTree ref="elTree" class="text-sm" v-bind="$attrs" v-on="$listeners" @node-contextmenu="handleContextMenu">
       <!-- 透传所有具名插槽 -->
       <template v-for="(_, name) in $slots" #[name]="slotData">
         <slot :name="name" v-bind="slotData" />
@@ -98,17 +92,13 @@ export default {
       return this.$refs.elTree.insertAfter(...args)
     },
     expandAll() {
-      const nodes = this.$refs.elTree.$el.querySelectorAll(
-        '.el-tree-node__expand-icon'
-      )
+      const nodes = this.$refs.elTree.$el.querySelectorAll('.el-tree-node__expand-icon')
       nodes.forEach(icon => {
         icon.click()
       })
     },
     collapseAll() {
-      const nodes = this.$refs.elTree.$el.querySelectorAll(
-        '.el-tree-node__expand-icon.expanded'
-      )
+      const nodes = this.$refs.elTree.$el.querySelectorAll('.el-tree-node__expand-icon.expanded')
       nodes.forEach(icon => {
         icon.click()
       })
@@ -117,14 +107,11 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .cpis-tree {
   width: 100%;
 }
-::v-deep
-  .el-tree--highlight-current
-  .el-tree-node.is-current
-  > .el-tree-node__content {
+.cpis-tree .el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content {
   @apply text-primary-6;
   @apply bg-primary-1;
 }
