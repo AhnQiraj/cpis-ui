@@ -1,7 +1,5 @@
 <template>
-  <CpisPageContainer
-    :layout="$slots.header ? ['header', ['aside', 'main']] : ['aside', 'main']"
-  >
+  <CpisPageContainer :layout="$slots.header ? ['header', ['aside', 'main']] : ['aside', 'main']">
     <template #header>
       <slot name="header" />
     </template>
@@ -24,17 +22,12 @@
       <div class="p-y-4 p-x-2 flex flex-col gap-2 flex-1 overflow-hidden">
         <slot name="search">
           <div class="search-box flex" v-show="!collapse">
-            <el-input placeholder="请输入" v-model="searchValue" size="small">
-            </el-input>
+            <el-input placeholder="请输入" v-model="searchValue" size="small"></el-input>
             <el-dropdown @command="handleCommand">
               <CpisButton type="primary" icon="el-icon-setting" />
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item command="collapseAll">
-                  折叠所有
-                </el-dropdown-item>
-                <el-dropdown-item command="expandAll">
-                  展开所有
-                </el-dropdown-item>
+                <el-dropdown-item command="collapseAll">折叠所有</el-dropdown-item>
+                <el-dropdown-item command="expandAll">展开所有</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           </div>
@@ -117,9 +110,7 @@ export default {
       this.collapse = !this.collapse
     },
     filterNodeMethod(query, data) {
-      return (
-        data[this?.treeProps?.props?.label ?? 'label']?.indexOf?.(query) > -1
-      )
+      return data[this?.treeProps?.props?.label ?? 'label']?.indexOf?.(query) > -1
     },
 
     getTree() {
