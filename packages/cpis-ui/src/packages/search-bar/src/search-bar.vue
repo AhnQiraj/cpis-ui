@@ -197,7 +197,7 @@ export default {
         date: 100,
         datetime: 150,
         datetimerange: 350,
-        daterange: 200,
+        daterange: 210,
         monthrange: 200
       }
       return widht[type] || 100
