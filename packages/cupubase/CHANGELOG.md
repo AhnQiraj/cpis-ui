@@ -1,5 +1,11 @@
 # @cpis/cupubase
 
+## 2.0.3
+
+### Patch Changes
+
+- `input-upload-file` 组件新增透传事件
+
 ## 2.0.2
 
 ### Patch Changes

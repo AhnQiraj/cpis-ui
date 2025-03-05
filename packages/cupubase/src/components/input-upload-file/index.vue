@@ -1,15 +1,51 @@
 <template>
   <div>
-    <el-upload id="uploadControl" ref="uploadControl" :limit="limit" :multiple="limit > 1 ? true : false" style="max-width: 300px; display: block" :class="isView ? 'view' : ''" :disabled="disabled" action="#" :before-upload="beforeUpload" :on-success="handSuccess" :before-remove="beforeRemove" :on-remove="handleRemove" :on-preview="handlePreview" :file-list="fileList">
-      <el-button v-if="!isView" size="small" type="primary" :disabled="disabled">{{ $t('baseCommon.buttons.clickUpload') }}</el-button>
+    <el-upload
+      id="uploadControl"
+      ref="uploadControl"
+      :limit="limit"
+      :multiple="limit > 1 ? true : false"
+      style="max-width: 300px; display: block"
+      :class="isView ? 'view' : ''"
+      :disabled="disabled"
+      action="#"
+      :before-upload="beforeUpload"
+      :on-remove="handleRemove"
+      :on-preview="handlePreview"
+      :file-list="fileList"
+      v-on="$listeners"
+    >
+      <el-button v-if="!isView" size="small" type="primary" :disabled="disabled">
+        {{ $t('baseCommon.buttons.clickUpload') }}
+      </el-button>
       <div v-if="!isView" slot="tip" class="el-upload__tip">{{ tip }}</div>
     </el-upload>
-    <el-dialog :visible.sync="dialogVisible" :modal-append-to-body="false" :append-to-body="true" :title="$t('baseCommon.component.pictureView')" class="yj-dialog">
+    <el-dialog
+      :visible.sync="dialogVisible"
+      :modal-append-to-body="false"
+      :append-to-body="true"
+      :title="$t('baseCommon.component.pictureView')"
+      class="yj-dialog"
+    >
       <img width="100%" :src="dialogImageUrl" alt />
     </el-dialog>
-    <vxe-modal v-model="dialogVisiblePPT" show-zoom resize width="70%" height="90%" :title="$t('baseCommon.message.fileView')">
+    <vxe-modal
+      v-model="dialogVisiblePPT"
+      show-zoom
+      resize
+      width="70%"
+      height="90%"
+      :title="$t('baseCommon.message.fileView')"
+    >
       <el-row id="pptRow" style="overflow: hidden; width: 100%; height: calc(100% - 40px)">
-        <iframe id="frameForm" ref="frameForm" :src="src" frameborder="0" style="overflow-y: auto; width: 100%; height: 98%" @load="imgStyle" />
+        <iframe
+          id="frameForm"
+          ref="frameForm"
+          :src="src"
+          frameborder="0"
+          style="overflow-y: auto; width: 100%; height: 98%"
+          @load="imgStyle"
+        />
       </el-row>
       <el-row style="display: flex; justify-content: center; height: 40px">
         <el-button type="primary" @click="downFile">{{ $t('baseCommon.buttons.downOrigFile') }}</el-button>
@@ -95,16 +131,6 @@ export default {
         }
       })
     },
-    /**
-     * 文件上传成功时的钩子
-     * @author mbb
-     */
-    handSuccess(response, file, fileList) {},
-    /**
-     * 删除文件之前的钩子
-     * @author mbb
-     */
-    beforeRemove() {},
     /**
      * 文件列表移除文件时的钩子
      * @author mbb
