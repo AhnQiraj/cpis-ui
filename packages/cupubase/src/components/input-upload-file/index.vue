@@ -13,7 +13,7 @@
       :on-remove="handleRemove"
       :on-preview="handlePreview"
       :file-list="fileList"
-      v-on="$listeners"
+      v-bind="$attrs"
     >
       <el-button v-if="!isView" size="small" type="primary" :disabled="disabled">
         {{ $t('baseCommon.buttons.clickUpload') }}
