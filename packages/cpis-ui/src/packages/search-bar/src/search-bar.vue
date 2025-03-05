@@ -63,6 +63,7 @@
             :style="{
               width: calculateDateWidth(item.type) + 'px'
             }"
+            v-on="getComponentListeners(item)"
             :label="item.label"
             v-model="params[item.prop]"
           />
