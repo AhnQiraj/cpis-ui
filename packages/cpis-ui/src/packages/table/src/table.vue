@@ -327,6 +327,12 @@ export default {
           if (typeof column.hideInTable === 'function') {
             return !column.hideInTable()
           }
+          if (typeof column.hidden === 'boolean') {
+            return !column.hidden
+          }
+          if (typeof column.hidden === 'function') {
+            return !column.hidden()
+          }
           return true
         })
         .map(column => {
