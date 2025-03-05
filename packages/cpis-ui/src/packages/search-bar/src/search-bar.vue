@@ -89,9 +89,7 @@
       <div class="cpis-search-bar-actions flex flex-row gap-2">
         <CpisButton type="primary" @click="handleSearch">查询</CpisButton>
         <CpisButton @click="handleSearchReset">重置</CpisButton>
-        <CpisButton v-if="search.length > 5" @click="handleExpand">{{
-          isExpanded ? '收起' : '展开'
-        }}</CpisButton>
+        <CpisButton v-if="search.length > 5" @click="handleExpand">{{ isExpanded ? '收起' : '展开' }}</CpisButton>
       </div>
     </div>
   </div>
