@@ -411,7 +411,29 @@ export default {
     },
     // 判断单元格是否处于编辑状态
     isEditing(row, prop) {
-      return typeof prop.editable === 'boolean' ? prop.editable : this.$props.editable
+      // 获取 prop 级别的 editable
+      const propEditable = prop.editable
+      // 获取表格级别的 editable
+      const tableEditable = this.$props.editable
+
+      // 如果 prop.editable 是函数，则执行它并传入当前行数据
+      if (typeof propEditable === 'function') {
+        return propEditable(row)
+      }
+
+      // 如果 prop.editable 是布尔值，则直接返回
+      if (typeof propEditable === 'boolean') {
+        return propEditable
+      }
+
+      // 如果 prop.editable 未设置，检查表格级别的 editable
+      // 如果表格级别的 editable 是函数，执行它
+      if (typeof tableEditable === 'function') {
+        return tableEditable(row)
+      }
+
+      // 否则直接返回表格级别的 editable（布尔值）
+      return tableEditable
     },
     async handleFetchData(params) {
       let requestParams = { ...params }
