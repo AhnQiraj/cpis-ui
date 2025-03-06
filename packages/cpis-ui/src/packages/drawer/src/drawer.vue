@@ -12,7 +12,7 @@
           aria-modal="true"
           aria-labelledby="el-drawer__title"
           :aria-label="title"
-          class="el-drawer"
+          class="el-drawer cpis-drawer"
           :class="[direction, customClass]"
           :style="isHorizontal ? `width: ${drawerSize}` : `height: ${drawerSize}`"
           ref="drawer"
@@ -208,21 +208,21 @@ export default {
 }
 </script>
 
-<style scoped>
-.el-drawer .el-drawer__header {
+<style>
+.cpis-drawer.el-drawer .el-drawer__header {
   @apply h-[42px] px-2 p-0 flex items-center;
   margin-bottom: 0 !important;
   background-color: #f5f5f5;
   border-bottom: 1px solid #d9d9d9;
   color: #262626;
 }
-.drawer-title {
+.cpis-drawer.el-drawer .drawer-title {
   @apply text-base font-bold;
 }
-.el-drawer__header > :first-child {
+.cpis-drawer.el-drawer .el-drawer__header > :first-child {
   @apply !flex-none;
 }
-.drawer-footer {
+.cpis-drawer.el-drawer .drawer-footer {
   display: flex;
   justify-content: flex-start;
   padding: 8px;
@@ -231,14 +231,13 @@ export default {
   bottom: 0; /* 固定在底部 */
   background: #fff; /* 添加背景色防止内容透过 */
 }
-.drawer-content {
+.cpis-drawer.el-drawer .drawer-content {
   flex: 1;
   overflow-y: auto; /* 添加滚动 */
   overflow-x: hidden;
 }
-.el-drawer__body {
+.cpis-drawer.el-drawer .el-drawer__body {
   display: flex;
   flex-direction: column;
 }
-
 </style>
