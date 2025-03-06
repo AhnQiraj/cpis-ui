@@ -7,7 +7,7 @@
           :search="search"
           :paramater-mode="paramaterMode"
           @search="handleSearch"
-          @reset="handleSearchReset"
+          @reset="reset"
         />
       </template>
     </div>
@@ -450,7 +450,13 @@ export default {
       this.handleFetchData(params)
       this.$emit('onSearch', params)
     },
-    handleSearchReset() {
+    handleSizeChange(limit) {
+      this.limit = limit
+    },
+    handleCurrentChange(pageNo) {
+      this.pageNo = pageNo
+    },
+    reset() {
       this.searchParams = {}
       this.handleFetchData({
         requestPage: {
@@ -458,12 +464,6 @@ export default {
           pageNo: this.pageNo
         }
       })
-    },
-    handleSizeChange(limit) {
-      this.limit = limit
-    },
-    handleCurrentChange(pageNo) {
-      this.pageNo = pageNo
     },
     reload() {
       const requestData = {
