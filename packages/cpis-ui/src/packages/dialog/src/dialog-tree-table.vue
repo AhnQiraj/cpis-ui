@@ -6,30 +6,29 @@
     v-bind="$attrs"
     v-on="$listeners"
   >
-    <div class="flex flex-col size-full gap-2">
-      <div v-if="multiple" slot="header" class="p-2 min-h-[42px] bg-white">
+    <CpisTreeContainer :tree-props="treeProps" v-on="propsToListeners(treeEvents)" ref="tree">
+      <div v-if="multiple" slot="header" class="p-2 min-h-[42px]">
         <div class="border border-dashed border-gray-3 min-h-[42px] flex items-center gap-2 p-2 box-border">
           <cpis-tag
-            v-for="(item, index) in selection"
+            v-for="(item, index) in computedSelection"
             size="small"
             :key="item.id"
             closable
             @close="handleTagClose(item, index)"
           >
-            {{ item.name }}
+            {{ item[selectDataLabel] }}
           </cpis-tag>
         </div>
       </div>
       <CpisTable
         ref="table"
-        class="flex-1"
         v-bind="tableProps"
         :selectable="multiple"
         @select="handleSelect"
         @current-change="handleCurrentChange"
         :highlight-current-row="!multiple"
       />
-    </div>
+    </CpisTreeContainer>
     <template #footer>
       <slot name="footer">
         <CpisButton type="primary" @click="handleOk">确定</CpisButton>
@@ -42,12 +41,14 @@
 import listeners from '../../../mixins/listeners.js'
 import CpisTable from '../../table/index'
 import CpisDialog from './dialog.vue'
+import CpisTreeContainer from '../../tree-container/index'
 import CpisTag from '../../tag/index'
 export default {
   mixins: [listeners],
-  name: 'CpisDialogTable',
+  name: 'CpisDialogTreeTable',
   components: {
     CpisDialog,
+    CpisTreeContainer,
     CpisTag,
     CpisDialog
   },
@@ -65,6 +66,11 @@ export default {
     return {
       singleData: null,
       multipleData: []
+    }
+  },
+  computed: {
+    computedSelection() {
+      return this.multiple ? this.multipleData : this.singleData
     }
   },
   methods: {
@@ -125,6 +131,14 @@ export default {
         // 40 60 80
         return ['small', 'medium', 'large'].includes(value)
       }
+    },
+    treeProps: {
+      type: Object,
+      default: () => ({})
+    },
+    treeEvents: {
+      type: Object,
+      default: () => ({})
     },
     tableProps: {
       type: Object,

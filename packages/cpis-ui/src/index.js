@@ -21,8 +21,9 @@ import CpisTabs from './packages/tabs/index.js'
 import CpisTabPane from './packages/tab-pane/index.js'
 import CpisDialog from './packages/dialog/index.js'
 import CpisDialogTable from './packages/dialog/src/dialog-table.vue'
+import CpisDialogTreeTable from './packages/dialog/src/dialog-tree-table.vue'
 import CpisTagGroup from './packages/tag-group/index.js'
-
+import CpisBasicTable from './packages/table/src/basicTable.vue'
 const components = [
   CpisTag,
   CpisProCascader,
@@ -47,8 +48,10 @@ const components = [
   CpisTabPane,
   CpisDialog,
   CpisDialogTable,
+  CpisDialogTreeTable,
   CpisTagGroup,
-  CpisUserSelectDialog
+  CpisUserSelectDialog,
+  CpisBasicTable
 ]
 
 const install = function (Vue, opts = {}) {
@@ -85,8 +88,10 @@ export {
   CpisTabPane,
   CpisDialog,
   CpisDialogTable,
+  CpisDialogTreeTable,
   CpisTagGroup,
-  CpisUserSelectDialog
+  CpisUserSelectDialog,
+  CpisBasicTable
 }
 export default {
   version: '1.0.0',

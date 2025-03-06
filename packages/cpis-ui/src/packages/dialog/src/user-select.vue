@@ -1,11 +1,13 @@
 <template>
-  <CpisDialogTable
+  <CpisDialogTreeTable
     ref="dialog"
-    :multiple="false"
+    :multiple="multiple"
     size="medium"
     :title="title"
     append-to-body
+    :selected-data="selectedData"
     :modal="false"
+    destory-on-close
     :tree-props="treeProps"
     :table-props="tableProps"
     :tree-events="treeEvents"
@@ -19,13 +21,29 @@
 export default {
   name: 'CpisUserSelectDialog',
   props: {
-    title: {
+    selectedData: {
+      type: Array,
+      default: null
+    },
+    selectDataKey: {
       type: String,
-      default: '用户选择'
+      default: 'id'
+    },
+    selectDataLabel: {
+      type: String,
+      default: 'name'
     },
     visible: {
       type: Boolean,
       default: false
+    },
+    multiple: {
+      type: Boolean,
+      default: false
+    },
+    title: {
+      type: String,
+      default: '用户选择'
     }
   },
   data() {
