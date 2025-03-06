@@ -6,10 +6,8 @@ import CpisContainerHeader from './packages/container-header/index.js'
 import CpisTable from './packages/table/index.js'
 import CpisButton from './packages/button/index.js'
 import CpisInput from './packages/input/index.js'
-import CpisForm, {
-  CpisFormItem,
-  CpisFormSection
-} from './packages/form/index.js'
+import CpisUserSelectDialog from './packages/dialog/src/user-select.vue'
+import CpisForm, { CpisFormItem, CpisFormSection } from './packages/form/index.js'
 import CpisDrawer from './packages/drawer/index.js'
 import CpisSearchBar from './packages/search-bar/index.js'
 import CpisTree from './packages/tree/index.js'
@@ -49,7 +47,8 @@ const components = [
   CpisTabPane,
   CpisDialog,
   CpisDialogTable,
-  CpisTagGroup
+  CpisTagGroup,
+  CpisUserSelectDialog
 ]
 
 const install = function (Vue, opts = {}) {
@@ -86,7 +85,8 @@ export {
   CpisTabPane,
   CpisDialog,
   CpisDialogTable,
-  CpisTagGroup
+  CpisTagGroup,
+  CpisUserSelectDialog
 }
 export default {
   version: '1.0.0',
