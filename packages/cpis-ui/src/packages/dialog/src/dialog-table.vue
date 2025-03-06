@@ -1,5 +1,11 @@
 <template>
-  <CpisDialog :visible.sync="visible" :size="size" v-bind="$attrs" v-on="$listeners">
+  <CpisDialog
+    :visible="localVisible"
+    @update:visible="$emit('update:visible', $event)"
+    :size="size"
+    v-bind="$attrs"
+    v-on="$listeners"
+  >
     <CpisTreeContainer :tree-props="treeProps" v-on="propsToListeners(treeEvents)" ref="tree">
       <div v-if="multiple" slot="header" class="p-2 min-h-[42px]">
         <div class="border border-dashed border-gray-3 min-h-[42px] flex items-center gap-2 p-2 box-border">
@@ -46,34 +52,44 @@ export default {
     CpisTag,
     CpisDialog
   },
+  computed: {
+    localVisible: {
+      get() {
+        return this.$props.visible
+      },
+      set(value) {
+        this.$emit('update:visible', value)
+      }
+    }
+  },
   data() {
     return {
-      currentSelection: [],
-      currentRow: null
+      singleData: null,
+      multipleData: []
     }
   },
   methods: {
     handleOk() {
       this.$emit('update:visible', false)
-      this.$emit('ok', this.multiple ? this.currentSelection : this.currentRow)
+      this.$emit('ok', this.multiple ? this.multipleData : this.singleData)
     },
     handleCancel() {
       this.$emit('update:visible', false)
       this.$emit('cancel')
     },
     handleTagClose(item, index) {
-      this.currentSelection.splice(index, 1)
-      this.$refs.table.getTable
+      this.multipleData.splice(index, 1)
+      // this.$refs.table.getTable
     },
     handleSelect(selection, row) {
       console.log('select', selection)
       console.log('row', row)
 
-      this.currentSelection = selection
+      this.multipleData = selection
     },
     // 当前行变化
     handleCurrentChange(row, oldCurrentRow) {
-      this.currentRow = row
+      this.singleData = row
     },
     getTable() {
       return this.$refs.table
