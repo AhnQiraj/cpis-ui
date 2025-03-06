@@ -1,6 +1,6 @@
 <template>
   <CpisDialog :visible.sync="visible" :size="size" v-bind="$attrs" v-on="$listeners">
-    <CpisTreeContainer :tree-props="treeProps">
+    <CpisTreeContainer :tree-props="treeProps" v-on="propsToListeners(treeEvents)" ref="tree">
       <div v-if="multiple" slot="header" class="p-2 min-h-[42px]">
         <div class="border border-dashed border-gray-3 min-h-[42px] flex items-center gap-2 p-2 box-border">
           <cpis-tag
@@ -32,11 +32,13 @@
   </CpisDialog>
 </template>
 <script>
+import listeners from '../../../mixins/listeners.js'
 import CpisTable from '../../table/index'
 import CpisDialog from './dialog.vue'
 import CpisTreeContainer from '../../tree-container/index'
 import CpisTag from '../../tag/index'
 export default {
+  mixins: [listeners],
   name: 'CpisDialogTable',
   components: {
     CpisDialog,
@@ -72,6 +74,12 @@ export default {
     // 当前行变化
     handleCurrentChange(row, oldCurrentRow) {
       this.currentRow = row
+    },
+    getTable() {
+      return this.$refs.table
+    },
+    getTree() {
+      return this.$refs.tree
     }
   },
   props: {
@@ -99,7 +107,15 @@ export default {
       type: Object,
       default: () => ({})
     },
+    treeEvents: {
+      type: Object,
+      default: () => ({})
+    },
     tableProps: {
+      type: Object,
+      default: () => ({})
+    },
+    tableEvents: {
       type: Object,
       default: () => ({})
     }
