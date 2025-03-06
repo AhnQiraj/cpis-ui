@@ -522,15 +522,16 @@ export default {
 }
 </script>
 <style>
-.cpis-table-container .cpis-table.el-table--small {
-  font-size: 14px;
-}
 .cpis-table-container .cpis-table__toolbar {
   @apply flex flex-row items-center;
 }
 
 .cpis-table-container .cpis-table__toolbar .el-table__cell .el-dropdown {
   @apply text-primary-6;
+}
+
+.cpis-table.el-table--small {
+  font-size: 14px;
 }
 /* element 用这种方式实现的下面和右侧的border */
 .cpis-table.el-table--border:after,
