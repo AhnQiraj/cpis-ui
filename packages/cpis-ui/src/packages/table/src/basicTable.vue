@@ -4,7 +4,7 @@
     v-on="$listeners"
     v-bind="$attrs"
     border
-    class="cpis-table "
+    class="cpis-table"
     :cell-style="{ paddingTop: '8px', paddingBottom: '8px' }"
     :header-cell-style="{
       backgroundColor: '#F5F5F5',
