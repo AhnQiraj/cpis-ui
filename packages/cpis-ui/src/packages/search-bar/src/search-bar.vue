@@ -256,18 +256,16 @@ export default {
 .cpis-search-bar .el-input__inner {
   @apply border-none;
 }
-</style>
-<style scoped lang="scss">
 /* date 组件的样式，padding-left 原设定过于大 */
-::v-deep .el-date-editor--date > .el-input__inner {
+.cpis-search-bar .el-date-editor--date > .el-input__inner {
   padding-left: 0px !important;
 }
 /* datetime 组件的样式，padding-left 原设定过于大 */
-::v-deep .el-date-editor--datetime > .el-input__inner {
+.cpis-search-bar .el-date-editor--datetime > .el-input__inner {
   padding-left: 0px !important;
 }
 
-::v-deep .el-input .el-input__inner {
+.cpis-search-bar .el-input .el-input__inner {
   padding-left: 0px !important;
 }
 .cpis-search-bar-actions ::v-deep .el-button + .el-button {
