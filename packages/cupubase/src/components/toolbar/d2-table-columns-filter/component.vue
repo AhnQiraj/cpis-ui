@@ -40,7 +40,7 @@
 import draggable from "vuedraggable"
 import lodash from "lodash"
 import d2Button from "../d2-button/component"
-import D2TableColumnsFixedController from "../d2-table-columns-fixed-controller/component"
+import D2TableColumnsFixedController from '../d2-table-columns-fixed-controller/component.vue'
 import TableStore from "./util.store"
 // 输入 全部分表格列设置
 // 输出 要显示的表格列 + 每列的设置
