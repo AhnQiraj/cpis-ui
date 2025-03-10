@@ -9,7 +9,8 @@
     "build": "vue-cli-service build --name cupubase --dest dist src/index.js",
     "lint": "vue-cli-service lint",
     "lib": "vue-cli-service build --target lib --name cupubase --dest lib src/index.js",
-    "start": "vue-cli-service build --target lib --name cupubase --dest lib src/index.js --watch"
+    "start": "vue-cli-service build --target lib --name cupubase --dest lib src/index.js --watch",
+    "vbuild": "vite build"
   },
   "dependencies": {
     "core-js": "^3.8.3",
@@ -20,6 +21,7 @@
     "element-ui": "^2.15.10",
     "lodash": "^4.17.19",
     "moment": "^2.29.4",
+    "jquery": "^3.7.1",
     "pinyin4js": "^1.3.18",
     "qrcodejs2-fixes": "^0.0.2",
     "vue": "^2.7.16",
