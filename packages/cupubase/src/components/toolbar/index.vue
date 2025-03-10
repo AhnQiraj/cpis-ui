@@ -11,7 +11,7 @@
   </span>
 </template>
 <script>
-import D2TableColumnsFilter from "./d2-table-columns-filter/component"
+import D2TableColumnsFilter from "./d2-table-columns-filter/component.vue"
 import lodash from "lodash"
 export default {
   name: "crud-toolbar",

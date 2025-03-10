@@ -1,12 +1,11 @@
 import toolbar from '@cupu/framework/components/toolbar'
 import table from '@cupu/framework/components/table'
-import tree from '@cupu/framework/components/tree'
+import tree from '@cupu/framework/components/tree/index.vue'
 import comb from '@cupu/framework/components/comb'
 import dialogTable from '@cupu/framework/components/dialogTable'
-import Model from '@cupu/components/model/Model.vue'
-import Crultoolbar from '@cupu/components/toolbar'
-import InputUploadFile from '@cupu/components/input-upload-file/index'
-import InputUploadFileset from '@cupu/components/input-upload-fileset/index'
+import Crultoolbar from '@cupu/components/toolbar/index.vue'
+import InputUploadFile from '@cupu/components/input-upload-file/index.vue'
+import InputUploadFileset from '@cupu/components/input-upload-fileset/index.vue'
 import UserDialogSelect from '@cupu/components/cp-dialog-select/userDialogSel.vue'
 import OrgDialogSelect from '@cupu/components/cp-dialog-select/orgDialogSel.vue'
 import EqLocationDialogSelect from '@cupu/components/cp-dialog-select/eqLocationDialog.vue'
@@ -37,14 +36,46 @@ import PositionDialogSelect from '@cupu/components/cp-dialog-select/positionDial
 import DefectDialogSelect from '@cupu/components/cp-dialog-select/defectDialog.vue'
 import CpisUploadList from '@cupu/components/upload'
 // 存储组件列表
-const components = [Crultoolbar, EqLocationDialogSelect, EqManageObjectDialogSelect, EqMeasurePointDialogSelect, EqTypeDialogSelect, InputUploadFile, InputUploadFileset, IotAreaDeviceDialogSelect, UserDialogSelect,OrgDialogSelect, SparePartsDialogSelect, MaterialDialogSelect, EqAreaDialogSelect, EqAssetDialogSelect, EqAssetTypeDialogSelect, EqManufacturerDialogSelect, BizTagDialogSelect, DeptTreeSelect, CpSelect, IssueWorkTicket, ImportModelView, DangerSourceSelect, OrgSelect, WorkTicketDialogSelect, OperaTicketDialogSelect, TeamDialogSelect, CpQrCode, CpAreaCode, EngrContractDialogSelect, PositionDialogSelect, DefectDialogSelect, CpisUploadList]
+const components = [
+  Crultoolbar,
+  EqLocationDialogSelect,
+  EqManageObjectDialogSelect,
+  EqMeasurePointDialogSelect,
+  EqTypeDialogSelect,
+  InputUploadFile,
+  InputUploadFileset,
+  IotAreaDeviceDialogSelect,
+  UserDialogSelect,
+  OrgDialogSelect,
+  SparePartsDialogSelect,
+  MaterialDialogSelect,
+  EqAreaDialogSelect,
+  EqAssetDialogSelect,
+  EqAssetTypeDialogSelect,
+  EqManufacturerDialogSelect,
+  BizTagDialogSelect,
+  DeptTreeSelect,
+  CpSelect,
+  IssueWorkTicket,
+  ImportModelView,
+  DangerSourceSelect,
+  OrgSelect,
+  WorkTicketDialogSelect,
+  OperaTicketDialogSelect,
+  TeamDialogSelect,
+  CpQrCode,
+  CpAreaCode,
+  EngrContractDialogSelect,
+  PositionDialogSelect,
+  DefectDialogSelect,
+  CpisUploadList
+]
 //install是让业务代码在main.js 引入之后 use(cupubase)  注册到全局用的
 const install = app => {
   window.config = { I18N_FALLBACK_LOCALE: 'zh-CN', I18N_LOCALE: 'zh-CN', ...window.config }
   components.forEach(item => {
     app.component(item.name, item)
   })
-  app.component('el-model', Model)
   app.component('z-toolbar', toolbar) // 搜索工具栏
   app.component('z-table', table) // 表格列表
   app.component('z-tree', tree) // 树控件
