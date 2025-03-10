@@ -34,7 +34,7 @@ import CpAreaCode from '@cupu/components/cp/cpAreaCode.vue'
 import EngrContractDialogSelect from '@cupu/components/cp-dialog-select/engrContractDialogSelect.vue'
 import PositionDialogSelect from '@cupu/components/cp-dialog-select/positionDialogSel.vue'
 import DefectDialogSelect from '@cupu/components/cp-dialog-select/defectDialog.vue'
-import CpisUploadList from '@cupu/components/upload'
+import CpisUploadList from '@cupu/components/upload/index.vue'
 // 存储组件列表
 const components = [
   Crultoolbar,
