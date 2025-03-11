@@ -20,23 +20,33 @@
   | showFullscreen  | 是否显示全屏按钮 | boolean   | - |  false |
   | size  | 对话框大小 | string   | small 40% / medium 60% / large 80% | medium |
   | keepAspectRatio  | 是否保持宽高比16/9 | boolean   | - |  true |
-  # CpisDialogTreeTable
+  # CpisDialogTreeTable 和 CpisDialogTable
+  这个两个组件是为了满足业务二次封装弹窗提供的基底组件。
+  ## CpisDialogTable 单选
+  * ![CpisTable](/dialog-tree-table-single.png)
+  ## CpisDialogTable 多选
+  * ![CpisTable](/dialog-table-multiple.png)
+  ## CpisDialogTreeTable 单选
+  * ![CpisTable](/dialog-tree-table-single.png)
+  ## CpisDialogTreeTable 多选
+  * ![CpisTable](/dialog-tree-table-multiple.png)
+  
   ## CpisDialogTable 的特点
     1. 组合了 `CpisDialog` 和 `CpisTable` 和 `CpisTreeContainer` 组件。
     2. 默认对于 `CpisDialog` 设置了 `Size` 为 `large`
-    1. 新增了 `treeProps` 属性，用于配置树形结构。
-    2. 新增了 `treeEvents` 属性，用于配置树形结构的事件。
-    3. 新增了 `tableProps` 属性，用于配置表格结构。
-    4. 新增了 `tableEvents` 属性，用于配置表格结构的事件。
-    5. 新增了 `multiple` 属性，用于配置是否支持多选
-    6. 新增 `getTree` 方法，用于获取树形结构Ref
-    7. 新增 `select-data` 属性，用于配置选中的数据
-    8. 新增 `select-data-key` 属性，用于配置选中的数据key
-    9. 新增 `select-data-label` 属性，用于配置选中的数据label
+    3. 新增了 `treeProps` 属性，用于配置树形结构。
+    4. 新增了 `treeEvents` 属性，用于配置树形结构的事件。
+    5. 新增了 `tableProps` 属性，用于配置表格结构。
+    6. 新增了 `tableEvents` 属性，用于配置表格结构的事件。
+    7. 新增了 `multiple` 属性，用于配置是否支持多选
+    8. 新增 `getTree` 方法，用于获取树形结构Ref
+    9. 新增 `select-data` 属性，用于配置选中的数据
+    10. 新增 `select-data-key` 属性，用于配置选中的数据key
+    11. 新增 `select-data-label` 属性，用于配置选中的数据label
     
 
-  ## CpisDialogTable Attributes
-  | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+  ## CpisDialogTable 和 CpisDialogTreeTable Attributes
+  | 参数      | 说明          | 类型      | 可选值    | 默认值  |
   |---------- |---------------- |---------- |--------------------------------  |-------- |
   | treeProps  | 树形结构配置 | object   | - |  - |
   | tableProps  | 表格结构配置 | object   | - |  - |
@@ -45,20 +55,47 @@
   | select-data-key  | 选中的数据key | string   | - |  id |
   | select-data-label  | 选中的数据label | string   | - |  name |
 
-  ## CpisDialogTable Method
+  ## CpisDialogTable 和 CpisDialogTreeTable Method
   | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
-  |---------- |---------------- |---------- |--------------------------------  |-------- |
+  |---------- |---------------- |---------- |--------------------------------  |
   | getTree  | 获取树形结构Ref | function   | - |  - |
   | getTable  | 获取表格结构Ref | function   | - |  - |
 
-  ## CpisDialogTable Events
+  ## CpisDialogTable 和 CpisDialogTreeTable Events
   | 事件      | 说明          | 参数      |
   |---------- |---------------- |---------- |
   | ok  | 确定事件 | flag |
   | cancel  | 取消事件 | flag |
 
- */
+  ## 二次封装建议
+  无论是人员选择，部门选择，角色选择，等等等等，无非区别就是
+  1. 树形结构
+  2. 表格列和数据
+  3. 是否支持多选
 
+  所以[参数设计](#cpisdialogtable--cpisdialogtreetable-attributes)上，也是围绕这几个去设计
+  1. `treeProps` 最终会把参数透传给 `CpisTree` 组件，可以参考element 官网的 [Tree 组件](https://element.eleme.cn/#/zh-CN/component/tree#attributes)
+  2. `tableProps` 最终会把参数透传给 `CpisTable` 组件，可以参考element 官网的 [Table 组件](https://element.eleme.cn/#/zh-CN/component/table#table-attributes) 和 CpisTable 的 [Table 组件](https://element.eleme.cn/#/zh-CN/component/table#table-attributes)
+  3. `treeEvents` 最终会把事件透传给 `CpisTree` 组件，可以参考element 官网的 [Tree 组件](https://element.eleme.cn/#/zh-CN/component/tree#events)
+  4. `tableEvents` 最终会把事件透传给 `CpisTable` 组件， 可以参考element 官网的 [Table 组件](https://element.eleme.cn/#/zh-CN/component/table#table-events)
+  5. `multiple` 会决定表格是否有复选框
+  6. `select-data` 会决定选中的数据
+
+  ## 关于 select-data 的说明
+  1. 保证了组件，已选数据 `select-data` 和 `ok` 后的回调数据结构是一致的。
+  2. 为了统一，无论单选，多选， `select-data` 都会返回一个数组，数组中是选中的数据。
+  
+  具体实现可以参考 [Demo](#demo)
+
+
+
+
+
+
+
+  
+
+ */
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
   title: '原子组件/Dialog',
@@ -72,15 +109,15 @@ export default {
       `
     })
   ],
-  argTypes: {
-    visible: {
-      description: '是否显示'
-    }
-  },
-  args: {
-    'modal-append-to-body': false, // 为所有故事添加默认参数
-    visible: false
-  },
+  // argTypes: {
+  //   visible: {
+  //     description: '是否显示'
+  //   }
+  // },
+  // args: {
+  //   'modal-append-to-body': false, // 为所有故事添加默认参数
+  //   visible: false
+  // },
   tags: ['autodocs']
 }
 
@@ -263,7 +300,6 @@ export const ShowFullscreen = {
 export const Dialog_Tree_Table_Single = {
   render: (args, { argTypes }) => {
     return {
-      props: Object.keys(argTypes),
       data() {
         return {
           treeEvents: {
@@ -344,17 +380,12 @@ export const Dialog_Tree_Table_Single = {
         </div>
         `
     }
-  },
-  args: {
-    visible: false,
-    title: '单选左树右表'
   }
 }
 
 export const Dialog_Tree_Table_Multiple = {
   render: (args, { argTypes }) => {
     return {
-      props: Object.keys(argTypes),
       data() {
         return {
           treeEvents: {
@@ -435,10 +466,6 @@ export const Dialog_Tree_Table_Multiple = {
         </div>
         `
     }
-  },
-  args: {
-    visible: false,
-    title: '多选左树右表'
   }
 }
 
@@ -530,10 +557,6 @@ export const Dialog_Table_Single = {
         </div>
         `
     }
-  },
-  args: {
-    visible: false,
-    title: '单选表格'
   }
 }
 
@@ -621,9 +644,172 @@ export const Dialog_Table_Multiple = {
         </div>
         `
     }
+  }
+}
+
+export const Demo = {
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<template>
+  <CpisDialogTreeTable
+    ref="dialog"
+    :multiple="multiple"
+    :title="title"
+    append-to-body
+    :selected-data="selectedData"
+    :modal="false"
+    :tree-props="treeProps"
+    :table-props="tableProps"
+    :tree-events="treeEvents"
+    :visible="localVisible"
+    v-on="$listeners"
+    @update:visible="$emit('update:visible', $event)"
+  />
+</template>
+
+<script>
+export default {
+  name: 'CpisUserSelectDialog',
+  props: {
+    selectedData: {
+      type: Array,
+      default: null
+    },
+    visible: {
+      type: Boolean,
+      default: false
+    },
+    multiple: {
+      type: Boolean,
+      default: false
+    },
+    title: {
+      type: String,
+      default: '用户选择'
+    }
   },
-  args: {
-    visible: false,
-    title: '多选表格'
+  data() {
+    return {
+      otherParams: null,
+      treeProps: {
+        props: {
+          label: 'name',
+          value: 'id'
+        },
+        lazy: true,
+        load: (node, resolve) => {
+          const { level, data } = node
+          const userInfo = JSON.parse(sessionStorage.getItem('INFO'))
+          if (level === 0) {
+            return resolve([
+              {
+                id: userInfo.company.companyId,
+                name: userInfo.company.companyName
+              }
+            ])
+          }
+          const _param = {
+            parameters: [
+              {
+                key: 'orgId',
+                value: data.id
+              },
+              {
+                key: 'depth',
+                value: level + 1
+              }
+            ]
+          }
+          window.apiList['common/index'].findEntityAllByCond(_param).then(res => {
+            return resolve(res?.data?.dataResult ?? [])
+          })
+        }
+      },
+      treeEvents: {
+        'node-click': node => {
+          this.otherParams = {
+            key: 'Q^GROUP_ID_^S',
+            value: node.id
+          }
+          this.$refs.dialog.getTable().reset()
+        }
+      },
+      tableProps: {
+        paramaterMode: 'structured',
+        request: ({ parameters = [], requestPage }) => {
+          const _parameters = Array.isArray(parameters) ? [...parameters] : [parameters]
+          if (this.otherParams) {
+            _parameters.push(this.otherParams)
+          }
+          return window.apiList['org/employee']
+            .queryUserList({ requestPage, ...(_parameters.length > 0 ? { parameters: _parameters } : {}) })
+            .then(res => {
+              return {
+                data: res?.data?.dataResult ?? [],
+                total: res?.data?.pageResult?.totalCount ?? 0
+              }
+            })
+        },
+        search: [
+          {
+            label: '姓名',
+            prop: 'Q^NAME_^SL'
+          },
+          {
+            label: '部门',
+            prop: 'Q^ORG_NAME_^SL'
+          },
+          {
+            label: '工号',
+            prop: 'Q^ACCOUNT_^SL'
+          }
+        ],
+        columns: [
+          {
+            label: '序号',
+            prop: 'index',
+            valueType: 'index'
+          },
+          {
+            label: '用户账户',
+            prop: 'account'
+          },
+          {
+            label: '姓名',
+            prop: 'name'
+          },
+          {
+            label: '部门',
+            prop: 'orgName'
+          }
+        ]
+      }
+    }
+  },
+  computed: {
+    localVisible: {
+      get() {
+        return this.visible
+      },
+      set(value) {
+        this.$emit('update:visible', value)
+      }
+    }
+  }
+}
+</script>
+
+      `
+      }
+    }
+  },
+  render: (args, { argTypes }) => {
+    return {
+      template: `
+        <div></div>
+        `
+    }
   }
 }
