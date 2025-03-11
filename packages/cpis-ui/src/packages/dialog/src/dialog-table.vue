@@ -49,7 +49,8 @@ export default {
   components: {
     CpisDialog,
     CpisTag,
-    CpisDialog
+    CpisDialog,
+    CpisTable
   },
   computed: {
     localVisible: {

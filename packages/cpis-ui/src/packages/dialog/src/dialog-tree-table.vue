@@ -50,7 +50,8 @@ export default {
     CpisDialog,
     CpisTreeContainer,
     CpisTag,
-    CpisDialog
+    CpisDialog,
+    CpisTable
   },
   computed: {
     localVisible: {
@@ -66,11 +67,6 @@ export default {
     return {
       singleData: null,
       multipleData: []
-    }
-  },
-  computed: {
-    computedSelection() {
-      return this.multiple ? this.multipleData : this.singleData
     }
   },
   methods: {
