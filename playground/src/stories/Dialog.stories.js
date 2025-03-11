@@ -84,7 +84,7 @@
   ## 关于 select-data 的说明
   1. 保证了组件，已选数据 `select-data` 和 `ok` 后的回调数据结构是一致的。
   2. 为了统一，无论单选，多选， `select-data` 都会返回一个数组，数组中是选中的数据。
-  
+
   具体实现可以参考 [Demo](#demo)
 
 
@@ -307,6 +307,7 @@ export const Dialog_Tree_Table_Single = {
               console.log(node)
             }
           },
+          title: '弹出框左树右列单选',
           visible: false,
           treeProps: {
             data: [
@@ -393,6 +394,8 @@ export const Dialog_Tree_Table_Multiple = {
               console.log(node)
             }
           },
+          title: '弹出框左树右列多选',
+
           visible: false,
           treeProps: {
             data: [
@@ -480,6 +483,7 @@ export const Dialog_Table_Single = {
               console.log(node)
             }
           },
+          title: '弹出框表格单选',
           visible: false,
           treeProps: {
             data: [
@@ -571,6 +575,7 @@ export const Dialog_Table_Multiple = {
               console.log(node)
             }
           },
+          title: '弹出框表格多选',
           visible: false,
           treeProps: {
             data: [
