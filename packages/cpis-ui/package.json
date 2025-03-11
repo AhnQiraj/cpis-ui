@@ -16,11 +16,8 @@
     "yalc": "yalc publish",
     "prepublishOnly": "npm run build"
   },
-  "dependencies": {
-    "@formily/core": "^2.3.2",
-    "@formily/element": "^2.3.2",
-    "@formily/vue": "^2.3.2",
-    "async-validator": "~1.8.1"
+  "devDependencies": {
+    "vite": "^5.4.8"
   },
   "publishConfig": {
     "registry": "http://172.169.50.28:5000/"
