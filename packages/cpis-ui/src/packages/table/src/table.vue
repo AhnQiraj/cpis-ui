@@ -455,6 +455,7 @@ export default {
           if (!Array.isArray(res.data)) return
           this.dataSource = res.data
           this.total = res.total
+          this.$emit('data-loaded', { dataSource: this.dataSource, total: this.total })
         } catch (error) {
         } finally {
           this.loading = false
