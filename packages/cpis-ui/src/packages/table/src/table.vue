@@ -523,8 +523,14 @@ export default {
     clearSelection() {
       this.$refs.table.clearSelection()
     },
-    toggleRowSelection(row, selected) {
-      this.$refs.table.toggleRowSelection(row, selected)
+    toggleRowSelection(...args) {
+      this.$refs.table.toggleRowSelection(...args)
+    },
+    toggleRowSelectionByRowKey(id, selected) {
+      const row = this.dataSource.find(item => item[this.rowKey] === id)
+      if (row) {
+        this.$refs.table.toggleRowSelection(row, selected)
+      }
     },
     toggleAllSelection() {
       this.$refs.table.toggleAllSelection()
