@@ -41,18 +41,21 @@ import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
  *   prop: string | string[], // 字段名，当type为daterange并且paramaterMode是structured的时候，时可以传入数组对应开始和结束时间
  *   label: string,          // 标签文本
  *   type?: string,          // 输入框类型（默认input），支持:
- *                          // - select: 下拉选择框
- *                          // - date: 日期选择器
- *                          // - datetime: 日期时间选择器
- *                          // - daterange: 日期范围选择器
- *                          // - datetimerange: 日期时间范围选择器
- *                          // - multiple-select: 多选下拉选择框
+ *                          // - 默认: 输入框 对应组件 CpisInput
+ *                          // - select: 下拉选择框 对应组件 CpisSelect
+ *                          // - checkbox: 复选框 对应组件 ElCheckbox
+ *                          // - date: 日期选择器 对应组件 CpisDatePicker
+ *                          // - datetime: 日期时间选择器 对应组件 CpisDatePicker
+ *                          // - daterange: 日期范围选择器 对应组件 CpisDatePicker
+ *                          // - datetimerange: 日期时间范围选择器 对应组件 CpisDatePicker
+ *                          // - multiple-select: 多选下拉选择框 对应组件 CpisSelect
  *   placeholder?: string,   // 输入框占位文本
  *   enum?: Array | Function,          // 枚举值
  *   valueKey?: string,     // 枚举值的value值
  *   labelKey?: string,     // 枚举值的label值
  *   defaultValue?: any,     // 默认值
- *   fieldEvents?: Object,     // 字段事件, 透传给element 对应组件的 event 具体参考[下方示例](#示例)
+ *   fieldEvents?: Object,     // 字段事件, 透传给对应组件(对应组件参考type参数说明)的 event 具体参考[下方示例](#示例)
+ *   fieldProps?: Object,     // 字段属性, 透传给对应组件(对应组件参考type参数说明)的 props 具体参考[下方示例](#示例)
  * }
  * ```
  *
@@ -60,12 +63,40 @@ import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
   | 方法名      | 说明          | 参数      |
   |---------- |---------------- |---------- |
   | getParams  | 获取搜索参数 | — |
+  | setParams  | 设置搜索参数 | key: string, value: any | 
  *
  * ### ⚠️ 重要注意事项:
  * 1. `type="daterange"` 且 `paramaterMode="structured"` 时:
  *    - prop 可以传入数组，分别对应开始和结束时间
  * 2. `type="select"` 时:
  *    - enum 为必传项，否则下拉框将无选项
+ *
+ * ### 如何回填数据
+ * searchBar 组件提供了 `setParams` 方法，可以设置搜索参数,
+ * ```
+ * this.$refs.searchBar.setParams('name', '张三')
+ * ```
+ * 
+ * ### 如何配合弹出框使用
+ * 弹窗框往往利用 `CpisInput` 组件，通过 `focus` 或者 输入框尾部的 `icon` 点击触发打开弹出框, 选择数据后 利用 `setParams` 方法回填到输入框
+ * 所以可以通过 [Search 配置项说明](#search-) 中的 `fieldEvents` 和 `fieldProps` 来配置:
+ * ```
+ * {
+ *   fieldEvents: {
+ *     focus: () => {
+ *       // focus 后打开弹窗
+ *     },
+ *     suffix-click: () => {
+ *       // 点击输入框尾部的 icon 后打开弹窗，注意需要设置 fieldProps.clickable = true
+ *     }
+ *   },
+ *   fieldProps: {
+ *     clickable: true, // 显示输入框尾部的编辑图标
+ *   }
+ * }
+ * ```
+ * 
+ * 
  *
  * ### 示例:
  * ```javascript
@@ -81,6 +112,9 @@ import CpisButton from '../../../packages/cpis-ui/src/packages/button/index'
  *       blur: (event, item) => {
  *         console.log('blur', event, item)
  *       }
+ *     },
+ *     fieldProps: {
+ *       readon
  *     }
  *   },
  *   {
@@ -546,6 +580,68 @@ export default {
     <div>
       <CpisSearchBar ref="searchBar" :search="search" paramater-mode="flat"/>
       <CpisButton style="margin-top: 16px;" @click="getParams">获取搜索参数</CpisButton>
+    </div>
+  `
+  })
+}
+
+export const SetParams = {
+  name: 'SetParams',
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<template>
+  <CpisSearchBar ref="searchBar" paramater-mode="flat" :search="search"/>
+  <CpisButton class="mt-2" @click="setParams">设置姓名为李四</CpisButton>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      search: [
+        {
+          prop: 'name',
+          label: '姓名',
+          defaultValue: '张三'
+        }
+      ]
+    },
+    methods: {
+      setParams() {
+        this.$refs.searchBar.setParams('name', '李四')
+      }
+    }
+  }
+}
+</script>
+`
+      }
+    }
+  },
+  render: () => ({
+    components: { CpisSearchBar, CpisButton },
+    data() {
+      return {
+        search: [
+          {
+            prop: 'name',
+            label: '姓名',
+            defaultValue: '张三'
+          }
+        ]
+      }
+    },
+    methods: {
+      setParams() {
+        this.$refs.searchBar.setParams('name', '李四')
+      }
+    },
+    template: `
+    <div>
+      <CpisSearchBar ref="searchBar" :search="search" paramater-mode="flat"/>
+      <CpisButton style="margin-top: 16px;" @click="setParams">设置参数</CpisButton>
     </div>
   `
   })

@@ -237,6 +237,9 @@ export default {
       }
       return params
     },
+    setParams(key, value) {
+      this.params[key] = value
+    },
     getComponentListeners(item) {
       const listeners = {}
       // 如果item中有events配置，则应用对应的事件处理器
