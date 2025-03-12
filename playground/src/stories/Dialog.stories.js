@@ -40,9 +40,9 @@
     6. 新增了 `tableEvents` 属性，用于配置表格结构的事件。
     7. 新增了 `multiple` 属性，用于配置是否支持多选
     8. 新增 `getTree` 方法，用于获取树形结构Ref
-    9. 新增 `select-data` 属性，用于配置选中的数据
-    10. 新增 `select-data-key` 属性，用于配置选中的数据key
-    11. 新增 `select-data-label` 属性，用于配置选中的数据label
+    9. 新增 `selected-data` 属性，用于配置选中的数据
+    10. 新增 `selected-data-key` 属性，用于配置选中的数据key
+    11. 新增 `selected-data-label` 属性，用于配置选中的数据label
     
 
   ## CpisDialogTable 和 CpisDialogTreeTable Attributes
@@ -51,9 +51,9 @@
   | treeProps  | 树形结构配置 | object   | - |  - |
   | tableProps  | 表格结构配置 | object   | - |  - |
   | multiple  | 是否支持多选 | boolean   | - |  false |
-  | select-data  | 选中的数据 | array   | - |  - |
-  | select-data-key  | 选中的数据key | string   | - |  id |
-  | select-data-label  | 选中的数据label | string   | - |  name |
+  | selected-data  | 选中的数据 | array   | - |  - |
+  | selected-data-key  | 选中的数据key | string   | - |  id |
+  | selected-data-label  | 选中的数据label | string   | - |  name |
 
   ## CpisDialogTable 和 CpisDialogTreeTable Method
   | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
@@ -79,11 +79,11 @@
   3. `treeEvents` 最终会把事件透传给 `CpisTree` 组件，可以参考element 官网的 [Tree 组件](https://element.eleme.cn/#/zh-CN/component/tree#events)
   4. `tableEvents` 最终会把事件透传给 `CpisTable` 组件， 可以参考element 官网的 [Table 组件](https://element.eleme.cn/#/zh-CN/component/table#table-events)
   5. `multiple` 会决定表格是否有复选框
-  6. `select-data` 会决定选中的数据
+  6. `selected-data` 会决定选中的数据
 
-  ## 关于 select-data 的说明
-  1. 保证了组件，已选数据 `select-data` 和 `ok` 后的回调数据结构是一致的。
-  2. 为了统一，无论单选，多选， `select-data` 都会返回一个数组，数组中是选中的数据。
+  ## 关于 selected-data 的说明
+  1. 保证了组件，已选数据 `selected-data` 和 `ok` 后的回调数据结构是一致的。
+  2. 为了统一，无论单选，多选， `ok` 后的回调数据都会返回一个数组，数组中是选中的数据。
 
   具体实现可以参考 [Demo](#demo)
 
@@ -302,6 +302,9 @@ export const Dialog_Tree_Table_Single = {
     return {
       data() {
         return {
+          formData: {
+            username: ''
+          },
           treeEvents: {
             'node-click': node => {
               console.log(node)
@@ -342,7 +345,7 @@ export const Dialog_Tree_Table_Single = {
           tableProps: {
             columns: [
               {
-                prop: 'name',
+                prop: 'username',
                 label: '姓名'
               },
               {
@@ -353,20 +356,20 @@ export const Dialog_Tree_Table_Single = {
             request: () => {
               return {
                 data: [
-                  { name: '张三', age: 18 },
-                  { name: '李四', age: 20 },
-                  { name: '王五', age: 22 },
-                  { name: '赵六', age: 24 },
-                  { name: '孙七', age: 26 },
-                  { name: '周八', age: 28 },
-                  { name: '吴九', age: 30 },
-                  { name: '郑十', age: 32 },
-                  { name: '周十一', age: 34 },
-                  { name: '赵十二', age: 36 },
-                  { name: '孙十三', age: 38 },
-                  { name: '周十四', age: 40 },
-                  { name: '吴十五', age: 42 },
-                  { name: '郑十六', age: 44 }
+                  { id: 1, username: '张三', age: 18 },
+                  { id: 2, username: '李四', age: 20 },
+                  { id: 3, username: '王五', age: 22 },
+                  { id: 4, username: '赵六', age: 24 },
+                  { id: 5, username: '孙七', age: 26 },
+                  { id: 6, username: '周八', age: 28 },
+                  { id: 7, username: '吴九', age: 30 },
+                  { id: 8, username: '郑十', age: 32 },
+                  { id: 9, username: '周十一', age: 34 },
+                  { id: 10, username: '赵十二', age: 36 },
+                  { id: 11, username: '孙十三', age: 38 },
+                  { id: 12, username: '周十四', age: 40 },
+                  { id: 13, username: '吴十五', age: 42 },
+                  { id: 14, username: '郑十六', age: 44 }
                 ],
                 total: 16
               }
@@ -374,10 +377,33 @@ export const Dialog_Tree_Table_Single = {
           }
         }
       },
+      methods: {
+        handleOk(data) {
+          this.formData.username = data[0].username
+        }
+      },
       template: `
         <div>
-          <CpisButton type="primary" size="small" @click="visible = true">点击打开</CpisButton>
-          <CpisDialogTreeTable :treeEvents="treeEvents" :visible.sync="visible" :title="title" :table-props="tableProps" :tree-props="treeProps" />
+          <CpisInput 
+            style="width: 200px;"
+            clickable
+            v-model="formData.username"
+            type="primary" 
+            size="small"
+            @focus="visible = true"
+            @suffix-click="visible = true"
+            placeholder="请点击"
+          />
+          <CpisDialogTreeTable
+            :treeEvents="treeEvents"
+            :visible.sync="visible"
+            :title="title"
+            selected-data-key="id"
+            selected-data-label="username"
+            @ok="handleOk"
+            :table-props="tableProps"
+            :tree-props="treeProps"
+          />
         </div>
         `
     }
@@ -389,6 +415,9 @@ export const Dialog_Tree_Table_Multiple = {
     return {
       data() {
         return {
+          formData: {
+            username: ''
+          },
           treeEvents: {
             'node-click': node => {
               console.log(node)
@@ -462,12 +491,34 @@ export const Dialog_Tree_Table_Multiple = {
           }
         }
       },
+      methods: {
+        handleOk(data) {
+          this.formData.username = data.map(item => item.name).join(',')
+        }
+      },
       template: `
         <div>
-          <CpisButton type="primary" size="small" @click="visible = true">点击打开</CpisButton>
-          <CpisDialogTreeTable multiple :treeEvents="treeEvents" :visible.sync="visible" :title="title" :table-props="tableProps" :tree-props="treeProps" />
+          <CpisInput 
+            style="width: 200px;"
+            clickable
+            v-model="formData.username"
+            type="primary"
+            size="small"
+            @focus="visible = true"
+            @suffix-click="visible = true"
+            placeholder="请点击"
+          />
+          <CpisDialogTreeTable
+            multiple
+            @ok="handleOk"
+            :treeEvents="treeEvents"
+            :visible.sync="visible"
+            :title="title"
+            :table-props="tableProps"
+            :tree-props="treeProps"
+          />
         </div>
-        `
+      `
     }
   }
 }
@@ -482,6 +533,9 @@ export const Dialog_Table_Single = {
             'node-click': node => {
               console.log(node)
             }
+          },
+          formData: {
+            username: ''
           },
           title: '弹出框表格单选',
           visible: false,
@@ -547,17 +601,37 @@ export const Dialog_Table_Single = {
                 total: 16
               }
             }
+          },
+          formData: {
+            username: ''
           }
+        }
+      },
+      methods: {
+        handleOk(data) {
+          this.formData.username = data?.[0]?.name
         }
       },
       template: `
         <div>
-          <CpisButton type="primary" size="small" @click="visible = true">点击打开</CpisButton>
-          <CpisDialogTable :treeEvents="treeEvents" :visible.sync="visible" :title="title" :table-props="tableProps" :tree-props="treeProps">
-            <div>
-              <p>这里是内容</p>
-            </div>
-          </CpisDialogTable>
+          <CpisInput
+            style="width: 200px;"
+            clickable
+            v-model="formData.username"
+            type="primary"
+            size="small"
+            @focus="visible = true"
+            @suffix-click="visible = true"
+            placeholder="请点击"
+          />
+          <CpisDialogTable
+            @ok="handleOk"
+            :treeEvents="treeEvents"
+            :visible.sync="visible"
+            :title="title"
+            :table-props="tableProps"
+            :tree-props="treeProps"
+          />
         </div>
         `
     }
@@ -567,9 +641,11 @@ export const Dialog_Table_Single = {
 export const Dialog_Table_Multiple = {
   render: (args, { argTypes }) => {
     return {
-      props: Object.keys(argTypes),
       data() {
         return {
+          formData: {
+            username: ''
+          },
           treeEvents: {
             'node-click': node => {
               console.log(node)
@@ -642,10 +718,30 @@ export const Dialog_Table_Multiple = {
           }
         }
       },
+      methods: {
+        handleOk(data) {
+          this.formData.username = data.map(item => item.name).join(',')
+        }
+      },
       template: `
         <div>
-          <CpisButton type="primary" size="small" @click="visible = true">点击打开</CpisButton>
-          <CpisDialogTable multiple :treeEvents="treeEvents" :visible.sync="visible" :title="title" :table-props="tableProps" :tree-props="treeProps" />
+          <CpisInput 
+            style="width: 200px;"
+            clickable
+            v-model="formData.username"
+            type="primary"
+            size="small"
+            @focus="visible = true"
+            @suffix-click="visible = true"
+            placeholder="请点击"
+          />
+          <CpisDialogTable
+            multiple
+            @ok="handleOk"
+            :treeEvents="treeEvents"
+            :visible.sync="visible"
+            :title="title"
+            :table-props="tableProps" :tree-props="treeProps" />
         </div>
         `
     }
