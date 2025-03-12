@@ -10,7 +10,7 @@
       <div v-if="multiple" slot="header" class="p-2 min-h-[42px]">
         <div class="border border-dashed border-gray-3 min-h-[42px] flex items-center gap-2 p-2 box-border">
           <cpis-tag
-            v-for="(item, index) in selectedData"
+            v-for="(item, index) in currentData"
             size="small"
             :key="item[selectedDataKey]"
             closable
@@ -65,32 +65,59 @@ export default {
   },
   data() {
     return {
-      singleData: null,
-      multipleData: []
+      currentData: this.selectedData || []
+    }
+  },
+  watch: {
+    selectedData: {
+      handler(newVal) {
+        if (newVal && Array.isArray(newVal)) {
+          this.currentData = [...newVal]
+        }
+      },
+      immediate: true
+    },
+    visible(newVal) {
+      if (newVal) {
+        // 当对话框打开时，更新表格选择以匹配currentData
+        this.$nextTick(() => {
+          if (this.$refs.table && this.multiple) {
+            const table = this.$refs.table.getTable ? this.$refs.table.getTable() : this.$refs.table
+            // 清除当前选择
+            table.clearSelection()
+            // 根据currentData设置选择
+            this.currentData.forEach(row => {
+              table.toggleRowSelection(row, true)
+            })
+          }
+        })
+      }
     }
   },
   methods: {
     handleOk() {
       this.$emit('update:visible', false)
-      this.$emit('ok', this.multiple ? this.multipleData : this.singleData)
+      this.$emit('ok', this.currentData)
     },
     handleCancel() {
       this.$emit('update:visible', false)
       this.$emit('cancel')
     },
     handleTagClose(item, index) {
-      this.multipleData.splice(index, 1)
-      // this.$refs.table.getTable
+      this.currentData.splice(index, 1)
+      debugger
+      this.$refs.table.toggleRowSelection(item, false)
     },
     handleSelect(selection, row) {
-      console.log('select', selection)
-      console.log('row', row)
-
-      this.multipleData = selection
+      this.currentData = selection
     },
     // 当前行变化
     handleCurrentChange(row, oldCurrentRow) {
-      this.singleData = row
+      // 防止多选下，点击表格导致数据被清空
+      if (this.multiple) {
+        return
+      }
+      this.currentData = [row]
     },
     getTable() {
       return this.$refs.table
