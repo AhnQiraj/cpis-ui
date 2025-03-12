@@ -517,6 +517,25 @@ export default {
     },
     getSearchBar() {
       return this.$refs.searchBar
+    },
+    // element-ui table 的 api
+    clearSelection() {
+      this.$refs.table.clearSelection()
+    },
+    toggleRowSelection(row, selected) {
+      this.$refs.table.toggleRowSelection(row, selected)
+    },
+    toggleAllSelection() {
+      this.$refs.table.toggleAllSelection()
+    },
+    toggleRowExpansion(row, expanded) {
+      this.$refs.table.toggleRowExpansion(row, expanded)
+    },
+    setCurrentRow(row) {
+      this.$refs.table.setCurrentRow(row)
+    },
+    clearSort() {
+      this.$refs.table.clearSort()
     }
   }
 }
