@@ -107,15 +107,15 @@ export default {
       type: Boolean,
       default: false
     },
-    selectData: {
+    selectedData: {
       type: Array,
       default: () => []
     },
-    selectDataLabel: {
+    selectedDataLabel: {
       type: String,
       default: 'name'
     },
-    selectDataKey: {
+    selectedDataKey: {
       type: String,
       default: 'id'
     },
