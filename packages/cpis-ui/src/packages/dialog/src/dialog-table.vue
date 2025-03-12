@@ -10,13 +10,13 @@
       <div v-if="multiple" slot="header" class="p-2 min-h-[42px] bg-white">
         <div class="border border-dashed border-gray-3 min-h-[42px] flex items-center gap-2 p-2 box-border">
           <cpis-tag
-            v-for="(item, index) in selection"
+            v-for="(item, index) in selectedData"
             size="small"
-            :key="item.id"
+            :key="item[selectedDataKey]"
             closable
             @close="handleTagClose(item, index)"
           >
-            {{ item.name }}
+            {{ item[selectedDataLabel] }}
           </cpis-tag>
         </div>
       </div>
