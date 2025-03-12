@@ -651,6 +651,7 @@ export const Dialog_Table_Multiple = {
               console.log(node)
             }
           },
+          selectedData: [],
           title: '弹出框表格多选',
           visible: false,
           treeProps: {
@@ -697,20 +698,20 @@ export const Dialog_Table_Multiple = {
             request: () => {
               return {
                 data: [
-                  { name: '张三', age: 18 },
-                  { name: '李四', age: 20 },
-                  { name: '王五', age: 22 },
-                  { name: '赵六', age: 24 },
-                  { name: '孙七', age: 26 },
-                  { name: '周八', age: 28 },
-                  { name: '吴九', age: 30 },
-                  { name: '郑十', age: 32 },
-                  { name: '周十一', age: 34 },
-                  { name: '赵十二', age: 36 },
-                  { name: '孙十三', age: 38 },
-                  { name: '周十四', age: 40 },
-                  { name: '吴十五', age: 42 },
-                  { name: '郑十六', age: 44 }
+                  { id: 1, name: '张三', age: 18 },
+                  { id: 2, name: '李四', age: 20 },
+                  { id: 3, name: '王五', age: 22 },
+                  { id: 4, name: '赵六', age: 24 },
+                  { id: 5, name: '孙七', age: 26 },
+                  { id: 6, name: '周八', age: 28 },
+                  { id: 7, name: '吴九', age: 30 },
+                  { id: 8, name: '郑十', age: 32 },
+                  { id: 9, name: '周十一', age: 34 },
+                  { id: 10, name: '赵十二', age: 36 },
+                  { id: 11, name: '孙十三', age: 38 },
+                  { id: 12, name: '周十四', age: 40 },
+                  { id: 13, name: '吴十五', age: 42 },
+                  { id: 14, name: '郑十六', age: 44 }
                 ],
                 total: 16
               }
@@ -737,6 +738,7 @@ export const Dialog_Table_Multiple = {
           />
           <CpisDialogTable
             multiple
+            :selectedData="selectedData"
             @ok="handleOk"
             :treeEvents="treeEvents"
             :visible.sync="visible"

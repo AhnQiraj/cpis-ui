@@ -27,6 +27,7 @@
         @select="handleSelect"
         @current-change="handleCurrentChange"
         :highlight-current-row="!multiple"
+        @data-loaded="handleDataLoaded"
       />
     </CpisTreeContainer>
     <template #footer>
@@ -79,22 +80,24 @@ export default {
     },
     visible(newVal) {
       if (newVal) {
-        // 当对话框打开时，更新表格选择以匹配currentData
-        this.$nextTick(() => {
-          if (this.$refs.table && this.multiple) {
-            const table = this.$refs.table.getTable ? this.$refs.table.getTable() : this.$refs.table
-            // 清除当前选择
-            table.clearSelection()
-            // 根据currentData设置选择
-            this.currentData.forEach(row => {
-              table.toggleRowSelection(row, true)
-            })
-          }
-        })
+        // this.key++
       }
     }
   },
   methods: {
+    handleDataLoaded({ dataSource }) {
+      this.$nextTick(() => {
+        if (this.$refs.table && this.multiple) {
+          const table = this.$refs.table
+          // 清除当前选择
+          table.clearSelection()
+          // 根据currentData设置选择
+          this.currentData.forEach(row => {
+            table.toggleRowSelectionByRowKey(row[this.selectedDataKey], true)
+          })
+        }
+      })
+    },
     handleOk() {
       this.$emit('update:visible', false)
       this.$emit('ok', this.currentData)
