@@ -627,8 +627,7 @@ export default {
         search: [
           {
             prop: 'name',
-            label: '姓名',
-            defaultValue: '张三'
+            label: '姓名'
           }
         ]
       }
@@ -641,7 +640,7 @@ export default {
     template: `
     <div>
       <CpisSearchBar ref="searchBar" :search="search" paramater-mode="flat"/>
-      <CpisButton style="margin-top: 16px;" @click="setParams">设置参数</CpisButton>
+      <CpisButton style="margin-top: 16px;" @click="setParams">设置姓名为李四</CpisButton>
     </div>
   `
   })

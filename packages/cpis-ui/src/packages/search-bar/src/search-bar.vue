@@ -26,6 +26,7 @@
             :placeholder="item.placeholder || '请选择'"
             v-model="params[item.prop]"
             v-on="getComponentListeners(item)"
+            v-bind="item.fieldProps"
           >
             <template v-if="item.type === 'select'" slot="prefix">
               {{ getPrefixLabel(item) }}
@@ -66,6 +67,7 @@
             v-on="getComponentListeners(item)"
             :label="item.label"
             v-model="params[item.prop]"
+            v-bind="item.fieldProps"
           />
         </template>
         <template v-else-if="['checkbox'].includes(item.type)">
@@ -84,6 +86,7 @@
             :style="{
               width: calculateWidth(item.placeholder || '请输入')
             }"
+            v-bind="item.fieldProps"
           />
         </template>
       </div>
@@ -238,7 +241,7 @@ export default {
       return params
     },
     setParams(key, value) {
-      this.params[key] = value
+      this.$set(this.params, key, value)
     },
     getComponentListeners(item) {
       const listeners = {}
