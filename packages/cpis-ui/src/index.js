@@ -13,6 +13,7 @@ import CpisSearchBar from './packages/search-bar/index.js'
 import CpisTree from './packages/tree/index.js'
 import CpisTreeContainer from './packages/tree-container/index.js'
 import CpisDatePicker from './packages/date-picker/index.js'
+import CpisTimeSelect from './packages/time-select/index.js'
 import CpisSelect from './packages/select/index.js'
 import CpisMenu from './packages/menu/index.js'
 import CpisMenuItem from './packages/menu-item/index.js'
@@ -51,7 +52,8 @@ const components = [
   CpisDialogTreeTable,
   CpisTagGroup,
   CpisUserSelectDialog,
-  CpisBasicTable
+  CpisBasicTable,
+  CpisTimeSelect
 ]
 
 const install = function (Vue, opts = {}) {
@@ -91,7 +93,8 @@ export {
   CpisDialogTreeTable,
   CpisTagGroup,
   CpisUserSelectDialog,
-  CpisBasicTable
+  CpisBasicTable,
+  CpisTimeSelect
 }
 export default {
   version: '1.0.0',
