@@ -25,6 +25,7 @@
         v-bind="tableProps"
         :selectable="multiple"
         @select="handleSelect"
+        @select-all="handleSelectAll"
         @current-change="handleCurrentChange"
         :highlight-current-row="!multiple"
         @data-loaded="handleDataLoaded"
@@ -112,6 +113,9 @@ export default {
       this.$refs.table.toggleRowSelection(item, false)
     },
     handleSelect(selection, row) {
+      this.currentData = selection
+    },
+    handleSelectAll(selection) {
       this.currentData = selection
     },
     // 当前行变化
