@@ -57,6 +57,7 @@ export default {
 .el-date-editor--datetimerange .el-range__close-icon {
   display: none;
 }
+
 // 现在 关闭按钮和日期图标在同一个位置, 所以需要存在关闭按钮(hover的时候会显示)隐藏日期图标
 .el-date-editor--daterange .el-icon-date:has(~ .el-icon-circle-close),
 .el-date-editor--datetimerange .el-icon-time:has(~ .el-icon-circle-close) {
@@ -65,5 +66,9 @@ export default {
 .el-date-editor--daterange .el-icon-circle-close,
 .el-date-editor--datetimerange .el-icon-circle-close {
   display: block;
+}
+
+.el-date-editor.el-range-editor.el-input__inner {
+  @apply px-[5px];
 }
 </style>
