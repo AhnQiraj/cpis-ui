@@ -62,7 +62,7 @@
           </ELTableColumn>
           <template v-for="column in computedColumns">
             <template v-if="column.valueType === 'selection'">
-              <ELTableColumn type="selection" width="40" />
+              <ELTableColumn type="selection" width="40" v-bind="column" />
             </template>
             <template v-else-if="column.valueType === 'index'">
               <ELTableColumn v-bind="column" type="index" width="50" align="center" min-width="50">
