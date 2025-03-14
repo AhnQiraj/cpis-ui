@@ -16,6 +16,9 @@
     "yalc": "yalc publish",
     "prepublishOnly": "npm run build"
   },
+  "dependencies": {
+    "throttle-debounce": "^1.0.1"
+  },
   "devDependencies": {
     "vite": "^5.4.8"
   },
