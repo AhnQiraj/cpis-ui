@@ -85,7 +85,11 @@
   1. 保证了组件，已选数据 `selected-data` 和 `ok` 后的回调数据结构是一致的。
   2. 为了统一，无论单选，多选， `ok` 后的回调数据都会返回一个数组，数组中是选中的数据。
 
-  具体实现可以参考 [Demo](#demo)
+  具体实现可以参考 [Demo](#demo) 和 项目 `/node_modules/@cpis/cpis-ui/src/packages/dialog/src/demo` 下的模板
+
+  ## 目前已在公共组件库封装的弹窗组件, 因为此类组件都和平台业务耦合(Window.apiList)，所以无法在这里展示
+  1. UserDialogSelect 替换为 CpisUserSelectDialog 人员选择弹窗
+  2. EqTypeDialogSelect 替换为 CpisEquipTypeSelectDialog 设备类型选择
 
 
 
