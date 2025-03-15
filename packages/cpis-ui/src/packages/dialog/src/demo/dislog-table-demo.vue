@@ -22,6 +22,7 @@ export default {
   name: 'CpisUserSelectDialog',
   props: {
     selectedData: {
+      // 已选数据的数据
       type: Array,
       default: null
     },
@@ -38,10 +39,12 @@ export default {
       default: false // 根据设计图和需求设定是否有遮照
     },
     selectDataKey: {
+      // 已选数据的数据的key，如果不是id 这里设置默认值
       type: String,
       default: 'id'
     },
     selectDataLabel: {
+      // 已选数据的数据的label，如果不是name 这里设置默认值
       type: String,
       default: 'name'
     },
@@ -51,9 +54,10 @@ export default {
     },
     multiple: {
       type: Boolean,
-      default: false
+      default: false // 是否支持多选，根据设计图和需求设置默认值
     },
     title: {
+      // 标题，根据设计图和需求设置默认值
       type: String,
       default: '用户选择'
     }
