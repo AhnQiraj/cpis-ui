@@ -7,6 +7,7 @@ import CpisTable from './packages/table/index.js'
 import CpisButton from './packages/button/index.js'
 import CpisInput from './packages/input/index.js'
 import CpisUserSelectDialog from './packages/dialog/src/user-select.vue'
+import CpisEquipTypeSelectDialog from './packages/dialog/src/equip-type-select.vue'
 import CpisForm, { CpisFormItem, CpisFormSection } from './packages/form/index.js'
 import CpisDrawer from './packages/drawer/index.js'
 import CpisSearchBar from './packages/search-bar/index.js'
@@ -52,6 +53,7 @@ const components = [
   CpisDialogTreeTable,
   CpisTagGroup,
   CpisUserSelectDialog,
+  CpisEquipTypeSelectDialog,
   CpisBasicTable,
   CpisTimeSelect
 ]
@@ -93,6 +95,7 @@ export {
   CpisDialogTreeTable,
   CpisTagGroup,
   CpisUserSelectDialog,
+  CpisEquipTypeSelectDialog,
   CpisBasicTable,
   CpisTimeSelect
 }
