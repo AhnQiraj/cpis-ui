@@ -25,20 +25,17 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-// 输入框的日历图标的位置
-::v-deep .el-input__prefix {
+<style lang="scss">
+.el-date-editor .el-input__prefix {
   left: unset;
   right: 5px;
 }
-// 日历图标和close 图标兼容显示问题
-::v-deep .el-input__prefix:has(~ .el-input__suffix .el-icon-circle-close) {
-  display: none;
-}
-// border 样式，解决跟随主题色切换
-::v-deep .el-input.is-active .el-input__inner,
-::v-deep .el-input__inner:focus {
+.el-date-editor .el-input__inner:focus,
+.el-date-editor .el-input.is-active .el-input__inner {
   @apply border-primary-6;
+}
+.el-date-editor .el-input__prefix:has(~ .el-input__suffix .el-icon-circle-close) {
+  display: none;
 }
 
 .el-date-editor .el-range__icon {
