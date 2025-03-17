@@ -458,6 +458,7 @@ export default {
           this.$emit('data-loaded', { dataSource: this.dataSource, total: this.total })
         } catch (error) {
         } finally {
+          this.$refs.table.doLayout()
           this.loading = false
         }
       }
