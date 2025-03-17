@@ -87,7 +87,9 @@
 
   具体实现可以参考 [Demo](#demo) 和 项目 `/node_modules/@cpis/cpis-ui/src/packages/dialog/src/demo` 下的模板
 
-  ## 目前已在公共组件库封装的弹窗组件, 因为此类组件都和平台业务耦合(Window.apiList)，所以无法在这里展示
+  ## 业务公共弹窗
+  > 目前已在公共组件库封装的弹窗组件, 因为此类组件都和平台业务耦合(Window.apiList)，所以无法在这里展示
+  
   1. UserDialogSelect 替换为 CpisUserSelectDialog 人员选择弹窗
   2. EqTypeDialogSelect 替换为 CpisEquipTypeSelectDialog 设备类型选择
 
