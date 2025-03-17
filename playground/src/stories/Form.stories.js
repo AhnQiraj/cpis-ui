@@ -237,8 +237,8 @@ export const TwoColumn = {
   }
 }
 
-export const RowSpan = {
-  name: '某一行设置列数',
+export const Span = {
+  name: '某一行设置水平列数',
   render: (args, { argTypes }) => {
     return {
       props: Object.keys(argTypes),
@@ -275,6 +275,46 @@ export const RowSpan = {
           <CpisFormItem label="座机" prop="number">
             <el-input v-model="formData.number"   />
           </CpisFormItem>
+        </CpisFormSection>
+        </CpisForm>
+      `
+    }
+  }
+}
+
+export const RowSpan = {
+  name: '某一行设置垂直列数',
+  render: (args, { argTypes }) => {
+    return {
+      props: Object.keys(argTypes),
+      components: {
+        CpisForm,
+        ElFormItem: FormItem,
+        ElInput: Input,
+        CpisButton,
+        CpisFormItem,
+        CpisFormSection
+      },
+      data: () => ({
+        formData: {}
+      }),
+      template: `
+
+        <CpisForm 
+          ref="form"
+          :model="formData"
+        >
+        <CpisFormSection title="基础信息" columns="2">
+          <CpisFormItem label="姓名" prop="name">
+            <el-input v-model="formData.name" />
+          </CpisFormItem>
+          <CpisFormItem label="头像" prop="age" rowSpan="2">
+            <el-upload v-model="formData.age"/>
+          </CpisFormItem>
+          <CpisFormItem label="家庭住址" prop="address">
+            <el-input v-model="formData.address" />
+          </CpisFormItem>
+          
         </CpisFormSection>
         </CpisForm>
       `

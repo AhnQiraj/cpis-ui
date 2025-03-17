@@ -39,6 +39,10 @@ export default {
       type: [Number, String],
       default: 1
     },
+    rowSpan: {
+      type: [Number, String],
+      default: 1
+    },
     labelWidth: {
       type: Number,
       default: 150
@@ -72,7 +76,8 @@ export default {
       const totalColumns = this.formSection.columns || 3
       const span = Math.min(this.span, totalColumns)
       return {
-        gridColumn: `span ${span}`
+        gridColumn: `span ${span}`,
+        gridRow: `span ${this.rowSpan}`
       }
     }
   }
