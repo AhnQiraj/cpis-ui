@@ -8,7 +8,9 @@ const packagesToCheck = [
   '@cpis/cpis-ui',
   '@cpis/cupubase',
   '@cpis/platformbase',
-  '@cpis/uno-preset'
+  '@cpis/uno-preset',
+  '@cpis/tools',
+  '@cpis/prettier-config'
 ]
 
 // 内网 registry 地址
@@ -22,9 +24,7 @@ const rl = readline.createInterface({
 const question = query => new Promise(resolve => rl.question(query, resolve))
 
 function getCurrentVersions() {
-  const packageJson = JSON.parse(
-    fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf8')
-  )
+  const packageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf8'))
   return {
     ...(packageJson.dependencies || {}),
     ...(packageJson.devDependencies || {})
@@ -48,10 +48,7 @@ async function checkUpdates() {
       }
       // 检查是否使用 latest 标签
       if (currentVersion === 'latest') {
-        console.log(
-          '\x1b[33m%s\x1b[0m',
-          `⚠️  警告：${pkg} 使用了 latest 标签，建议指定具体版本号`
-        )
+        console.log('\x1b[33m%s\x1b[0m', `⚠️  警告：${pkg} 使用了 latest 标签，建议指定具体版本号`)
         continue
       }
 
@@ -67,21 +64,13 @@ async function checkUpdates() {
         if (currentVersion !== latestVersion) {
           needsUpdate = true
           console.log('\x1b[33m%s\x1b[0m', '⚠️  警告！')
-          console.log(
-            '\x1b[31m%s\x1b[0m',
-            `${pkg} 需要更新：${currentVersion} → ${latestVersion}`
-          )
-          updateCommands.push(
-            `pnpm update ${pkg}@${latestVersion} --registry=${INTERNAL_REGISTRY}`
-          )
+          console.log('\x1b[31m%s\x1b[0m', `${pkg} 需要更新：${currentVersion} → ${latestVersion}`)
+          updateCommands.push(`pnpm update ${pkg}@${latestVersion} --registry=${INTERNAL_REGISTRY}`)
         } else {
           console.log(`✓ ${pkg} 已是最新版本：${currentVersion}`)
         }
       } catch (error) {
-        console.log(
-          '\x1b[33m%s\x1b[0m',
-          `⚠️  警告：检查 ${pkg} 更新失败，可能是网络问题`
-        )
+        console.log('\x1b[33m%s\x1b[0m', `⚠️  警告：检查 ${pkg} 更新失败，可能是网络问题`)
         continue
       }
     }
