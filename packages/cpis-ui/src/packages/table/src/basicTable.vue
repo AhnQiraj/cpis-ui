@@ -25,8 +25,10 @@ export default {
   comments: {
     ElTable: Table
   },
-  getTable() {
-    return this.$refs.elTable
+  methods: {
+    getTable() {
+      return this.$refs.elTable
+    }
   }
 }
 </script>
