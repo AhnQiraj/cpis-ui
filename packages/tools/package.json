@@ -1,6 +1,6 @@
 {
   "name": "@cpis/tools",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "工具库",
   "scripts": {
     "build": "vite build",
