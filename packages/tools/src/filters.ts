@@ -1,4 +1,31 @@
+import { format, formatRelativeTime as getRelativeTime, dateDealFmt } from './feche'
 
+export function dateFormat(dateObj: any, dateFormat = 'yyyy-MM-dd HH:mm:ss', origFormat: any) {
+  if (!dateObj) {return ''}
+  try {
+    if (typeof dateObj === 'number') {
+      dateObj = new Date(dateObj)
+    }
+    if (Object.prototype.toString.call(dateObj) !== '[object Date]' || isNaN(dateObj.getTime())) {
+      // 需要把字符串转换日期格式
+      dateObj = dateDealFmt.dealFmt(dateObj, origFormat || dateFormat)
+    }
+    return format(dateObj, dateFormat)
+  } catch (error) {
+    console.error('转换日期格式错误：', error, dateObj, dateFormat)
+    return dateObj
+  }
+}
+/**
+ * 相对时间字符串
+ * @param {String|Number} time 时间格式字符串，或者时间
+ * @param {String} format 格式化字符串
+ * @param {String} locale 国际化语言
+ * @returns {String} 相对时间字符串
+ */
+export function formatRelativeTime(time: any, format: any, locale: any) {
+  return getRelativeTime(time, format, locale)
+}
 /**
  * 附件容量数字 格式化
  * @param {*} num
@@ -68,5 +95,7 @@ export default {
   toThousandslsFilter,
   firstStr,
   removeHtmlTag,
-  numberFormatter
+  numberFormatter,
+  dateFormat,
+  formatRelativeTime
 }
