@@ -841,6 +841,64 @@ export const FlatSearch = {
   name: '配置搜索项-扁平化'
 }
 
+export const DefaultValue = {
+  parameters: {
+    docs: {
+      autodocs: false,
+      description: {
+        story: '扁平化搜索配置示例。更多搜索配置详情请参考 [SearchBar](?path=/docs/原子组件-搜索栏--docs)'
+      },
+      source: {
+        code: `<CpisTable paramaterMode="flat"/>`
+      }
+    },
+    controls: {
+      include: ['']
+    }
+  },
+  render: () => {
+    return {
+      components: { CpisTable },
+      methods: {
+        request(params) {
+          console.log(params)
+        }
+      },
+      template: `
+        <CpisTable 
+          :request="request"
+          paramaterMode="flat"
+          :search="[
+            {
+              prop: 'name',
+              label: '姓名', 
+              placeholder: '请输入',
+              defaultValue: '张三'
+            },
+            {
+              prop: 'sex',
+              label: '性别',
+              type: 'select',
+              defaultValue: 'male',
+              enum: [
+                {
+                  key: 'male',
+                  name: '男'
+                },
+                {
+                  key: 'female', 
+                  name: '女'
+                }
+              ]
+            }
+          ]"
+        />
+      `
+    }
+  },
+  name: '默认搜索'
+}
+
 // export const ConfigEmptyText = {
 //   parameters: {
 //     docs: {

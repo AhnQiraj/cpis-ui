@@ -386,7 +386,6 @@ export default {
   },
   data() {
     return {
-      searchParams: {},
       pageNo: 1,
       limit: 20,
       total: 0,
@@ -439,20 +438,21 @@ export default {
       let requestParams = { ...params }
       if (this.request && typeof this.request === 'function') {
         try {
+          const searchParams = this.$refs?.searchBar?.getParams?.() ?? null
           if (this.paramaterMode === 'structured') {
             requestParams = {
               ...requestParams,
-              ...(this.searchParams.length > 0 ? { parameters: this.searchParams } : {})
+              ...(searchParams.length > 0 ? { parameters: this.searchParams } : {})
             }
           } else {
             requestParams = {
               ...requestParams,
-              ...this.searchParams
+              ...searchParams
             }
           }
           this.loading = true
           const res = await this.request(requestParams)
-          if (!Array.isArray(res.data)) return
+          if (!Array.isArray(res?.data)) return
           this.dataSource = res.data
           this.total = res.total
           this.$emit('data-loaded', { dataSource: this.dataSource, total: this.total })
@@ -464,14 +464,13 @@ export default {
         }
       }
     },
-    handleSearch(searchParams) {
+    handleSearch() {
       const params = {
         requestPage: {
           limit: this.limit,
           pageNo: this.pageNo
         }
       }
-      this.searchParams = searchParams
       this.handleFetchData(params)
       this.$emit('onSearch', params)
     },
@@ -482,7 +481,6 @@ export default {
       this.pageNo = pageNo
     },
     reset() {
-      this.searchParams = {}
       this.handleFetchData({
         requestPage: {
           limit: this.limit,
