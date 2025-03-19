@@ -27,6 +27,8 @@
  *     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+
+// ts-ignore
 let token = /d{1,4}|M{1,4}|yy(?:yy)?|S{1,3}|Do|ZZ|Z|([HhMsDm])\1?|[aA]|"[^"]*"|'[^']*'/g
 let twoDigitsOptional = '[1-9]\\d?'
 let twoDigits = '\\d\\d'
