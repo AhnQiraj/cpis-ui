@@ -434,8 +434,8 @@ export default {
       // 否则直接返回表格级别的 editable（布尔值）
       return tableEditable
     },
-    async handleFetchData(params) {
-      let requestParams = { ...params }
+    async handleFetchData(requestPage) {
+      let requestParams = this.paginationProps ? { ...requestPage } : {}
       if (this.request && typeof this.request === 'function') {
         try {
           const searchParams = this.$refs?.searchBar?.getParams?.() ?? null
@@ -489,13 +489,12 @@ export default {
       })
     },
     reload() {
-      const requestData = {
+      this.handleFetchData({
         requestPage: {
           limit: this.limit,
           pageNo: this.pageNo
         }
-      }
-      this.handleFetchData(requestData)
+      })
     },
     getTable() {
       return this.$refs.table
