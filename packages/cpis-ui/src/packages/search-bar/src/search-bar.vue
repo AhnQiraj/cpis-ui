@@ -48,7 +48,8 @@
             size="small"
             :type="item.type"
             :value-format="
-              item.format ||
+              item.fieldProps?.['valueFormat'] ||
+              item.fieldProps?.['value-format'] ||
               {
                 date: 'yyyy-MM-dd',
                 datetime: 'yyyy-MM-dd HH:mm:ss',
