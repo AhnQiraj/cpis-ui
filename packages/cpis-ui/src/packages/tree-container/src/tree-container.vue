@@ -12,7 +12,7 @@
         class="border-b-2 border-b-solid border-gray-2 flex items-center justify-between h-[46px]"
         :class="{ 'px-0': collapse, 'px-4': !collapse }"
       >
-        <span class="text-base font-bold" v-show="!collapse">{{ title }}</span>
+        <span class="text-base font-bold" v-show="!collapse">{{ treeProps?.title ?? title }}</span>
         <i
           class="el-icon-d-arrow-left float-right cursor-pointer transition-transform duration-300"
           :class="{ 'rotate-180': collapse }"
