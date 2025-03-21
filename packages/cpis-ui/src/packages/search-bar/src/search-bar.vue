@@ -198,7 +198,7 @@ export default {
     calculateDateWidth(type) {
       const widht = {
         date: 100,
-        datetime: 150,
+        datetime: 160,
         datetimerange: 350,
         daterange: 210,
         monthrange: 200

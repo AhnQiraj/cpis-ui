@@ -5,6 +5,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import ElementUI from 'element-ui'
 import CpisUI from '../../packages/cpis-ui/src/index'
 import '../assets/icon.css'
+import '../assets/result.css'
 
 Vue.use(ElementUI, { size: 'small' })
 Vue.use(CpisUI)
