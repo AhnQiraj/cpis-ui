@@ -14,7 +14,8 @@ cpis-front-lib/
 │   ├── prettier-config/  # Prettier 配置包，统一代码格式化配置
 │   ├── tools/            # 公共工具库，自动检测更新脚本；公共的筛选器；公共方法；
 │   └── uno-preset/       # UnoCSS 预设包，基于unocss的css样式预设；主题预设；
-├── playground/           # 示例和测试项目，http://172.169.50.28:5002/ 看到的 demo 都在这个下面
+├── playground/           # 示例和测试项目，http://172.169.50.28:5002/ 看到的 demo 都在这个下面都在这个下面
+├── template/             # 模版
 ├── .gitignore            # Git 忽略配置
 ├── .npmrc                # NPM 配置
 ├── package.json          # 项目配置
