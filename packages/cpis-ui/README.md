@@ -70,10 +70,3 @@ export default {
 # 构建生产版本
 npm run build
 ```
-
-## 发布
-
-```bash
-# 构建并发布到仓库
-npm publish
-```
