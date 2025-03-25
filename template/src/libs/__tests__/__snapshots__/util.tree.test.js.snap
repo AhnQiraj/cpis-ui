@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`util.tree treeify 1`] = `
+Array [
+  Object {
+    "children": Array [
+      Object {
+        "children": Array [
+          Object {
+            "children": Array [],
+            "id": 111,
+            "label": "三级 1-1",
+            "parentId": 11,
+            "value": "1-1-1",
+          },
+        ],
+        "id": 11,
+        "label": "二级 1-1",
+        "parentId": 1,
+        "value": "1-1",
+      },
+    ],
+    "id": 1,
+    "label": "一级 1",
+    "parentId": null,
+    "value": "1",
+  },
+  Object {
+    "children": Array [
+      Object {
+        "children": Array [],
+        "id": 21,
+        "label": "二级 2-1",
+        "parentId": 2,
+        "value": "2-1",
+      },
+      Object {
+        "children": Array [],
+        "id": 22,
+        "label": "二级 2-2",
+        "parentId": 2,
+        "value": "2-2",
+      },
+    ],
+    "id": 2,
+    "label": "一级 2",
+    "parentId": null,
+    "value": "2",
+  },
+  Object {
+    "children": Array [
+      Object {
+        "children": Array [],
+        "id": 31,
+        "label": "二级 3-1",
+        "parentId": 3,
+        "value": "3-1",
+      },
+      Object {
+        "children": Array [],
+        "id": 32,
+        "label": "二级 3-2",
+        "parentId": 3,
+        "value": "3-2",
+      },
+    ],
+    "id": 3,
+    "label": "一级 3",
+    "parentId": null,
+    "value": "3",
+  },
+]
+`;
