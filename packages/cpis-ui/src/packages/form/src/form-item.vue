@@ -85,8 +85,8 @@ export default {
 </script>
 <style lang="scss">
 .cpis-form-item {
-  @apply flex items-center border border-gray-3 border-solid;
-  margin: -1px 0 0 -1px !important;
+  @apply flex items-center border-r border-r-gray-3 border-r-solid border-b border-b-gray-3 border-b-solid;
+  margin-bottom: 0px !important;
   background-color: #fff;
   min-height: 42px;
   box-sizing: border-box;
@@ -110,7 +110,6 @@ export default {
   & .el-form-item__label .cpis-form-item__label {
     @apply text-gray-6;
   }
-
   & .el-form-item__content {
     flex: 1;
     padding-left: 10px;
@@ -154,5 +153,8 @@ export default {
       width: 100%;
     }
   }
+}
+.cpis-form-section__content {
+  @apply border-l border-l-gray-3 border-l-solid border-t border-t-gray-3 border-t-solid;
 }
 </style>
