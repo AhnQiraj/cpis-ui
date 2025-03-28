@@ -304,6 +304,48 @@ export const ShowFullscreen = {
   }
 }
 
+export const Dialog_Form = {
+  render: (args, { argTypes }) => {
+    return {
+      data() {
+        return {
+          visible: false,
+          formData: {
+            username: ''
+          },
+          title: '这里是标题'
+        }
+      },
+      methods: {
+        handleOk(data) {
+          this.formData.username = data[0].username
+        }
+      },
+      template: `
+        <div>
+          <CpisButton
+            @click="visible = true"
+          >
+            点击打开
+          </CpisButton>
+          <CpisDialog
+            :visible.sync="visible"
+            :title="title"
+          >
+            <CpisForm :model="formData" :rules="rules">
+              <CpisFormSection>
+                <CpisFormItem label="姓名" prop="username">
+                  <CpisInput v-model="formData.username" />
+                </CpisFormItem>
+              </CpisFormSection>
+            </CpisForm>
+          </CpisDialog>
+        </div>
+        `
+    }
+  }
+}
+
 export const Dialog_Tree_Table_Single = {
   render: (args, { argTypes }) => {
     return {

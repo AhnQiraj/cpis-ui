@@ -11,8 +11,11 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .el-form {
   padding: 8px;
+}
+.el-dialog .cpis-dialog__body .el-form {
+  padding: 0;
 }
 </style>

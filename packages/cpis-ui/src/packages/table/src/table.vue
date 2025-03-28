@@ -442,7 +442,7 @@ export default {
           if (this.paramaterMode === 'structured') {
             requestParams = {
               ...requestParams,
-              ...(searchParams.length > 0 ? { parameters: this.searchParams } : {})
+              ...(((searchParams?.length ?? 0) > 0) ? { parameters: this.searchParams } : {})
             }
           } else {
             requestParams = {
