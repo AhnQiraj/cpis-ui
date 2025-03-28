@@ -25,7 +25,7 @@ export default {
     paddingStyle() {
       if (this.rootMenu.mode !== 'vertical') return {}
       const step = 16
-      let padding = 8
+      let padding = 12
       let parent = this.$parent
 
       if (this.rootMenu.collapse) {
